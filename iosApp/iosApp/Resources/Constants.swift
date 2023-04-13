@@ -19,7 +19,7 @@ struct Constants {
 //        static let neededMembersCount = 3
 //        static let timerInterval: CGFloat = 1
 //        static let appStoreLink = "https://testflight.apple.com/join/AkzuH5A4/"
-        static let appStoreLink = "https://apps.apple.com/ru/app/metasecret/id1644286751"
+        static let appStoreLink = "https://apps.apple.com/ru/app/metasecret/id1644286751/"
     }
     
     //MARK: - SPLASHSCREEN

@@ -8,8 +8,10 @@
 
 import Foundation
 
-class OnboardingContnetViewModel {
-    private(set) var pageType: PageType
+class OnboardingContnetViewModel: ObservableObject {
+    @Published var vaultName = ""
+    
+    var pageType: PageType
     
     init(pageType: PageType) {
         self.pageType = pageType

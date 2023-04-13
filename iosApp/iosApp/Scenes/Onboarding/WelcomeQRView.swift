@@ -11,7 +11,9 @@ import CoreImage.CIFilterBuiltins
 import SwiftUI
 
 struct WelcomeQRView: View {
-    @State var viewModel: OnboardingContnetViewModel
+    @StateObject var viewModel: OnboardingContnetViewModel
+    @State private var isPushed = false
+    
     private let context = CIContext()
     private let filter = CIFilter.qrCodeGenerator()
     
@@ -64,7 +66,7 @@ struct WelcomeQRView: View {
                     Spacer()
                     
                     // Buttons
-                    NavigationLink(destination: WelcomeAddPassword(viewModel: OnboardingContnetViewModel(pageType: .addSecret)), label: {
+                    NavigationLink(destination: WelcomeAddPassword(viewModel: viewModel), isActive: $isPushed, label: {
                         Text(viewModel.pageType.buttonTitle)
                             .frame(width: geo.size.width - Config.sideOffset * 2, height: 48)
                             .font(.custom(Avenir.bold.rawValue, size: AvenirSize.t2.rawValue))
@@ -72,6 +74,9 @@ struct WelcomeQRView: View {
                             .background(AppColors.mainOrange)
                             .cornerRadius(Config.cornerRadius)
                         
+                    })
+                    .onChange(of: isPushed, perform: { _ in
+                        viewModel.pageType = .addSecret
                     })
                     Spacer()
                         .frame(height: Config.verticalSpacing)
@@ -83,6 +88,8 @@ struct WelcomeQRView: View {
     }
     
     func generateQRCode() -> UIImage {
+        let qrString = "\(Constants.Common.appStoreLink)vault=\(viewModel.vaultName)"
+        let urlString = "\(Data(qrString.utf8))"
         filter.message = Data(Constants.Common.appStoreLink.utf8)
 
         if let outputImage = filter.outputImage {
