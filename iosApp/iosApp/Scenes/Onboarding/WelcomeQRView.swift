@@ -46,7 +46,6 @@ struct WelcomeQRView: View {
                         Spacer()
                     }
                     .padding(.horizontal)
-                    .padding(.top, 1)
                     
                     Spacer()
                     // Image

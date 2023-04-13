@@ -42,17 +42,39 @@ struct WelcomeAddPassword: View {
                         Spacer()
                     }
                     .padding(.horizontal)
-                    .padding(.top, 1)
                     
                     // Text field description
                     HStack {
                         Spacer()
                         ZStack(alignment: .leading) {
-                                Text(viewModel.pageType.placeHolder)
-                                    .font(.custom(Avenir.medium.rawValue, size: AvenirSize.t2.rawValue))
-                                    .foregroundColor(AppColors.mainDarkGray)
-                                    .padding(.horizontal)
+                            Text(description == "" ? Constants.Onboarding.testDescription : "")
+                                .font(.custom(Avenir.medium.rawValue, size: AvenirSize.t2.rawValue))
+                                .foregroundColor(AppColors.mainDarkGray)
+                                .padding(.horizontal)
                             TextField("", text: $description)
+                                .textFieldStyle(.plain)
+                                .padding(.horizontal)
+                                .foregroundColor(AppColors.mainBlack)
+                                .font(.custom(Avenir.medium.rawValue, size: AvenirSize.t2.rawValue))
+                                .accentColor(AppColors.mainDarkGray)
+                                .textFieldStyle(.roundedBorder)
+                        }
+                        .frame(height: 48.0)
+                        .background(AppColors.mainWhite)
+                        .cornerRadius(10.0)
+                    }
+                    .padding(.leading, 8.0)
+                    .padding(.trailing, 16.0)
+                    
+                    // Text field secret
+                    HStack {
+                        Spacer()
+                        ZStack(alignment: .leading) {
+                            Text(secret == "" ? Constants.Onboarding.testSecret : "")
+                                .font(.custom(Avenir.medium.rawValue, size: AvenirSize.t2.rawValue))
+                                .foregroundColor(AppColors.mainDarkGray)
+                                .padding(.horizontal)
+                            TextField("", text: $secret)
                                 .textFieldStyle(.plain)
                                 .padding(.horizontal)
                                 .foregroundColor(AppColors.mainBlack)
@@ -75,10 +97,10 @@ struct WelcomeAddPassword: View {
                     
                     // Description
                     Text(viewModel.pageType.description)
-                        .font(.custom(Avenir.medium.rawValue, size: AvenirSize.t1.rawValue))
+                        .font(.custom(Avenir.medium.rawValue, size: AvenirSize.t2.rawValue))
                         .foregroundColor(AppColors.mainBlack)
                         .multilineTextAlignment(.center)
-                        .padding()
+                        .padding(.horizontal)
                     
                     // Buttons
                     NavigationLink(destination: WelcomeDBView(viewModel: OnboardingContnetViewModel(pageType: .welcomeDB)), label: {

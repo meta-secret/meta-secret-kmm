@@ -41,7 +41,6 @@ struct WelcomeDBView: View {
                         Spacer()
                     }
                     .padding(.horizontal)
-                    .padding(.top, 1)
                     
                     // Image
                     Image(viewModel.pageType.imageName)

@@ -43,6 +43,8 @@ struct Constants {
         static let addDeviceText = NSLocalizedString("addDeviceText", comment: "")
         static let addSecret = NSLocalizedString("addSecret", comment: "")
         static let addSecretText = NSLocalizedString("addSecretText", comment: "")
+        static let testDescription = NSLocalizedString("testDescription", comment: "")
+        static let testSecret = NSLocalizedString("testSecret", comment: "")
         static let step1 = NSLocalizedString("step1", comment: "")
         static let step2 = NSLocalizedString("step2", comment: "")
         static let step3 = NSLocalizedString("step3", comment: "")
