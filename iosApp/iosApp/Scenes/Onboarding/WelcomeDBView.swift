@@ -9,7 +9,8 @@
 import SwiftUI
 
 struct WelcomeDBView: View {
-    @State var viewModel: OnboardingContnetViewModel
+    @StateObject var viewModel: OnboardingContnetViewModel
+    @State private var isPushed = false
     
     private enum Config {
         static let verticalSpacing: CGFloat = 28.0
@@ -58,7 +59,7 @@ struct WelcomeDBView: View {
                     Spacer()
                     
                     // Buttons
-                    NavigationLink(destination: WelcomeQRView(viewModel: OnboardingContnetViewModel(pageType: .welcomeQR)), label: {
+                    NavigationLink(destination: WelcomeQRView(viewModel: viewModel), isActive: $isPushed, label: {
                         Text(viewModel.pageType.buttonTitle)
                             .frame(width: geo.size.width - Config.sideOffset * 2, height: 48)
                             .font(.custom(Avenir.bold.rawValue, size: AvenirSize.t2.rawValue))
@@ -66,6 +67,9 @@ struct WelcomeDBView: View {
                             .background(AppColors.mainOrange)
                             .cornerRadius(Config.cornerRadius)
                         
+                    })
+                    .onChange(of: isPushed, perform: { _ in
+                        viewModel.pageType = .welcomeQR
                     })
                     Spacer()
                         .frame(height: Config.verticalSpacing)

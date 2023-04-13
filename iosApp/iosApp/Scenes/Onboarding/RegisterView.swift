@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct RegisterView: View {
-    @State var viewModel: OnboardingContnetViewModel
-    @State private var vaultName: String = ""
+    @StateObject var viewModel: OnboardingContnetViewModel
+    @State private var isPushed = false
     
     private enum Config {
         static let verticalSpacing: CGFloat = 28.0
@@ -47,13 +47,13 @@ struct RegisterView: View {
                     HStack {
                         Spacer()
                         ZStack(alignment: .leading) {
-                            if vaultName.isEmpty {
+                            if viewModel.vaultName.isEmpty {
                                 Text(viewModel.pageType.placeHolder)
                                     .font(.custom(Avenir.medium.rawValue, size: AvenirSize.t2.rawValue))
                                     .foregroundColor(AppColors.mainDarkGray)
                                     .padding(.horizontal)
                             }
-                            TextField("", text: $vaultName)
+                            TextField("", text: $viewModel.vaultName)
                                 .textFieldStyle(.plain)
                                 .padding(.horizontal)
                                 .foregroundColor(AppColors.mainBlack)
@@ -82,16 +82,19 @@ struct RegisterView: View {
                         .padding()
                     
                     // Buttons
-                    NavigationLink(destination: WelcomeDBView(viewModel: OnboardingContnetViewModel(pageType: .welcomeDB)), label: {
+                    NavigationLink(destination: WelcomeDBView(viewModel: viewModel), isActive: $isPushed, label: {
                         Text(viewModel.pageType.buttonTitle)
                             .frame(width: geo.size.width - Config.sideOffset * 2, height: 48)
                             .font(.custom(Avenir.bold.rawValue, size: AvenirSize.t2.rawValue))
-                            .foregroundColor(vaultName.isEmpty ? AppColors.mainGray : AppColors.mainBlack)
-                            .background(vaultName.isEmpty ? AppColors.mainDarkGray : AppColors.mainOrange)
+                            .foregroundColor(viewModel.vaultName.isEmpty ? AppColors.mainGray : AppColors.mainBlack)
+                            .background(viewModel.vaultName.isEmpty ? AppColors.mainDarkGray : AppColors.mainOrange)
                             .cornerRadius(Config.cornerRadius)
                         
                     })
-                    .disabled(vaultName.isEmpty)
+                    .disabled(viewModel.vaultName.isEmpty)
+                    .onChange(of: isPushed, perform: { _ in
+                        viewModel.pageType = .welcomeDB
+                    })
                     Spacer()
                         .frame(height: Config.verticalSpacing)
                 }
