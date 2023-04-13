@@ -1,0 +1,157 @@
+//MARK: - ONBOARDING
+"welcome" = "Welcome to Meta Secret";
+"whatIs" = "It's a personal, decentralized, self-hosted and passwordless manager of secrets and passwords";
+"back" = "Back";
+"next" = "Next";
+"finish" = "Finish";
+"chooseName" = "Choose a name";
+"vaultName" = "Your nickname";
+"startToUse" = "To start using this app and saving your secrets you need to choose the unique name (Nickname). Just type it in the field upper.";
+"singleCopy" = "Single copy";
+"singleCopyText" = "You've just created local data base. All your secrets and passwords will be stored ONLY on this device and no where else. But it's not safety. And one of the main purpose of Meta Secret is a data replication. We suggest to add additional devices to your own network, to be available to restore your data.";
+"addDevice" = "Add device";
+"addDeviceText" = "To add device into your own network you need just scan this QR code. Or you can left one Device. But don't forget: It's not SAFETY!";
+"addSecret" = "Add secret";
+"addSecretText" = "Let's add your first secret. After that, the app will encrypt it and split it on pices. Every device in your network will get a differente piece of splitted secret. To restore it, you will need to use at least 2 devices";
+"step1" = "Step 1";
+"step2" = "Step 2";
+"step3" = "Step 3";
+"step4" = "Step 4";
+
+"personalCloud" = "Personal Storage";
+"personalCloudDescription" = "All passwords and secret information is stored only on your devices and securely protected with encryption standards RSA and AES";
+
+"distributedStorage" = "Decentralized Storage";
+"distributedStorageDescription" = "By adding more devices, you create your own personal cloud to manage passwords and secrets that consists of your devices";
+
+"backup" = "Easy access and reliable backup";
+"backupDescription" = "Even if you lose one of the devices, you can always get access to your passwords from the rest of the devices in your network.";
+
+"passwordLess" = "Passwordless Login";
+"passwordLessDescription" = "Your secret is acessed with your defined authentication method like: FingerPrint, FaceID or PIN-code";
+
+"getStarted" = "Get started!";
+
+
+//MARK: - LOGIN
+
+"metaSecret" = "MetaSecret";
+"loginTitle" = "Choose a unique nickname for login.";
+"yourName" = "Your unique nickname";
+"letsgo" = "Let's get started!";
+"scanQR" = "Scan QR code";
+"wannaJoin" = "The name is already taken. If it's your nickname, please add the device to your network.";
+"chooseAnotherName" = "The name is already taken. Would you like to choose another one?";
+"rename" = "Rename";
+"declinedRequest" = "The Join request declined. Please choose another name.";
+"waitingForApproval" = "This device is waiting for approval to join the network.";
+"pleaseAcceptRequest" = "Waiting for approval. Please accept the join request or the other device.";
+"qrScanner" = "QR Code Scanner";
+
+//MARK: - MAIN
+"secrets" = "Secrets";
+"devices" = "Devices";
+"doYouWannaAccept" = "Multiple devices waiting for approval. Would you like to accept the request?";
+"accept" = "Accept";
+"decline" = "Decline";
+"pending" = "Pending...";
+"declined" = "Decine";
+"member" = "Member";
+"noSecrets" = "No secrets yet!";
+"hmmm" = "Hmmm.... no devices... are you a magician?";
+"yourNick" = "Your Nickname:";
+"yourDevices" = "Your Devices:";
+"yourSecrets" = "Your Secrets:";
+"notBackedUp" = "There is only one device in your network! We recommend adding more devices to provide better fault tolerance";
+
+"createCluster" = "Create your own network of devices to keep secrets secure";
+"onlyOneDevice" = "There is only one device in your network!\n\n• We recommend adding more devices to provide better fault tolerance\n\n• Just install this app on other your devices and use your nickname: %@, to join the network";
+"pleaseInstall" = "Please install this app on %@ additional devices!";
+
+"howToAdd" = "How to add a device to your network?";
+"stepsToAdd" = "1. Download MetaSecret app on a new device. \n2. Register with your nickname: %@ \n3. Accept a join request from a device that already a member of the network. \n4. Repeat on other devices.\n5. Or just scan this QR code";
+"add" = "Add";
+
+
+//MARK: - Pending device
+"deviceAdding" = "Adding device process";
+"pleaseApprove" = "Please, accept the join request, if this is your device.";
+
+//MARK: - AddSecret
+"addSecret" = "Add secret/password";
+"addDescription" = "Add description for secret";
+"description" = "Description";
+"addPassword" = "Add password";
+"password" = "Password";
+"splitInstruction" = "We splited your secret on three parts. Encrypted each one and already stored the first part on this device.";
+"splitInstructionLocal" = "You have only one device, because of it we will save your secret locally.";
+"selectSecond" = "Select device to store the second part";
+"selectSecondButton" = "Select second device";
+"selectThird" = "Select device to store the third part";
+"selectThirdButton" = "Select third device";
+"selectDevice" = "Select devices to store other parts";
+"selectDeviceButton" = "Select devices";
+"selectDeviceButtonLocal" = "Save";
+"split" = "SPLIT";
+"notSplitedMessage" = "Split process has not been completed. We gonna save your secret locally only. There is a big chance of data loss. Would like to quit?";
+"alreadySavedMessage" = "You already has a secret with the same description.";
+"edit" = "Edit";
+"restore" = "RESTORE";
+"showSecret" = "SHOW SECRET";
+"editSecret" = "Edit Secret";
+"recoverEdit" = "Restore Secret";
+"success" = "Success";
+"successSplited" = "Secret has been splited, encoded and distributed successfully!";
+
+//MARK: - ALERTS
+"okok" = "Ок";
+"cancel" = "Cancel";
+"biometricalReason" = "Authentication required to access the secure data";
+"needConfirmation" = "Need Confirmation";
+"confirmationText" = "Please confirm secret restoring";
+"waitConfirmationText" = "Please wait for confirmation on another device or cancel it";
+
+//MARK: - Errors
+"error" = "Error";
+"warning" = "Warning";
+"commonError" = "Oops, something went wrong";
+"networkError" = "Server error";
+"registerError" = "Registration error";
+"vaultError" = "Getting Vault Error";
+"userSignatureError" = "Curent User Error";
+"wannaLogin" = "This name already taken. Want to login?";
+"enterName" = "Enter your nickname";
+"distributionDBError" = "Data Base distribution error";
+"splitError" = "Splitting error";
+"sww" = "Something wrong";
+"atLeast3" = "Not enough devices connected. It's recommended to have several devices in your network, to reduce the risk of data loss.";
+"authError" = "Authentication failed";
+"authErrorMessage" = "You could not be verified; please try again.";
+"notConfirmed" = "Restoring not confirmed";
+"dbNotConsistence" = "We have found that the integrity of the database has been corrupted and will be restored. Please, prepare all your devices to do this!";
+"cameraError" = "You need to grant access to the camera to scan the QR code";
+
+//MARK: - Select device
+"sentShareTitle" = "Share has been sent!";
+"sentShareMessage" = "Secind share has been sent successfully on device %@";
+"chooseDevices" = "Please, select device to distribute other parts of your secret";
+
+//MARK: - Errors
+"generateUserError" = "Generating of user's signature is FAILED";
+"distributeError" = "Distribution is FAILED";
+"restoreError" = "Restore error";
+"encodeError" = "Encode error";
+"noMainUserError" = "No main user";
+"objectToJsonError" = "Parse object to Json error";
+"cantRestore" = "Can't restore password";
+"cantClaim" = "Launch the app on another device to restore the password";
+
+//MARK: - Biometric errors
+"authenticationFailed" = "There was a problem verifying your identity.";
+"userCancel" = "You pressed cancel.";
+"userFallback" = "You pressed password.";
+"biometryNotAvailable" = "Face ID/Touch ID is not available.";
+"biometryNotEnrolled" = "Face ID/Touch ID is not set up.";
+"biometryLockout" = "Face ID/Touch ID is locked.";
+"unknown" = "Face ID/Touch ID may not be configured";
+"enterAppPass" = "Enter App Password";
