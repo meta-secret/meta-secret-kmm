@@ -41,7 +41,6 @@ struct RegisterView: View {
                         Spacer()
                     }
                     .padding(.horizontal)
-                    .padding(.top, 1)
                     
                     // Text field
                     HStack {

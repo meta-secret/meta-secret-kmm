@@ -13,10 +13,13 @@
 "addDeviceText" = "To add device into your own network you need just scan this QR code. Or you can left one Device. But don't forget: It's not SAFETY!";
 "addSecret" = "Add secret";
 "addSecretText" = "Let's add your first secret. After that, the app will encrypt it and split it on pices. Every device in your network will get a differente piece of splitted secret. To restore it, you will need to use at least 2 devices";
+"testDescription" = "Test Description";
+"testSecret" = "Test Secret";
 "step1" = "Step 1";
 "step2" = "Step 2";
 "step3" = "Step 3";
 "step4" = "Step 4";
+
 
 "personalCloud" = "Personal Storage";
 "personalCloudDescription" = "All passwords and secret information is stored only on your devices and securely protected with encryption standards RSA and AES";
