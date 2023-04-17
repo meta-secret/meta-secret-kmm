@@ -13,7 +13,7 @@ struct RegisterView: View {
     @State private var isPushed = false
     
     private enum Config {
-        static let verticalSpacing: CGFloat = 28.0
+        static let verticalSpacing: CGFloat = 14.0
         static let cornerRadius: CGFloat = 10.0
         static let sideOffset: CGFloat = 16.0
     }

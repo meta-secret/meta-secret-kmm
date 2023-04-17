@@ -14,7 +14,7 @@ struct WelcomeAddPassword: View {
     @State private var secret: String = ""
     
     private enum Config {
-        static let verticalSpacing: CGFloat = 28.0
+        static let verticalSpacing: CGFloat = 14.0
         static let cornerRadius: CGFloat = 10.0
         static let sideOffset: CGFloat = 16.0
     }
@@ -103,7 +103,7 @@ struct WelcomeAddPassword: View {
                         .padding(.horizontal)
                     
                     // Buttons
-                    NavigationLink(destination: WelcomeDBView(viewModel: OnboardingContnetViewModel(pageType: .welcomeDB)), label: {
+                    NavigationLink(destination: MainSceneView(viewModel: MainSceneViewModel()), label: {
                         Text(viewModel.pageType.buttonTitle)
                             .frame(width: geo.size.width - Config.sideOffset * 2, height: 48)
                             .font(.custom(Avenir.bold.rawValue, size: AvenirSize.t2.rawValue))
