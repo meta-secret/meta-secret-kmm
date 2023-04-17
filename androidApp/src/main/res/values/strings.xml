@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="splashTitle">Meta Secret</string>
+    <string name="next">Next</string>
+    <string name="welcome">Welcome to Meta Secret</string>
+    <string name="whatIs">It\'s a personal, decentralized, self-hosted and passwordless manager of secrets and passwords</string>
 </resources>

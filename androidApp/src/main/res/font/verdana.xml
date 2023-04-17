@@ -3,9 +3,9 @@
     <font
         android:fontStyle="normal"
         android:fontWeight="100"
-        android:font="@font/verdana_font" />
+        android:font="@font/verdana_black_font" />
     <font
         android:fontStyle="italic"
         android:fontWeight="400"
-        android:font="@font/verdana_font" />
+        android:font="@font/verdana_black_font" />
 </font-family>
