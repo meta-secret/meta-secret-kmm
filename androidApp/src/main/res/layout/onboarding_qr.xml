@@ -5,63 +5,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_creame"
-    tools:context=".RegisterViewActivity"
+    tools:context=".WelcomeQRViewActivity"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingBottom="16dp"
     android:paddingTop="14dp">
 
     <TextView
-        android:id="@+id/step1"
+        android:id="@+id/step3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:paddingBottom="8dp"
-        android:text="@string/step1"
+        android:text="@string/step3"
         android:textColor="@color/main_dark_gray"
         android:textStyle="normal"
         android:textSize = "18dp"
         android:fontFamily="@font/verdana_font"></TextView>
 
     <TextView
-        android:id="@+id/step1Title"
+        android:id="@+id/step3Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/step1"
+        android:layout_below="@+id/step3"
         android:paddingBottom="16dp"
-        android:text="@string/chooseName"
+        android:text="@string/addDevice"
         android:textColor="@color/main_black"
         android:textStyle="bold"
         android:textSize = "24dp"
         android:fontFamily="@font/verdana_black_font"></TextView>
 
-    <EditText
-        android:id="@+id/vaultName"
-        android:layout_height="48dp"
-        android:layout_width="match_parent"
-        android:layout_below="@+id/step1Title"
-        android:background="@drawable/ic_rounded_bg"
-        android:textColor="@color/main_black"
-        android:hint="@string/vaultName"
-        android:textColorHint="@color/main_dark_gray"
-        android:inputType="text"/>
-
-    <ImageView android:id="@+id/registerIc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/vaultName"
-        android:layout_above="@+id/registerText"
+    <ImageView android:id="@+id/qrIc"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/step3Title"
+        android:layout_above="@+id/qrText"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
-        android:src="@drawable/ic_onboarding_2"/>
+        android:src="@drawable/ic_onboarding_3"/>
 
     <TextView
-        android:id="@+id/registerText"
+        android:id="@+id/qrText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/nextRegister"
+        android:layout_above="@+id/nextQr"
         android:paddingBottom="20dp"
-        android:text="@string/startToUse"
+        android:text="@string/addDeviceText"
         android:textColor="@color/main_black"
         android:textAlignment="center"
         android:textStyle="normal"
@@ -69,11 +59,11 @@
         android:fontFamily="@font/verdana_font"></TextView>
 
     <Button
+        android:id="@+id/nextQr"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@color/main_orange"
         android:textColor="@color/main_black"
-        android:id="@+id/nextRegister"
         android:layout_alignParentBottom="true"
         android:text="@string/next"
         android:textStyle="bold"
