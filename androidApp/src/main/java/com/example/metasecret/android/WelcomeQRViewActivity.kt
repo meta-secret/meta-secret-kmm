@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.ComponentActivity
+import com.example.metasecret.AppLinker
+import com.example.metasecret.StoreLink
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.EncodeHintType
 import com.google.zxing.qrcode.QRCodeWriter
@@ -31,7 +33,7 @@ class WelcomeQRViewActivity: ComponentActivity() {
 
     private fun qrGeneration(): Bitmap {
         val size = 300
-        val qrCodeContent = Constants.appStoreLink
+        val qrCodeContent = AppLinker().getStoreLink()
         val bits = QRCodeWriter().encode(qrCodeContent, BarcodeFormat.QR_CODE, size, size)
         return Bitmap.createBitmap(size, size, Bitmap.Config.RGB_565).also {
             for (x in 0 until size) {
