@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_creame"
+    tools:context=".WelcomeViewActivity"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
+    android:paddingTop="14dp">
+
+    <Button
+        android:text=""
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_qr_scaner"
+        android:id="@+id/qrButton"
+        android:layout_alignParentRight="true"></Button>
+
+    <ImageView android:id="@+id/imageWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/qrButton"
+        android:layout_above="@+id/welcomeTitle"
+        android:paddingBottom="20dp"
+        android:src="@drawable/ic_onboarding_1"/>
+
+    <TextView
+        android:id="@+id/welcomeTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/welcomeText"
+        android:paddingBottom="20dp"
+        android:text="@string/welcome"
+        android:textColor="@color/main_black"
+        android:textAlignment="center"
+        android:textStyle="normal"
+        android:textSize = "24dp"
+        android:fontFamily="@font/verdana_black_font"></TextView>
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/nextWelcome"
+        android:paddingBottom="20dp"
+        android:text="@string/whatIs"
+        android:textColor="@color/main_black"
+        android:textAlignment="center"
+        android:textStyle="normal"
+        android:textSize = "20dp"
+        android:fontFamily="@font/verdana_font"></TextView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/main_orange"
+        android:textColor="@color/main_black"
+        android:id="@+id/nextWelcome"
+        android:layout_alignParentBottom="true"
+        android:text="@string/next"
+        android:textStyle="bold"
+        android:textSize = "18dp"
+        android:fontFamily="@font/verdana_black_font"></Button>
+</RelativeLayout>

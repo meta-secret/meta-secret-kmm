@@ -6,4 +6,6 @@
     <color name="secondary_gray">#F7F9FB</color>
     <color name="main_dark_gray">#C9CBCF</color>
     <color name="main_black">#242A38</color>
+    <color name="main_creame">#FAF4F0</color>
+    <color name="main_white">#FFFFFF</color>
 </resources>
