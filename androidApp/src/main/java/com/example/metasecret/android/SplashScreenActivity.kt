@@ -9,6 +9,8 @@ import kotlin.concurrent.timerTask
 class SplashScreenActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        System.loadLibrary("libmeta_secret_core");
+
         setContentView(R.layout.activity_splash_screen)
 
         Timer().schedule(timerTask {
