@@ -26,7 +26,7 @@ enum FontStyle {
         return UIFont(name: fontName, size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
     }
     
-    var fontSize: CGFloat {
+    private var fontSize: CGFloat {
         switch self {
         case .title:
             return 140
@@ -53,7 +53,7 @@ enum FontStyle {
         }
     }
     
-    var fontName: String {
+    private var fontName: String {
         switch self {
         case .title:
             return "manrope-extrabold"
@@ -66,7 +66,7 @@ enum FontStyle {
         case .button:
             return "manrope-semibold"
         case .normalMain:
-            return "manrope-regular"
+            return "Manrope-Regular"
         case .normal:
             return "manrope-regular"
         case .mini:

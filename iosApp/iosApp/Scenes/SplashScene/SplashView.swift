@@ -17,7 +17,9 @@ struct SplashView: View {
         NavigationView {
             ZStack {
                 AppColors.blackBg.ignoresSafeArea()
-                Image(AppImages.mainBg).ignoresSafeArea()
+                Image(AppImages.mainBg)
+                    .resizable()
+                    .ignoresSafeArea()
                 ZStack {
                     Image(AppImages.splashGradient)
                         .padding(.bottom, 63)
@@ -38,7 +40,7 @@ struct SplashView: View {
             }
             .background(
                 NavigationLink(
-                    destination: WelcomeView(viewModel: OnboardingContnetViewModel(pageType: .first))
+                    destination: OnboardingContainerView(viewModel: OnboardingContnetViewModel(pageType: .first))
                     .navigationBarBackButtonHidden(true),
                     isActive: $navigateToNextScreen,
                     label: { EmptyView() }

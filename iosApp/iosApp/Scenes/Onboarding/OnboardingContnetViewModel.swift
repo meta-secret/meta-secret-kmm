@@ -12,8 +12,18 @@ class OnboardingContnetViewModel: ObservableObject {
     @Published var vaultName = ""
     
     var pageType: PageType
+    private(set) var pageControllerViewModel: PageControllViewModel
+    
+    var skipText: String {
+        return Constants.Common.skip
+    }
+    
+    var nextText: String {
+        return Constants.Common.next
+    }
     
     init(pageType: PageType) {
+        self.pageControllerViewModel = PageControllViewModel(pages: pageType.totalSteps)
         self.pageType = pageType
     }
 }

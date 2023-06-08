@@ -12,6 +12,8 @@ struct PageControllView: View {
     @Binding var selectedPage: Int
     @State var viewModel: PageControllViewModel
     
+    private var pageIndex: CGFloat { CGFloat(selectedPage - 1) }
+    
     var body: some View {
         ZStack {
             HStack(spacing: viewModel.circleMargin) {
@@ -25,6 +27,8 @@ struct PageControllView: View {
             Circle()
                 .foregroundColor(AppColors.actionLinkBlue)
                 .frame(width: viewModel.circleDiameter, height: viewModel.circleDiameter)
+                .offset(x: viewModel.currentPosition)
+                .animation(.linear(duration: 0.3))
         }
     }
 }

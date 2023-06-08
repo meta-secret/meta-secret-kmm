@@ -40,7 +40,8 @@
 		E5C2F2BA29C656E500C8F059 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C2F2B929C656E500C8F059 /* Fonts.swift */; };
 		E5C2F2BC29C65AB300C8F059 /* AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C2F2BB29C65AB300C8F059 /* AppImages.swift */; };
 		E5C2F2C229C66B7E00C8F059 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5C2F2C129C66B7E00C8F059 /* Colors.xcassets */; };
-		E5C2F2C529C672D100C8F059 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C2F2C429C672D100C8F059 /* WelcomeView.swift */; };
+		E5C2F2C529C672D100C8F059 /* OnboardingContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C2F2C429C672D100C8F059 /* OnboardingContainerView.swift */; };
+		E5EEEB062A326FFA00D40996 /* MainSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EEEB052A326FFA00D40996 /* MainSceneView.swift */; };
 		E5F969DC29E6035300D9B4D6 /* WelcomeAddPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F969DB29E6035300D9B4D6 /* WelcomeAddPassword.swift */; };
 /* End PBXBuildFile section */
 
@@ -81,7 +82,8 @@
 		E5C2F2B929C656E500C8F059 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		E5C2F2BB29C65AB300C8F059 /* AppImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppImages.swift; sourceTree = "<group>"; };
 		E5C2F2C129C66B7E00C8F059 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
-		E5C2F2C429C672D100C8F059 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		E5C2F2C429C672D100C8F059 /* OnboardingContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerView.swift; sourceTree = "<group>"; };
+		E5EEEB052A326FFA00D40996 /* MainSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneView.swift; sourceTree = "<group>"; };
 		E5F969DB29E6035300D9B4D6 /* WelcomeAddPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeAddPassword.swift; sourceTree = "<group>"; };
 		F87BE92D2E44E3581B58E0B2 /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -185,6 +187,7 @@
 		E570B4E229B9429B00D1E0D8 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				E5EEEB042A326FD600D40996 /* Main */,
 				E5A4BBE829E309A500C3F718 /* ImagePicker */,
 				E5C2F2C329C66EDA00C8F059 /* Onboarding */,
 				E570B4E329B942BD00D1E0D8 /* SplashScene */,
@@ -245,7 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				E5B349AA29C8E7E400EC9DE1 /* OnboardingContnetViewModel.swift */,
-				E5C2F2C429C672D100C8F059 /* WelcomeView.swift */,
+				E5C2F2C429C672D100C8F059 /* OnboardingContainerView.swift */,
 				E5C223CA29DE350A00EDDAFC /* RegisterView.swift */,
 				E5A4BBE229E2F5B400C3F718 /* WelcomeDBView.swift */,
 				E5A4BBE629E307C500C3F718 /* WelcomeQRView.swift */,
@@ -253,6 +256,14 @@
 				E5045D082A31BF8B002ED25D /* ScanQRStub.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		E5EEEB042A326FD600D40996 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E5EEEB052A326FFA00D40996 /* MainSceneView.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		F8640A67FB0147ED7FC7FEA9 /* Frameworks */ = {
@@ -383,8 +394,9 @@
 				E5C2F2BC29C65AB300C8F059 /* AppImages.swift in Sources */,
 				E5C223CB29DE350A00EDDAFC /* RegisterView.swift in Sources */,
 				E570B4EE29B94A8200D1E0D8 /* TextStyles.swift in Sources */,
-				E5C2F2C529C672D100C8F059 /* WelcomeView.swift in Sources */,
+				E5C2F2C529C672D100C8F059 /* OnboardingContainerView.swift in Sources */,
 				E570B4E629B9439600D1E0D8 /* SplashView.swift in Sources */,
+				E5EEEB062A326FFA00D40996 /* MainSceneView.swift in Sources */,
 				E5A4BBE329E2F5B400C3F718 /* WelcomeDBView.swift in Sources */,
 				E5045D0D2A31C6C6002ED25D /* PageControllView.swift in Sources */,
 				E5A4BBEC29E30AB700C3F718 /* Coordinator.swift in Sources */,
