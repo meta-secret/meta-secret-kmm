@@ -7,28 +7,27 @@
 //
 
 import SwiftUI
-import shared
+//import shared
 
 struct SplashView: View {
     @State var navigateToNextScreen: Bool = false
+    @State var overviewShowen: Bool = false
     
-    private enum Config {
-        static let mainBgOpacity = 0.1
-    }
-
     var body: some View {
         NavigationView {
             ZStack {
-                AppColors.mainYellow.ignoresSafeArea()
-                VStack {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: AppColors.mainBlack))
-                    Text(Constants.Splash.metaSecret)
-                        .foregroundColor(AppColors.mainBlack)
-                        .font(.custom(Avenir.heavy.rawValue, size: AvenirSize.h1.rawValue))
+                AppColors.blackBg.ignoresSafeArea()
+                Image(AppImages.mainBg).ignoresSafeArea()
+                ZStack {
+                    Image(AppImages.splashGradient)
+                        .padding(.bottom, 63)
+                    VStack {
+                        Image(AppImages.splashLogo)
+                        Image(AppImages.metaTitle)
+                            .padding(.top, 40)
+                    }
                 }
-                Image(AppImages.mainBg)
-                    .opacity(Config.mainBgOpacity)
+                
             }
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -39,7 +38,7 @@ struct SplashView: View {
             }
             .background(
                 NavigationLink(
-                    destination: WelcomeView(viewModel: OnboardingContnetViewModel(pageType: .welcome))
+                    destination: WelcomeView(viewModel: OnboardingContnetViewModel(pageType: .first))
                     .navigationBarBackButtonHidden(true),
                     isActive: $navigateToNextScreen,
                     label: { EmptyView() }

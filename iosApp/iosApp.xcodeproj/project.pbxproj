@@ -11,14 +11,21 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		E4DA5883D9745C7F266B22AD /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F87BE92D2E44E3581B58E0B2 /* Pods_iosApp.framework */; };
+		E5045D092A31BF8B002ED25D /* ScanQRStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5045D082A31BF8B002ED25D /* ScanQRStub.swift */; };
+		E5045D0D2A31C6C6002ED25D /* PageControllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5045D0C2A31C6C6002ED25D /* PageControllView.swift */; };
+		E5045D0F2A31C6F6002ED25D /* PageControllViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5045D0E2A31C6F6002ED25D /* PageControllViewModel.swift */; };
 		E52D73B029DE3A9800DD8434 /* icons.json in Resources */ = {isa = PBXBuildFile; fileRef = E52D73AF29DE3A9800DD8434 /* icons.json */; };
-		E52D73B429DE3ABF00DD8434 /* Font Awesome 6 Free-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = E52D73B129DE3ABF00DD8434 /* Font Awesome 6 Free-Regular-400.otf */; };
-		E52D73B529DE3ABF00DD8434 /* Font Awesome 6 Brands-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = E52D73B229DE3ABF00DD8434 /* Font Awesome 6 Brands-Regular-400.otf */; };
-		E52D73B629DE3AC000DD8434 /* Font Awesome 6 Free-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = E52D73B329DE3ABF00DD8434 /* Font Awesome 6 Free-Solid-900.otf */; };
 		E570B4E629B9439600D1E0D8 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E570B4E429B942E600D1E0D8 /* SplashView.swift */; };
 		E570B4E929B9464400D1E0D8 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E570B4E829B9464400D1E0D8 /* Colors.swift */; };
 		E570B4EC29B9470000D1E0D8 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E570B4EB29B9470000D1E0D8 /* Color+Extension.swift */; };
 		E570B4EE29B94A8200D1E0D8 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E570B4ED29B94A8200D1E0D8 /* TextStyles.swift */; };
+		E59882082A306EF60030CD2A /* manrope-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E59882012A306EF60030CD2A /* manrope-light.otf */; };
+		E59882092A306EF60030CD2A /* manrope-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E59882022A306EF60030CD2A /* manrope-semibold.otf */; };
+		E598820A2A306EF60030CD2A /* manrope-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E59882032A306EF60030CD2A /* manrope-bold.otf */; };
+		E598820B2A306EF60030CD2A /* manrope-extrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E59882042A306EF60030CD2A /* manrope-extrabold.otf */; };
+		E598820C2A306EF60030CD2A /* manrope-thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = E59882052A306EF60030CD2A /* manrope-thin.otf */; };
+		E598820D2A306EF60030CD2A /* manrope-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E59882062A306EF60030CD2A /* manrope-regular.otf */; };
+		E598820E2A306EF60030CD2A /* manrope-medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E59882072A306EF60030CD2A /* manrope-medium.otf */; };
 		E5A4BBE329E2F5B400C3F718 /* WelcomeDBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A4BBE229E2F5B400C3F718 /* WelcomeDBView.swift */; };
 		E5A4BBE729E307C500C3F718 /* WelcomeQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A4BBE629E307C500C3F718 /* WelcomeQRView.swift */; };
 		E5A4BBEA29E309C200C3F718 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A4BBE929E309C200C3F718 /* ImagePickerView.swift */; };
@@ -45,14 +52,21 @@
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE8BFEEAFFB691AE21408748 /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
 		CFCBB75DAAF43DD225EF5C2D /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
+		E5045D082A31BF8B002ED25D /* ScanQRStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRStub.swift; sourceTree = "<group>"; };
+		E5045D0C2A31C6C6002ED25D /* PageControllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllView.swift; sourceTree = "<group>"; };
+		E5045D0E2A31C6F6002ED25D /* PageControllViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllViewModel.swift; sourceTree = "<group>"; };
 		E52D73AF29DE3A9800DD8434 /* icons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = icons.json; sourceTree = "<group>"; };
-		E52D73B129DE3ABF00DD8434 /* Font Awesome 6 Free-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 6 Free-Regular-400.otf"; sourceTree = "<group>"; };
-		E52D73B229DE3ABF00DD8434 /* Font Awesome 6 Brands-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 6 Brands-Regular-400.otf"; sourceTree = "<group>"; };
-		E52D73B329DE3ABF00DD8434 /* Font Awesome 6 Free-Solid-900.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 6 Free-Solid-900.otf"; sourceTree = "<group>"; };
 		E570B4E429B942E600D1E0D8 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		E570B4E829B9464400D1E0D8 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		E570B4EB29B9470000D1E0D8 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		E570B4ED29B94A8200D1E0D8 /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
+		E59882012A306EF60030CD2A /* manrope-light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "manrope-light.otf"; sourceTree = "<group>"; };
+		E59882022A306EF60030CD2A /* manrope-semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "manrope-semibold.otf"; sourceTree = "<group>"; };
+		E59882032A306EF60030CD2A /* manrope-bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "manrope-bold.otf"; sourceTree = "<group>"; };
+		E59882042A306EF60030CD2A /* manrope-extrabold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "manrope-extrabold.otf"; sourceTree = "<group>"; };
+		E59882052A306EF60030CD2A /* manrope-thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "manrope-thin.otf"; sourceTree = "<group>"; };
+		E59882062A306EF60030CD2A /* manrope-regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "manrope-regular.otf"; sourceTree = "<group>"; };
+		E59882072A306EF60030CD2A /* manrope-medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "manrope-medium.otf"; sourceTree = "<group>"; };
 		E5A4BBE229E2F5B400C3F718 /* WelcomeDBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeDBView.swift; sourceTree = "<group>"; };
 		E5A4BBE629E307C500C3F718 /* WelcomeQRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeQRView.swift; sourceTree = "<group>"; };
 		E5A4BBE929E309C200C3F718 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
@@ -123,6 +137,7 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				E5045D0A2A31C68B002ED25D /* Views */,
 				E5C223C729DDDAF900EDDAFC /* Helpers */,
 				E570B4EA29B946EE00D1E0D8 /* Extensions */,
 				E570B4E229B9429B00D1E0D8 /* Scenes */,
@@ -133,12 +148,27 @@
 			path = iosApp;
 			sourceTree = "<group>";
 		};
+		E5045D0A2A31C68B002ED25D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E5045D0B2A31C6B3002ED25D /* Common */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E5045D0B2A31C6B3002ED25D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E5045D0C2A31C6C6002ED25D /* PageControllView.swift */,
+				E5045D0E2A31C6F6002ED25D /* PageControllViewModel.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		E570B4E129B9428600D1E0D8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E52D73B229DE3ABF00DD8434 /* Font Awesome 6 Brands-Regular-400.otf */,
-				E52D73B129DE3ABF00DD8434 /* Font Awesome 6 Free-Regular-400.otf */,
-				E52D73B329DE3ABF00DD8434 /* Font Awesome 6 Free-Solid-900.otf */,
+				E59882002A306ED20030CD2A /* Fonts */,
 				E52D73AF29DE3A9800DD8434 /* icons.json */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
 				E5C2F2C129C66B7E00C8F059 /* Colors.xcassets */,
@@ -180,6 +210,20 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		E59882002A306ED20030CD2A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E59882032A306EF60030CD2A /* manrope-bold.otf */,
+				E59882042A306EF60030CD2A /* manrope-extrabold.otf */,
+				E59882012A306EF60030CD2A /* manrope-light.otf */,
+				E59882072A306EF60030CD2A /* manrope-medium.otf */,
+				E59882062A306EF60030CD2A /* manrope-regular.otf */,
+				E59882022A306EF60030CD2A /* manrope-semibold.otf */,
+				E59882052A306EF60030CD2A /* manrope-thin.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		E5A4BBE829E309A500C3F718 /* ImagePicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +250,7 @@
 				E5A4BBE229E2F5B400C3F718 /* WelcomeDBView.swift */,
 				E5A4BBE629E307C500C3F718 /* WelcomeQRView.swift */,
 				E5F969DB29E6035300D9B4D6 /* WelcomeAddPassword.swift */,
+				E5045D082A31BF8B002ED25D /* ScanQRStub.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -229,7 +274,6 @@
 				7555FF77242A565900829871 /* Sources */,
 				7555FF79242A565900829871 /* Resources */,
 				79344D895FE4E4C6121E42BD /* Frameworks */,
-				A2C90F06D7E03EF47C5ECF1D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -286,14 +330,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E52D73B429DE3ABF00DD8434 /* Font Awesome 6 Free-Regular-400.otf in Resources */,
 				E5C2F2C229C66B7E00C8F059 /* Colors.xcassets in Resources */,
-				E52D73B629DE3AC000DD8434 /* Font Awesome 6 Free-Solid-900.otf in Resources */,
+				E59882092A306EF60030CD2A /* manrope-semibold.otf in Resources */,
 				E5B1714829CA5E1600320C20 /* Localizable.strings in Resources */,
-				E52D73B529DE3ABF00DD8434 /* Font Awesome 6 Brands-Regular-400.otf in Resources */,
+				E598820C2A306EF60030CD2A /* manrope-thin.otf in Resources */,
 				058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */,
+				E598820E2A306EF60030CD2A /* manrope-medium.otf in Resources */,
+				E598820B2A306EF60030CD2A /* manrope-extrabold.otf in Resources */,
 				058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */,
 				E52D73B029DE3A9800DD8434 /* icons.json in Resources */,
+				E59882082A306EF60030CD2A /* manrope-light.otf in Resources */,
+				E598820D2A306EF60030CD2A /* manrope-regular.otf in Resources */,
+				E598820A2A306EF60030CD2A /* manrope-bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,23 +370,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A2C90F06D7E03EF47C5ECF1D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -348,13 +379,16 @@
 			files = (
 				E5C2F2BA29C656E500C8F059 /* Fonts.swift in Sources */,
 				E5C223C929DDDB1600EDDAFC /* KeyboardHandler.swift in Sources */,
+				E5045D092A31BF8B002ED25D /* ScanQRStub.swift in Sources */,
 				E5C2F2BC29C65AB300C8F059 /* AppImages.swift in Sources */,
 				E5C223CB29DE350A00EDDAFC /* RegisterView.swift in Sources */,
 				E570B4EE29B94A8200D1E0D8 /* TextStyles.swift in Sources */,
 				E5C2F2C529C672D100C8F059 /* WelcomeView.swift in Sources */,
 				E570B4E629B9439600D1E0D8 /* SplashView.swift in Sources */,
 				E5A4BBE329E2F5B400C3F718 /* WelcomeDBView.swift in Sources */,
+				E5045D0D2A31C6C6002ED25D /* PageControllView.swift in Sources */,
 				E5A4BBEC29E30AB700C3F718 /* Coordinator.swift in Sources */,
+				E5045D0F2A31C6F6002ED25D /* PageControllViewModel.swift in Sources */,
 				E5A4BBE729E307C500C3F718 /* WelcomeQRView.swift in Sources */,
 				E570B4EC29B9470000D1E0D8 /* Color+Extension.swift in Sources */,
 				E570B4E929B9464400D1E0D8 /* Colors.swift in Sources */,

@@ -26,18 +26,18 @@ struct WelcomeDBView: View {
                     Spacer()
                         .frame(height: Config.verticalSpacing * 2)
                     HStack {
-                        Text(viewModel.pageType.subtitle)
-                            .font(.custom(Avenir.medium.rawValue, size: AvenirSize.t2.rawValue))
-                            .foregroundColor(AppColors.mainDarkGray)
+//                        Text(viewModel.pageType.subtitle)
+//                            .font(.custom(Avenir.medium.rawValue, size: AvenirSize.t2.rawValue))
+//                            .foregroundColor(AppColors.mainDarkGray)
                         Spacer()
                     }
                     .padding(.horizontal)
                     
                     // Main title
                     HStack {
-                        Text(viewModel.pageType.title)
-                            .font(.custom(Avenir.heavy.rawValue, size: AvenirSize.h3.rawValue))
-                            .foregroundColor(AppColors.mainBlack)
+//                        Text(viewModel.pageType.title)
+//                            .font(.custom(Avenir.heavy.rawValue, size: AvenirSize.h3.rawValue))
+//                            .foregroundColor(AppColors.mainBlack)
                         Spacer()
                     }
                     .padding(.horizontal)
@@ -50,31 +50,31 @@ struct WelcomeDBView: View {
                         .frame(height: 200)
                     
                     // Description
-                    Text(viewModel.pageType.description)
-                        .font(.custom(Avenir.medium.rawValue, size: AvenirSize.t2.rawValue))
-                        .foregroundColor(AppColors.mainBlack)
-                        .multilineTextAlignment(.center)
-                        .padding(.horizontal)
+//                    Text(viewModel.pageType.description)
+//                        .font(.custom(Avenir.medium.rawValue, size: AvenirSize.t2.rawValue))
+//                        .foregroundColor(AppColors.mainBlack)
+//                        .multilineTextAlignment(.center)
+//                        .padding(.horizontal)
                     Spacer()
                     
                     // Buttons
                     NavigationLink(destination: WelcomeQRView(viewModel: viewModel), isActive: $isPushed, label: {
-                        Text(viewModel.pageType.buttonTitle)
-                            .frame(width: geo.size.width - Config.sideOffset * 2, height: 48)
-                            .font(.custom(Avenir.bold.rawValue, size: AvenirSize.t2.rawValue))
-                            .foregroundColor(AppColors.mainBlack)
-                            .background(AppColors.mainOrange)
-                            .cornerRadius(Config.cornerRadius)
+//                        Text(viewModel.pageType.buttonTitle)
+//                            .frame(width: geo.size.width - Config.sideOffset * 2, height: 48)
+//                            .font(.custom(Avenir.bold.rawValue, size: AvenirSize.t2.rawValue))
+//                            .foregroundColor(AppColors.mainBlack)
+//                            .background(AppColors.mainOrange)
+//                            .cornerRadius(Config.cornerRadius)
                         
                     })
                     .onChange(of: isPushed, perform: { _ in
-                        viewModel.pageType = .welcomeQR
+                        viewModel.pageType = .fourth
                     })
                     Spacer()
                         .frame(height: Config.verticalSpacing)
                 }
             }
-            .background(AppColors.mainCreame).ignoresSafeArea()
+//            .background(AppColors.mainCreame).ignoresSafeArea()
         }
         .navigationBarBackButtonHidden()
         
@@ -83,6 +83,6 @@ struct WelcomeDBView: View {
 
 struct WelcomeDBView_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeDBView(viewModel: OnboardingContnetViewModel(pageType: .welcomeDB))
+        WelcomeDBView(viewModel: OnboardingContnetViewModel(pageType: .third))
     }
 }

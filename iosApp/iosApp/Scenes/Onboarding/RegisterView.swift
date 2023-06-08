@@ -26,18 +26,18 @@ struct RegisterView: View {
                     Spacer()
                         .frame(height: Config.verticalSpacing * 2)
                     HStack {
-                        Text(viewModel.pageType.subtitle)
-                            .font(.custom(Avenir.medium.rawValue, size: AvenirSize.t2.rawValue))
-                            .foregroundColor(AppColors.mainDarkGray)
+//                        Text(viewModel.pageType.subtitle)
+//                            .font(.custom(Avenir.medium.rawValue, size: AvenirSize.t2.rawValue))
+//                            .foregroundColor(AppColors.mainDarkGray)
                         Spacer()
                     }
                     .padding(.horizontal)
                     
                     // Main title
                     HStack {
-                        Text(viewModel.pageType.title)
-                            .font(.custom(Avenir.heavy.rawValue, size: AvenirSize.h3.rawValue))
-                            .foregroundColor(AppColors.mainBlack)
+//                        Text(viewModel.pageType.title)
+//                            .font(.custom(Avenir.heavy.rawValue, size: AvenirSize.h3.rawValue))
+//                            .foregroundColor(AppColors.mainBlack)
                         Spacer()
                     }
                     .padding(.horizontal)
@@ -47,21 +47,21 @@ struct RegisterView: View {
                         Spacer()
                         ZStack(alignment: .leading) {
                             if viewModel.vaultName.isEmpty {
-                                Text(viewModel.pageType.placeHolder)
-                                    .font(.custom(Avenir.medium.rawValue, size: AvenirSize.t2.rawValue))
-                                    .foregroundColor(AppColors.mainDarkGray)
-                                    .padding(.horizontal)
+//                                Text(viewModel.pageType.placeHolder)
+//                                    .font(.custom(Avenir.medium.rawValue, size: AvenirSize.t2.rawValue))
+//                                    .foregroundColor(AppColors.mainDarkGray)
+//                                    .padding(.horizontal)
                             }
                             TextField("", text: $viewModel.vaultName)
                                 .textFieldStyle(.plain)
                                 .padding(.horizontal)
-                                .foregroundColor(AppColors.mainBlack)
-                                .font(.custom(Avenir.medium.rawValue, size: AvenirSize.t2.rawValue))
-                                .accentColor(AppColors.mainDarkGray)
+//                                .foregroundColor(AppColors.mainBlack)
+//                                .font(.custom(Avenir.medium.rawValue, size: AvenirSize.t2.rawValue))
+//                                .accentColor(AppColors.mainDarkGray)
                                 .textFieldStyle(.roundedBorder)
                         }
                         .frame(height: 48.0)
-                        .background(AppColors.mainWhite)
+//                        .background(AppColors.mainWhite)
                         .cornerRadius(10.0)
                     }
                     .padding(.leading, 8.0)
@@ -75,8 +75,8 @@ struct RegisterView: View {
                     
                     // Description
                     Text(viewModel.pageType.description)
-                        .font(.custom(Avenir.medium.rawValue, size: AvenirSize.t1.rawValue))
-                        .foregroundColor(AppColors.mainBlack)
+//                        .font(.custom(Avenir.medium.rawValue, size: AvenirSize.t1.rawValue))
+//                        .foregroundColor(AppColors.mainBlack)
                         .multilineTextAlignment(.center)
                         .padding()
                     
@@ -84,21 +84,21 @@ struct RegisterView: View {
                     NavigationLink(destination: WelcomeDBView(viewModel: viewModel), isActive: $isPushed, label: {
                         Text(viewModel.pageType.buttonTitle)
                             .frame(width: geo.size.width - Config.sideOffset * 2, height: 48)
-                            .font(.custom(Avenir.bold.rawValue, size: AvenirSize.t2.rawValue))
-                            .foregroundColor(viewModel.vaultName.isEmpty ? AppColors.mainGray : AppColors.mainBlack)
-                            .background(viewModel.vaultName.isEmpty ? AppColors.mainDarkGray : AppColors.mainOrange)
+//                            .font(.custom(Avenir.bold.rawValue, size: AvenirSize.t2.rawValue))
+//                            .foregroundColor(viewModel.vaultName.isEmpty ? AppColors.mainGray : AppColors.mainBlack)
+//                            .background(viewModel.vaultName.isEmpty ? AppColors.mainDarkGray : AppColors.mainOrange)
                             .cornerRadius(Config.cornerRadius)
                         
                     })
                     .disabled(viewModel.vaultName.isEmpty)
                     .onChange(of: isPushed, perform: { _ in
-                        viewModel.pageType = .welcomeDB
+                        viewModel.pageType = .third
                     })
                     Spacer()
                         .frame(height: Config.verticalSpacing)
                 }
             }
-            .background(AppColors.mainCreame).ignoresSafeArea()
+//            .background(AppColors.mainCreame).ignoresSafeArea()
             .onTapGesture(perform: hideKeyboard)
         }
         .navigationBarBackButtonHidden()
@@ -108,6 +108,6 @@ struct RegisterView: View {
 
 struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterView(viewModel: OnboardingContnetViewModel(pageType: .register))
+        RegisterView(viewModel: OnboardingContnetViewModel(pageType: .second))
     }
 }

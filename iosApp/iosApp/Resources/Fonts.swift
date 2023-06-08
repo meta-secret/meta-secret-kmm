@@ -7,21 +7,86 @@
 //
 
 import Foundation
+import UIKit
 
-enum Avenir: String {
-    case heavy = "AvenirNext-Heavy"
-    case bold = "AvenirNext-Bold"
-    case medium = "AvenirNext-Medium"
-    case regular = "AvenirNext-Regular"
-    case light = "AvenirNext-Light"
+enum FontStyle {
+    case title
+    case subtitle
+    case chapter
+    case button
+    case header
+    case normalMain
+    case normal
+    case mini
+    case miniMedium
+    case h2
+    case h3
+    
+    var font: UIFont {
+        return UIFont(name: fontName, size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
+    }
+    
+    var fontSize: CGFloat {
+        switch self {
+        case .title:
+            return 140
+        case .subtitle:
+            return 52
+        case .chapter:
+            return 28
+        case .header:
+            return 32
+        case .button:
+            return 16
+        case .normalMain:
+            return 15
+        case .normal:
+            return 14
+        case .mini:
+            return 11
+        case .miniMedium:
+            return 11
+        case .h2:
+            return 18
+        case .h3:
+            return 16
+        }
+    }
+    
+    var fontName: String {
+        switch self {
+        case .title:
+            return "manrope-extrabold"
+        case .subtitle:
+            return "manrope-bold"
+        case .chapter:
+            return "manrope-bold"
+        case .header:
+            return "manrope-bold"
+        case .button:
+            return "manrope-semibold"
+        case .normalMain:
+            return "manrope-regular"
+        case .normal:
+            return "manrope-regular"
+        case .mini:
+            return "manrope-regular"
+        case .miniMedium:
+            return "manrope-medium"
+        case .h2:
+            return "manrope-bold"
+        case .h3:
+            return "manrope-bold"
+        
+        }
+    }
 }
 
-enum AvenirSize: CGFloat {
-    case h1 = 36
-    case h2 = 30
-    case h3 = 24
-    case t1 = 20
-    case t2 = 18
-    case t3 = 16
-    case t4 = 12
-}
+/*
+ case heavy = "manrope-extrabold"
+ case bold = "manrope-bold"
+ case medium = "manrope-medium"
+ case regular = "manrope-regular"
+ case light = "manrope-light"
+ case semibold = "manrope-semibold"
+ */

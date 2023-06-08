@@ -1,8 +1,14 @@
-//MARK: - ONBOARDING
-"welcome" = "Welcome to Meta Secret";
-"whatIs" = "It's a personal, decentralized, self-hosted and passwordless manager of secrets and passwords";
-"back" = "Back";
+//MARK: - COMMON
+"skip" = "Skip";
 "next" = "Next";
+
+//MARK: - ONBOARDING
+"gotSecrets" = "Got important secrets?";
+"splitIt" = "Split it between your devices";
+"secureSafe" = "All passwords and secret information is stored only on your devices and securely protected with encryption standards RSA and AES";
+
+
+"back" = "Back";
 "finish" = "Finish";
 "chooseName" = "Choose a name";
 "vaultName" = "Your nickname";

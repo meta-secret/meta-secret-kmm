@@ -19,88 +19,87 @@ class OnboardingContnetViewModel: ObservableObject {
 }
 
 extension OnboardingContnetViewModel {
-    enum PageType {
-        case welcome
-        case register
-        case welcomeDB
-        case welcomeQR
-        case addSecret
+    enum PageType: CaseIterable {
+        case first
+        case second
+        case third
+        case fourth
+        
+        var totalSteps: Int {
+            return PageType.allCases.count
+        }
         
         var title: String {
             switch self {
-            case .welcome:
-                return Constants.Splash.metaSecret
-            case .register:
-                return Constants.Onboarding.chooseName
-            case .welcomeDB:
-                return Constants.Onboarding.singleCopy
-            case .welcomeQR:
-                return Constants.Onboarding.addDevice
-            case .addSecret:
-                return Constants.Onboarding.addSecret
+            case .first:
+                return Constants.Onboarding.gotSecrets
+            case .second:
+                return Constants.Onboarding.gotSecrets
+            case .third:
+                return Constants.Onboarding.gotSecrets
+            case .fourth:
+                return Constants.Onboarding.gotSecrets
             }
         }
         
         var subtitle: String {
             switch self {
-            case .welcome:
+            case .first:
+                return Constants.Onboarding.splitIt
+            case .second:
                 return ""
-            case .register:
-                return Constants.Onboarding.step1
-            case .welcomeDB:
-                return Constants.Onboarding.step2
-            case .welcomeQR:
-                return Constants.Onboarding.step3
-            case .addSecret:
-                return Constants.Onboarding.step4
+            case .third:
+                return Constants.Onboarding.splitIt
+            case .fourth:
+                return ""
             }
         }
         
         var description: String {
             switch self {
-            case .welcome:
-                return Constants.Onboarding.whatIs
-            case .register:
-                return Constants.Onboarding.startToUse
-            case .welcomeDB:
-                return Constants.Onboarding.singleCopyText
-            case .welcomeQR:
-                return Constants.Onboarding.addDeviceText
-            case .addSecret:
-                return Constants.Onboarding.addSecretText
+            case .first:
+                return Constants.Onboarding.secureSafe
+            case .second:
+                return Constants.Onboarding.secureSafe
+            case .third:
+                return Constants.Onboarding.secureSafe
+            case .fourth:
+                return Constants.Onboarding.secureSafe
             }
         }
         
         var imageName: String {
             switch self {
-            case .welcome:
-                return AppImages.stepOneIcon
-            case .register:
-                return AppImages.stepTwoIcon
-            case .welcomeDB:
-                return AppImages.stepThreeIcon
-            case .welcomeQR:
+            case .first:
+                return ""//AppImages.stepOneIcon
+            case .second:
+                return ""//AppImages.stepTwoIcon
+            case .third:
+                return ""//AppImages.stepThreeIcon
+            case .fourth:
                 return ""
-            case .addSecret:
-                return AppImages.stepFourIcon
             }
         }
         
-        var placeHolder: String {
+        var currentPage: Int {
             switch self {
-            case .welcome, .welcomeDB, .welcomeQR, .addSecret:
-                return ""
-            case .register:
-                return Constants.Onboarding.vaultName
+            case .first:
+                return 1
+            case .second:
+                return 2
+            case .third:
+                return 3
+            case .fourth:
+                return 4
             }
         }
         
         var buttonTitle: String {
-            return Constants.Onboarding.next
+            return Constants.Common.next
         }
         
-        var backButtonTitle: String {
-            return Constants.Onboarding.back
+        var skipButtonTitle: String {
+            return Constants.Common.skip
         }
     }
 }

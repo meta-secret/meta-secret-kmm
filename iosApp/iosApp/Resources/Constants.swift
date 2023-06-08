@@ -12,45 +12,19 @@ struct Constants {
     //MARK: - COMMON
     struct Common {
         static let animationTime: CGFloat = 0.3
-//        static let waitingTime: CGFloat = 0.1
-//        static let virtual = "virtual"
-//        static let finishedStatus = "finished"
-//        static let ok = "ok"
-//        static let neededMembersCount = 3
-//        static let timerInterval: CGFloat = 1
 //        static let appStoreLink = "https://testflight.apple.com/join/AkzuH5A4/"
         static let appStoreLink = "https://apps.apple.com/ru/app/metasecret/id1644286751/"
-    }
-    
-    //MARK: - SPLASHSCREEN
-    struct Splash {
-        static let metaSecret = "Meta Secret"
+        static let secureSafe = NSLocalizedString("secureSafe", comment: "")
+        static let next = NSLocalizedString("next", comment: "")
+        static let skip = NSLocalizedString("skip", comment: "")
     }
     
     //MARK: - ONBOARDING
     struct Onboarding {
-        static let welcome = NSLocalizedString("welcome", comment: "")
-        static let whatIs = NSLocalizedString("whatIs", comment: "")
-        static let back = NSLocalizedString("back", comment: "")
-        static let next = NSLocalizedString("next", comment: "")
-        static let finish = NSLocalizedString("finish", comment: "")
-        static let chooseName = NSLocalizedString("chooseName", comment: "")
-        static let vaultName = NSLocalizedString("vaultName", comment: "")
-        static let startToUse = NSLocalizedString("startToUse", comment: "")
-        static let singleCopy = NSLocalizedString("singleCopy", comment: "")
-        static let singleCopyText = NSLocalizedString("singleCopyText", comment: "")
-        static let addDevice = NSLocalizedString("addDevice", comment: "")
-        static let addDeviceText = NSLocalizedString("addDeviceText", comment: "")
-        static let addSecret = NSLocalizedString("addSecret", comment: "")
-        static let addSecretText = NSLocalizedString("addSecretText", comment: "")
-        static let testDescription = NSLocalizedString("testDescription", comment: "")
-        static let testSecret = NSLocalizedString("testSecret", comment: "")
-        static let step1 = NSLocalizedString("step1", comment: "")
-        static let step2 = NSLocalizedString("step2", comment: "")
-        static let step3 = NSLocalizedString("step3", comment: "")
-        static let step4 = NSLocalizedString("step4", comment: "")
+        static let gotSecrets = NSLocalizedString("gotSecrets", comment: "")
+        static let splitIt = NSLocalizedString("splitIt", comment: "")
+        static let secureSafe = NSLocalizedString("secureSafe", comment: "")
         
-//
 //        static let personalCloud = NSLocalizedString("personalCloud", comment: "")
 //        static let personalCloudDescription = NSLocalizedString("personalCloudDescription", comment: "")
 //

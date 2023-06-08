@@ -9,14 +9,17 @@
 import SwiftUI
 
 struct AppColors {
-    static let mainYellow = Color(hex: "#FED429")
-    static let mainOrange = Color(hex: "#FF9000")
-    static let mainCreame = Color(hex: "#FAF4F0")
+    static let actionBlue = Color("ActionBlue")
+    static let actionLinkBlue = Color("ActionLinkBlue")
     
-    static let mainWhite = Color(hex: "#FFFFFF")
-    static let mainGray = Color(hex: "#F1F2F7")
-    static let secondaryGray = Color(hex: "#F7F9FB")
-    static let mainDarkGray = Color(hex: "#C9CBCF")
+    static let blackBg = Color("BlackBg")
+    static let blackMenu = Color("BlackMenu")
     
-    static let mainBlack = Color(hex: "#242A38")
+    static let white = Color("White")
+    static let white5 = Color("White5")
+    static let white10 = Color("White10")
+    static let white15 = Color("White15")
+    static let white30 = Color("White30")
+    static let white50 = Color("White50")
+    static let white75 = Color("White75")
 }
