@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 enum FontStyle {
     case title
@@ -22,8 +23,8 @@ enum FontStyle {
     case h2
     case h3
     
-    var font: UIFont {
-        return UIFont(name: fontName, size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
+    var font: Font {
+        return .custom(fontName, size: fontSize)
     }
     
     private var fontSize: CGFloat {
@@ -47,7 +48,7 @@ enum FontStyle {
         case .miniMedium:
             return 11
         case .h2:
-            return 18
+            return 20
         case .h3:
             return 16
         }
@@ -56,27 +57,27 @@ enum FontStyle {
     private var fontName: String {
         switch self {
         case .title:
-            return "manrope-extrabold"
+            return "Manrope-Extrabold"
         case .subtitle:
-            return "manrope-bold"
+            return "Manrope-Bold"
         case .chapter:
-            return "manrope-bold"
+            return "Manrope-Bold"
         case .header:
-            return "manrope-bold"
+            return "Manrope-Bold"
         case .button:
-            return "manrope-semibold"
+            return "Manrope-Semibold"
         case .normalMain:
             return "Manrope-Regular"
         case .normal:
-            return "manrope-regular"
+            return "Manrope-Regular"
         case .mini:
-            return "manrope-regular"
+            return "Manrope-Regular"
         case .miniMedium:
-            return "manrope-medium"
+            return "Manrope-Medium"
         case .h2:
-            return "manrope-bold"
+            return "Manrope-Bold"
         case .h3:
-            return "manrope-bold"
+            return "Manrope-Bold"
         
         }
     }

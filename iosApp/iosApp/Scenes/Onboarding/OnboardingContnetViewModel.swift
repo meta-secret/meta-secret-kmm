@@ -11,8 +11,17 @@ import Foundation
 class OnboardingContnetViewModel: ObservableObject {
     @Published var vaultName = ""
     
+    let content: [OnboardingPageView] = [
+        OnboardingPageView(pageType: .first),
+        OnboardingPageView(pageType: .second),
+        OnboardingPageView(pageType: .third),
+        OnboardingPageView(pageType: .fourth)
+    ]
+    
     var pageType: PageType
-    private(set) var pageControllerViewModel: PageControllViewModel
+    var totalSteps: Int {
+        return PageType.allCases.count
+    }
     
     var skipText: String {
         return Constants.Common.skip
@@ -23,23 +32,18 @@ class OnboardingContnetViewModel: ObservableObject {
     }
     
     init(pageType: PageType) {
-        self.pageControllerViewModel = PageControllViewModel(pages: pageType.totalSteps)
         self.pageType = pageType
     }
 }
 
 extension OnboardingContnetViewModel {
-    enum PageType: CaseIterable {
-        case first
+    enum PageType: Int, CaseIterable {
+        case first = 1
         case second
         case third
         case fourth
         
-        var totalSteps: Int {
-            return PageType.allCases.count
-        }
-        
-        var title: String {
+        var title: String? {
             switch self {
             case .first:
                 return Constants.Onboarding.gotSecrets
@@ -52,20 +56,20 @@ extension OnboardingContnetViewModel {
             }
         }
         
-        var subtitle: String {
+        var subtitle: String? {
             switch self {
             case .first:
                 return Constants.Onboarding.splitIt
             case .second:
-                return ""
+                return nil
             case .third:
                 return Constants.Onboarding.splitIt
             case .fourth:
-                return ""
+                return nil
             }
         }
         
-        var description: String {
+        var description: String? {
             switch self {
             case .first:
                 return Constants.Onboarding.secureSafe
@@ -78,7 +82,7 @@ extension OnboardingContnetViewModel {
             }
         }
         
-        var imageName: String {
+        var imageName: String? {
             switch self {
             case .first:
                 return ""//AppImages.stepOneIcon
@@ -88,19 +92,6 @@ extension OnboardingContnetViewModel {
                 return ""//AppImages.stepThreeIcon
             case .fourth:
                 return ""
-            }
-        }
-        
-        var currentPage: Int {
-            switch self {
-            case .first:
-                return 1
-            case .second:
-                return 2
-            case .third:
-                return 3
-            case .fourth:
-                return 4
             }
         }
         

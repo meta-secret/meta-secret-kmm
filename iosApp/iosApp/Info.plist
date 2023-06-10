@@ -24,9 +24,13 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Font Awesome 6 Brands-Regular-400.otf</string>
-		<string>Font Awesome 6 Free-Regular-400.otf</string>
-		<string>Font Awesome 6 Free-Solid-900.otf</string>
+		<string>manrope-bold.otf</string>
+		<string>manrope-extrabold.otf</string>
+		<string>manrope-light.otf</string>
+		<string>manrope-medium.otf</string>
+		<string>manrope-regular.otf</string>
+		<string>manrope-semibold.otf</string>
+		<string>manrope-thin.otf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

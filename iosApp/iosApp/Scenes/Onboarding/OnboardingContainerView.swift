@@ -7,10 +7,11 @@
 //
 
 import SwiftUI
-import CodeScanner
 
 struct OnboardingContainerView: View {
     @State var viewModel: OnboardingContnetViewModel
+    @State var selectedPage: Int = 1
+    @State var skipTag: String? = nil
     
     private enum Config {
         static let verticalSpacing: CGFloat = 28.0
@@ -31,15 +32,15 @@ struct OnboardingContainerView: View {
                     VStack {
                         Spacer().frame(height: Config.verticalPageControllOffset)
                         HStack {
-                            Text("\(viewModel.pageType.currentPage)/\(viewModel.pageType.totalSteps)")
-                                .font(Font(FontStyle.normalMain.font))
+                            Text("\(selectedPage)/\(viewModel.totalSteps)")
+                                .font(FontStyle.normalMain.font)
                                 .foregroundColor(AppColors.white75)
                             Spacer()
-                            PageControllView(selectedPage: .constant(viewModel.pageType.currentPage), viewModel: viewModel.pageControllerViewModel)
+                            PageControllView(selectedPage: $selectedPage, pages: viewModel.totalSteps, circleDiameter: 8.0, circleMargin: 8.0)
                             Spacer()
-                            NavigationLink(destination: MainSceneView(), label: {
+                            NavigationLink(destination: MainSceneView(), tag: "Skip", selection: $skipTag, label: {
                                 Text(viewModel.skipText)
-                                    .font(Font(FontStyle.normalMain.font))
+                                    .font(FontStyle.normalMain.font)
                                     .foregroundColor(AppColors.actionLinkBlue)
                                     .multilineTextAlignment(.trailing)
                             })
@@ -47,17 +48,28 @@ struct OnboardingContainerView: View {
                         .padding(.horizontal, Config.sideOffset)
                         Spacer()
                         
-                        
-                        
-                        Button(viewModel.nextText) {
-                            nextTapped()
+                        TabView(selection: $selectedPage) {
+                            ForEach(viewModel.content, id: \.self) { content in
+                                content.tag(content.pageType.rawValue)
+                            }
                         }
-                        .frame(width: geo.size.width - (Config.sideOffset * 2), height: 48)
-                        .foregroundColor(AppColors.white)
-                        .font(Font(FontStyle.button.font))
-                        .background(AppColors.actionBlue)
-                        .cornerRadius(Config.cornerRadius)
-                        .padding(.top, 24.0)
+                        .tabViewStyle(.page(indexDisplayMode: .never))
+                        .animation(.easeInOut)
+                        .transition(.slide)
+                        
+                        VStack {
+                            Button(viewModel.nextText) {
+                                nextTapped()
+                            }
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .frame(height: 48)
+                            .foregroundColor(AppColors.white)
+                            .font(FontStyle.button.font)
+                            .background(AppColors.actionBlue)
+                            .cornerRadius(Config.cornerRadius)
+                            .padding(.top, 24.0)
+                        }
+                        .padding(.horizontal, Config.sideOffset)
                     }
 
                 }
@@ -66,7 +78,11 @@ struct OnboardingContainerView: View {
     }
     
     func nextTapped() {
-        
+        if selectedPage < viewModel.totalSteps {
+            selectedPage = selectedPage + 1
+        } else {
+            skipTag = "Skip"
+        }
     }
 }
 
