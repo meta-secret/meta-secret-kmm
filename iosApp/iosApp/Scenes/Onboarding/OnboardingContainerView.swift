@@ -56,22 +56,11 @@ struct OnboardingContainerView: View {
                         .tabViewStyle(.page(indexDisplayMode: .never))
                         .animation(.easeInOut)
                         .transition(.slide)
-                        
-                        VStack {
-                            Button(viewModel.nextText) {
-                                nextTapped()
-                            }
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .frame(height: 48)
-                            .foregroundColor(AppColors.white)
-                            .font(FontStyle.button.font)
-                            .background(AppColors.actionBlue)
-                            .cornerRadius(Config.cornerRadius)
-                            .padding(.top, 24.0)
-                        }
-                        .padding(.horizontal, Config.sideOffset)
-                    }
 
+                        NextButtonView(title: viewModel.nextText)
+                            .padding(.top, 24)
+                    }
+                    .padding(.horizontal, Config.sideOffset)
                 }
             }
         }

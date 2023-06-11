@@ -21,7 +21,6 @@
 
 "back" = "Back";
 "finish" = "Finish";
-"chooseName" = "Choose a name";
 "vaultName" = "Your nickname";
 "startToUse" = "To start using this app and saving your secrets you need to choose the unique name (Nickname). Just type it in the field upper.";
 "singleCopy" = "Single copy";

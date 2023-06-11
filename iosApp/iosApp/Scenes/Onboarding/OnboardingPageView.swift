@@ -44,7 +44,6 @@ struct OnboardingPageView: View, Hashable {
                     .foregroundColor(AppColors.white75)
             }
         }
-        .padding(.horizontal, Config.sideOffset)
     }
 }
 

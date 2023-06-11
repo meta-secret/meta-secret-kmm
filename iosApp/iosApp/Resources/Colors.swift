@@ -20,6 +20,7 @@ struct AppColors {
     static let white10 = Color("White10")
     static let white15 = Color("White15")
     static let white30 = Color("White30")
+    static let white40 = Color("White40")
     static let white50 = Color("White50")
     static let white75 = Color("White75")
 }

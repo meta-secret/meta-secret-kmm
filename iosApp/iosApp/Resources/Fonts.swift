@@ -16,8 +16,11 @@ enum FontStyle {
     case chapter
     case button
     case header
+    case normalInput
+    case normalSemi
     case normalMain
     case normal
+    case normalSmall
     case mini
     case miniMedium
     case h1
@@ -40,10 +43,16 @@ enum FontStyle {
             return 32
         case .button:
             return 16
+        case .normalInput:
+            return 16
+        case .normalSemi:
+            return 16
         case .normalMain:
             return 15
         case .normal:
             return 14
+        case .normalSmall:
+            return 13
         case .mini:
             return 11
         case .miniMedium:
@@ -69,9 +78,15 @@ enum FontStyle {
             return "Manrope-Bold"
         case .button:
             return "Manrope-Semibold"
+        case .normalInput:
+            return "Manrope-Regular"
+        case .normalSemi:
+            return "Manrope-Semibold"
         case .normalMain:
             return "Manrope-Regular"
         case .normal:
+            return "Manrope-Regular"
+        case .normalSmall:
             return "Manrope-Regular"
         case .mini:
             return "Manrope-Regular"

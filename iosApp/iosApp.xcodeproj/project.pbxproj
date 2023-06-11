@@ -13,6 +13,7 @@
 		E4DA5883D9745C7F266B22AD /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F87BE92D2E44E3581B58E0B2 /* Pods_iosApp.framework */; };
 		E5045D0D2A31C6C6002ED25D /* PageControllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5045D0C2A31C6C6002ED25D /* PageControllView.swift */; };
 		E52D73B029DE3A9800DD8434 /* icons.json in Resources */ = {isa = PBXBuildFile; fileRef = E52D73AF29DE3A9800DD8434 /* icons.json */; };
+		E554FFFB2A36624E00252B7F /* NextButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E554FFFA2A36624E00252B7F /* NextButtonView.swift */; };
 		E56D60352A34F23800E0A81B /* OnboardingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56D60342A34F23800E0A81B /* OnboardingPageView.swift */; };
 		E56D60382A3517A500E0A81B /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56D60372A3517A500E0A81B /* SignInView.swift */; };
 		E570B4E629B9439600D1E0D8 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E570B4E429B942E600D1E0D8 /* SplashView.swift */; };
@@ -50,6 +51,7 @@
 		CFCBB75DAAF43DD225EF5C2D /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
 		E5045D0C2A31C6C6002ED25D /* PageControllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllView.swift; sourceTree = "<group>"; };
 		E52D73AF29DE3A9800DD8434 /* icons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = icons.json; sourceTree = "<group>"; };
+		E554FFFA2A36624E00252B7F /* NextButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButtonView.swift; sourceTree = "<group>"; };
 		E56D60342A34F23800E0A81B /* OnboardingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageView.swift; sourceTree = "<group>"; };
 		E56D60372A3517A500E0A81B /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		E570B4E429B942E600D1E0D8 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				E5045D0C2A31C6C6002ED25D /* PageControllView.swift */,
+				E554FFFA2A36624E00252B7F /* NextButtonView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				E5F2D57E2A35A80B0048FF75 /* SignInViewModel.swift in Sources */,
 				E5C2F2BC29C65AB300C8F059 /* AppImages.swift in Sources */,
 				E5C2F2C529C672D100C8F059 /* OnboardingContainerView.swift in Sources */,
+				E554FFFB2A36624E00252B7F /* NextButtonView.swift in Sources */,
 				E570B4E629B9439600D1E0D8 /* SplashView.swift in Sources */,
 				E5EEEB062A326FFA00D40996 /* MainSceneView.swift in Sources */,
 				E5045D0D2A31C6C6002ED25D /* PageControllView.swift in Sources */,
