@@ -19,21 +19,15 @@ struct PageControllView: View {
         private var pageIndex: CGFloat { CGFloat(selectedPage - 1) }
 
         private var currentPosition: CGFloat {
-            // Get the first circle position
             let stackWidth = circleDiameter * CGFloat(pages) + circleMargin * CGFloat(pages - 1)
             let halfStackWidth = stackWidth / 2
             let iniPosition = -halfStackWidth + circleRadius
-
-            // Calculate the distance to get the next circle
             let distanceToNextPoint = circleDiameter + circleMargin
-
-            // Use the pageIndex to get the current position
             return iniPosition + (pageIndex * distanceToNextPoint)
         }
 
         var body: some View {
             ZStack {
-                // Total number of pages
                 HStack(spacing: circleMargin) {
                     ForEach(0 ..< pages) { _ in
                         Circle()
@@ -46,7 +40,7 @@ struct PageControllView: View {
                     .foregroundColor(AppColors.actionLinkBlue)
                     .frame(width: circleDiameter, height: circleDiameter)
                     .offset(x: currentPosition)
-//                    .animation(.linear(duration: 0.3))
+                    .animation(.linear(duration: selectedPage > 1 ? 0.3 : 0.0))
             }
         }
     }

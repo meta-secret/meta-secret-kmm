@@ -13,4 +13,5 @@ struct AppImages {
     static let splashLogo = "centerLogo"
     static let splashGradient = "centerGradient"
     static let metaTitle = "metaTitle"
+    static let signInLogo = "signInLogo"
 }

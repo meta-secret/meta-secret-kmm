@@ -14,10 +14,10 @@
 		E5045D0D2A31C6C6002ED25D /* PageControllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5045D0C2A31C6C6002ED25D /* PageControllView.swift */; };
 		E52D73B029DE3A9800DD8434 /* icons.json in Resources */ = {isa = PBXBuildFile; fileRef = E52D73AF29DE3A9800DD8434 /* icons.json */; };
 		E56D60352A34F23800E0A81B /* OnboardingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56D60342A34F23800E0A81B /* OnboardingPageView.swift */; };
+		E56D60382A3517A500E0A81B /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56D60372A3517A500E0A81B /* SignInView.swift */; };
 		E570B4E629B9439600D1E0D8 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E570B4E429B942E600D1E0D8 /* SplashView.swift */; };
 		E570B4E929B9464400D1E0D8 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E570B4E829B9464400D1E0D8 /* Colors.swift */; };
 		E570B4EC29B9470000D1E0D8 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E570B4EB29B9470000D1E0D8 /* Color+Extension.swift */; };
-		E570B4EE29B94A8200D1E0D8 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E570B4ED29B94A8200D1E0D8 /* TextStyles.swift */; };
 		E59882082A306EF60030CD2A /* manrope-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E59882012A306EF60030CD2A /* manrope-light.otf */; };
 		E59882092A306EF60030CD2A /* manrope-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E59882022A306EF60030CD2A /* manrope-semibold.otf */; };
 		E598820A2A306EF60030CD2A /* manrope-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E59882032A306EF60030CD2A /* manrope-bold.otf */; };
@@ -37,6 +37,7 @@
 		E5C2F2C229C66B7E00C8F059 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5C2F2C129C66B7E00C8F059 /* Colors.xcassets */; };
 		E5C2F2C529C672D100C8F059 /* OnboardingContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C2F2C429C672D100C8F059 /* OnboardingContainerView.swift */; };
 		E5EEEB062A326FFA00D40996 /* MainSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EEEB052A326FFA00D40996 /* MainSceneView.swift */; };
+		E5F2D57E2A35A80B0048FF75 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2D57D2A35A80B0048FF75 /* SignInViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,10 +51,10 @@
 		E5045D0C2A31C6C6002ED25D /* PageControllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllView.swift; sourceTree = "<group>"; };
 		E52D73AF29DE3A9800DD8434 /* icons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = icons.json; sourceTree = "<group>"; };
 		E56D60342A34F23800E0A81B /* OnboardingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageView.swift; sourceTree = "<group>"; };
+		E56D60372A3517A500E0A81B /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		E570B4E429B942E600D1E0D8 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		E570B4E829B9464400D1E0D8 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		E570B4EB29B9470000D1E0D8 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
-		E570B4ED29B94A8200D1E0D8 /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
 		E59882012A306EF60030CD2A /* manrope-light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "manrope-light.otf"; sourceTree = "<group>"; };
 		E59882022A306EF60030CD2A /* manrope-semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "manrope-semibold.otf"; sourceTree = "<group>"; };
 		E59882032A306EF60030CD2A /* manrope-bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "manrope-bold.otf"; sourceTree = "<group>"; };
@@ -74,6 +75,7 @@
 		E5C2F2C129C66B7E00C8F059 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		E5C2F2C429C672D100C8F059 /* OnboardingContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerView.swift; sourceTree = "<group>"; };
 		E5EEEB052A326FFA00D40996 /* MainSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneView.swift; sourceTree = "<group>"; };
+		E5F2D57D2A35A80B0048FF75 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		F87BE92D2E44E3581B58E0B2 /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -154,6 +156,15 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		E56D60362A35175800E0A81B /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				E56D60372A3517A500E0A81B /* SignInView.swift */,
+				E5F2D57D2A35A80B0048FF75 /* SignInViewModel.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
 		E570B4E129B9428600D1E0D8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,7 +176,6 @@
 				E5C2F2B729C652AF00C8F059 /* Constants.swift */,
 				E570B4E829B9464400D1E0D8 /* Colors.swift */,
 				E5C2F2B929C656E500C8F059 /* Fonts.swift */,
-				E570B4ED29B94A8200D1E0D8 /* TextStyles.swift */,
 				E5B1714A29CA5E1600320C20 /* Localizable.strings */,
 			);
 			path = Resources;
@@ -174,6 +184,7 @@
 		E570B4E229B9429B00D1E0D8 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				E56D60362A35175800E0A81B /* Registration */,
 				E5EEEB042A326FD600D40996 /* Main */,
 				E5A4BBE829E309A500C3F718 /* ImagePicker */,
 				E5C2F2C329C66EDA00C8F059 /* Onboarding */,
@@ -370,10 +381,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E56D60382A3517A500E0A81B /* SignInView.swift in Sources */,
 				E5C2F2BA29C656E500C8F059 /* Fonts.swift in Sources */,
 				E5C223C929DDDB1600EDDAFC /* KeyboardHandler.swift in Sources */,
+				E5F2D57E2A35A80B0048FF75 /* SignInViewModel.swift in Sources */,
 				E5C2F2BC29C65AB300C8F059 /* AppImages.swift in Sources */,
-				E570B4EE29B94A8200D1E0D8 /* TextStyles.swift in Sources */,
 				E5C2F2C529C672D100C8F059 /* OnboardingContainerView.swift in Sources */,
 				E570B4E629B9439600D1E0D8 /* SplashView.swift in Sources */,
 				E5EEEB062A326FFA00D40996 /* MainSceneView.swift in Sources */,

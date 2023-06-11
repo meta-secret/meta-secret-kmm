@@ -7,6 +7,17 @@
 "splitIt" = "Split it between your devices";
 "secureSafe" = "All passwords and secret information is stored only on your devices and securely protected with encryption standards RSA and AES";
 
+//MARK: - SIGN IN
+"letsStart" = "Let's start";
+"chooseName" = "Choose a unique nickname you will use in the future to connect other devicesor just scan a QR code";
+"scanQR" = "Scan QR Code";
+"chooseNamePlaceHolder" = "Choose a unique nickname";
+"moveNext" = "Next";
+
+
+
+
+
 
 "back" = "Back";
 "finish" = "Finish";

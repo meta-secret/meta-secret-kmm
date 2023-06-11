@@ -20,6 +20,7 @@ enum FontStyle {
     case normal
     case mini
     case miniMedium
+    case h1
     case h2
     case h3
     
@@ -47,6 +48,8 @@ enum FontStyle {
             return 11
         case .miniMedium:
             return 11
+        case .h1:
+            return 24
         case .h2:
             return 20
         case .h3:
@@ -74,6 +77,8 @@ enum FontStyle {
             return "Manrope-Regular"
         case .miniMedium:
             return "Manrope-Medium"
+        case .h1:
+            return "Manrope-Bold"
         case .h2:
             return "Manrope-Bold"
         case .h3:

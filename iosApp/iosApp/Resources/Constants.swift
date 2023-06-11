@@ -24,20 +24,15 @@ struct Constants {
         static let gotSecrets = NSLocalizedString("gotSecrets", comment: "")
         static let splitIt = NSLocalizedString("splitIt", comment: "")
         static let secureSafe = NSLocalizedString("secureSafe", comment: "")
-        
-//        static let personalCloud = NSLocalizedString("personalCloud", comment: "")
-//        static let personalCloudDescription = NSLocalizedString("personalCloudDescription", comment: "")
-//
-//        static let distributedStorage = NSLocalizedString("distributedStorage", comment: "")
-//        static let distributedStorageDescription = NSLocalizedString("distributedStorageDescription", comment: "")
-//
-//        static let passwordLess = NSLocalizedString("passwordLess", comment: "")
-//        static let passwordLessDescription = NSLocalizedString("passwordLessDescription", comment: "")
-//
-//        static let backup = NSLocalizedString("backup", comment: "")
-//        static let backupDescription = NSLocalizedString("backupDescription", comment: "")
-//
-//        static let getStartedButtonTitle = NSLocalizedString("getStarted", comment: "")
+    }
+    
+    //MARK: - SIGN IN
+    struct LetsStart {
+        static let letsStart = NSLocalizedString("letsStart", comment: "")
+        static let chooseName = NSLocalizedString("chooseName", comment: "")
+        static let scanQR = NSLocalizedString("scanQR", comment: "")
+        static let chooseNamePlaceHolder = NSLocalizedString("chooseNamePlaceHolder", comment: "")
+        static let moveNext = NSLocalizedString("moveNext", comment: "")
     }
     
     //MARK: - LOGIN
