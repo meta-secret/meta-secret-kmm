@@ -13,11 +13,21 @@ struct SignInView: View {
         static let sideOffset: CGFloat = 16.0
         static let spacerHeight: CGFloat = 14.0
         static let cornerRadius: CGFloat = 8.0
+        static let buttonHeight: CGFloat = 48.0
+        static let textfieldHeight: CGFloat = 52.0
     }
     
-    @State private var nickName = ""
-    
     let viewModel = SignInViewModel()
+    
+    @State private var nickName: String
+    @State var signInError: String
+    @State var isError = false
+    
+    init() {
+        self.nickName = ""
+        self.signInError = "Данный никнейм уже занят. Попробуйте другой"
+    }
+    
     
     var body: some View {
         NavigationView {
@@ -48,7 +58,7 @@ struct SignInView: View {
                     }) {
                         Text(viewModel.scanQrText)
                             .frame(maxWidth: .infinity, alignment: .center)
-                            .frame(height: 48)
+                            .frame(height: Config.buttonHeight)
                             .foregroundColor(AppColors.white)
                             .font(FontStyle.button.font)
                             .cornerRadius(Config.cornerRadius)
@@ -57,30 +67,16 @@ struct SignInView: View {
                                     .stroke(AppColors.white50, lineWidth: 1)
                             )
                     }
-                    .frame(height: 48)
+                    .frame(height: Config.buttonHeight)
                     
                     VStack {
                         Spacer().frame(height: Config.spacerHeight)
-                        ZStack(alignment: .leading) {
-                            RoundedRectangle(cornerRadius: Config.cornerRadius)
-                                .fill(AppColors.white5)
-                                .frame(width: .infinity, height: 52.0)
-                            Text(nickName == "" ? viewModel.placeholder : "")
-                                .font(FontStyle.normal.font)
-                                .foregroundColor(AppColors.white40)
-                                .padding(.horizontal)
-                            TextField("", text: $nickName)
-                                .textFieldStyle(.plain)
-                                .padding(.horizontal)
-                                .foregroundColor(AppColors.white)
-                                .font(FontStyle.normalInput.font)
-                                .textFieldStyle(.roundedBorder)
-                            
-                        }
-                        .frame(height: 52.0)
+                        TipTextfieldView(placeHolder: viewModel.placeholder, error: isError ? $signInError : .constant(""))
                         
-                        Spacer().frame(height: Config.spacerHeight * 2.5)
-                        NextButtonView(title: viewModel.nextButtonText)
+                        Spacer().frame(height: Config.spacerHeight)
+                        ActionBlueButton(title: viewModel.nextButtonText, action: {
+                            isError = !isError
+                        })
                         Spacer()
                     }
                 }

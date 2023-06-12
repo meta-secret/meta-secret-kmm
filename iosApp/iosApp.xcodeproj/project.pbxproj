@@ -13,12 +13,14 @@
 		E4DA5883D9745C7F266B22AD /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F87BE92D2E44E3581B58E0B2 /* Pods_iosApp.framework */; };
 		E5045D0D2A31C6C6002ED25D /* PageControllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5045D0C2A31C6C6002ED25D /* PageControllView.swift */; };
 		E52D73B029DE3A9800DD8434 /* icons.json in Resources */ = {isa = PBXBuildFile; fileRef = E52D73AF29DE3A9800DD8434 /* icons.json */; };
-		E554FFFB2A36624E00252B7F /* NextButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E554FFFA2A36624E00252B7F /* NextButtonView.swift */; };
+		E554FFFB2A36624E00252B7F /* ActionBlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E554FFFA2A36624E00252B7F /* ActionBlueButton.swift */; };
+		E554FFFD2A3707DB00252B7F /* TipTextfieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E554FFFC2A3707DB00252B7F /* TipTextfieldView.swift */; };
 		E56D60352A34F23800E0A81B /* OnboardingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56D60342A34F23800E0A81B /* OnboardingPageView.swift */; };
 		E56D60382A3517A500E0A81B /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56D60372A3517A500E0A81B /* SignInView.swift */; };
 		E570B4E629B9439600D1E0D8 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E570B4E429B942E600D1E0D8 /* SplashView.swift */; };
 		E570B4E929B9464400D1E0D8 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E570B4E829B9464400D1E0D8 /* Colors.swift */; };
 		E570B4EC29B9470000D1E0D8 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E570B4EB29B9470000D1E0D8 /* Color+Extension.swift */; };
+		E57968672A37714D00D007FA /* Bindind+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57968662A37714D00D007FA /* Bindind+Extension.swift */; };
 		E59882082A306EF60030CD2A /* manrope-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E59882012A306EF60030CD2A /* manrope-light.otf */; };
 		E59882092A306EF60030CD2A /* manrope-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E59882022A306EF60030CD2A /* manrope-semibold.otf */; };
 		E598820A2A306EF60030CD2A /* manrope-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E59882032A306EF60030CD2A /* manrope-bold.otf */; };
@@ -51,12 +53,14 @@
 		CFCBB75DAAF43DD225EF5C2D /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
 		E5045D0C2A31C6C6002ED25D /* PageControllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllView.swift; sourceTree = "<group>"; };
 		E52D73AF29DE3A9800DD8434 /* icons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = icons.json; sourceTree = "<group>"; };
-		E554FFFA2A36624E00252B7F /* NextButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButtonView.swift; sourceTree = "<group>"; };
+		E554FFFA2A36624E00252B7F /* ActionBlueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionBlueButton.swift; sourceTree = "<group>"; };
+		E554FFFC2A3707DB00252B7F /* TipTextfieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipTextfieldView.swift; sourceTree = "<group>"; };
 		E56D60342A34F23800E0A81B /* OnboardingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageView.swift; sourceTree = "<group>"; };
 		E56D60372A3517A500E0A81B /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		E570B4E429B942E600D1E0D8 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		E570B4E829B9464400D1E0D8 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		E570B4EB29B9470000D1E0D8 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		E57968662A37714D00D007FA /* Bindind+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bindind+Extension.swift"; sourceTree = "<group>"; };
 		E59882012A306EF60030CD2A /* manrope-light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "manrope-light.otf"; sourceTree = "<group>"; };
 		E59882022A306EF60030CD2A /* manrope-semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "manrope-semibold.otf"; sourceTree = "<group>"; };
 		E59882032A306EF60030CD2A /* manrope-bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "manrope-bold.otf"; sourceTree = "<group>"; };
@@ -154,7 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				E5045D0C2A31C6C6002ED25D /* PageControllView.swift */,
-				E554FFFA2A36624E00252B7F /* NextButtonView.swift */,
+				E554FFFA2A36624E00252B7F /* ActionBlueButton.swift */,
+				E554FFFC2A3707DB00252B7F /* TipTextfieldView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -210,6 +215,7 @@
 			children = (
 				E570B4EB29B9470000D1E0D8 /* Color+Extension.swift */,
 				E5B349AC29C908B100EC9DE1 /* View+Extension.swift */,
+				E57968662A37714D00D007FA /* Bindind+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -385,12 +391,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E56D60382A3517A500E0A81B /* SignInView.swift in Sources */,
+				E57968672A37714D00D007FA /* Bindind+Extension.swift in Sources */,
 				E5C2F2BA29C656E500C8F059 /* Fonts.swift in Sources */,
 				E5C223C929DDDB1600EDDAFC /* KeyboardHandler.swift in Sources */,
 				E5F2D57E2A35A80B0048FF75 /* SignInViewModel.swift in Sources */,
 				E5C2F2BC29C65AB300C8F059 /* AppImages.swift in Sources */,
 				E5C2F2C529C672D100C8F059 /* OnboardingContainerView.swift in Sources */,
-				E554FFFB2A36624E00252B7F /* NextButtonView.swift in Sources */,
+				E554FFFB2A36624E00252B7F /* ActionBlueButton.swift in Sources */,
 				E570B4E629B9439600D1E0D8 /* SplashView.swift in Sources */,
 				E5EEEB062A326FFA00D40996 /* MainSceneView.swift in Sources */,
 				E5045D0D2A31C6C6002ED25D /* PageControllView.swift in Sources */,
@@ -398,6 +405,7 @@
 				E56D60352A34F23800E0A81B /* OnboardingPageView.swift in Sources */,
 				E570B4EC29B9470000D1E0D8 /* Color+Extension.swift in Sources */,
 				E570B4E929B9464400D1E0D8 /* Colors.swift in Sources */,
+				E554FFFD2A3707DB00252B7F /* TipTextfieldView.swift in Sources */,
 				E5C2F2B829C652AF00C8F059 /* Constants.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				E5B349AB29C8E7E500EC9DE1 /* OnboardingContnetViewModel.swift in Sources */,

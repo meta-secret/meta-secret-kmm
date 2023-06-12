@@ -18,6 +18,7 @@ struct OnboardingContainerView: View {
         static let cornerRadius: CGFloat = 8.0
         static let sideOffset: CGFloat = 16.0
         static let verticalPageControllOffset: CGFloat = 6.0
+        static let skipTag = "Skip"
     }
     
     var body: some View {
@@ -36,9 +37,9 @@ struct OnboardingContainerView: View {
                                 .font(FontStyle.normalMain.font)
                                 .foregroundColor(AppColors.white75)
                             Spacer()
-                            PageControllView(selectedPage: $selectedPage, pages: viewModel.totalSteps, circleDiameter: 8.0, circleMargin: 8.0)
+                            PageControllView(selectedPage: $selectedPage, pages: viewModel.totalSteps, circleDiameter: Config.cornerRadius, circleMargin: Config.cornerRadius)
                             Spacer()
-                            NavigationLink(destination: MainSceneView(), tag: "Skip", selection: $skipTag, label: {
+                            NavigationLink(destination: SignInView(), tag: Config.skipTag, selection: $skipTag, label: {
                                 Text(viewModel.skipText)
                                     .font(FontStyle.normalMain.font)
                                     .foregroundColor(AppColors.actionLinkBlue)
@@ -57,7 +58,9 @@ struct OnboardingContainerView: View {
                         .animation(.easeInOut)
                         .transition(.slide)
 
-                        NextButtonView(title: viewModel.nextText)
+                        ActionBlueButton(title: viewModel.nextText, action: {
+                            nextTapped()
+                        })
                             .padding(.top, 24)
                     }
                     .padding(.horizontal, Config.sideOffset)
@@ -70,7 +73,7 @@ struct OnboardingContainerView: View {
         if selectedPage < viewModel.totalSteps {
             selectedPage = selectedPage + 1
         } else {
-            skipTag = "Skip"
+            skipTag = Config.skipTag
         }
     }
 }

@@ -23,4 +23,6 @@ struct AppColors {
     static let white40 = Color("White40")
     static let white50 = Color("White50")
     static let white75 = Color("White75")
+    
+    static let redError = Color("RedError")
 }

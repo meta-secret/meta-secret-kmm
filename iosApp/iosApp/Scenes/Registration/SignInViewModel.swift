@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class SignInViewModel {
     var titleText: String {

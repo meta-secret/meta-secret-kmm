@@ -8,17 +8,21 @@
 
 import SwiftUI
 
-struct NextButtonView: View {
+struct ActionBlueButton: View {
     var title: String
+    let action: () -> Void
     
     private enum Config {
         static let cornerRadius: CGFloat = 8.0
     }
     
+    init(title: String, action: @escaping () -> Void) {
+        self.title = title
+        self.action = action
+    }
+    
     var body: some View {
-        Button(action: {
-            
-        }) {
+        Button(action: action) {
             Text(title)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .frame(height: 48)
@@ -37,6 +41,6 @@ struct NextButtonView: View {
 
 struct NextButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        NextButtonView(title: "Next")
+        ActionBlueButton(title: "Next", action: {})
     }
 }
