@@ -35,6 +35,13 @@ struct Constants {
         static let moveNext = NSLocalizedString("moveNext", comment: "")
     }
     
+    struct Main {
+        static let secrets = NSLocalizedString("Secrets", comment: "")
+        static let devices = NSLocalizedString("Devices", comment: "")
+        static let help = NSLocalizedString("Help", comment: "")
+        static let profile = NSLocalizedString("Profile", comment: "")
+    }
+    
     //MARK: - LOGIN
     struct LoginScreen {
 //        static let title = NSLocalizedString("metaSecret", comment: "")

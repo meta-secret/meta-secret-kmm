@@ -16,6 +16,11 @@
 "chooseNamePlaceHolder" = "Выберите уникальный никнейм";
 "moveNext" = "Вперед";
 
+//MARK: - MAIN
+"Secrets" = "Секреты";
+"Devices" = "Устройства";
+"Help" = "Помощь";
+"Profile" = "Профиль";
 
 
 

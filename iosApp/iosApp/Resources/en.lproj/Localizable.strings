@@ -14,7 +14,11 @@
 "chooseNamePlaceHolder" = "Choose a unique nickname";
 "moveNext" = "Next";
 
-
+//MARK: - MAIN
+"Secrets" = "Secrets";
+"Devices" = "Devices";
+"Help" = "Help";
+"Profile" = "Profile";
 
 
 

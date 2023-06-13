@@ -22,6 +22,7 @@ struct SignInView: View {
     @State private var nickName: String
     @State var signInError: String
     @State var isError = false
+    @State var isNext = false
     
     init() {
         self.nickName = ""
@@ -53,8 +54,10 @@ struct SignInView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
                     Spacer().frame(height: Config.spacerHeight * 2)
+                    
+                    NavigationLink(destination: MainSceneView(), isActive: $isNext) {}
                     Button(action: {
-                        
+                        isNext = true
                     }) {
                         Text(viewModel.scanQrText)
                             .frame(maxWidth: .infinity, alignment: .center)
