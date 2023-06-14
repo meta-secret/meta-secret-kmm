@@ -10,29 +10,47 @@ import SwiftUI
 
 struct TabBottomView: View {
     
+    private enum Config {
+        static let widthDelta: CGFloat = 48.0
+        static let height: CGFloat = 72.0
+    }
+    
     let tabbarItems: [TabItemData]
     
     @Binding var selectedIndex: Int
     
     var body: some View {
-        ZStack {
-            HStack {
-                ForEach(tabbarItems.indices) { index in
-                    let item = tabbarItems[index]
-                    Button {
-                        self.selectedIndex = index
-                    } label: {
-                        TabItemView(data: item, isSelected: false)
-                            .frame(width: (UIScreen.main.bounds.width - 40) / CGFloat(tabbarItems.count))
+
+            ZStack {
+                HStack {
+                    ForEach(tabbarItems.indices) { index in
+                        let item = tabbarItems[index]
+                        Button {
+                            self.selectedIndex = index
+                        } label: {
+                            TabItemView(data: item, isSelected: false)
+                                .frame(width: (UIScreen.main.bounds.width - Config.widthDelta) / CGFloat(tabbarItems.count))
+                        }
                     }
                 }
+                .padding(.bottom, 6.0)
+                .frame(width: UIScreen.main.bounds.width, height: Config.height)
+                .background(AppColors.blackMenu)
+                
+                HStack {
+                    Spacer()
+                        .frame(width: (CGFloat(selectedIndex) * UIScreen.main.bounds.width / CGFloat(tabbarItems.count)))
+                    Rectangle()
+                        .frame(width: (UIScreen.main.bounds.width / CGFloat(tabbarItems.count)) + 7, height: 4)
+                        .foregroundColor(AppColors.actionBlue)
+                    Spacer()
+                }
+                .padding(.top, -Config.height/2)
+                
+                PlusButtonView(action: {})
+                    .padding(.top, -64.0)
             }
-            .frame(width: UIScreen.main.bounds.width, height: 68.0)
-            .background(AppColors.blackMenu)
-            
-            PlusButtonView(action: {})
-                .padding(.top, -64.0)
-        }
+            .animation(.linear)
     }
 }
 

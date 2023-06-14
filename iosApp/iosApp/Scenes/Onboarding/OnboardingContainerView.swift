@@ -55,7 +55,7 @@ struct OnboardingContainerView: View {
                             }
                         }
                         .tabViewStyle(.page(indexDisplayMode: .never))
-                        .animation(.easeInOut)
+                        .animation(.linear)
                         .transition(.slide)
 
                         ActionBlueButton(title: viewModel.nextText, action: {
