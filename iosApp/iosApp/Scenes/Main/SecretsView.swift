@@ -15,20 +15,21 @@ struct SecretsView: View {
         ZStack {
             
             AppColors.blackBg.ignoresSafeArea()
-            Image(AppImages.mainBg)
+            Image(AppImages.Common.mainBg)
                 .resizable()
                 .ignoresSafeArea()
             if viewModel.items.isEmpty {
                 VStack {
+                    Spacer()
                     EmptySecretsView()
+                    Spacer()
+                        .frame(height: 32)
                 }
             } else {
                 Text("Secrets")
                     .foregroundColor(Color.white)
             }
-            
         }
-        .border(.red)
     }
 }
 

@@ -11,7 +11,7 @@ import SwiftUI
 struct EmptySecretsView: View {
     var body: some View {
         VStack {
-            Image(AppImages.executioner)
+            Image(AppImages.Secrets.executioner)
             Text(Constants.Secrets.noSecrets)
                 .font(FontStyle.h1.font)
                 .foregroundColor(AppColors.white)
@@ -20,7 +20,8 @@ struct EmptySecretsView: View {
                 .foregroundColor(AppColors.white75)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 20.0)
-            Image(AppImages.slashedArrow)
+            Image(AppImages.Secrets.slashedArrow)
+                .frame(height: 154)
                 .padding(.leading, 128)
         }
     }

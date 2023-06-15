@@ -23,6 +23,9 @@
 //MARK: - SECRETS
 "noSecrets" = "No secrets";
 "youHaveNoSecrets" = "You have no any secrets yet. Add your first one.";
+"weak" = "weak";
+"strong" = "strong";
+"maximum" = "maximum";
 
 
 
