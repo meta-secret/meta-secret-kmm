@@ -42,6 +42,11 @@ struct Constants {
         static let profile = NSLocalizedString("Profile", comment: "")
     }
     
+    struct Secrets {
+        static let noSecrets = NSLocalizedString("noSecrets", comment: "")
+        static let youHaveNoSecrets = NSLocalizedString("youHaveNoSecrets", comment: "")
+    }
+    
     //MARK: - LOGIN
     struct LoginScreen {
 //        static let title = NSLocalizedString("metaSecret", comment: "")

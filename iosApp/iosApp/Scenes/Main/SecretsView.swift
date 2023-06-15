@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct SecretsView: View {
+    @State var viewModel: SecretsViewModel = SecretsViewModel()
+    
     var body: some View {
         ZStack {
             
@@ -16,11 +18,17 @@ struct SecretsView: View {
             Image(AppImages.mainBg)
                 .resizable()
                 .ignoresSafeArea()
-            
-            Text("Secrets")
-                .foregroundColor(Color.white)
+            if viewModel.items.isEmpty {
+                VStack {
+                    EmptySecretsView()
+                }
+            } else {
+                Text("Secrets")
+                    .foregroundColor(Color.white)
+            }
             
         }
+        .border(.red)
     }
 }
 

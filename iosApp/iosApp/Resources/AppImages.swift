@@ -19,4 +19,6 @@ struct AppImages {
     static let helpLogo = "HelpLogo"
     static let profileLogo = "ProfileLogo"
     static let bigPlusImage = "bigPlusImage"
+    static let executioner = "executioner"
+    static let slashedArrow = "slashedArrow"
 }

@@ -10,6 +10,10 @@ import SwiftUI
 
 struct MainSceneView: View {
     
+    private enum Config {
+        static let sideOffset: CGFloat = 16.0
+    }
+    
     @State var selectedIndex: Int = 0
     @State var showActionSheet: Bool = false
     
@@ -34,6 +38,21 @@ struct MainSceneView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
+        .navigationBarTitleDisplayMode(.large)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                HStack {
+                    Spacer()
+                        .frame(width: Config.sideOffset)
+                    Text(getNavTitle())
+                        .font(FontStyle.header.font)
+                        .foregroundColor(AppColors.white)
+                    Spacer()
+                }
+                .padding(.top)
+            }
+        }
+        .navigationBarHidden(false)
     }
     
     @ViewBuilder
@@ -49,6 +68,23 @@ struct MainSceneView: View {
             HelpView()
         case .profile:
             ProfileView()
+        }
+    }
+}
+
+private extension MainSceneView {
+    func getNavTitle() -> String {
+        switch selectedIndex {
+        case 0:
+            return Constants.Main.secrets
+        case 1:
+            return Constants.Main.devices
+        case 3:
+            return Constants.Main.help
+        case 4:
+            return Constants.Main.profile
+        default:
+            return ""
         }
     }
 }

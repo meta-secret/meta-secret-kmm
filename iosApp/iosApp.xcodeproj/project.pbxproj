@@ -49,6 +49,8 @@
 		E5C2F2BC29C65AB300C8F059 /* AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C2F2BB29C65AB300C8F059 /* AppImages.swift */; };
 		E5C2F2C229C66B7E00C8F059 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5C2F2C129C66B7E00C8F059 /* Colors.xcassets */; };
 		E5C2F2C529C672D100C8F059 /* OnboardingContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C2F2C429C672D100C8F059 /* OnboardingContainerView.swift */; };
+		E5C9DFAD2A3A431000C60BBA /* EmptySecretsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C9DFAC2A3A431000C60BBA /* EmptySecretsView.swift */; };
+		E5C9DFAF2A3A518700C60BBA /* SecretsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C9DFAE2A3A518700C60BBA /* SecretsViewModel.swift */; };
 		E5EEEB062A326FFA00D40996 /* MainSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EEEB052A326FFA00D40996 /* MainSceneView.swift */; };
 		E5F2D57E2A35A80B0048FF75 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2D57D2A35A80B0048FF75 /* SignInViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -100,6 +102,8 @@
 		E5C2F2BB29C65AB300C8F059 /* AppImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppImages.swift; sourceTree = "<group>"; };
 		E5C2F2C129C66B7E00C8F059 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		E5C2F2C429C672D100C8F059 /* OnboardingContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerView.swift; sourceTree = "<group>"; };
+		E5C9DFAC2A3A431000C60BBA /* EmptySecretsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySecretsView.swift; sourceTree = "<group>"; };
+		E5C9DFAE2A3A518700C60BBA /* SecretsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretsViewModel.swift; sourceTree = "<group>"; };
 		E5EEEB052A326FFA00D40996 /* MainSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneView.swift; sourceTree = "<group>"; };
 		E5F2D57D2A35A80B0048FF75 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		F87BE92D2E44E3581B58E0B2 /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +173,7 @@
 		E5045D0A2A31C68B002ED25D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E5C9DFAB2A3A42FB00C60BBA /* Secrets */,
 				E54892022A38D0650074364F /* Tabs */,
 				E5045D0B2A31C6B3002ED25D /* Common */,
 			);
@@ -295,6 +300,14 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		E5C9DFAB2A3A42FB00C60BBA /* Secrets */ = {
+			isa = PBXGroup;
+			children = (
+				E5C9DFAC2A3A431000C60BBA /* EmptySecretsView.swift */,
+			);
+			path = Secrets;
+			sourceTree = "<group>";
+		};
 		E5EEEB042A326FD600D40996 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -303,6 +316,7 @@
 				E54892072A38D5D10074364F /* DevicesView.swift */,
 				E54892092A38D5E00074364F /* HelpView.swift */,
 				E548920B2A38D5F30074364F /* ProfileView.swift */,
+				E5C9DFAE2A3A518700C60BBA /* SecretsViewModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -444,10 +458,12 @@
 				E5045D0D2A31C6C6002ED25D /* PageControllView.swift in Sources */,
 				E54892102A38DF1E0074364F /* TabBottomView.swift in Sources */,
 				E54892062A38D5C40074364F /* SecretsView.swift in Sources */,
+				E5C9DFAF2A3A518700C60BBA /* SecretsViewModel.swift in Sources */,
 				E5A4BBEC29E30AB700C3F718 /* Coordinator.swift in Sources */,
 				E548920C2A38D5F30074364F /* ProfileView.swift in Sources */,
 				E56D60352A34F23800E0A81B /* OnboardingPageView.swift in Sources */,
 				E570B4EC29B9470000D1E0D8 /* Color+Extension.swift in Sources */,
+				E5C9DFAD2A3A431000C60BBA /* EmptySecretsView.swift in Sources */,
 				E570B4E929B9464400D1E0D8 /* Colors.swift in Sources */,
 				E554FFFD2A3707DB00252B7F /* TipTextfieldView.swift in Sources */,
 				E548920A2A38D5E00074364F /* HelpView.swift in Sources */,
