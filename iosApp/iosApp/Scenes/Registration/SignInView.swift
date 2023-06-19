@@ -34,12 +34,12 @@ struct SignInView: View {
         NavigationView {
             ZStack {
                 AppColors.blackBg.ignoresSafeArea()
-                Image(AppImages.mainBg)
+                Image(AppImages.Common.mainBg)
                     .resizable()
                     .ignoresSafeArea()
                 
                 VStack {
-                    Image(AppImages.signInLogo)
+                    Image(AppImages.SignIn.signInLogo)
                         .padding(.top, -54)
                         
                     Text(viewModel.titleText)

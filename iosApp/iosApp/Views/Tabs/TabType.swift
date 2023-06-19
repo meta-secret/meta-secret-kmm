@@ -18,15 +18,15 @@ enum TabType: Int, CaseIterable {
     var tabItem: TabItemData {
         switch self {
         case .secrets:
-            return TabItemData(image: AppImages.secretsLogo, selectedImage: AppImages.secretsLogo, title: Constants.Main.secrets)
+            return TabItemData(image: AppImages.Main.secretsLogo, selectedImage: AppImages.Main.secretsLogo, title: Constants.Main.secrets)
         case .devices:
-            return TabItemData(image: AppImages.devicesLogo, selectedImage: AppImages.devicesLogo, title: Constants.Main.devices)
+            return TabItemData(image: AppImages.Common.devicesIco, selectedImage: AppImages.Common.devicesIco, title: Constants.Main.devices)
         case .plus:
             return TabItemData(image: "", selectedImage: "", title: "")
         case .help:
-            return TabItemData(image: AppImages.helpLogo, selectedImage: AppImages.helpLogo, title: Constants.Main.help)
+            return TabItemData(image: AppImages.Main.helpLogo, selectedImage: AppImages.Main.helpLogo, title: Constants.Main.help)
         case .profile:
-            return TabItemData(image: AppImages.profileLogo, selectedImage: AppImages.profileLogo, title: Constants.Main.profile)
+            return TabItemData(image: AppImages.Main.profileLogo, selectedImage: AppImages.Main.profileLogo, title: Constants.Main.profile)
         }
     }
 }

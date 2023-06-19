@@ -1,22 +1,22 @@
 //
-//  SecretsViewModel.swift
+//  DevicesViewModel.swift
 //  iosApp
 //
-//  Created by Dmitry Kuklin on 14.06.2023.
+//  Created by Dmitry Kuklin on 19.06.2023.
 //  Copyright © 2023 orgName. All rights reserved.
 //
 
 import Foundation
 
-class SecretsViewModel: CommonViewModel {
+class DevicesViewModel: CommonViewModel {
     override init() {
         super.init()
         getItems()
     }
 }
 
-private extension SecretsViewModel {
+private extension DevicesViewModel {
     func getItems() {
-        getContent(of: .secrets)
+        getContent(of: .device)
     }
 }

@@ -45,6 +45,12 @@ struct Constants {
     struct Secrets {
         static let noSecrets = NSLocalizedString("noSecrets", comment: "")
         static let youHaveNoSecrets = NSLocalizedString("youHaveNoSecrets", comment: "")
+        static let weak = NSLocalizedString("weak", comment: "")
+        static let strong = NSLocalizedString("strong", comment: "")
+        static let maximum = NSLocalizedString("maximum", comment: "")
+        static func devicesCount(count: Int) -> String {
+            return String(format: "%@ devices", count)
+        }
     }
     
     //MARK: - LOGIN

@@ -29,6 +29,6 @@ struct TabItemView: View {
 
 struct TabItemView_Previews: PreviewProvider {
     static var previews: some View {
-        TabItemView(data: TabItemData(image: AppImages.secretsLogo, selectedImage: AppImages.secretsLogo, title: Constants.Main.secrets), isSelected: false)
+        TabItemView(data: TabItemData(image: AppImages.Main.secretsLogo, selectedImage: AppImages.Main.secretsLogo, title: Constants.Main.secrets), isSelected: false)
     }
 }

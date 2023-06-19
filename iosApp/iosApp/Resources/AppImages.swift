@@ -19,8 +19,8 @@ struct AppImages {
     enum Main {
         static let bigPlusImage = "bigPlusImage"
         static let helpLogo = "HelpLogo"
-        static let profileLogo = "ProfileLogo"
         static let secretsLogo = "SecretsLogo"
+        static let profileLogo = "ProfileLogo"
     }
     
     enum Secrets {

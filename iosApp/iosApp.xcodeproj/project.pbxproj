@@ -32,6 +32,15 @@
 		E570B4E929B9464400D1E0D8 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E570B4E829B9464400D1E0D8 /* Colors.swift */; };
 		E570B4EC29B9470000D1E0D8 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E570B4EB29B9470000D1E0D8 /* Color+Extension.swift */; };
 		E57968672A37714D00D007FA /* Bindind+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57968662A37714D00D007FA /* Bindind+Extension.swift */; };
+		E5919D752A40BA9B00BFF879 /* CommonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5919D742A40BA9B00BFF879 /* CommonViewModel.swift */; };
+		E5919D772A40BCA500BFF879 /* CommonItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5919D762A40BCA500BFF879 /* CommonItemModel.swift */; };
+		E5919D792A40BCFF00BFF879 /* ItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5919D782A40BCFF00BFF879 /* ItemType.swift */; };
+		E5919D7B2A40BD9A00BFF879 /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5919D7A2A40BD9A00BFF879 /* DeviceModel.swift */; };
+		E5919D7D2A40BFFC00BFF879 /* SecretModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5919D7C2A40BFFC00BFF879 /* SecretModel.swift */; };
+		E5919D802A40C17000BFF879 /* ContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5919D7F2A40C17000BFF879 /* ContentManager.swift */; };
+		E5919D822A40CB6D00BFF879 /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5919D812A40CB6D00BFF879 /* ServiceType.swift */; };
+		E5919D842A40CBB200BFF879 /* ServiceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5919D832A40CBB200BFF879 /* ServiceContainer.swift */; };
+		E5919D862A40D49700BFF879 /* DevicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5919D852A40D49700BFF879 /* DevicesViewModel.swift */; };
 		E59882082A306EF60030CD2A /* manrope-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E59882012A306EF60030CD2A /* manrope-light.otf */; };
 		E59882092A306EF60030CD2A /* manrope-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E59882022A306EF60030CD2A /* manrope-semibold.otf */; };
 		E598820A2A306EF60030CD2A /* manrope-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E59882032A306EF60030CD2A /* manrope-bold.otf */; };
@@ -85,6 +94,15 @@
 		E570B4E829B9464400D1E0D8 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		E570B4EB29B9470000D1E0D8 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		E57968662A37714D00D007FA /* Bindind+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bindind+Extension.swift"; sourceTree = "<group>"; };
+		E5919D742A40BA9B00BFF879 /* CommonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewModel.swift; sourceTree = "<group>"; };
+		E5919D762A40BCA500BFF879 /* CommonItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonItemModel.swift; sourceTree = "<group>"; };
+		E5919D782A40BCFF00BFF879 /* ItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
+		E5919D7A2A40BD9A00BFF879 /* DeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
+		E5919D7C2A40BFFC00BFF879 /* SecretModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretModel.swift; sourceTree = "<group>"; };
+		E5919D7F2A40C17000BFF879 /* ContentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManager.swift; sourceTree = "<group>"; };
+		E5919D812A40CB6D00BFF879 /* ServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
+		E5919D832A40CBB200BFF879 /* ServiceContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceContainer.swift; sourceTree = "<group>"; };
+		E5919D852A40D49700BFF879 /* DevicesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewModel.swift; sourceTree = "<group>"; };
 		E59882012A306EF60030CD2A /* manrope-light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "manrope-light.otf"; sourceTree = "<group>"; };
 		E59882022A306EF60030CD2A /* manrope-semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "manrope-semibold.otf"; sourceTree = "<group>"; };
 		E59882032A306EF60030CD2A /* manrope-bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "manrope-bold.otf"; sourceTree = "<group>"; };
@@ -161,6 +179,8 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				E5919D7E2A40C15100BFF879 /* Utils */,
+				E5919D722A40BA6700BFF879 /* Models */,
 				E5045D0A2A31C68B002ED25D /* Views */,
 				E5C223C729DDDAF900EDDAFC /* Helpers */,
 				E570B4EA29B946EE00D1E0D8 /* Extensions */,
@@ -175,6 +195,7 @@
 		E5045D0A2A31C68B002ED25D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E5919D872A40D4F900BFF879 /* Devices */,
 				E5C9DFAB2A3A42FB00C60BBA /* Secrets */,
 				E54892022A38D0650074364F /* Tabs */,
 				E5045D0B2A31C6B3002ED25D /* Common */,
@@ -233,6 +254,7 @@
 		E570B4E229B9429B00D1E0D8 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				E5919D732A40BA8C00BFF879 /* Common */,
 				E56D60362A35175800E0A81B /* Registration */,
 				E5EEEB042A326FD600D40996 /* Main */,
 				E5A4BBE829E309A500C3F718 /* ImagePicker */,
@@ -259,6 +281,42 @@
 				E57968662A37714D00D007FA /* Bindind+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E5919D722A40BA6700BFF879 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E5919D762A40BCA500BFF879 /* CommonItemModel.swift */,
+				E5919D782A40BCFF00BFF879 /* ItemType.swift */,
+				E5919D7A2A40BD9A00BFF879 /* DeviceModel.swift */,
+				E5919D7C2A40BFFC00BFF879 /* SecretModel.swift */,
+				E5919D812A40CB6D00BFF879 /* ServiceType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E5919D732A40BA8C00BFF879 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E5919D742A40BA9B00BFF879 /* CommonViewModel.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		E5919D7E2A40C15100BFF879 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E5919D7F2A40C17000BFF879 /* ContentManager.swift */,
+				E5919D832A40CBB200BFF879 /* ServiceContainer.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E5919D872A40D4F900BFF879 /* Devices */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Devices;
 			sourceTree = "<group>";
 		};
 		E59882002A306ED20030CD2A /* Fonts */ = {
@@ -316,10 +374,11 @@
 			children = (
 				E5EEEB052A326FFA00D40996 /* MainSceneView.swift */,
 				E54892052A38D5C40074364F /* SecretsView.swift */,
+				E5C9DFAE2A3A518700C60BBA /* SecretsViewModel.swift */,
 				E54892072A38D5D10074364F /* DevicesView.swift */,
+				E5919D852A40D49700BFF879 /* DevicesViewModel.swift */,
 				E54892092A38D5E00074364F /* HelpView.swift */,
 				E548920B2A38D5F30074364F /* ProfileView.swift */,
-				E5C9DFAE2A3A518700C60BBA /* SecretsViewModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -447,22 +506,28 @@
 			files = (
 				E54892042A38D08E0074364F /* TabItemData.swift in Sources */,
 				E54892122A38E7010074364F /* PlusButtonView.swift in Sources */,
+				E5919D7D2A40BFFC00BFF879 /* SecretModel.swift in Sources */,
 				E56D60382A3517A500E0A81B /* SignInView.swift in Sources */,
 				E57968672A37714D00D007FA /* Bindind+Extension.swift in Sources */,
+				E5919D822A40CB6D00BFF879 /* ServiceType.swift in Sources */,
 				E5C2F2BA29C656E500C8F059 /* Fonts.swift in Sources */,
 				E5C223C929DDDB1600EDDAFC /* KeyboardHandler.swift in Sources */,
 				E5F2D57E2A35A80B0048FF75 /* SignInViewModel.swift in Sources */,
+				E5919D842A40CBB200BFF879 /* ServiceContainer.swift in Sources */,
 				E5C2F2BC29C65AB300C8F059 /* AppImages.swift in Sources */,
 				E5C2F2C529C672D100C8F059 /* OnboardingContainerView.swift in Sources */,
 				E554FFFB2A36624E00252B7F /* ActionBlueButton.swift in Sources */,
 				E548920E2A38D8B10074364F /* TabItemView.swift in Sources */,
 				E570B4E629B9439600D1E0D8 /* SplashView.swift in Sources */,
+				E5919D792A40BCFF00BFF879 /* ItemType.swift in Sources */,
 				E5EEEB062A326FFA00D40996 /* MainSceneView.swift in Sources */,
 				E5045D0D2A31C6C6002ED25D /* PageControllView.swift in Sources */,
 				E54892102A38DF1E0074364F /* TabBottomView.swift in Sources */,
 				E54892062A38D5C40074364F /* SecretsView.swift in Sources */,
+				E5919D7B2A40BD9A00BFF879 /* DeviceModel.swift in Sources */,
 				E5C9DFAF2A3A518700C60BBA /* SecretsViewModel.swift in Sources */,
 				E5A4BBEC29E30AB700C3F718 /* Coordinator.swift in Sources */,
+				E5919D802A40C17000BFF879 /* ContentManager.swift in Sources */,
 				E548920C2A38D5F30074364F /* ProfileView.swift in Sources */,
 				E56D60352A34F23800E0A81B /* OnboardingPageView.swift in Sources */,
 				E570B4EC29B9470000D1E0D8 /* Color+Extension.swift in Sources */,
@@ -470,15 +535,18 @@
 				E570B4E929B9464400D1E0D8 /* Colors.swift in Sources */,
 				E554FFFD2A3707DB00252B7F /* TipTextfieldView.swift in Sources */,
 				E548920A2A38D5E00074364F /* HelpView.swift in Sources */,
+				E5919D772A40BCA500BFF879 /* CommonItemModel.swift in Sources */,
 				E54892082A38D5D10074364F /* DevicesView.swift in Sources */,
 				E5C2F2B829C652AF00C8F059 /* Constants.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				E5919D862A40D49700BFF879 /* DevicesViewModel.swift in Sources */,
 				E54892162A38EEF50074364F /* TabType.swift in Sources */,
 				E5B349AB29C8E7E500EC9DE1 /* OnboardingContnetViewModel.swift in Sources */,
 				E54892142A38EDC50074364F /* CustomTabView.swift in Sources */,
 				E5B349AD29C908B100EC9DE1 /* View+Extension.swift in Sources */,
 				E56B66802A3B914B00574E04 /* SecretCellView.swift in Sources */,
 				E5A4BBEA29E309C200C3F718 /* ImagePickerView.swift in Sources */,
+				E5919D752A40BA9B00BFF879 /* CommonViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

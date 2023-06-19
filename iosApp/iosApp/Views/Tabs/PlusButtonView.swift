@@ -22,7 +22,7 @@ struct PlusButtonView: View {
                     .strokeBorder(AppColors.white15, lineWidth: 6)
                     .background(Circle().foregroundColor(AppColors.actionBlue))
                     .frame(width: 80.0, height: 80.0)
-                Image(AppImages.bigPlusImage)
+                Image(AppImages.Main.bigPlusImage)
                 
             }
         }

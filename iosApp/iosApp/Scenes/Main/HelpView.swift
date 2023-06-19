@@ -13,7 +13,7 @@ struct HelpView: View {
         ZStack {
             
             AppColors.blackBg.ignoresSafeArea()
-            Image(AppImages.mainBg)
+            Image(AppImages.Common.mainBg)
                 .resizable()
                 .ignoresSafeArea()
             

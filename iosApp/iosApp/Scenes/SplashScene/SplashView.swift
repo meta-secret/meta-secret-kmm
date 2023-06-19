@@ -17,15 +17,15 @@ struct SplashView: View {
         NavigationView {
             ZStack {
                 AppColors.blackBg.ignoresSafeArea()
-                Image(AppImages.mainBg)
+                Image(AppImages.Common.mainBg)
                     .resizable()
                     .ignoresSafeArea()
                 ZStack {
-                    Image(AppImages.splashGradient)
+                    Image(AppImages.Splash.splashGradient)
                         .padding(.bottom, 63)
                     VStack {
-                        Image(AppImages.splashLogo)
-                        Image(AppImages.metaTitle)
+                        Image(AppImages.Splash.splashLogo)
+                        Image(AppImages.Splash.metaTitle)
                             .padding(.top, 40)
                     }
                 }

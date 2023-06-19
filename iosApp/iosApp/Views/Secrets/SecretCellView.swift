@@ -9,9 +9,15 @@
 import SwiftUI
 
 struct SecretCellView: View {
+    private var item: SecretModel
+    
     private enum Config {
         static let cornerRadius: CGFloat = 12.0
         static let height: CGFloat = 96.0
+    }
+    
+    init(item: SecretModel) {
+        self.item = item
     }
     
     var body: some View {
@@ -22,15 +28,17 @@ struct SecretCellView: View {
                 .frame(height: Config.height)
             HStack {
                 VStack {
-                    Text()
+                    Text(item.description)
+                        .font(FontStyle.h3.font)
+                        .foregroundColor(AppColors.white)
                     HStack {
-                        Image()
-                        Text()
+                        Image(AppImages.Common.devicesIco)
+                        Text(Constants.Secrets.devicesCount(count: 1))
                     }
                 }
                 VStack {
-                    Image()
-                    Text()
+                    Image(item.strenghtType.image)
+                    Text(item.strenghtType.title)
                 }
             }
             
@@ -45,7 +53,7 @@ struct SecretCellView_Previews: PreviewProvider {
             Image(AppImages.Common.mainBg)
                 .resizable()
                 .ignoresSafeArea()
-            SecretCellView()
+            SecretCellView(item: SecretModel(description: "MetaWallet", strenghtType: .strong))
         }
     }
 }

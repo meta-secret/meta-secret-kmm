@@ -26,6 +26,7 @@ enum FontStyle {
     case h1
     case h2
     case h3
+    case h4
     case error
     
     var font: Font {
@@ -63,6 +64,8 @@ enum FontStyle {
         case .h2:
             return 20
         case .h3:
+            return 18
+        case .h4:
             return 16
         case .error:
             return 13
@@ -100,6 +103,8 @@ enum FontStyle {
         case .h2:
             return "Manrope-Bold"
         case .h3:
+            return "Manrope-Bold"
+        case .h4:
             return "Manrope-Bold"
         case .error:
             return "Manrope-Regular"

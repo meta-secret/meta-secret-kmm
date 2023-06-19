@@ -57,11 +57,11 @@ struct TabBottomView: View {
 struct TabBottomView_Previews: PreviewProvider {
     static var previews: some View {
         let tabs: [TabItemData] = [
-            TabItemData(image: AppImages.secretsLogo, selectedImage: AppImages.secretsLogo, title: Constants.Main.secrets),
-            TabItemData(image: AppImages.devicesLogo, selectedImage: AppImages.secretsLogo, title: Constants.Main.secrets),
+            TabItemData(image: AppImages.Main.secretsLogo, selectedImage: AppImages.Main.secretsLogo, title: Constants.Main.secrets),
+            TabItemData(image: AppImages.Common.devicesIco, selectedImage: AppImages.Common.devicesIco, title: Constants.Main.secrets),
             TabItemData(image: "", selectedImage: "", title: ""),
-            TabItemData(image: AppImages.helpLogo, selectedImage: AppImages.secretsLogo, title: Constants.Main.secrets),
-            TabItemData(image: AppImages.profileLogo, selectedImage: AppImages.secretsLogo, title: Constants.Main.secrets)
+            TabItemData(image: AppImages.Main.helpLogo, selectedImage: AppImages.Main.helpLogo, title: Constants.Main.secrets),
+            TabItemData(image: AppImages.Main.profileLogo, selectedImage: AppImages.Main.profileLogo, title: Constants.Main.secrets)
         ]
         TabBottomView(tabbarItems: tabs, selectedIndex: .constant(0))
     }
