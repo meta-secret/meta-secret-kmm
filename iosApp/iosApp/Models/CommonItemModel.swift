@@ -8,10 +8,13 @@
 
 import Foundation
 
-protocol CommonItemModel: AnyObject {
+protocol CommonItemModel: Identifiable {
     var type: ItemType { get set }
+    var id: UUID { get }
 }
 
 extension CommonItemModel {
-    
+    var id: UUID {
+        return UUID()
+    }
 }

@@ -9,17 +9,25 @@
 import SwiftUI
 
 struct DevicesView: View {
+    @State var viewModel: DevicesViewModel = DevicesViewModel()
+    
     var body: some View {
         ZStack {
-            
             AppColors.blackBg.ignoresSafeArea()
             Image(AppImages.Common.mainBg)
                 .resizable()
                 .ignoresSafeArea()
             
-            Text("Devices")
-                .foregroundColor(Color.white)
-            
+                List {
+                    ForEach(viewModel.items, id: \.id) { item in
+                        DevicesCellView(item: item as! DeviceModel)
+                    }
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(Color.clear)
+                    .listRowInsets(.init(top: 0, leading: 0, bottom: 10, trailing: 0))
+                }
+                .scrollContentBackground(.hidden)
+                
         }
     }
 }

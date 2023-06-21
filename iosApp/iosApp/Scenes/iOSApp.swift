@@ -4,6 +4,9 @@ import SwiftUI
 struct iOSApp: App {
     init() {
         setupServiceContainer()
+        UITableView.appearance().separatorStyle = .none
+        UITableViewCell.appearance().backgroundColor = .clear
+        UITableView.appearance().backgroundColor = .clear
     }
     
 	var body: some Scene {

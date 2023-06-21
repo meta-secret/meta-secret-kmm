@@ -13,7 +13,6 @@ struct SecretsView: View {
     
     var body: some View {
         ZStack {
-            
             AppColors.blackBg.ignoresSafeArea()
             Image(AppImages.Common.mainBg)
                 .resizable()
@@ -26,8 +25,16 @@ struct SecretsView: View {
                         .frame(height: 32)
                 }
             } else {
-                Text("Secrets")
-                    .foregroundColor(Color.white)
+                List {
+                    ForEach(viewModel.items, id: \.id) { item in
+                        SecretCellView(item: item as! SecretModel)
+                    }
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(Color.clear)
+                    .listRowInsets(.init(top: 0, leading: 0, bottom: 10, trailing: 0))
+                }
+                .scrollContentBackground(.hidden)
+                
             }
         }
     }

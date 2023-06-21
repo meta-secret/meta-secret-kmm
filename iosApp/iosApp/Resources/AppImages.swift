@@ -14,6 +14,7 @@ struct AppImages {
         static let devicesIco = "devicesIco"
         static let warningSign = "warningSign"
         static let closeIco = "closeIco"
+        static let chevroneRightIco = "chevroneRightIco"
     }
     
     enum Main {
@@ -39,6 +40,13 @@ struct AppImages {
         static let splashLogo = "centerLogo"
         static let splashGradient = "centerGradient"
         static let metaTitle = "metaTitle"
+    }
+    
+    enum Devices {
+        static let iphoneIco = "iphoneIco"
+        static let noteBookIco = "noteBookIco"
+        static let padIco = "padIco"
+        static let phoneIco = "phoneIco"
     }
 }
     

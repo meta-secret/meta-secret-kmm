@@ -48,9 +48,8 @@ struct Constants {
         static let weak = NSLocalizedString("weak", comment: "")
         static let strong = NSLocalizedString("strong", comment: "")
         static let maximum = NSLocalizedString("maximum", comment: "")
-        static func devicesCount(count: Int) -> String {
-            return String(format: "%@ devices", count)
-        }
+        static let devicesCount = NSLocalizedString("countDevices", comment: "")
+        static let secretsCount = NSLocalizedString("countSecrets", comment: "")
     }
     
     //MARK: - LOGIN

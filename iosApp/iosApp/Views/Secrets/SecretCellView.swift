@@ -26,34 +26,45 @@ struct SecretCellView: View {
                 .fill(AppColors.white5)
                 .frame(maxWidth: .infinity)
                 .frame(height: Config.height)
+            
             HStack {
-                VStack {
-                    Text(item.description)
-                        .font(FontStyle.h3.font)
-                        .foregroundColor(AppColors.white)
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text(item.description)
+                            .font(FontStyle.h3.font)
+                            .foregroundColor(AppColors.white)
+                    }
+                    .frame(height: 22)
                     HStack {
                         Image(AppImages.Common.devicesIco)
-                        Text(Constants.Secrets.devicesCount(count: 1))
+                        Text(Constants.Secrets.devicesCount)
+                            .font(FontStyle.normalMain.font)
+                            .foregroundColor(AppColors.white75)
                     }
+                    .frame(height: 20)
                 }
+                Spacer()
                 VStack {
                     Image(item.strenghtType.image)
                     Text(item.strenghtType.title)
+                        .font(FontStyle.mini.font)
+                        .foregroundColor(AppColors.white75)
                 }
+                .frame(width: 56)
             }
-            
+            .padding(.horizontal, 16.0)
         }
     }
 }
 
 struct SecretCellView_Previews: PreviewProvider {
     static var previews: some View {
-        ZStack {
-            AppColors.blackBg.ignoresSafeArea()
-            Image(AppImages.Common.mainBg)
-                .resizable()
-                .ignoresSafeArea()
-            SecretCellView(item: SecretModel(description: "MetaWallet", strenghtType: .strong))
+//        ZStack {
+//            AppColors.blackBg.ignoresSafeArea()
+//            Image(AppImages.Common.mainBg)
+//                .resizable()
+//                .ignoresSafeArea()
+            SecretCellView(item: SecretModel(description: "MetaWallet", strenghtType: .maximum))
         }
-    }
+//    }
 }

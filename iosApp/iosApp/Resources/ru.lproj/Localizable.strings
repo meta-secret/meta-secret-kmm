@@ -29,8 +29,8 @@
 "strong" = "сильная";
 "maximum" = "максимум";
 "maximum" = "максимум";
-"%@ devices" = "%@ девайс(а)";
-
+"countDevices" = "%@ девайс(а)";
+"countSecrets" = "%@ секрет(а/ов)";
 
 "back" = "Назад";
 "finish" = "Финиш";

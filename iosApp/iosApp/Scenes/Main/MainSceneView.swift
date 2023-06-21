@@ -20,7 +20,6 @@ struct MainSceneView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                
                 AppColors.blackBg.ignoresSafeArea()
                 Image(AppImages.Common.mainBg)
                     .resizable()

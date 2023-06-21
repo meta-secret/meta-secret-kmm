@@ -10,7 +10,7 @@ import Foundation
 
 class CommonViewModel {
     @Service private var contentManager: ContentManagerProtocol
-    private(set) var items: [CommonItemModel] = [CommonItemModel]()
+    private(set) var items: [any CommonItemModel] = [any CommonItemModel]()
     
     func getContent(of type: ItemType) {
         items = contentManager.getContentItems(by: type)
