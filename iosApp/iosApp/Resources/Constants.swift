@@ -17,6 +17,8 @@ struct Constants {
         static let secureSafe = NSLocalizedString("secureSafe", comment: "")
         static let next = NSLocalizedString("next", comment: "")
         static let skip = NSLocalizedString("skip", comment: "")
+        static let needDevices = NSLocalizedString("needDevices", comment: "")
+        static let add = NSLocalizedString("add", comment: "")
     }
     
     //MARK: - ONBOARDING

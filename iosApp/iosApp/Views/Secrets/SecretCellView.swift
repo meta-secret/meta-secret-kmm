@@ -59,12 +59,12 @@ struct SecretCellView: View {
 
 struct SecretCellView_Previews: PreviewProvider {
     static var previews: some View {
-//        ZStack {
-//            AppColors.blackBg.ignoresSafeArea()
-//            Image(AppImages.Common.mainBg)
-//                .resizable()
-//                .ignoresSafeArea()
+        ZStack {
+            AppColors.blackBg.ignoresSafeArea()
+            Image(AppImages.Common.mainBg)
+                .resizable()
+                .ignoresSafeArea()
             SecretCellView(item: SecretModel(description: "MetaWallet", strenghtType: .maximum))
         }
-//    }
+    }
 }

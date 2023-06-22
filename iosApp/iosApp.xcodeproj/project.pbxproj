@@ -26,6 +26,8 @@
 		E54892162A38EEF50074364F /* TabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54892152A38EEF50074364F /* TabType.swift */; };
 		E554FFFB2A36624E00252B7F /* ActionBlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E554FFFA2A36624E00252B7F /* ActionBlueButton.swift */; };
 		E554FFFD2A3707DB00252B7F /* TipTextfieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E554FFFC2A3707DB00252B7F /* TipTextfieldView.swift */; };
+		E56384BE2A437D350009391B /* AlertBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56384BD2A437D350009391B /* AlertBubbleView.swift */; };
+		E56384C02A4380CE0009391B /* CloseButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56384BF2A4380CE0009391B /* CloseButtonView.swift */; };
 		E56B66802A3B914B00574E04 /* SecretCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56B667F2A3B914B00574E04 /* SecretCellView.swift */; };
 		E56D60352A34F23800E0A81B /* OnboardingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56D60342A34F23800E0A81B /* OnboardingPageView.swift */; };
 		E56D60382A3517A500E0A81B /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56D60372A3517A500E0A81B /* SignInView.swift */; };
@@ -89,6 +91,8 @@
 		E54892152A38EEF50074364F /* TabType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabType.swift; sourceTree = "<group>"; };
 		E554FFFA2A36624E00252B7F /* ActionBlueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionBlueButton.swift; sourceTree = "<group>"; };
 		E554FFFC2A3707DB00252B7F /* TipTextfieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipTextfieldView.swift; sourceTree = "<group>"; };
+		E56384BD2A437D350009391B /* AlertBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBubbleView.swift; sourceTree = "<group>"; };
+		E56384BF2A4380CE0009391B /* CloseButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButtonView.swift; sourceTree = "<group>"; };
 		E56B667F2A3B914B00574E04 /* SecretCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretCellView.swift; sourceTree = "<group>"; };
 		E56D60342A34F23800E0A81B /* OnboardingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageView.swift; sourceTree = "<group>"; };
 		E56D60372A3517A500E0A81B /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -211,6 +215,8 @@
 				E5045D0C2A31C6C6002ED25D /* PageControllView.swift */,
 				E554FFFA2A36624E00252B7F /* ActionBlueButton.swift */,
 				E554FFFC2A3707DB00252B7F /* TipTextfieldView.swift */,
+				E56384BD2A437D350009391B /* AlertBubbleView.swift */,
+				E56384BF2A4380CE0009391B /* CloseButtonView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -510,6 +516,7 @@
 				E54892042A38D08E0074364F /* TabItemData.swift in Sources */,
 				E54892122A38E7010074364F /* PlusButtonView.swift in Sources */,
 				E5919D7D2A40BFFC00BFF879 /* SecretModel.swift in Sources */,
+				E56384BE2A437D350009391B /* AlertBubbleView.swift in Sources */,
 				E56D60382A3517A500E0A81B /* SignInView.swift in Sources */,
 				E57968672A37714D00D007FA /* Bindind+Extension.swift in Sources */,
 				E5919D822A40CB6D00BFF879 /* ServiceType.swift in Sources */,
@@ -519,6 +526,7 @@
 				E5919D842A40CBB200BFF879 /* ServiceContainer.swift in Sources */,
 				E5C2F2BC29C65AB300C8F059 /* AppImages.swift in Sources */,
 				E5C2F2C529C672D100C8F059 /* OnboardingContainerView.swift in Sources */,
+				E56384C02A4380CE0009391B /* CloseButtonView.swift in Sources */,
 				E554FFFB2A36624E00252B7F /* ActionBlueButton.swift in Sources */,
 				E548920E2A38D8B10074364F /* TabItemView.swift in Sources */,
 				E570B4E629B9439600D1E0D8 /* SplashView.swift in Sources */,
