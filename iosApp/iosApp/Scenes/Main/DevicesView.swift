@@ -18,6 +18,11 @@ struct DevicesView: View {
                 .resizable()
                 .ignoresSafeArea()
             
+            VStack{
+                if viewModel.devicesCount < 3 {
+                    AlertBubbleView()
+                        .padding(.horizontal, 16.0)
+                }
                 List {
                     ForEach(viewModel.items, id: \.id) { item in
                         DevicesCellView(item: item as! DeviceModel)
@@ -27,7 +32,7 @@ struct DevicesView: View {
                     .listRowInsets(.init(top: 0, leading: 0, bottom: 10, trailing: 0))
                 }
                 .scrollContentBackground(.hidden)
-                
+            }
         }
     }
 }

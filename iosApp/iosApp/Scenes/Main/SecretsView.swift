@@ -25,16 +25,21 @@ struct SecretsView: View {
                         .frame(height: 32)
                 }
             } else {
-                List {
-                    ForEach(viewModel.items, id: \.id) { item in
-                        SecretCellView(item: item as! SecretModel)
+                VStack {
+                    if viewModel.devicesCount < 3 {
+                        AlertBubbleView()
+                            .padding(.horizontal, 16.0)
                     }
-                    .listRowSeparator(.hidden)
-                    .listRowBackground(Color.clear)
-                    .listRowInsets(.init(top: 0, leading: 0, bottom: 10, trailing: 0))
+                    List {
+                        ForEach(viewModel.items, id: \.id) { item in
+                            SecretCellView(item: item as! SecretModel)
+                        }
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(Color.clear)
+                        .listRowInsets(.init(top: 0, leading: 0, bottom: 10, trailing: 0))
+                    }
+                    .scrollContentBackground(.hidden)
                 }
-                .scrollContentBackground(.hidden)
-                
             }
         }
     }

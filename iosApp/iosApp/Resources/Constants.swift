@@ -18,7 +18,7 @@ struct Constants {
         static let next = NSLocalizedString("next", comment: "")
         static let skip = NSLocalizedString("skip", comment: "")
         static let needDevices = NSLocalizedString("needDevices", comment: "")
-        static let add = NSLocalizedString("add", comment: "")
+        static let addPLus = NSLocalizedString("+add", comment: "")
     }
     
     //MARK: - ONBOARDING

@@ -2,7 +2,7 @@
 "skip" = "Skip";
 "next" = "Next";
 "needDevices" = "You need %@ more %@ to reach a higher level of security";
-"add" = " \+ Add";
+"+add" = " + Add";
 
 //MARK: - ONBOARDING
 "gotSecrets" = "Got important secrets?";

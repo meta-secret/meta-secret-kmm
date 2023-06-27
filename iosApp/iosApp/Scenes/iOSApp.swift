@@ -20,5 +20,6 @@ private extension iOSApp {
 
     func setupServiceContainer() {
         ServiceContainer.register(type: ContentManagerProtocol.self, ContentManager())
+        ServiceContainer.register(type: DeviceManagerProtocol.self, DeviceManager())
     }
 }

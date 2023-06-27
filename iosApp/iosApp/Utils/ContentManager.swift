@@ -18,9 +18,7 @@ class ContentManager: ContentManagerProtocol {
         
         switch type {
         case .device:
-            return [DeviceModel(name: "iPhone Dmitry", deviceType: .iphone, deviceId: "sdfds3423-sdfdsf324234-sdrfdf333-sdfsf33", secretsCount: "10"),
-                    DeviceModel(name: "iPad", deviceType: .pad, deviceId: "sdfds3423-sdfdsf324234-sdrfdf333-sdfsf33", secretsCount: "10"),
-                    DeviceModel(name: "MacBook", deviceType: .noteBook, deviceId: "sdfds3423-sdfdsf324234-sdrfdf333-sdfsf33", secretsCount: "10")]
+            return [DeviceModel(name: "iPhone Dmitry", deviceType: .iphone, deviceId: "sdfds3423-sdfdsf324234-sdrfdf333-sdfsf33", secretsCount: "10")]
         case .secrets:
             return [SecretModel(description: "MetaMask wallet", strenghtType: .strong),
                     SecretModel(description: "Porn hub", strenghtType: .weak),

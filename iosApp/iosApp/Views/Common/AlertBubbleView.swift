@@ -29,15 +29,23 @@ struct AlertBubbleView: View {
                         .frame(width: 24.0, height: 24.0)
                     Spacer()
                 }
-                
-                Text(message1 + message2)
-                
+                Spacer()
+                    .frame(width: 12.0)
+                VStack {
+                    Text(message1 + message2)
+                    Spacer()
+                }
+                Spacer()
+                    .frame(width: 12.0)
                 VStack {
                     CloseButtonView(action: {})
                     Spacer()
                 }
+                .padding(.top, -6)
             }
+            .padding(.init(top: 16.0, leading: 16.0, bottom: 16.0, trailing: 6.0))
             .frame(height: 96)
+            .frame(maxWidth: .infinity)
         }
     }
 }
@@ -51,7 +59,7 @@ private extension AlertBubbleView {
     }
 
     var message2: AttributedString {
-        var result = AttributedString(Constants.Common.add)
+        var result = AttributedString(Constants.Common.addPLus)
         result.font = FontStyle.normalMain.font
         result.foregroundColor = AppColors.actionLinkBlue
         return result

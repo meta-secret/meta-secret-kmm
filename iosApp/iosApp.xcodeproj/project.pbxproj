@@ -53,6 +53,7 @@
 		E598820E2A306EF60030CD2A /* manrope-medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E59882072A306EF60030CD2A /* manrope-medium.otf */; };
 		E5A4BBEA29E309C200C3F718 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A4BBE929E309C200C3F718 /* ImagePickerView.swift */; };
 		E5A4BBEC29E30AB700C3F718 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A4BBEB29E30AB700C3F718 /* Coordinator.swift */; };
+		E5A75A7E2A4B4EF200CEFA58 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A75A7D2A4B4EF200CEFA58 /* DeviceManager.swift */; };
 		E5B1714829CA5E1600320C20 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5B1714A29CA5E1600320C20 /* Localizable.strings */; };
 		E5B349AB29C8E7E500EC9DE1 /* OnboardingContnetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B349AA29C8E7E400EC9DE1 /* OnboardingContnetViewModel.swift */; };
 		E5B349AD29C908B100EC9DE1 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B349AC29C908B100EC9DE1 /* View+Extension.swift */; };
@@ -118,6 +119,7 @@
 		E59882072A306EF60030CD2A /* manrope-medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "manrope-medium.otf"; sourceTree = "<group>"; };
 		E5A4BBE929E309C200C3F718 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		E5A4BBEB29E30AB700C3F718 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		E5A75A7D2A4B4EF200CEFA58 /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		E5B1714929CA5E1600320C20 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E5B1714B29CA5E1900320C20 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E5B349AA29C8E7E400EC9DE1 /* OnboardingContnetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContnetViewModel.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 			children = (
 				E5919D7F2A40C17000BFF879 /* ContentManager.swift */,
 				E5919D832A40CBB200BFF879 /* ServiceContainer.swift */,
+				E5A75A7D2A4B4EF200CEFA58 /* DeviceManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				E5EEEB062A326FFA00D40996 /* MainSceneView.swift in Sources */,
 				E5045D0D2A31C6C6002ED25D /* PageControllView.swift in Sources */,
 				E54892102A38DF1E0074364F /* TabBottomView.swift in Sources */,
+				E5A75A7E2A4B4EF200CEFA58 /* DeviceManager.swift in Sources */,
 				E54892062A38D5C40074364F /* SecretsView.swift in Sources */,
 				E5919D7B2A40BD9A00BFF879 /* DeviceModel.swift in Sources */,
 				E5C9DFAF2A3A518700C60BBA /* SecretsViewModel.swift in Sources */,
