@@ -40,6 +40,10 @@
 "soon" = "soon";
 "notEnoughtDevices" = "Not enought devices?";
 "metaSecretCloud" = "MetaSecret Cloud Device - use our cloud as one of your devices";
+"downloadApp" = "1. Download app MetaSecret on your new device";
+"repeatNickName" = "2. Enter your unique Nick name on new device";
+"approveConnection" = "3. Approve your new device connection";
+"useQR" = "or scan QR code";
 
 
 

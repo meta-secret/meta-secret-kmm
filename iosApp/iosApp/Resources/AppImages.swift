@@ -15,6 +15,7 @@ struct AppImages {
         static let warningSign = "warningSign"
         static let closeIco = "closeIco"
         static let chevroneRightIco = "chevroneRightIco"
+        static let fakeQR = "fakeQR"
     }
     
     enum Main {

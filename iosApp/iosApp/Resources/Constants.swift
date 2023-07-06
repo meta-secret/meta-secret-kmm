@@ -63,6 +63,10 @@ struct Constants {
         static let soon = NSLocalizedString("soon", comment: "")
         static let notEnoughtDevices = NSLocalizedString("notEnoughtDevices", comment: "")
         static let metaSecretCloud = NSLocalizedString("metaSecretCloud", comment: "")
+        static let downloadApp = NSLocalizedString("downloadApp", comment: "")
+        static let repeatNickName = NSLocalizedString("repeatNickName", comment: "")
+        static let approveConnection = NSLocalizedString("approveConnection", comment: "")
+        static let useQR = NSLocalizedString("useQR", comment: "")
     }
     
     //MARK: - LOGIN

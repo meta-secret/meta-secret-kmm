@@ -43,6 +43,11 @@
 "soon" = "скоро";
 "notEnoughtDevices" = "Не хватает устройств?";
 "metaSecretCloud" = "MetaSecret Cloud Device - используйте наше облако как одно из устройств";
+"downloadApp" = "1. Скачайте приложение MetaSecret на новом устройстве";
+"repeatNickName" = "2. Введите свой Никнейм на новом девайсе";
+"approveConnection" = "3. Подтвердите подключение нового девайса";
+"useQR" = "Или воспользуйтесь QR кодом";
+
 
 
 "back" = "Назад";
