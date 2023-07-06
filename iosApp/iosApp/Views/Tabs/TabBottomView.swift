@@ -9,15 +9,15 @@
 import SwiftUI
 
 struct TabBottomView: View {
-    
     private enum Config {
         static let widthDelta: CGFloat = 48.0
         static let height: CGFloat = 72.0
     }
     
-    let tabbarItems: [TabItemData]
-    
     @Binding var selectedIndex: Int
+    
+    let action: () -> Void
+    let tabbarItems: [TabItemData]
     
     var body: some View {
 
@@ -47,7 +47,7 @@ struct TabBottomView: View {
                 }
                 .padding(.top, -Config.height/2)
                 
-                PlusButtonView(action: {})
+                PlusButtonView(action: action)
                     .padding(.top, -64.0)
             }
             .animation(.linear)
@@ -63,6 +63,6 @@ struct TabBottomView_Previews: PreviewProvider {
             TabItemData(image: AppImages.Main.helpLogo, selectedImage: AppImages.Main.helpLogo, title: Constants.Main.secrets),
             TabItemData(image: AppImages.Main.profileLogo, selectedImage: AppImages.Main.profileLogo, title: Constants.Main.secrets)
         ]
-        TabBottomView(tabbarItems: tabs, selectedIndex: .constant(0))
+        TabBottomView(selectedIndex: .constant(0), action: {}, tabbarItems: tabs)
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct CustomTabView<Content: View>: View {
     
+    let action: () -> Void
     let tabs: [TabItemData]
     @Binding var selectedIndex: Int
     @ViewBuilder let content: (Int) -> Content
@@ -25,7 +26,7 @@ struct CustomTabView<Content: View>: View {
             
             VStack {
                 Spacer()
-                TabBottomView(tabbarItems: tabs, selectedIndex: $selectedIndex)
+                TabBottomView(selectedIndex: $selectedIndex, action: action, tabbarItems: tabs)
             }
         }
     }

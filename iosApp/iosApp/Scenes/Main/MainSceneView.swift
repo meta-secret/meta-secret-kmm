@@ -14,8 +14,8 @@ struct MainSceneView: View {
         static let sideOffset: CGFloat = 16.0
     }
     
-    @State var selectedIndex: Int = 0
-    @State var showActionSheet: Bool = false
+    @State private var selectedIndex: Int = 0
+    @State private var showActionSheet: Bool = false
     
     var body: some View {
         NavigationView {
@@ -25,16 +25,15 @@ struct MainSceneView: View {
                     .resizable()
                     .ignoresSafeArea()
                 
-                CustomTabView(tabs: TabType.allCases.map({ $0.tabItem }), selectedIndex: $selectedIndex) { index in
+                CustomTabView(action: {
+                    showActionSheet = true
+                }, tabs: TabType.allCases.map({ $0.tabItem }), selectedIndex: $selectedIndex) { index in
                     let type = TabType(rawValue: index) ?? .secrets
                     getTabView(type: type)
                 }
                 
             }
             .ignoresSafeArea()
-            .actionSheet(isPresented: $showActionSheet) {
-                ActionSheet(title: Text("some actions"))
-            }
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.large)
@@ -52,6 +51,17 @@ struct MainSceneView: View {
             }
         }
         .navigationBarHidden(false)
+        .sheet(isPresented: $showActionSheet, onDismiss: {
+            showActionSheet = false
+        }) {
+            if selectedIndex == 1 {
+                AddDeviceView()
+                    .presentationDetents([.height(510)])
+            } else {
+                AddSecretView()
+                    .presentationDetents([.height(344)])
+            }
+        }
     }
     
     @ViewBuilder

@@ -47,6 +47,8 @@ struct AppImages {
         static let noteBookIco = "noteBookIco"
         static let padIco = "padIco"
         static let phoneIco = "phoneIco"
+        static let cloudLogo = "cloudLogo"
+        static let cloudTitleLogo = "cloudTitleLogo"
     }
 }
     

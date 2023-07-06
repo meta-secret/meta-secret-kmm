@@ -52,6 +52,17 @@ struct Constants {
         static let maximum = NSLocalizedString("maximum", comment: "")
         static let devicesCount = NSLocalizedString("countDevices", comment: "")
         static let secretsCount = NSLocalizedString("countSecrets", comment: "")
+        static let addSecret = NSLocalizedString("addSecret", comment: "")
+        static let secretName = NSLocalizedString("secretName", comment: "")
+        static let secret = NSLocalizedString("secret", comment: "")
+    }
+    
+    struct Devices {
+        static let addDevice = NSLocalizedString("addDevice", comment: "")
+        static let threeDevicesNeeded = NSLocalizedString("threeDevicesNeeded", comment: "")
+        static let soon = NSLocalizedString("soon", comment: "")
+        static let notEnoughtDevices = NSLocalizedString("notEnoughtDevices", comment: "")
+        static let metaSecretCloud = NSLocalizedString("metaSecretCloud", comment: "")
     }
     
     //MARK: - LOGIN
@@ -102,7 +113,7 @@ struct Constants {
 //        static let notBackedUp = NSLocalizedString("notBackedUp", comment: "")
     }
     
-    struct Devices {
+//    struct Devices {
 //        static let member = NSLocalizedString("member", comment: "")
 //        static let declined = NSLocalizedString("declined", comment: "")
 //        static let pending = NSLocalizedString("pending", comment: "")
@@ -110,7 +121,7 @@ struct Constants {
 //        static func installInstruction(name: String) -> String {
 //            return String(format: NSLocalizedString("stepsToAdd", comment: ""), name)
 //        }
-    }
+//    }
     
     struct PairingDeveice {
 //        static let title = NSLocalizedString("deviceAdding", comment: "")

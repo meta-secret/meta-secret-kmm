@@ -20,7 +20,7 @@ struct SignInView: View {
     let viewModel = SignInViewModel()
     
     @State private var nickName: String
-    @State var signInError: String
+    @State var signInError: String?
     @State var isError = false
     @State var isNext = false
     
@@ -74,7 +74,7 @@ struct SignInView: View {
                     
                     VStack {
                         Spacer().frame(height: Config.spacerHeight)
-                        TipTextfieldView(placeHolder: viewModel.placeholder, error: isError ? $signInError : .constant(""))
+                        TipTextfieldView(placeHolder: viewModel.placeholder, error: isError ? $signInError : .constant(nil))
                         
                         Spacer().frame(height: Config.spacerHeight)
                         ActionBlueButton(title: viewModel.nextButtonText, action: {

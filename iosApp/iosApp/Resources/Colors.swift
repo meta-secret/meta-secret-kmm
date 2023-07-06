@@ -13,7 +13,9 @@ struct AppColors {
     static let actionLinkBlue = Color("ActionLinkBlue")
     
     static let blackBg = Color("BlackBg")
+    static let blackLabel = Color("BlackLabel")
     static let blackMenu = Color("BlackMenu")
+    static let blackPopUps = Color("BlackPopUps")
     
     static let white = Color("White")
     static let white5 = Color("White5")

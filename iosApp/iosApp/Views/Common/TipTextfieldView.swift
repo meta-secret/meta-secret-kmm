@@ -11,7 +11,7 @@ import SwiftUI
 struct TipTextfieldView: View {
     @State var nickName: String = ""
     @State var placeHolder: String
-    @Binding var error: String
+    @Binding var error: String?
     
     private enum Config {
         static let cornerRadius: CGFloat = 8.0
@@ -45,20 +45,21 @@ struct TipTextfieldView: View {
             .frame(height: Config.textfieldHeight)
             .overlay(
                 RoundedRectangle(cornerRadius: Config.cornerRadius)
-                    .stroke(AppColors.redError, lineWidth: error.isEmpty ? 0 : 2)
+                    .stroke(AppColors.redError, lineWidth: error == nil ? 0 : 2)
                     .animation(.linear)
             )
-            
-            Spacer().frame(height: 4.0)
-            HStack {
-                Text(error)
-                    .font(FontStyle.error.font)
-                    .frame(minHeight: 18.0)
-                    .multilineTextAlignment(.leading)
-                    .foregroundColor(AppColors.redError)
-                    .opacity(error.isEmpty ? 0 : 1)
-                    .animation(.linear)
-                Spacer()
+            if error != nil {
+                Spacer().frame(height: 4.0)
+                HStack {
+                    Text(error ?? "")
+                        .font(FontStyle.error.font)
+                        .frame(minHeight: 18.0)
+                        .multilineTextAlignment(.leading)
+                        .foregroundColor(AppColors.redError)
+                        .opacity(error == nil ? 0 : 1)
+                        .animation(.linear)
+                    Spacer()
+                }
             }
         }
     }
