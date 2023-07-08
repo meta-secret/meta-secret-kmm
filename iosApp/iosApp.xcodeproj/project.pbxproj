@@ -13,6 +13,8 @@
 		E4DA5883D9745C7F266B22AD /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F87BE92D2E44E3581B58E0B2 /* Pods_iosApp.framework */; };
 		E50209652A42234E00D5F1BE /* DevicesCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50209642A42234E00D5F1BE /* DevicesCellView.swift */; };
 		E5045D0D2A31C6C6002ED25D /* PageControllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5045D0C2A31C6C6002ED25D /* PageControllView.swift */; };
+		E50EE58A2A59F8D700003F1E /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50EE5892A59F8D700003F1E /* AuthManager.swift */; };
+		E50EE58C2A59FBF500003F1E /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50EE58B2A59FBF500003F1E /* SplashViewModel.swift */; };
 		E51DFCE42A570DE7006EB59E /* CloudBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51DFCE32A570DE7006EB59E /* CloudBannerView.swift */; };
 		E51DFCE62A57184F006EB59E /* PairDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51DFCE52A57184F006EB59E /* PairDeviceView.swift */; };
 		E51DFCE82A5718BF006EB59E /* PairDeviceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51DFCE72A5718BF006EB59E /* PairDeviceViewModel.swift */; };
@@ -87,6 +89,8 @@
 		CFCBB75DAAF43DD225EF5C2D /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
 		E50209642A42234E00D5F1BE /* DevicesCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesCellView.swift; sourceTree = "<group>"; };
 		E5045D0C2A31C6C6002ED25D /* PageControllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllView.swift; sourceTree = "<group>"; };
+		E50EE5892A59F8D700003F1E /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		E50EE58B2A59FBF500003F1E /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		E51DFCE32A570DE7006EB59E /* CloudBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudBannerView.swift; sourceTree = "<group>"; };
 		E51DFCE52A57184F006EB59E /* PairDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairDeviceView.swift; sourceTree = "<group>"; };
 		E51DFCE72A5718BF006EB59E /* PairDeviceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairDeviceViewModel.swift; sourceTree = "<group>"; };
@@ -297,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				E570B4E429B942E600D1E0D8 /* SplashView.swift */,
+				E50EE58B2A59FBF500003F1E /* SplashViewModel.swift */,
 			);
 			path = SplashScene;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 				E5919D7F2A40C17000BFF879 /* ContentManager.swift */,
 				E5919D832A40CBB200BFF879 /* ServiceContainer.swift */,
 				E5A75A7D2A4B4EF200CEFA58 /* DeviceManager.swift */,
+				E50EE5892A59F8D700003F1E /* AuthManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -580,6 +586,7 @@
 				E5A75A882A4B64ED00CEFA58 /* AddDeviceViewModel.swift in Sources */,
 				E5919D792A40BCFF00BFF879 /* ItemType.swift in Sources */,
 				E5EEEB062A326FFA00D40996 /* MainSceneView.swift in Sources */,
+				E50EE58A2A59F8D700003F1E /* AuthManager.swift in Sources */,
 				E5045D0D2A31C6C6002ED25D /* PageControllView.swift in Sources */,
 				E54892102A38DF1E0074364F /* TabBottomView.swift in Sources */,
 				E51DFCE42A570DE7006EB59E /* CloudBannerView.swift in Sources */,
@@ -594,6 +601,7 @@
 				E56D60352A34F23800E0A81B /* OnboardingPageView.swift in Sources */,
 				E570B4EC29B9470000D1E0D8 /* Color+Extension.swift in Sources */,
 				E5C9DFAD2A3A431000C60BBA /* EmptySecretsView.swift in Sources */,
+				E50EE58C2A59FBF500003F1E /* SplashViewModel.swift in Sources */,
 				E570B4E929B9464400D1E0D8 /* Colors.swift in Sources */,
 				E554FFFD2A3707DB00252B7F /* TipTextfieldView.swift in Sources */,
 				E548920A2A38D5E00074364F /* HelpView.swift in Sources */,

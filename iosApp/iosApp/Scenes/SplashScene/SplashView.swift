@@ -10,11 +10,19 @@ import SwiftUI
 //import shared
 
 struct SplashView: View {
-    @State var navigateToNextScreen: Bool = false
+    private enum Config {
+        static let imageBottomPadding: CGFloat = 63.0
+        static let titleTopPadding: CGFloat = 40.0
+        static let delay: CGFloat = 2.0
+    }
+    
+    @State var viewModel: SplashViewModel
+    @State var navigateToOnboarding: Bool = false
+    @State var navigateToMain: Bool = false
     @State var overviewShowen: Bool = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 AppColors.blackBg.ignoresSafeArea()
                 Image(AppImages.Common.mainBg)
@@ -22,36 +30,40 @@ struct SplashView: View {
                     .ignoresSafeArea()
                 ZStack {
                     Image(AppImages.Splash.splashGradient)
-                        .padding(.bottom, 63)
+                        .padding(.bottom, Config.imageBottomPadding)
                     VStack {
                         Image(AppImages.Splash.splashLogo)
                         Image(AppImages.Splash.metaTitle)
-                            .padding(.top, 40)
+                            .padding(.top, Config.titleTopPadding)
                     }
                 }
                 
             }
             .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + Config.delay) {
                     withAnimation {
-                        self.navigateToNextScreen = true
+                        if viewModel.checkAuth() {
+                            navigateToMain = true
+                        } else {
+                            navigateToOnboarding = true
+                        }
                     }
                 }
             }
-            .background(
-                NavigationLink(
-                    destination: OnboardingContainerView(viewModel: OnboardingContnetViewModel(pageType: .first))
-                    .navigationBarBackButtonHidden(true),
-                    isActive: $navigateToNextScreen,
-                    label: { EmptyView() }
-                )
-            )
+            .navigationDestination(isPresented: $navigateToMain) {
+                MainSceneView()
+                    .navigationBarBackButtonHidden(true)
+            }
+            .navigationDestination(isPresented: $navigateToOnboarding) {
+                OnboardingContainerView(viewModel: OnboardingContnetViewModel(pageType: .first))
+                    .navigationBarBackButtonHidden(true)
+            }
         }
     }
 }
 
 struct SplashView_Previews: PreviewProvider {
     static var previews: some View {
-        SplashView()
+        SplashView(viewModel: SplashViewModel())
     }
 }

@@ -19,6 +19,7 @@ enum FontStyle {
     case normalInput
     case normalSemi
     case normalMain
+    case normalMedium
     case normal
     case normalSmall
     case mini
@@ -50,6 +51,8 @@ enum FontStyle {
         case .normalSemi:
             return 16
         case .normalMain:
+            return 15
+        case .normalMedium:
             return 15
         case .normal:
             return 14
@@ -90,6 +93,8 @@ enum FontStyle {
             return "Manrope-Semibold"
         case .normalMain:
             return "Manrope-Regular"
+        case .normalMedium:
+            return "Manrope-Medium"
         case .normal:
             return "Manrope-Regular"
         case .normalSmall:

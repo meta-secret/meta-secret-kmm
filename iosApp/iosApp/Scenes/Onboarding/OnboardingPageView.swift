@@ -26,7 +26,7 @@ struct OnboardingPageView: View, Hashable {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(FontStyle.chapter.font)
                     .foregroundColor(AppColors.white)
-                Spacer().frame(height: 16)
+                Spacer().frame(height: Config.sideOffset)
             }
             
             if let subtitle = pageType.subtitle {
@@ -34,7 +34,7 @@ struct OnboardingPageView: View, Hashable {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(FontStyle.h2.font)
                     .foregroundColor(AppColors.white)
-                Spacer().frame(height: 16)
+                Spacer().frame(height: Config.sideOffset)
             }
             
             if let description = pageType.description {

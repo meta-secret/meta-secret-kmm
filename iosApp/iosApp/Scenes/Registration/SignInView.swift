@@ -15,6 +15,7 @@ struct SignInView: View {
         static let cornerRadius: CGFloat = 8.0
         static let buttonHeight: CGFloat = 48.0
         static let textfieldHeight: CGFloat = 52.0
+        static let imageTopOffset: CGFloat = 54.0
     }
     
     let viewModel = SignInViewModel()
@@ -29,32 +30,35 @@ struct SignInView: View {
         self.signInError = "Данный никнейм уже занят. Попробуйте другой"
     }
     
-    
     var body: some View {
         NavigationView {
             ZStack {
+                //Bg
                 AppColors.blackBg.ignoresSafeArea()
                 Image(AppImages.Common.mainBg)
                     .resizable()
                     .ignoresSafeArea()
                 
                 VStack {
+                    //Logo
                     Image(AppImages.SignIn.signInLogo)
-                        .padding(.top, -54)
-                        
+                        .padding(.top, -Config.imageTopOffset)
+                       
+                    //Title
                     Text(viewModel.titleText)
                         .font(FontStyle.h1.font)
                         .foregroundColor(AppColors.white)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    
+
                     Spacer().frame(height: Config.spacerHeight)
                     Text(viewModel.descriptionText)
                         .font(FontStyle.normalMain.font)
                         .foregroundColor(AppColors.white75)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    
+
                     Spacer().frame(height: Config.spacerHeight * 2)
-                    
+
+                    //ScanQR button
                     NavigationLink(destination: MainSceneView(), isActive: $isNext) {}
                     Button(action: {
                         isNext = true
@@ -71,11 +75,11 @@ struct SignInView: View {
                             )
                     }
                     .frame(height: Config.buttonHeight)
-                    
+
                     VStack {
                         Spacer().frame(height: Config.spacerHeight)
                         TipTextfieldView(placeHolder: viewModel.placeholder, error: isError ? $signInError : .constant(nil))
-                        
+
                         Spacer().frame(height: Config.spacerHeight)
                         ActionBlueButton(title: viewModel.nextButtonText, action: {
                             isError = !isError
