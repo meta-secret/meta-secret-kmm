@@ -53,7 +53,7 @@ struct OnboardingContainerView: View {
                                 .multilineTextAlignment(.trailing)
                                 .font(FontStyle.normalMedium.font)
                                 .navigationDestination(isPresented: $skipNext) {
-                                    SignInView()
+                                    SignInView(viewModel: SignInViewModel())
                                         .navigationBarBackButtonHidden(true)
                                 }
                             }

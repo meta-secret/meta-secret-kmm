@@ -18,20 +18,21 @@ struct SignInView: View {
         static let imageTopOffset: CGFloat = 54.0
     }
     
-    let viewModel = SignInViewModel()
+    let viewModel: SignInViewModel
     
     @State private var nickName: String
     @State var signInError: String?
     @State var isError = false
     @State var isNext = false
     
-    init() {
+    init(viewModel: SignInViewModel) {
+        self.viewModel = viewModel
         self.nickName = ""
         self.signInError = "Данный никнейм уже занят. Попробуйте другой"
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 //Bg
                 AppColors.blackBg.ignoresSafeArea()
@@ -59,7 +60,6 @@ struct SignInView: View {
                     Spacer().frame(height: Config.spacerHeight * 2)
 
                     //ScanQR button
-                    NavigationLink(destination: MainSceneView(), isActive: $isNext) {}
                     Button(action: {
                         isNext = true
                     }) {
@@ -75,11 +75,17 @@ struct SignInView: View {
                             )
                     }
                     .frame(height: Config.buttonHeight)
+                    .navigationDestination(isPresented: $isNext) {
+                        MainSceneView()
+                            .navigationBarBackButtonHidden(true)
+                    }
 
                     VStack {
+                        // Name text field
                         Spacer().frame(height: Config.spacerHeight)
                         TipTextfieldView(placeHolder: viewModel.placeholder, error: isError ? $signInError : .constant(nil))
 
+                        // Next button
                         Spacer().frame(height: Config.spacerHeight)
                         ActionBlueButton(title: viewModel.nextButtonText, action: {
                             isError = !isError
@@ -97,6 +103,6 @@ struct SignInView: View {
 
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
-        SignInView()
+        SignInView(viewModel: SignInViewModel())
     }
 }

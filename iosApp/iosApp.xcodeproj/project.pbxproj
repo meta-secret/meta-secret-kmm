@@ -284,15 +284,15 @@
 		E570B4E229B9429B00D1E0D8 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				2152FB032600AC8F00CF470E /* iOSApp.swift */,
+				E570B4E329B942BD00D1E0D8 /* SplashScene */,
+				E5C2F2C329C66EDA00C8F059 /* Onboarding */,
+				E56D60362A35175800E0A81B /* Registration */,
 				E5A75A842A4B64CD00CEFA58 /* Devices */,
 				E5A75A7F2A4B644700CEFA58 /* Secrets */,
 				E5919D732A40BA8C00BFF879 /* Common */,
-				E56D60362A35175800E0A81B /* Registration */,
 				E5EEEB042A326FD600D40996 /* Main */,
 				E5A4BBE829E309A500C3F718 /* ImagePicker */,
-				E5C2F2C329C66EDA00C8F059 /* Onboarding */,
-				E570B4E329B942BD00D1E0D8 /* SplashScene */,
-				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";

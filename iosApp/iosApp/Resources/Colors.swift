@@ -11,6 +11,7 @@ import SwiftUI
 struct AppColors {
     static let actionBlue = Color("ActionBlue")
     static let actionLinkBlue = Color("ActionLinkBlue")
+    static let actionPremium = Color("ActionPremium")
     
     static let blackBg = Color("BlackBg")
     static let blackLabel = Color("BlackLabel")

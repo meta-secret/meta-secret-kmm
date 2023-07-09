@@ -12,10 +12,15 @@ struct TipTextfieldView: View {
     @State var nickName: String = ""
     @State var placeHolder: String
     @Binding var error: String?
+    @State var active: Bool = false
     
     private enum Config {
         static let cornerRadius: CGFloat = 8.0
         static let textfieldHeight: CGFloat = 52.0
+        static let padding: CGFloat = 20.0
+        static let lineWidth: CGFloat = 2.0
+        static let errorOffset: CGFloat = 4.0
+        static let height: CGFloat = 18.0
     }
     
     var body: some View {
@@ -30,34 +35,45 @@ struct TipTextfieldView: View {
                     .font(nickName == "" ? FontStyle.normal.font : FontStyle.normalSmall.font)
                     .foregroundColor(AppColors.white40)
                     .padding(.horizontal)
-                    .padding(.top, nickName == "" ? 0 : -20)
-                    .animation(.linear)
-                TextField("", text: $nickName)
+                    .padding(.top, nickName == "" ? 0 : -Config.padding)
+                    .animation(.linear, value: UUID())
+                TextField("", text: $nickName, onEditingChanged: { editingChanged in
+                    if editingChanged {
+                        active = true
+                    } else {
+                        active = false
+                    }
+                })
                     .textFieldStyle(.plain)
                     .padding(.horizontal)
                     .foregroundColor(AppColors.white)
                     .font(FontStyle.normalInput.font)
                     .textFieldStyle(.roundedBorder)
-                    .padding(.top, nickName == "" ? 0 : 20)
-                    .animation(.linear)
+                    .padding(.top, nickName == "" ? 0 : Config.padding)
+                    .animation(.linear, value: UUID())
                 
             }
             .frame(height: Config.textfieldHeight)
             .overlay(
                 RoundedRectangle(cornerRadius: Config.cornerRadius)
-                    .stroke(AppColors.redError, lineWidth: error == nil ? 0 : 2)
-                    .animation(.linear)
+                    .stroke(AppColors.redError, lineWidth: error == nil ? 0 : Config.lineWidth)
+                    .animation(.linear, value: UUID())
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: Config.cornerRadius)
+                    .stroke(AppColors.actionPremium, lineWidth: active == false ? 0 : Config.lineWidth)
+                    .animation(.linear, value: UUID())
             )
             if error != nil {
-                Spacer().frame(height: 4.0)
+                Spacer().frame(height: Config.errorOffset)
                 HStack {
                     Text(error ?? "")
                         .font(FontStyle.error.font)
-                        .frame(minHeight: 18.0)
+                        .frame(minHeight: Config.height)
                         .multilineTextAlignment(.leading)
                         .foregroundColor(AppColors.redError)
                         .opacity(error == nil ? 0 : 1)
-                        .animation(.linear)
+                        .animation(.linear, value: UUID())
                     Spacer()
                 }
             }
@@ -69,7 +85,7 @@ struct TipTextfieldView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color(.black).ignoresSafeArea()
-            TipTextfieldView( placeHolder: "", error: .constant(""))
+            TipTextfieldView( placeHolder: "", error: .constant(""), active: false)
         }
         
     }
