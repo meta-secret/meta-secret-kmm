@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct TipTextfieldView: View {
-    @State var nickName: String = ""
+    @Binding var textValue: String?
     @State var placeHolder: String
     @Binding var error: String?
     @State var active: Bool = false
@@ -32,36 +32,40 @@ struct TipTextfieldView: View {
                     .frame(height: Config.textfieldHeight)
                 
                 Text(placeHolder)
-                    .font(nickName == "" ? FontStyle.normal.font : FontStyle.normalSmall.font)
+                    .font((textValue == "" || textValue == nil ) ? FontStyle.normal.font : FontStyle.normalSmall.font)
                     .foregroundColor(AppColors.white40)
                     .padding(.horizontal)
-                    .padding(.top, nickName == "" ? 0 : -Config.padding)
+                    .padding(.top, (textValue == "" || textValue == nil ) ? 0 : -Config.padding)
                     .animation(.linear, value: UUID())
-                TextField("", text: $nickName, onEditingChanged: { editingChanged in
+                TextField("", text: $textValue.toUnwrapped(defaultValue: ""), onEditingChanged: { editingChanged in
+                    
                     if editingChanged {
                         active = true
                     } else {
                         active = false
                     }
                 })
-                    .textFieldStyle(.plain)
-                    .padding(.horizontal)
-                    .foregroundColor(AppColors.white)
-                    .font(FontStyle.normalInput.font)
-                    .textFieldStyle(.roundedBorder)
-                    .padding(.top, nickName == "" ? 0 : Config.padding)
-                    .animation(.linear, value: UUID())
+                .onChange(of: textValue) { newValue in
+                    error  = nil
+                }
+                .textFieldStyle(.plain)
+                .padding(.horizontal)
+                .foregroundColor(AppColors.white)
+                .font(FontStyle.normalInput.font)
+                .textFieldStyle(.roundedBorder)
+                .padding(.top, (textValue == "" || textValue == nil ) ? 0 : Config.padding)
+                .animation(.linear, value: UUID())
                 
             }
             .frame(height: Config.textfieldHeight)
             .overlay(
                 RoundedRectangle(cornerRadius: Config.cornerRadius)
-                    .stroke(AppColors.redError, lineWidth: error == nil ? 0 : Config.lineWidth)
+                    .stroke(AppColors.actionPremium, lineWidth: (active == false || error != nil) ? 0 : Config.lineWidth)
                     .animation(.linear, value: UUID())
             )
             .overlay(
                 RoundedRectangle(cornerRadius: Config.cornerRadius)
-                    .stroke(AppColors.actionPremium, lineWidth: active == false ? 0 : Config.lineWidth)
+                    .stroke(AppColors.redError, lineWidth: error == nil ? 0 : Config.lineWidth)
                     .animation(.linear, value: UUID())
             )
             if error != nil {
@@ -85,7 +89,7 @@ struct TipTextfieldView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color(.black).ignoresSafeArea()
-            TipTextfieldView( placeHolder: "", error: .constant(""), active: false)
+            TipTextfieldView( textValue: .constant(nil), placeHolder: "", error: .constant(nil), active: false)
         }
         
     }

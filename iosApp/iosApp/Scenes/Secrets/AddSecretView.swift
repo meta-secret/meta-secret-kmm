@@ -7,48 +7,89 @@
 //
 
 import SwiftUI
+import Combine
 
 struct AddSecretView: View {
     private enum Config {
         static let cornerRadius: CGFloat = 16.0
-        static let height: CGFloat = 294.0
+        static let height: CGFloat = 300.0
+        static let sideOffset: CGFloat = 16.0
+        static let closeSideOffset: CGFloat = 10.0
+        static let vSpacerHeight: CGFloat = 20.0
+        static let bottomSpacerHeight: CGFloat = 30.0
     }
+    
+    @Environment(\.dismiss) var dismiss
+    
+    @State var secretName: String?
+    @State var secret: String?
     
     var body: some View {
         VStack {
             ZStack {
+                //BG
                 AppColors.blackPopUps.ignoresSafeArea()
+                
+                //Main container
                 VStack {
-                    HStack {
+                    //Close button
+                    VStack {
                         Spacer()
-                        CloseButtonView(action: {})
+                            .frame(height: Config.closeSideOffset)
+                        HStack {
+                            Spacer()
+                            CloseButtonView(action: {dismiss()})
+                            Spacer()
+                                .frame(width: Config.closeSideOffset)
+                        }
                     }
-                    .padding(.horizontal, 10.0)
-                    HStack {
-                        Text(Constants.Secrets.addSecret)
-                            .font(FontStyle.h1.font)
-                            .foregroundColor(AppColors.white)
-                        Spacer()
-                    }
-                    .padding(.horizontal, 16.0)
-                    HStack {
-                        TipTextfieldView(placeHolder: Constants.Secrets.secretName, error: .constant(nil))
-                    }
-                    .padding(.top, 20)
-                    .padding(.horizontal, 16.0)
-                    HStack {
-                        TipTextfieldView(placeHolder: Constants.Secrets.secret, error: .constant(nil))
-                    }
-                    .padding(.top, 20)
-                    .padding(.horizontal, 16.0)
                     
-                    HStack {
-                        ActionBlueButton(title: Constants.Secrets.addSecret, action: {})
+                    //Title
+                    VStack {
+                        HStack {
+                            Text(Constants.Secrets.addSecret)
+                                .font(FontStyle.h1.font)
+                                .foregroundColor(AppColors.white)
+                            Spacer()
+                        }
+                        .padding(.horizontal, Config.sideOffset)
+                        Spacer()
+                            .frame(height: Config.vSpacerHeight)
                     }
-                    .padding(.top, 20)
-                    .padding(.bottom, 30)
-                    .padding(.horizontal, 16.0)
+                    
+                    // Secret name Text field
+                    VStack {
+                        HStack {
+                            TipTextfieldView(textValue: $secretName, placeHolder: Constants.Secrets.secretName, error: .constant(nil))
+                        }
+                        .padding(.horizontal, Config.sideOffset)
+                        Spacer()
+                            .frame(height: Config.vSpacerHeight)
+                    }
+                    
+                    // Secret Text field
+                    VStack {
+                        HStack {
+                            TipTextfieldView(textValue: $secret, placeHolder: Constants.Secrets.secret, error: .constant(nil))
+                        }
+                        .padding(.horizontal, Config.sideOffset)
+                        Spacer()
+                            .frame(height: Config.vSpacerHeight)
+                    }
+                    
+                    //Button
+                    VStack {
+                        HStack {
+                            ActionBlueButton(title: Constants.Secrets.addSecret, action: {
+                                
+                            })
+                        }
+                        .padding(.horizontal, Config.sideOffset)
+                        Spacer()
+                            .frame(height: Config.bottomSpacerHeight)
+                    }
                 }
+                .keyboardAdaptive()
             }
         }
         .ignoresSafeArea()

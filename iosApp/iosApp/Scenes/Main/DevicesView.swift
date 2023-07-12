@@ -9,6 +9,12 @@
 import SwiftUI
 
 struct DevicesView: View {
+    private enum Config {
+        static let bubbleSideOffset: CGFloat = 20.0
+        static let vSpacerHeight: CGFloat = 30.0
+        static let bottomSpacer: CGFloat = 14.0
+    }
+    
     @State var viewModel: DevicesViewModel = DevicesViewModel()
     
     var body: some View {
@@ -19,9 +25,13 @@ struct DevicesView: View {
                 .ignoresSafeArea()
             
             VStack{
-                if viewModel.devicesCount < 3 {
-                    AlertBubbleView()
-                        .padding(.horizontal, 16.0)
+                if viewModel.devicesCount < Constants.Common.neededDeviceCount {
+                    VStack {
+                        Spacer()
+                            .frame(height: Config.vSpacerHeight)
+                        AlertBubbleView()
+                            .padding(.horizontal, Config.bubbleSideOffset)
+                    }
                 }
                 List {
                     ForEach(viewModel.items, id: \.id) { item in
@@ -29,8 +39,9 @@ struct DevicesView: View {
                     }
                     .listRowSeparator(.hidden)
                     .listRowBackground(Color.clear)
-                    .listRowInsets(.init(top: 0, leading: 0, bottom: 10, trailing: 0))
+                    .listRowInsets(.init(top: 0, leading: 0, bottom: Config.bottomSpacer, trailing: 0))
                 }
+                .padding(.top, -Config.vSpacerHeight)
                 .scrollContentBackground(.hidden)
             }
         }

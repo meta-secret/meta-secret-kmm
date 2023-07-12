@@ -55,7 +55,7 @@ struct PairDeviceView: View {
                             }
                         }
                         .tabViewStyle(.page(indexDisplayMode: .never))
-                        .animation(.linear)
+                        .animation(.linear, value: UUID())
                         .transition(.slide)
                     }
                     .frame(height: 259)

@@ -12,6 +12,8 @@ struct MainSceneView: View {
     
     private enum Config {
         static let sideOffset: CGFloat = 16.0
+        static let addSecretHeight: CGFloat = 300.0
+        static let addDeviceHeight: CGFloat = 510.0
     }
     
     @State private var selectedIndex: Int = 0
@@ -25,6 +27,7 @@ struct MainSceneView: View {
                     .resizable()
                     .ignoresSafeArea()
                 
+                //TabBar
                 CustomTabView(action: {
                     showActionSheet = true
                 }, tabs: TabType.allCases.map({ $0.tabItem }), selectedIndex: $selectedIndex) { index in
@@ -36,18 +39,19 @@ struct MainSceneView: View {
             .ignoresSafeArea()
         }
         .navigationBarBackButtonHidden(true)
-        .navigationBarTitleDisplayMode(.large)
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
-                HStack {
+                VStack {
                     Spacer()
-                        .frame(width: Config.sideOffset)
-                    Text(getNavTitle())
-                        .font(FontStyle.header.font)
-                        .foregroundColor(AppColors.white)
-                    Spacer()
+                        .frame(height: Config.sideOffset * 2)
+                    HStack {
+                        Text(getNavTitle())
+                            .font(FontStyle.header.font)
+                            .foregroundColor(AppColors.white)
+                        Spacer()
+                    }
                 }
-                .padding(.top)
             }
         }
         .navigationBarHidden(false)
@@ -56,10 +60,10 @@ struct MainSceneView: View {
         }) {
             if selectedIndex == 1 {
                 AddDeviceView()
-                    .presentationDetents([.height(510)])
+                    .presentationDetents([.height(Config.addDeviceHeight)])
             } else {
                 AddSecretView()
-                    .presentationDetents([.height(344)])
+                    .presentationDetents([.height(Config.addSecretHeight)])
             }
         }
     }

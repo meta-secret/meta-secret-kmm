@@ -9,26 +9,42 @@
 import SwiftUI
 
 struct SecretsView: View {
+    private enum Config {
+        static let sideOffset: CGFloat = 16.0
+        static let bubbleSideOffset: CGFloat = 20.0
+        static let vSpacerHeight: CGFloat = 30.0
+        static let addSecretHeight: CGFloat = 344.0
+        static let addDeviceHeight: CGFloat = 510.0
+        static let bottomSpacer: CGFloat = 14.0
+    }
+    
     @State var viewModel: SecretsViewModel = SecretsViewModel()
     
     var body: some View {
         ZStack {
+            //Bg
             AppColors.blackBg.ignoresSafeArea()
             Image(AppImages.Common.mainBg)
                 .resizable()
                 .ignoresSafeArea()
             if viewModel.items.isEmpty {
+                //Empty view
                 VStack {
                     Spacer()
                     EmptySecretsView()
                     Spacer()
-                        .frame(height: 32)
+                        .frame(height: Config.vSpacerHeight)
                 }
             } else {
                 VStack {
-                    if viewModel.devicesCount < 3 {
-                        AlertBubbleView()
-                            .padding(.horizontal, 16.0)
+                    if viewModel.devicesCount < Constants.Common.neededDeviceCount {
+                        //Alert Bubble
+                        VStack {
+                            Spacer()
+                                .frame(height: Config.vSpacerHeight)
+                            AlertBubbleView()
+                                .padding(.horizontal, Config.bubbleSideOffset)
+                        }
                     }
                     List {
                         ForEach(viewModel.items, id: \.id) { item in
@@ -36,8 +52,9 @@ struct SecretsView: View {
                         }
                         .listRowSeparator(.hidden)
                         .listRowBackground(Color.clear)
-                        .listRowInsets(.init(top: 0, leading: 0, bottom: 10, trailing: 0))
+                        .listRowInsets(.init(top: 0, leading: 0, bottom: Config.bottomSpacer, trailing: 0))
                     }
+                    .padding(.top, -Config.vSpacerHeight)
                     .scrollContentBackground(.hidden)
                 }
             }

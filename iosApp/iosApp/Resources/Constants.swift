@@ -19,6 +19,7 @@ struct Constants {
         static let skip = NSLocalizedString("skip", comment: "")
         static let needDevices = NSLocalizedString("needDevices", comment: "")
         static let addPLus = NSLocalizedString("+add", comment: "")
+        static let neededDeviceCount: Int = 3
     }
     
     //MARK: - ONBOARDING

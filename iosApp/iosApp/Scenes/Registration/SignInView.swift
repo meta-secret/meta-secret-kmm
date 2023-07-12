@@ -20,15 +20,13 @@ struct SignInView: View {
     
     let viewModel: SignInViewModel
     
-    @State private var nickName: String
-    @State var signInError: String?
+    @State var signInError: String? = "Данный никнейм уже занят. Попробуйте другой"
+    @State var nickName: String?
     @State var isError = false
     @State var isNext = false
     
-    init(viewModel: SignInViewModel) {
+    init(viewModel: SignInViewModel ) {
         self.viewModel = viewModel
-        self.nickName = ""
-        self.signInError = "Данный никнейм уже занят. Попробуйте другой"
     }
     
     var body: some View {
@@ -61,7 +59,7 @@ struct SignInView: View {
 
                     //ScanQR button
                     Button(action: {
-                        isNext = true
+//                        isNext = true
                     }) {
                         Text(viewModel.scanQrText)
                             .frame(maxWidth: .infinity, alignment: .center)
@@ -83,17 +81,22 @@ struct SignInView: View {
                     VStack {
                         // Name text field
                         Spacer().frame(height: Config.spacerHeight)
-                        TipTextfieldView(placeHolder: viewModel.placeholder, error: isError ? $signInError : .constant(nil))
+                        TipTextfieldView(textValue: $nickName, placeHolder: viewModel.placeholder, error: isError ? $signInError : .constant(nil))
 
                         // Next button
                         Spacer().frame(height: Config.spacerHeight)
                         ActionBlueButton(title: viewModel.nextButtonText, action: {
-                            isError = !isError
+                            if viewModel.checkAndSaveName(name: nickName ?? "") {
+                                isNext = true
+                            } else {
+                                isError = true
+                            }
                         })
                         Spacer()
                     }
                 }
                 .padding(.horizontal, Config.sideOffset)
+                .keyboardAdaptive()
             }
         }
         .navigationBarTitle("")

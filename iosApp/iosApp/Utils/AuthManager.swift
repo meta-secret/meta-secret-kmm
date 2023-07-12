@@ -21,7 +21,7 @@ class AuthManager: AuthManagerProtocol {
     }
     
     func checkValetAvailability(name: String) -> Bool {
-        return name != "Dima" 
+        return name != "Dima" && !name.isEmpty
     }
     
     func register(with name: String) {

@@ -64,6 +64,9 @@
 		E5A75A832A4B64B100CEFA58 /* AddSecretViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A75A822A4B64B100CEFA58 /* AddSecretViewModel.swift */; };
 		E5A75A862A4B64E400CEFA58 /* AddDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A75A852A4B64E400CEFA58 /* AddDeviceView.swift */; };
 		E5A75A882A4B64ED00CEFA58 /* AddDeviceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A75A872A4B64ED00CEFA58 /* AddDeviceViewModel.swift */; };
+		E5ABB96F2A5E9198007646E5 /* Publisher+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ABB96E2A5E9198007646E5 /* Publisher+Extension.swift */; };
+		E5ABB9712A5E938D007646E5 /* KeyboardAdaptive.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ABB9702A5E938D007646E5 /* KeyboardAdaptive.swift */; };
+		E5ABB9732A5E94F2007646E5 /* UIResponder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ABB9722A5E94F2007646E5 /* UIResponder+Extension.swift */; };
 		E5B1714829CA5E1600320C20 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5B1714A29CA5E1600320C20 /* Localizable.strings */; };
 		E5B349AB29C8E7E500EC9DE1 /* OnboardingContnetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B349AA29C8E7E400EC9DE1 /* OnboardingContnetViewModel.swift */; };
 		E5B349AD29C908B100EC9DE1 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B349AC29C908B100EC9DE1 /* View+Extension.swift */; };
@@ -140,6 +143,9 @@
 		E5A75A822A4B64B100CEFA58 /* AddSecretViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSecretViewModel.swift; sourceTree = "<group>"; };
 		E5A75A852A4B64E400CEFA58 /* AddDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeviceView.swift; sourceTree = "<group>"; };
 		E5A75A872A4B64ED00CEFA58 /* AddDeviceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeviceViewModel.swift; sourceTree = "<group>"; };
+		E5ABB96E2A5E9198007646E5 /* Publisher+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Extension.swift"; sourceTree = "<group>"; };
+		E5ABB9702A5E938D007646E5 /* KeyboardAdaptive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAdaptive.swift; sourceTree = "<group>"; };
+		E5ABB9722A5E94F2007646E5 /* UIResponder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Extension.swift"; sourceTree = "<group>"; };
 		E5B1714929CA5E1600320C20 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E5B1714B29CA5E1900320C20 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E5B349AA29C8E7E400EC9DE1 /* OnboardingContnetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContnetViewModel.swift; sourceTree = "<group>"; };
@@ -312,6 +318,8 @@
 				E570B4EB29B9470000D1E0D8 /* Color+Extension.swift */,
 				E5B349AC29C908B100EC9DE1 /* View+Extension.swift */,
 				E57968662A37714D00D007FA /* Bindind+Extension.swift */,
+				E5ABB96E2A5E9198007646E5 /* Publisher+Extension.swift */,
+				E5ABB9722A5E94F2007646E5 /* UIResponder+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -404,6 +412,7 @@
 			isa = PBXGroup;
 			children = (
 				E5C223C829DDDB1600EDDAFC /* KeyboardHandler.swift */,
+				E5ABB9702A5E938D007646E5 /* KeyboardAdaptive.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -564,6 +573,7 @@
 			files = (
 				E54892042A38D08E0074364F /* TabItemData.swift in Sources */,
 				E51DFCE62A57184F006EB59E /* PairDeviceView.swift in Sources */,
+				E5ABB9732A5E94F2007646E5 /* UIResponder+Extension.swift in Sources */,
 				E54892122A38E7010074364F /* PlusButtonView.swift in Sources */,
 				E5A75A812A4B645C00CEFA58 /* AddSecretView.swift in Sources */,
 				E5919D7D2A40BFFC00BFF879 /* SecretModel.swift in Sources */,
@@ -594,8 +604,10 @@
 				E54892062A38D5C40074364F /* SecretsView.swift in Sources */,
 				E51DFCE82A5718BF006EB59E /* PairDeviceViewModel.swift in Sources */,
 				E5919D7B2A40BD9A00BFF879 /* DeviceModel.swift in Sources */,
+				E5ABB96F2A5E9198007646E5 /* Publisher+Extension.swift in Sources */,
 				E5C9DFAF2A3A518700C60BBA /* SecretsViewModel.swift in Sources */,
 				E5A4BBEC29E30AB700C3F718 /* Coordinator.swift in Sources */,
+				E5ABB9712A5E938D007646E5 /* KeyboardAdaptive.swift in Sources */,
 				E5919D802A40C17000BFF879 /* ContentManager.swift in Sources */,
 				E548920C2A38D5F30074364F /* ProfileView.swift in Sources */,
 				E56D60352A34F23800E0A81B /* OnboardingPageView.swift in Sources */,

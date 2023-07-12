@@ -10,6 +10,8 @@ import Foundation
 import SwiftUI
 
 class SignInViewModel {
+    @Service private var authManager: AuthManagerProtocol
+    
     var titleText: String {
         return Constants.LetsStart.letsStart
     }
@@ -28,5 +30,14 @@ class SignInViewModel {
     
     var nextButtonText: String {
         return Constants.LetsStart.moveNext
+    }
+    
+    func checkAndSaveName(name: String) -> Bool {
+        if authManager.checkValetAvailability(name: name) {
+            authManager.register(with: name)
+            return true
+        } else {
+            return false
+        }
     }
 }

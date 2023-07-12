@@ -1,7 +1,7 @@
 //MARK: - COMMON
 "skip" = "Skip";
 "next" = "Next";
-"needDevices" = "You need %@ more %@ to reach a higher level of security";
+"needDevices" = "You need 2 more devices to reach a higher level of security";
 "+add" = " + Add";
 
 //MARK: - ONBOARDING
@@ -28,11 +28,11 @@
 "weak" = "weak";
 "strong" = "strong";
 "maximum" = "maximum";
-"countDevices" = "%@ device(s)";
-"countSecrets" = "%@ secret(s)";
+"countDevices" = "1 device";
+"countSecrets" = "6 secrets";
 "addSecret" = "Add secret";
 "secretName" = "Secret name";
-"secret" = "Секрет";
+"secret" = "Secret";
 
 //MARK: - DEVICES
 "addDevice" = "Add device";

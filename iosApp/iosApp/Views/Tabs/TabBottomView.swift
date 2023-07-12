@@ -50,7 +50,7 @@ struct TabBottomView: View {
                 PlusButtonView(action: action)
                     .padding(.top, -64.0)
             }
-            .animation(.linear)
+            .animation(.linear, value: UUID())
     }
 }
 
