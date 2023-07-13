@@ -7,8 +7,16 @@
 //
 
 import Foundation
+import CoreImage.CIFilterBuiltins
+import UIKit
+import SwiftUI
 
 class PairDeviceViewModel: ObservableObject {
+    @Service private var qrCodeManager: QRCodeManagerProtocol
+    
+    private let context = CIContext()
+    private let filter = CIFilter.qrCodeGenerator()
+    
     let content: [PairPageView] = [
         PairPageView(pageType: .first),
         PairPageView(pageType: .second),
@@ -23,6 +31,20 @@ class PairDeviceViewModel: ObservableObject {
     
     init(pageType: PageType) {
         self.pageType = pageType
+    }
+    
+    func generateQRCode() -> UIImage {
+        let urlString = qrCodeManager.getQRcodeContent()
+        
+        filter.message = Data(urlString.utf8)
+
+        if let outputImage = filter.outputImage {
+            if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
+                return UIImage(cgImage: cgimg)
+            }
+        }
+
+        return UIImage(systemName: "xmark.circle") ?? UIImage()
     }
 }
 

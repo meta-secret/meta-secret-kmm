@@ -64,7 +64,7 @@ struct SecretCellView_Previews: PreviewProvider {
             Image(AppImages.Common.mainBg)
                 .resizable()
                 .ignoresSafeArea()
-            SecretCellView(item: SecretModel(description: "MetaWallet", strenghtType: .maximum))
+            SecretCellView(item: SecretModel(description: "MetaWallet", secret: "Secret!!!", strenghtType: .maximum))
         }
     }
 }

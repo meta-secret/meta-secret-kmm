@@ -3,6 +3,7 @@
 "next" = "Next";
 "needDevices" = "You need 2 more devices to reach a higher level of security";
 "+add" = " + Add";
+"enterValue" = "Enter value";
 
 //MARK: - ONBOARDING
 "gotSecrets" = "Got important secrets?";
@@ -33,6 +34,11 @@
 "addSecret" = "Add secret";
 "secretName" = "Secret name";
 "secret" = "Secret";
+"secretNameNeeded" = "Secret name needed";
+"secretNeeded" = "Secret needed";
+"showSecret" = "Show secret";
+"show" = "Show";
+"copySecret" = "Copy secret";
 
 //MARK: - DEVICES
 "addDevice" = "Add device";
@@ -143,7 +149,7 @@
 "alreadySavedMessage" = "You already has a secret with the same description.";
 "edit" = "Edit";
 "restore" = "RESTORE";
-"showSecret" = "SHOW SECRET";
+//"showSecret" = "SHOW SECRET";
 "editSecret" = "Edit Secret";
 "recoverEdit" = "Restore Secret";
 "success" = "Success";

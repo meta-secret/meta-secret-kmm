@@ -10,17 +10,19 @@ import Foundation
 
 class SecretModel: CommonItemModel {
     var type: ItemType
-    var strenghtType: StrenghtType
+    private(set) var strenghtType: StrenghtType
     private(set) var description: String
+    private(set) var secret: String
     
-    init(description: String, strenghtType: StrenghtType) {
+    init(description: String, secret: String, strenghtType: StrenghtType) {
         self.type = .secrets
         self.strenghtType = strenghtType
         self.description = description
+        self.secret = secret
     }
 }
 
-enum StrenghtType {
+enum StrenghtType: Int {
     case strong
     case weak
     case maximum

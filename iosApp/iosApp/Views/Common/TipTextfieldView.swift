@@ -38,7 +38,6 @@ struct TipTextfieldView: View {
                     .padding(.top, (textValue == "" || textValue == nil ) ? 0 : -Config.padding)
                     .animation(.linear, value: UUID())
                 TextField("", text: $textValue.toUnwrapped(defaultValue: ""), onEditingChanged: { editingChanged in
-                    
                     if editingChanged {
                         active = true
                     } else {

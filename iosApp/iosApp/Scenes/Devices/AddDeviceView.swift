@@ -7,38 +7,52 @@
 //
 
 import SwiftUI
+import Combine
 
 struct AddDeviceView: View {
     private enum Config {
         static let cornerRadius: CGFloat = 12.0
-        static let height: CGFloat = 258
+        static let sideOffset: CGFloat = 16.0
+        static let closeSideOffset: CGFloat = 10.0
+        static let vSpacerHeight: CGFloat = 24.0
+        static let bottomSpacerHeight: CGFloat = 30.0
     }
     
     @State private var showActionSheet: Bool = false
+    @ObservedObject private var viewModel: AddDeviceViewModel = AddDeviceViewModel()
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationView {
             VStack {
                 ZStack {
+                    // Bg
                     AppColors.blackPopUps.ignoresSafeArea()
+                    
+                    // Main container
                     VStack {
+                        
+                        //Close button
                         HStack {
                             Spacer()
                             CloseButtonView(action: {
                                 dismiss()
                             })
+                            Spacer()
+                                .frame(width: Config.closeSideOffset)
                         }
-                        .padding(.horizontal, 10.0)
+                        
+                        // Title
                         HStack {
                             Text(Constants.Devices.addDevice)
                                 .font(FontStyle.h1.font)
                                 .foregroundColor(AppColors.white)
                             Spacer()
                         }
-                        .padding(.horizontal, 16.0)
-                        Spacer().frame(height: 24)
+                        .padding(.horizontal, Config.sideOffset)
+                        Spacer().frame(height: Config.vSpacerHeight)
                         
+                        // Subtitle
                         HStack {
                             Text(Constants.Devices.threeDevicesNeeded)
                                 .font(FontStyle.normalMain.font)
@@ -46,20 +60,23 @@ struct AddDeviceView: View {
                                 .multilineTextAlignment(.leading)
                             Spacer()
                         }
-                        .padding(.horizontal, 16.0)
-                        Spacer().frame(height: 24)
+                        .padding(.horizontal, Config.sideOffset)
+                        Spacer().frame(height: Config.vSpacerHeight)
                         
-                        CloudBannerView()
-                            .padding(.horizontal, 16.0)
+                        // Banner view
+                        CloudBannerView().padding(.horizontal, Config.sideOffset)
                         
-                        HStack {
-                            ActionBlueButton(title: "+ \(Constants.Devices.addDevice)", action: {
-                                showActionSheet = true
-                            })
+                        // Button
+                        VStack {
+                            Spacer().frame(height: Config.vSpacerHeight)
+                            HStack {
+                                ActionBlueButton(title: "+ \(Constants.Devices.addDevice)", action: {
+                                    showActionSheet = true
+                                })
+                            }
+                            Spacer().frame(height: Config.bottomSpacerHeight)
                         }
-                        .padding(.top, 20)
-                        .padding(.bottom, 30)
-                        .padding(.horizontal, 16.0)
+                        .padding(.horizontal, Config.sideOffset)
                     }
                 }
             }

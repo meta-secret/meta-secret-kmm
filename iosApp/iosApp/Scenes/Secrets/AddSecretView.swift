@@ -12,7 +12,6 @@ import Combine
 struct AddSecretView: View {
     private enum Config {
         static let cornerRadius: CGFloat = 16.0
-        static let height: CGFloat = 300.0
         static let sideOffset: CGFloat = 16.0
         static let closeSideOffset: CGFloat = 10.0
         static let vSpacerHeight: CGFloat = 20.0
@@ -20,9 +19,8 @@ struct AddSecretView: View {
     }
     
     @Environment(\.dismiss) var dismiss
-    
-    @State var secretName: String?
-    @State var secret: String?
+    @ObservedObject private var viewModel: AddSecretViewModel = AddSecretViewModel()
+    @State var saveError: String? = Constants.Common.enterValue
     
     var body: some View {
         VStack {
@@ -60,7 +58,7 @@ struct AddSecretView: View {
                     // Secret name Text field
                     VStack {
                         HStack {
-                            TipTextfieldView(textValue: $secretName, placeHolder: Constants.Secrets.secretName, error: .constant(nil))
+                            TipTextfieldView(textValue: $viewModel.secretName, placeHolder: Constants.Secrets.secretName, error: viewModel.getError(by: .secretName) ? $saveError : .constant(nil))
                         }
                         .padding(.horizontal, Config.sideOffset)
                         Spacer()
@@ -70,7 +68,7 @@ struct AddSecretView: View {
                     // Secret Text field
                     VStack {
                         HStack {
-                            TipTextfieldView(textValue: $secret, placeHolder: Constants.Secrets.secret, error: .constant(nil))
+                            TipTextfieldView(textValue: $viewModel.secret, placeHolder: Constants.Secrets.secret, error: viewModel.getError(by: .secret) ? $saveError : .constant(nil))
                         }
                         .padding(.horizontal, Config.sideOffset)
                         Spacer()
@@ -81,12 +79,15 @@ struct AddSecretView: View {
                     VStack {
                         HStack {
                             ActionBlueButton(title: Constants.Secrets.addSecret, action: {
-                                
+                                viewModel.setErrors()
+                                if viewModel.errors.isEmpty {
+                                    viewModel.saveSecret()
+                                    dismiss()
+                                }
                             })
                         }
                         .padding(.horizontal, Config.sideOffset)
                         Spacer()
-                            .frame(height: Config.bottomSpacerHeight)
                     }
                 }
                 .keyboardAdaptive()
@@ -95,6 +96,7 @@ struct AddSecretView: View {
         .ignoresSafeArea()
     }
 }
+
 
 struct AddSecretView_Previews: PreviewProvider {
     static var previews: some View {

@@ -8,6 +8,6 @@
 
 import Foundation
 
-class AddDeviceViewModel {
+class AddDeviceViewModel: ObservableObject {
     
 }

@@ -14,6 +14,7 @@ struct AppColors {
     static let actionPremium = Color("ActionPremium")
     
     static let blackBg = Color("BlackBg")
+    static let blackBg50 = Color("BlackBg50")
     static let blackLabel = Color("BlackLabel")
     static let blackMenu = Color("BlackMenu")
     static let blackPopUps = Color("BlackPopUps")

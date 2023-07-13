@@ -20,6 +20,7 @@ struct Constants {
         static let needDevices = NSLocalizedString("needDevices", comment: "")
         static let addPLus = NSLocalizedString("+add", comment: "")
         static let neededDeviceCount: Int = 3
+        static let enterValue = NSLocalizedString("enterValue", comment: "")
     }
     
     //MARK: - ONBOARDING
@@ -56,6 +57,11 @@ struct Constants {
         static let addSecret = NSLocalizedString("addSecret", comment: "")
         static let secretName = NSLocalizedString("secretName", comment: "")
         static let secret = NSLocalizedString("secret", comment: "")
+        static let secretNameNeeded = NSLocalizedString("secretNameNeeded", comment: "")
+        static let secretNeeded = NSLocalizedString("secretNeeded", comment: "")
+        static let showSecret = NSLocalizedString("showSecret", comment: "")
+        static let show = NSLocalizedString("show", comment: "")
+        static let copySecret = NSLocalizedString("copySecret", comment: "")
     }
     
     struct Devices {

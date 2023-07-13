@@ -12,12 +12,13 @@ struct MainSceneView: View {
     
     private enum Config {
         static let sideOffset: CGFloat = 16.0
-        static let addSecretHeight: CGFloat = 300.0
+        static let addSecretHeight: CGFloat = 320.0
         static let addDeviceHeight: CGFloat = 510.0
     }
     
     @State private var selectedIndex: Int = 0
     @State private var showActionSheet: Bool = false
+    @State private var showPopup: Bool = false
     
     var body: some View {
         NavigationView {
