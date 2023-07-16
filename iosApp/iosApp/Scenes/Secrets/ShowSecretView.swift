@@ -18,19 +18,20 @@ struct ShowSecretView: View {
         static let bottomSpacerHeight: CGFloat = 30.0
         static let fieldHeight: CGFloat = 48.0
         static let smallCornerRadius: CGFloat = 8.0
+        static let animationDuration: CGFloat = 0.3
     }
     
-    @Environment(\.dismiss) var dismiss
     @ObservedObject private var viewModel: AddSecretViewModel = AddSecretViewModel()
     @State var saveError: String? = Constants.Common.enterValue
     @State var isPasswordHidden: Bool = true
+    @Binding var showPopUp: Bool
     
     var secretName: String
     var secret: String
     
     var body: some View {
         VStack {
-            Spacer().frame(height: .infinity)
+            Spacer().frame(maxHeight: .infinity)
             ZStack {
                 RoundedRectangle(cornerRadius: Config.cornerRadius)
                     .fill(AppColors.blackPopUps)
@@ -43,7 +44,11 @@ struct ShowSecretView: View {
                             .frame(height: Config.closeSideOffset)
                         HStack {
                             Spacer()
-                            CloseButtonView(action: {dismiss()})
+                            CloseButtonView(action: {
+                                withAnimation(.linear(duration: Config.animationDuration)) {
+                                    showPopUp = false
+                                }
+                            })
                             Spacer()
                                 .frame(width: Config.closeSideOffset)
                         }
@@ -119,8 +124,9 @@ struct ShowSecretView: View {
                 }
                 
             }
-            Spacer().frame(height: .infinity)
+            Spacer().frame(maxHeight: .infinity)
         }
+        .padding(.horizontal, Config.sideOffset)
     }
     
     func getSecret() -> String {
@@ -143,6 +149,6 @@ struct ShowSecretView: View {
 
 struct ShowSecretView_Previews: PreviewProvider {
     static var previews: some View {
-        ShowSecretView(secretName: "Secret name", secret: "Secret")
+        ShowSecretView(showPopUp: .constant(true), secretName: "Secret name", secret: "Secret")
     }
 }

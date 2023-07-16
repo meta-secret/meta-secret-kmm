@@ -16,9 +16,12 @@ struct SecretsView: View {
         static let addSecretHeight: CGFloat = 344.0
         static let addDeviceHeight: CGFloat = 510.0
         static let bottomSpacer: CGFloat = 14.0
+        static let animationDuration: CGFloat = 0.3
     }
     
     @State var viewModel: SecretsViewModel = SecretsViewModel()
+    @State var showSecret: Bool = false
+    @State private var currentItem: SecretModel? = nil
     
     var body: some View {
         ZStack {
@@ -36,26 +39,40 @@ struct SecretsView: View {
                         .frame(height: Config.vSpacerHeight)
                 }
             } else {
-                VStack {
-                    if viewModel.devicesCount < Constants.Common.neededDeviceCount {
-                        //Alert Bubble
-                        VStack {
-                            Spacer()
-                                .frame(height: Config.vSpacerHeight)
-                            AlertBubbleView()
-                                .padding(.horizontal, Config.bubbleSideOffset)
+                ZStack {
+                    VStack {
+                        if viewModel.devicesCount < Constants.Common.neededDeviceCount {
+                            //Alert Bubble
+                            VStack {
+                                Spacer()
+                                    .frame(height: Config.vSpacerHeight)
+                                AlertBubbleView()
+                                    .padding(.horizontal, Config.bubbleSideOffset)
+                            }
                         }
-                    }
-                    List {
-                        ForEach(viewModel.items, id: \.id) { item in
-                            SecretCellView(item: item as! SecretModel)
+                        List {
+                            ForEach(viewModel.items, id: \.id) { item in
+                                Button(action: {
+                                    withAnimation(.linear(duration: Config.animationDuration)) {
+                                        currentItem = item as? SecretModel
+                                        showSecret = true
+                                    }
+                                }) {
+                                    SecretCellView(item: item as! SecretModel)
+                                }
+                                
+                            }
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(Color.clear)
+                            .listRowInsets(.init(top: 0, leading: 0, bottom: Config.bottomSpacer, trailing: 0))
                         }
-                        .listRowSeparator(.hidden)
-                        .listRowBackground(Color.clear)
-                        .listRowInsets(.init(top: 0, leading: 0, bottom: Config.bottomSpacer, trailing: 0))
+                        .padding(.top, -Config.vSpacerHeight)
+                        .scrollContentBackground(.hidden)
                     }
-                    .padding(.top, -Config.vSpacerHeight)
-                    .scrollContentBackground(.hidden)
+                    
+                    if showSecret {
+                        ShowSecretView(showPopUp: $showSecret, secretName: currentItem?.description ?? "", secret: currentItem?.secret ?? "")
+                    }
                 }
             }
         }
