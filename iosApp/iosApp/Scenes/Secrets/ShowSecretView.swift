@@ -21,7 +21,6 @@ struct ShowSecretView: View {
         static let animationDuration: CGFloat = 0.3
     }
     
-    @ObservedObject private var viewModel: AddSecretViewModel = AddSecretViewModel()
     @State var saveError: String? = Constants.Common.enterValue
     @State var isPasswordHidden: Bool = true
     @Binding var showPopUp: Bool

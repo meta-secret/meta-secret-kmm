@@ -19,6 +19,7 @@ struct MainSceneView: View {
     @State private var selectedIndex: Int = 0
     @State private var showActionSheet: Bool = false
     @State private var showPopup: Bool = false
+    @State private var isToReload: Bool = false
     
     var body: some View {
         NavigationView {
@@ -58,6 +59,7 @@ struct MainSceneView: View {
         .navigationBarHidden(false)
         .sheet(isPresented: $showActionSheet, onDismiss: {
             showActionSheet = false
+            selectedIndex = selectedIndex
         }) {
             if selectedIndex == 1 {
                 AddDeviceView()
