@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import shared
 
 protocol QRCodeManagerProtocol {
     func getQRcodeContent() -> String
@@ -15,6 +16,8 @@ protocol QRCodeManagerProtocol {
 class QRCodeManager: QRCodeManagerProtocol {
     func getQRcodeContent() -> String {
         #warning("Need to implement Device Manager and Secrets Manager")
-        return Constants.Common.appStoreLink
+        return Greeting().greet()
+        //return getQRLink()
+        //return Constants.Common.appStoreLink
     }
 }

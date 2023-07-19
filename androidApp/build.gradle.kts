@@ -63,5 +63,5 @@ dependencies {
 
     //Library to get URL Meta Data
     implementation("org.jsoup:jsoup:1.13.1")
-    implementation(files("MetaSecretCore.aar"))
+//    implementation(files("MetaSecretCore.aar"))
 }
