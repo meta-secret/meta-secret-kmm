@@ -13,19 +13,28 @@ import com.example.metasecret.Greeting
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)
+        setContent {
+            MyApplicationTheme {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colors.background
+                ) {
+                    GreetingView(Greeting().greet())
+                }
+            }
+        }
     }
 }
 
 @Composable
-private fun GreetingView(text: String) {
+fun GreetingView(text: String) {
     Text(text = text)
 }
 
 @Preview
 @Composable
-private fun DefaultPreview() {
-//    MyApplicationTheme {
-//        GreetingView("Hello, Android!")
-//    }
+fun DefaultPreview() {
+    MyApplicationTheme {
+        GreetingView("Hello, Android!")
+    }
 }

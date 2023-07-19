@@ -6,42 +6,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SplashScreenActivity"
-            android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
-        <activity
             android:name=".MainActivity"
             android:exported="true">
-        </activity>
-        <activity
-            android:name=".WelcomeViewActivity"
-            android:exported="true">
-        </activity>
-        <activity
-            android:name=".RegisterViewActivity"
-            android:exported="true">
-        </activity>
-        <activity
-            android:name=".WelcomeDBViewActivity"
-            android:exported="true">
-        </activity>
-        <activity
-            android:name=".WelcomeQRViewActivity"
-            android:exported="true">
-        </activity>
-        <activity
-            android:name=".WelcomeAddPasswordActivity"
-            android:exported="true">
-        </activity>
-        <activity
-            android:name=".WelcomeScannerViewActivity"
-            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
-
-</manifest>
+</manifest> 

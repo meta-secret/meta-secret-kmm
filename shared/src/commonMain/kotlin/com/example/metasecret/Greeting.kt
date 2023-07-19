@@ -1,9 +1,9 @@
 package com.example.metasecret
 
 class Greeting {
-    private val platform: Platform = getPlatform()
+    private val appURL: APPLink = getAppLink()
 
-    fun greet(): String {
-        return "Hello, ${platform.name}!"
+    fun getAppUrl(): String {
+        return "${appURL.appLink}"
     }
 }

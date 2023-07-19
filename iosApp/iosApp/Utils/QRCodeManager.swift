@@ -6,7 +6,6 @@
 //  Copyright © 2023 orgName. All rights reserved.
 //
 
-import Foundation
 import shared
 
 protocol QRCodeManagerProtocol {
@@ -15,9 +14,6 @@ protocol QRCodeManagerProtocol {
 
 class QRCodeManager: QRCodeManagerProtocol {
     func getQRcodeContent() -> String {
-        #warning("Need to implement Device Manager and Secrets Manager")
-        return Greeting().greet()
-        //return getQRLink()
-        //return Constants.Common.appStoreLink
+        return Greeting().getAppUrl()
     }
 }
