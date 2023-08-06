@@ -1,25 +1,27 @@
-package Scenes.Onboarding
+package scenes.onboarding
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
-import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.FloatingActionButtonDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -28,16 +30,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.metasecret.android.R
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.HorizontalPagerIndicator
 
 @Composable
-@OptIn(ExperimentalFoundationApi::class, ExperimentalAnimationApi::class)
+@OptIn(ExperimentalFoundationApi::class, ExperimentalAnimationApi::class,
+    ExperimentalPagerApi::class
+)
 fun OnboardingScreen(
     navController: NavHostController
 ) {
@@ -55,32 +60,76 @@ fun OnboardingScreen(
         modifier = Modifier
             .fillMaxSize())
 
-    Column(modifier = Modifier.fillMaxSize()) {
-        Row(modifier = Modifier.fillMaxWidth()) {
-            Text(text = "${pages.count()}/${pages.count()}")
+    // Main container
+    Column(modifier = Modifier
+        .padding(top = 68.dp)
+        .padding(horizontal = 16.dp)
+        .fillMaxSize()) {
 
-//            HorizontalPagerIndicator(
-//                modifier = Modifier.align(Alignment.CenterHorizontally)
-//                pagerState = pagerState)
+        //Top row with pager indicator
+        Row(modifier = Modifier
+            .height(30.dp)
+            .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically) {
 
-            Button(onClick = {  },
-                    colors = ButtonDefaults.buttonColors(
-                    contentColor = Color.White)
+            // Page counter
+            Text(
+                modifier = Modifier
+                    .width(100.dp),
+                text = "${pages.count()}/${pages.count()}",
+                color = Color.White,
+                fontSize = MaterialTheme.typography.subtitle2.fontSize,
+                fontWeight = FontWeight.Normal,
+                textAlign = TextAlign.Start
+            )
+
+            //Indicator
+            HorizontalPagerIndicator(
+                pagerState = pagerState,
+                pageCount = 3,
+                activeColor = Color.Blue,
+                inactiveColor = Color.White,
+                indicatorHeight = 8.dp,
+                indicatorWidth = 8.dp
+            )
+
+            //Skip button
+            Button(
+                onClick = { },
+                modifier = Modifier
+                    .width(100.dp),
+                contentPadding = PaddingValues(0.dp),
+                colors = ButtonDefaults.buttonColors(
+                    contentColor = Color.White,
+                    backgroundColor = Color.Transparent
+                ),
+                elevation = null
             ) {
-                Text(text = "Пропустить")
+                Text(
+                    modifier = Modifier
+                        .fillMaxHeight(),
+                    text = "Пропустить",
+                    color = Color.White,
+                    fontSize = MaterialTheme.typography.subtitle2.fontSize,
+                    fontWeight = FontWeight.Normal,
+                    textAlign = TextAlign.End
+                )
             }
         }
-        
-        HorizontalPager(pageCount = 3,
-                        state = pagerState,
-                        verticalAlignment = Alignment.Top
-        ) { position ->
-            PagerScreen(onBoardingPage = pages[position])
+
+        Row(modifier = Modifier
+            .padding(top = 24.dp)) {
+            HorizontalPager(
+                pageCount = 3,
+                state = pagerState,
+                verticalAlignment = Alignment.CenterVertically
+            ) { position ->
+                PagerScreen(onBoardingPage = pages[position])
+            }
         }
 
-        NextButton(modifier = Modifier) {
-
-        }
+        NextButton(modifier = Modifier) {}
     }
 }
 
@@ -94,8 +143,7 @@ fun PagerScreen(onBoardingPage: OnBoardingPage) {
     ) {
         Image(
             modifier = Modifier
-                .fillMaxWidth(0.5f)
-                .fillMaxHeight(0.7f),
+                .fillMaxWidth(0.5f),
             painter = painterResource(id = onBoardingPage.image),
             contentDescription = "Pager Image"
         )
@@ -141,18 +189,16 @@ fun NextButton(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .height(40.pxToDp())
-            .padding(bottom = 26.dp)
-            .padding(horizontal = 16.dp),
+            .padding(top = 24.dp)
+            .padding(bottom = 26.dp),
         verticalAlignment = Alignment.Top,
         horizontalArrangement = Arrangement.Center
     ) {
-
             Button(
                 modifier = modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(8.dp))
-                    .fillMaxHeight(),
+                    .height(63.dp)
+                    .clip(RoundedCornerShape(8.dp)),
                 onClick = onClick,
                 colors = ButtonDefaults.buttonColors(
                     contentColor = Color.White
@@ -162,6 +208,3 @@ fun NextButton(
             }
     }
 }
-
-@Composable
-fun Int.pxToDp() = with(LocalDensity.current) { this@pxToDp.toDp() }
