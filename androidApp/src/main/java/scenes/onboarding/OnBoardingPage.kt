@@ -12,9 +12,9 @@ sealed class OnBoardingPage(
 ) {
     object First: OnBoardingPage(
         image = R.drawable.first,
-        title = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod?",
-        subTitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
-        description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod и Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod RSA и AES"
+        title = "Есть очень важные секреты ?",
+        subTitle = "Поделите их между своими устроствами",
+        description = "Все пароли и секретная ифнормация храниться только на ваших устройствах и надежно защищены  по стандартам шифтрования RSA и AES"
     )
 
     object Second: OnBoardingPage(
