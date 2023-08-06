@@ -5,6 +5,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.scrollBy
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -26,6 +27,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -36,8 +38,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.metasecret.android.R
+import com.example.metasecret.android.screen.Screen
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPagerIndicator
+import kotlinx.coroutines.launch
 
 @Composable
 @OptIn(ExperimentalFoundationApi::class, ExperimentalAnimationApi::class,
@@ -53,6 +57,7 @@ fun OnboardingScreen(
     )
 
     val pagerState = rememberPagerState()
+    val scope = rememberCoroutineScope()
 
     Image(
         painter = painterResource(id = R.drawable.bg_main),
@@ -64,7 +69,7 @@ fun OnboardingScreen(
     Column(modifier = Modifier
         .padding(top = 68.dp)
         .padding(horizontal = 16.dp)
-        .fillMaxSize()) {
+        .fillMaxSize(1f)) {
 
         //Top row with pager indicator
         Row(modifier = Modifier
@@ -96,7 +101,10 @@ fun OnboardingScreen(
 
             //Skip button
             Button(
-                onClick = { },
+                onClick = {
+                    navController.popBackStack()
+                    navController.navigate(Screen.Home.route)
+                },
                 modifier = Modifier
                     .width(100.dp),
                 contentPadding = PaddingValues(0.dp),
@@ -129,7 +137,16 @@ fun OnboardingScreen(
             }
         }
 
-        NextButton(modifier = Modifier) {}
+        NextButton(modifier = Modifier) {
+            scope.launch {
+                if (pagerState.currentPage + 1 >= pages.count()) {
+                    navController.popBackStack()
+                    navController.navigate(Screen.Home.route)
+                } else {
+                    pagerState.animateScrollToPage(pagerState.currentPage + 1)
+                }
+            }
+        }
     }
 }
 
@@ -143,38 +160,40 @@ fun PagerScreen(onBoardingPage: OnBoardingPage) {
     ) {
         Image(
             modifier = Modifier
+                .fillMaxHeight(0.6f)
                 .fillMaxWidth(0.5f),
             painter = painterResource(id = onBoardingPage.image),
             contentDescription = "Pager Image"
         )
 
         Text(modifier = Modifier
+            .padding(top = 24.dp)
             .fillMaxWidth(),
             text = onBoardingPage.title,
             color = Color.White,
             fontSize = MaterialTheme.typography.h4.fontSize,
             fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Left
         )
 
         Text(modifier = Modifier
+            .padding(top = 18.dp)
             .fillMaxWidth(),
             text = onBoardingPage.subTitle,
             color = Color.White,
             fontSize = MaterialTheme.typography.subtitle1.fontSize,
             fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Left
         )
 
         Text(modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 40.dp)
-            .padding(top = 20.dp),
+            .padding(top = 18.dp),
             text = onBoardingPage.description,
             color = Color.White,
             fontSize = MaterialTheme.typography.subtitle2.fontSize,
             fontWeight = FontWeight.Normal,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Left
         )
     }
 }
@@ -190,14 +209,16 @@ fun NextButton(
         modifier = modifier
             .fillMaxWidth()
             .padding(top = 24.dp)
+
             .padding(bottom = 26.dp),
         verticalAlignment = Alignment.Top,
         horizontalArrangement = Arrangement.Center
     ) {
             Button(
                 modifier = modifier
-                    .fillMaxWidth()
                     .height(63.dp)
+                    .fillMaxWidth()
+                    .fillMaxHeight()
                     .clip(RoundedCornerShape(8.dp)),
                 onClick = onClick,
                 colors = ButtonDefaults.buttonColors(
