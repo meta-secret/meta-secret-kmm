@@ -42,6 +42,7 @@ import com.example.metasecret.android.screen.Screen
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import kotlinx.coroutines.launch
+import scenes.common.ActionBlueButton
 
 @Composable
 @OptIn(ExperimentalFoundationApi::class, ExperimentalAnimationApi::class,
@@ -103,7 +104,7 @@ fun OnboardingScreen(
             Button(
                 onClick = {
                     navController.popBackStack()
-                    navController.navigate(Screen.Home.route)
+                    navController.navigate(Screen.SignIn.route)
                 },
                 modifier = Modifier
                     .width(100.dp),
@@ -137,11 +138,11 @@ fun OnboardingScreen(
             }
         }
 
-        NextButton(modifier = Modifier) {
+        ActionBlueButton(modifier = Modifier, title = "Далее") {
             scope.launch {
                 if (pagerState.currentPage + 1 >= pages.count()) {
                     navController.popBackStack()
-                    navController.navigate(Screen.Home.route)
+                    navController.navigate(Screen.SignIn.route)
                 } else {
                     pagerState.animateScrollToPage(pagerState.currentPage + 1)
                 }
@@ -195,37 +196,5 @@ fun PagerScreen(onBoardingPage: OnBoardingPage) {
             fontWeight = FontWeight.Normal,
             textAlign = TextAlign.Left
         )
-    }
-}
-
-@ExperimentalAnimationApi
-@Stable
-@Composable
-fun NextButton(
-    modifier: Modifier,
-    onClick: () -> Unit
-) {
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(top = 24.dp)
-
-            .padding(bottom = 26.dp),
-        verticalAlignment = Alignment.Top,
-        horizontalArrangement = Arrangement.Center
-    ) {
-            Button(
-                modifier = modifier
-                    .height(63.dp)
-                    .fillMaxWidth()
-                    .fillMaxHeight()
-                    .clip(RoundedCornerShape(8.dp)),
-                onClick = onClick,
-                colors = ButtonDefaults.buttonColors(
-                    contentColor = Color.White
-                )
-            ) {
-                Text(text = "Далее")
-            }
     }
 }
