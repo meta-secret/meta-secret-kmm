@@ -1,6 +1,6 @@
 package com.example.metasecret.android.navigation
 
-import scenes.home.HomeScreen
+import scenes.home.AddSecretScreen
 import scenes.onboarding.OnboardingScreen
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
@@ -8,6 +8,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.metasecret.android.screen.Screen
+import scenes.home.AddDeviceScreen
+import scenes.home.ProfileScreen
 import scenes.registration.SignInScreen
 import scenes.splashscreen.SplashScreen
 
@@ -26,13 +28,17 @@ fun SetupNavGraph(
         composable(route = Screen.Welcome.route) {
             OnboardingScreen(navController = navController)
         }
-        composable(route = Screen.Home.route) {
-            HomeScreen()
-        }
         composable(route = Screen.SignIn.route) {
             SignInScreen(navController = navController)
         }
-
-
+        composable(route = Screen.AddSecret.route) {
+            AddSecretScreen()
+        }
+        composable(route = Screen.AddDevice.route) {
+            AddDeviceScreen()
+        }
+        composable(route = Screen.Profile.route) {
+            ProfileScreen()
+        }
     }
 }

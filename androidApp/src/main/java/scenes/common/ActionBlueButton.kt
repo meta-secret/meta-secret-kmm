@@ -44,6 +44,7 @@ public fun ActionBlueButton(
                 .clip(RoundedCornerShape(8.dp)),
             onClick = onClick,
             colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Blue,
                 contentColor = Color.White
             )
         ) {

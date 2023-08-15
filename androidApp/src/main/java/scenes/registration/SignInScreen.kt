@@ -147,7 +147,7 @@ fun SignInScreen(navController: NavHostController) {
         ActionBlueButton(modifier = Modifier, title = "Вперед") {
             scope.launch {
                 navController.popBackStack()
-                navController.navigate(Screen.Home.route)
+                navController.navigate(Screen.AddSecret.route)
             }
         }
 
