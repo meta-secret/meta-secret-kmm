@@ -17,34 +17,38 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @ExperimentalAnimationApi
 @Stable
 @Composable
-public fun ActionBlueButton(
+public fun ActionButton(
     modifier: Modifier,
+    color: Color = Color.Blue,
+    paddingTop: Dp = 24.dp,
+    paddingBottom: Dp = 26.dp,
+    height: Dp = 63.dp,
     title: String,
     onClick: () -> Unit
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(top = 24.dp)
-
-            .padding(bottom = 26.dp),
+            .padding(top = paddingTop)
+            .padding(bottom = paddingBottom),
         verticalAlignment = Alignment.Top,
         horizontalArrangement = Arrangement.Center
     ) {
         Button(
             modifier = modifier
-                .height(63.dp)
+                .height(height)
                 .fillMaxWidth()
                 .fillMaxHeight()
                 .clip(RoundedCornerShape(8.dp)),
             onClick = onClick,
             colors = ButtonDefaults.buttonColors(
-                backgroundColor = Color.Blue,
+                backgroundColor = color,
                 contentColor = Color.White
             )
         ) {

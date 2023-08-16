@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -26,7 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.metasecret.android.R
-import scenes.common.ActionBlueButton
+import scenes.common.ActionButton
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
@@ -42,163 +41,190 @@ fun ProfileScreen() {
             .padding(horizontal = 16.dp)
             .fillMaxSize(),
         verticalArrangement = Arrangement.SpaceBetween
-    ) {
+    ) 
+    {
+        Box(modifier = Modifier
+            .padding(top = 24.dp)
+            .fillMaxWidth()
+            .height(252.dp)
+        ) {
+            Column(modifier = Modifier
+                .fillMaxSize()) {
 
-        // Title
-        Column() {
-            Row(
-                modifier = Modifier
-                    .padding(top = 24.dp)
-                    .height(92.dp)
-                    .fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
+                //Title
+                Row(
                     modifier = Modifier
+                        .height(92.dp)
                         .fillMaxWidth(),
-                    text = "Профиль",
-                    color = Color.White,
-                    fontSize = MaterialTheme.typography.h4.fontSize,
-                    fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Start
-                )
-            }
-
-            //NickName
-            Row(
-                modifier = Modifier
-                    .height(48.dp)
-                    .fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Column(modifier = Modifier
-                    .fillMaxWidth(),) {
-
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     Text(
                         modifier = Modifier
                             .fillMaxWidth(),
-                        text = "Nickname",
-                        color = Color.White.copy(alpha = 0.5f),
-                        fontSize = MaterialTheme.typography.subtitle2.fontSize,
-                        fontWeight = FontWeight.Light,
-                        textAlign = TextAlign.Start
-                    )
-
-                    Text(
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        text = "Dimas",
+                        text = "Профиль",
                         color = Color.White,
-                        fontSize = MaterialTheme.typography.subtitle1.fontSize,
+                        fontSize = MaterialTheme.typography.h4.fontSize,
                         fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Start
                     )
                 }
-            }
 
-            // Info block
-            Row(
-                modifier = Modifier
-                    .padding(top = 20.dp)
-                    .height(92.dp)
-                    .fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Column(
+                //NickName
+                Row(
                     modifier = Modifier
-                        .fillMaxSize()
+                        .height(48.dp)
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    separatorH()
+                    Column(modifier = Modifier
+                        .fillMaxSize(),) {
 
-                    Row(
-                        modifier = Modifier
-                            .height(90.dp)
-                            .fillMaxSize(),
-                        horizontalArrangement = Arrangement.Center,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Column(
-                            horizontalAlignment = Alignment.CenterHorizontally
-                        ) {
-                            Text(
-                                text = "Секреты",
-                                color = Color.White.copy(alpha = 0.75f),
-                                fontSize = MaterialTheme.typography.subtitle2.fontSize,
-                                fontWeight = FontWeight.Light,
-                                textAlign = TextAlign.Center
-                            )
-                            Text(
-                                text = "12",
-                                color = Color.White,
-                                fontSize = MaterialTheme.typography.subtitle1.fontSize,
-                                fontWeight = FontWeight.Bold,
-                                textAlign = TextAlign.Center
-                            )
-                        }
-
-                        Box(modifier = Modifier
-                            .fillMaxHeight()
-                            .padding(horizontal = 22.dp)
-                            .width(1.dp)
-                            .padding(vertical = 20.dp)
-                            .background(color = Color.Gray)
+                        Text(
+                            modifier = Modifier
+                                .fillMaxWidth(),
+                            text = "Nickname",
+                            color = Color.White.copy(alpha = 0.5f),
+                            fontSize = MaterialTheme.typography.subtitle2.fontSize,
+                            fontWeight = FontWeight.Light,
+                            textAlign = TextAlign.Start
                         )
 
-                        Column(
-                            horizontalAlignment = Alignment.CenterHorizontally
-                        ) {
-                            Text(
-                                text = "Девайсы",
-                                color = Color.White.copy(alpha = 0.75f),
-                                fontSize = MaterialTheme.typography.subtitle2.fontSize,
-                                fontWeight = FontWeight.Light,
-                                textAlign = TextAlign.Center
-                            )
-                            Text(
-                                text = "3",
-                                color = Color.White,
-                                fontSize = MaterialTheme.typography.subtitle1.fontSize,
-                                fontWeight = FontWeight.Bold,
-                                textAlign = TextAlign.Center
-                            )
-                        }
+                        Text(
+                            modifier = Modifier
+                                .fillMaxWidth(),
+                            text = "Dimas",
+                            color = Color.White,
+                            fontSize = MaterialTheme.typography.subtitle1.fontSize,
+                            fontWeight = FontWeight.Bold,
+                            textAlign = TextAlign.Start
+                        )
                     }
+                }
 
-                    separatorH()
+                // Info block
+                Row(
+                    modifier = Modifier
+                        .padding(top = 20.dp)
+                        .height(92.dp)
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                    ) {
+                        separatorH()
+
+                        Row(
+                            modifier = Modifier
+                                .height(90.dp)
+                                .fillMaxSize(),
+                            horizontalArrangement = Arrangement.Center,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+                                Text(
+                                    text = "Секреты",
+                                    color = Color.White.copy(alpha = 0.75f),
+                                    fontSize = MaterialTheme.typography.subtitle2.fontSize,
+                                    fontWeight = FontWeight.Light,
+                                    textAlign = TextAlign.Center
+                                )
+                                Text(
+                                    text = "12",
+                                    color = Color.White,
+                                    fontSize = MaterialTheme.typography.subtitle1.fontSize,
+                                    fontWeight = FontWeight.Bold,
+                                    textAlign = TextAlign.Center
+                                )
+                            }
+
+                            Box(modifier = Modifier
+                                .fillMaxHeight()
+                                .padding(horizontal = 22.dp)
+                                .background(color = Color.Gray)
+                                .width(1.dp)
+                                .padding(vertical = 20.dp)
+                            )
+
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+                                Text(
+                                    text = "Девайсы",
+                                    color = Color.White.copy(alpha = 0.75f),
+                                    fontSize = MaterialTheme.typography.subtitle2.fontSize,
+                                    fontWeight = FontWeight.Light,
+                                    textAlign = TextAlign.Center
+                                )
+                                Text(
+                                    text = "3",
+                                    color = Color.White,
+                                    fontSize = MaterialTheme.typography.subtitle1.fontSize,
+                                    fontWeight = FontWeight.Bold,
+                                    textAlign = TextAlign.Center
+                                )
+                            }
+                        }
+
+                        separatorH()
+                    }
                 }
             }
         }
 
-        Spacer(modifier = Modifier
-            .weight(1.0f))
 
-        Column() {
-            ActionBlueButton(modifier = Modifier, title = "Выйти") {
-
-            }
-
-            // Bottom copyright
-            Row(modifier = Modifier
-                .padding(bottom = 68.dp)
-            ) {
-                Column(modifier = Modifier
-                    .fillMaxSize(),
-                    horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text(
-                        text = "Version 1.1.00.22",
-                        color = Color.White.copy(alpha = 0.5f),
-                        fontSize = MaterialTheme.typography.subtitle1.fontSize,
-                        fontWeight = FontWeight.Normal,
-                        textAlign = TextAlign.Center
-                    )
-                    Text(
-                        text = " Powered by Slavic incorporated",
-                        color = Color.White.copy(alpha = 0.5f),
-                        fontSize = MaterialTheme.typography.subtitle1.fontSize,
-                        fontWeight = FontWeight.Normal,
-                        textAlign = TextAlign.Center
-                    )
+        Box(modifier = Modifier
+            .padding(bottom = 124.dp)
+            .fillMaxWidth()
+            .height(108.dp)
+        )
+        {
+            Column(modifier = Modifier
+                .fillMaxSize(),
+                verticalArrangement = Arrangement.SpaceBetween
+            )
+            {
+                ActionButton(
+                    modifier = Modifier,
+                    color = Color.Red,
+                    paddingTop = 0.dp,
+                    paddingBottom = 0.dp,
+                    height = 48.dp,
+                    title = "Выйти")
+                {
+                    // Need action handler
                 }
+
+                Box(modifier = Modifier
+                    .height(40.dp)
+                    .fillMaxSize()
+                )
+                {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize(),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(
+                            text = "Version 1.1.00.22",
+                            color = Color.White.copy(alpha = 0.5f),
+                            fontSize = MaterialTheme.typography.subtitle1.fontSize,
+                            fontWeight = FontWeight.Normal,
+                            textAlign = TextAlign.Center
+                        )
+                        Text(
+                            text = " Powered by Slavic incorporated",
+                            color = Color.White.copy(alpha = 0.5f),
+                            fontSize = MaterialTheme.typography.subtitle1.fontSize,
+                            fontWeight = FontWeight.Normal,
+                            textAlign = TextAlign.Center
+                        )
+                    }
+                }
+
             }
         }
     }
