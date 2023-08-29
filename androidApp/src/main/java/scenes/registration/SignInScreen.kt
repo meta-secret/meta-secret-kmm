@@ -25,16 +25,21 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.metasecret.android.R
 import com.example.metasecret.android.screen.Screen
 import kotlinx.coroutines.launch
 import scenes.common.ActionButton
 import scenes.common.TipTextField
+import scenes.splashscreen.SplashScreenViewModel
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun SignInScreen(navController: NavHostController) {
+fun SignInScreen(
+    navController: NavHostController,
+    viewModel: SignInScreenViewModel = hiltViewModel()
+) {
     val scope = rememberCoroutineScope()
 
     Image(
@@ -101,7 +106,9 @@ fun SignInScreen(navController: NavHostController) {
                 modifier = Modifier
                     .height(48.dp)
                     .clip(RoundedCornerShape(8.dp)),
-                onClick = { },
+                onClick = {
+                          viewModel.checkAndSaveName(name = "")
+                },
                 border = BorderStroke(width = 1.dp, color = Color.White),
                 shape = RoundedCornerShape(8.dp),
                 colors = ButtonDefaults.buttonColors(

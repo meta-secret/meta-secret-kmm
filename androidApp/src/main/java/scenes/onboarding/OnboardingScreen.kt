@@ -28,6 +28,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.metasecret.android.R
 import com.example.metasecret.android.screen.Screen
@@ -41,7 +42,8 @@ import scenes.common.ActionButton
     ExperimentalPagerApi::class
 )
 fun OnboardingScreen(
-    navController: NavHostController
+    navController: NavHostController,
+    viewModel: OnboardingViewModel = hiltViewModel()
 ) {
     val pages = listOf(
         OnBoardingPage.First,
@@ -95,6 +97,7 @@ fun OnboardingScreen(
             //Skip button
             Button(
                 onClick = {
+                    viewModel.saveOnBoardingState(completed = true)
                     navController.popBackStack()
                     navController.navigate(Screen.SignIn.route)
                 },
@@ -133,6 +136,7 @@ fun OnboardingScreen(
         ActionButton(modifier = Modifier, title = "Далее") {
             scope.launch {
                 if (pagerState.currentPage + 1 >= pages.count()) {
+                    viewModel.saveOnBoardingState(completed = true)
                     navController.popBackStack()
                     navController.navigate(Screen.SignIn.route)
                 } else {
