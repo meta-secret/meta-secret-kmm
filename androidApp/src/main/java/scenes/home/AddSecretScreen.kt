@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -26,80 +27,84 @@ import com.example.metasecret.android.R
 fun AddSecretScreen() {
     var isEmpty = true
 
-    Image(
-        painter = painterResource(id = R.drawable.bg_main),
-        contentDescription = "",
-        modifier = Modifier
-            .fillMaxSize())
-
-    Column(
-        modifier = Modifier
-            .padding(horizontal = 16.dp)
-            .fillMaxSize()
-    ){
-
-        //Title
-        Row(
+    Scaffold() { padding ->
+        Image(
+            painter = painterResource(id = R.drawable.bg_main),
+            contentDescription = "",
             modifier = Modifier
-                .padding(top = 24.dp)
-                .height(92.dp)
-                .fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(
+                .fillMaxSize())
+
+        Column(
+            modifier = Modifier
+                .padding(horizontal = 16.dp)
+                .fillMaxSize()
+        ){
+
+            //Title
+            Row(
                 modifier = Modifier
+                    .padding(top = 24.dp)
+                    .height(92.dp)
                     .fillMaxWidth(),
-                text = "Секреты",
-                color = Color.White,
-                fontSize = MaterialTheme.typography.h4.fontSize,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Start
-            )
-        }
-
-        if (isEmpty) {
-            Column(modifier = Modifier
-                .fillMaxSize()) {
-                Row(
-                    modifier = Modifier
-                        .padding(top = 90.dp)
-                        .padding(start = 30.dp)
-                        .padding(bottom = 24.dp)
-                        .background(color = Color.DarkGray.copy(alpha = 0f))
-                        .fillMaxHeight(fraction = 0.4f)
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    EmptySecretsView()
-                }
-
+                verticalAlignment = Alignment.CenterVertically
+            ) {
                 Text(
                     modifier = Modifier
                         .fillMaxWidth(),
-                    text = "Нет секретов",
+                    text = "Секреты",
                     color = Color.White,
-                    fontSize = MaterialTheme.typography.h5.fontSize,
+                    fontSize = MaterialTheme.typography.h4.fontSize,
                     fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Center
-                )
-
-                Text(
-                    modifier = Modifier
-                        .padding(horizontal = 40.dp)
-                        .padding(top = 14.dp)
-                        .fillMaxWidth(),
-                    text = "У вас пока нет добавленых секретов. Добавьте первый секрет",
-                    color = Color.White.copy(alpha = 0.7f),
-                    fontSize = MaterialTheme.typography.subtitle2.fontSize,
-                    fontWeight = FontWeight.Normal,
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Start
                 )
             }
 
+            if (isEmpty) {
+                Column(modifier = Modifier
+                    .fillMaxSize()) {
+                    Row(
+                        modifier = Modifier
+                            .padding(top = 90.dp)
+                            .padding(start = 30.dp)
+                            .padding(bottom = 24.dp)
+                            .background(color = Color.DarkGray.copy(alpha = 0f))
+                            .fillMaxHeight(fraction = 0.4f)
+                            .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        EmptySecretsView()
+                    }
 
-        } else {
+                    Text(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        text = "Нет секретов",
+                        color = Color.White,
+                        fontSize = MaterialTheme.typography.h5.fontSize,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center
+                    )
 
+                    Text(
+                        modifier = Modifier
+                            .padding(horizontal = 40.dp)
+                            .padding(top = 14.dp)
+                            .fillMaxWidth(),
+                        text = "У вас пока нет добавленых секретов. Добавьте первый секрет",
+                        color = Color.White.copy(alpha = 0.7f),
+                        fontSize = MaterialTheme.typography.subtitle2.fontSize,
+                        fontWeight = FontWeight.Normal,
+                        textAlign = TextAlign.Center
+                    )
+                }
+
+
+            } else {
+
+            }
         }
     }
+
+
 }
