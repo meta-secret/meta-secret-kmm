@@ -1,7 +1,7 @@
 import sqldelight.com.intellij.openapi.options.advanced.AdvancedSettingType.Bool;
 
 CREATE TABLE AuthInformation (
-    isAuthorized INTEGER AS Bool DEFAULT FALSE
+    isAuthorized INTEGER DEFAULT NULL
 );
 
 insertAuthInfo:
@@ -11,6 +11,6 @@ VALUES(?);
 removeAuthInfo:
 DELETE FROM AuthInformation;
 
-selectAllLaunchesInfo:
+selectAuthInfo:
 SELECT AuthInformation.*
 FROM AuthInformation;

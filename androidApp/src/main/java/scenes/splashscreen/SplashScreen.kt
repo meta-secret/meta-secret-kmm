@@ -1,5 +1,6 @@
 package scenes.splashscreen
 
+import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -20,14 +21,15 @@ import androidx.navigation.NavHostController
 @Composable
 fun SplashScreen(
     navController: NavHostController,
-    viewModel: SplashScreenViewModel = hiltViewModel()
+    viewModel: SplashScreenViewModel = hiltViewModel(),
+    context: Context
 ) {
     LaunchedEffect(key1 = Unit){
         delay(2000)
         viewModel.readOnboardingKey().collect { completed ->
             navController.popBackStack()
             if (completed) {
-                if (viewModel.checkAuth()) {
+                if (viewModel.checkAuth(context = context)) {
                     navController.navigate(Screen.AddSecret.route)
                 } else {
                     navController.navigate(Screen.SignIn.route)

@@ -1,7 +1,9 @@
 package utils
 
+import android.content.Context
 import com.example.metasecret.AuthManagerApi
 import com.example.metasecret.Greeting
+import com.example.metasecret.database.DriverFactory
 import javax.inject.Inject
 
 class AuthManager @Inject constructor() {
@@ -9,11 +11,11 @@ class AuthManager @Inject constructor() {
         return true
     }
 
-    fun checkAuth(): Boolean {
-        return AuthManagerApi().getAuthStatus()
+    fun checkAuth(context: Context): Boolean {
+        return AuthManagerApi(factory = DriverFactory(context)).getAuthStatus()
     }
 
-    fun register(name: String) {
-
+    fun register(name: String, context: Context) {
+        AuthManagerApi(factory = DriverFactory(context)).setAuthStatus(isAuthorized = true)
     }
 }

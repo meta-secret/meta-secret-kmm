@@ -1,5 +1,6 @@
 package com.example.metasecret.android.navigation
 
+import android.content.Context
 import scenes.home.AddSecretScreen
 import scenes.onboarding.OnboardingScreen
 import androidx.compose.animation.ExperimentalAnimationApi
@@ -17,19 +18,22 @@ import scenes.splashscreen.SplashScreen
 //@ExperimentalPagerApi
 @Composable
 fun SetupNavGraph(
-    navController: NavHostController
+    navController: NavHostController,
+    context: Context
 ) {
     NavHost(navController = navController,
             startDestination = Screen.Splash.route
     ) {
         composable(route = Screen.Splash.route) {
-            SplashScreen(navController = navController)
+            SplashScreen(navController = navController,
+                        context = context)
         }
         composable(route = Screen.Welcome.route) {
             OnboardingScreen(navController = navController)
         }
         composable(route = Screen.SignIn.route) {
-            SignInScreen(navController = navController)
+            SignInScreen(navController = navController,
+                        context = context)
         }
         composable(route = Screen.AddSecret.route) {
             AddSecretScreen()

@@ -12,6 +12,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
 import androidx.navigation.Navigation
@@ -31,8 +32,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContent {
+            val context = LocalContext.current
             val navController = rememberNavController()
-            SetupNavGraph(navController = navController)
+            SetupNavGraph(navController = navController,
+                        context = context)
 
 //            Scaffold(
 //                bottomBar = {

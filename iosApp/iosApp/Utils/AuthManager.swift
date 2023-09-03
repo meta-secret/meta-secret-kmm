@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import shared
 
 protocol AuthManagerProtocol {
     func checkAuth() -> Bool
@@ -16,8 +17,7 @@ protocol AuthManagerProtocol {
 
 class AuthManager: AuthManagerProtocol {
     func checkAuth() -> Bool {
-        let defaults = UserDefaults.standard
-        return defaults.string(forKey: "Name") != nil
+        return AuthManagerApi().getAuthStatus()
     }
     
     func checkValetAvailability(name: String) -> Bool {

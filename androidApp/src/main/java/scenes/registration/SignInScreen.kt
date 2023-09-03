@@ -1,5 +1,6 @@
 package scenes.registration
 
+import android.content.Context
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -38,7 +39,8 @@ import scenes.splashscreen.SplashScreenViewModel
 @Composable
 fun SignInScreen(
     navController: NavHostController,
-    viewModel: SignInScreenViewModel = hiltViewModel()
+    viewModel: SignInScreenViewModel = hiltViewModel(),
+    context: Context
 ) {
     val scope = rememberCoroutineScope()
 
@@ -107,7 +109,7 @@ fun SignInScreen(
                     .height(48.dp)
                     .clip(RoundedCornerShape(8.dp)),
                 onClick = {
-                          viewModel.checkAndSaveName(name = "")
+
                 },
                 border = BorderStroke(width = 1.dp, color = Color.White),
                 shape = RoundedCornerShape(8.dp),
@@ -144,8 +146,10 @@ fun SignInScreen(
         // Button
         ActionButton(modifier = Modifier, title = "Вперед") {
             scope.launch {
-                navController.popBackStack()
-                navController.navigate(Screen.AddSecret.route)
+                if (viewModel.checkAndSaveName(name = "", context = context)) {
+                    navController.popBackStack()
+                    navController.navigate(Screen.AddSecret.route)
+                }
             }
         }
 
