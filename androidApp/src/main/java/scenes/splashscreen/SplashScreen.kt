@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.jetbrains.handson.kmm.shared.cache.AuthState
 
 @Composable
 fun SplashScreen(
@@ -26,17 +27,15 @@ fun SplashScreen(
 ) {
     LaunchedEffect(key1 = Unit){
         delay(2000)
-        viewModel.readOnboardingKey().collect { completed ->
-            navController.popBackStack()
-            if (completed) {
-                if (viewModel.checkAuth(context = context)) {
-                    navController.navigate(Screen.AddSecret.route)
-                } else {
-                    navController.navigate(Screen.SignIn.route)
-                }
+
+        if (viewModel.readOnboardingKey(context = context)) {
+            if (viewModel.checkAuth(context = context) == AuthState.ALREADY_REGISTERED) {
+                navController.navigate(Screen.AddSecret.route)
             } else {
-                navController.navigate(Screen.Welcome.route)
+                navController.navigate(Screen.SignIn.route)
             }
+        } else {
+            navController.navigate(Screen.Welcome.route)
         }
     }
 

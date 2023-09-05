@@ -29,7 +29,8 @@ fun SetupNavGraph(
                         context = context)
         }
         composable(route = Screen.Welcome.route) {
-            OnboardingScreen(navController = navController)
+            OnboardingScreen(navController = navController,
+                            context = context)
         }
         composable(route = Screen.SignIn.route) {
             SignInScreen(navController = navController,

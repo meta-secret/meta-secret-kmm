@@ -1,5 +1,6 @@
 package scenes.onboarding
 
+import android.content.Context
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
@@ -43,7 +44,8 @@ import scenes.common.ActionButton
 )
 fun OnboardingScreen(
     navController: NavHostController,
-    viewModel: OnboardingViewModel = hiltViewModel()
+    viewModel: OnboardingViewModel = hiltViewModel(),
+    context: Context
 ) {
     val pages = listOf(
         OnBoardingPage.First,
@@ -97,7 +99,7 @@ fun OnboardingScreen(
             //Skip button
             Button(
                 onClick = {
-                    viewModel.saveOnBoardingState(completed = true)
+                    viewModel.saveOnBoardingState(completed = true, context)
                     navController.popBackStack()
                     navController.navigate(Screen.SignIn.route)
                 },
@@ -136,7 +138,7 @@ fun OnboardingScreen(
         ActionButton(modifier = Modifier, title = "Далее") {
             scope.launch {
                 if (pagerState.currentPage + 1 >= pages.count()) {
-                    viewModel.saveOnBoardingState(completed = true)
+                    viewModel.saveOnBoardingState(completed = true, context)
                     navController.popBackStack()
                     navController.navigate(Screen.SignIn.route)
                 } else {

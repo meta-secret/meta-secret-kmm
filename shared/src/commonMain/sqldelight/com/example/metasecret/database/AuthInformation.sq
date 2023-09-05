@@ -1,11 +1,11 @@
 import sqldelight.com.intellij.openapi.options.advanced.AdvancedSettingType.Bool;
 
 CREATE TABLE AuthInformation (
-    isAuthorized INTEGER DEFAULT NULL
+    vaultName TEXT DEFAULT NULL
 );
 
 insertAuthInfo:
-INSERT INTO AuthInformation(isAuthorized)
+INSERT INTO AuthInformation(vaultName)
 VALUES(?);
 
 removeAuthInfo:
