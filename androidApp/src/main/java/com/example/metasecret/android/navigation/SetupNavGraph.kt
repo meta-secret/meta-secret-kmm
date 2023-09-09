@@ -5,10 +5,12 @@ import scenes.home.AddSecretScreen
 import scenes.onboarding.OnboardingScreen
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.metasecret.android.screen.Screen
+import scenes.common.BottomTabBar
 import scenes.home.AddDeviceScreen
 import scenes.home.ProfileScreen
 import scenes.registration.SignInScreen
@@ -37,13 +39,13 @@ fun SetupNavGraph(
                         context = context)
         }
         composable(route = Screen.AddSecret.route) {
-            AddSecretScreen()
+            AddSecretScreen(navController = navController)
         }
         composable(route = Screen.AddDevice.route) {
-            AddDeviceScreen()
+            AddDeviceScreen(navController = navController)
         }
         composable(route = Screen.Profile.route) {
-            ProfileScreen()
+            ProfileScreen(navController = navController)
         }
     }
 }

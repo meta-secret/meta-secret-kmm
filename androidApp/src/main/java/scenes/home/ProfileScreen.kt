@@ -24,12 +24,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.metasecret.android.R
 import scenes.common.ActionButton
+import scenes.common.BottomTabBar
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun ProfileScreen() {
+fun ProfileScreen(navController: NavHostController) {
     Image(
         painter = painterResource(id = R.drawable.bg_main),
         contentDescription = "",
@@ -47,7 +49,8 @@ fun ProfileScreen() {
             .padding(top = 24.dp)
             .fillMaxWidth()
             .height(252.dp)
-        ) {
+        )
+        {
             Column(modifier = Modifier
                 .fillMaxSize()) {
 
@@ -179,7 +182,7 @@ fun ProfileScreen() {
         Box(modifier = Modifier
             .padding(bottom = 124.dp)
             .fillMaxWidth()
-            .height(108.dp)
+            .height(128.dp)
         )
         {
             Column(modifier = Modifier
@@ -199,13 +202,14 @@ fun ProfileScreen() {
                 }
 
                 Box(modifier = Modifier
-                    .height(40.dp)
+                    .height(800.dp)
                     .fillMaxSize()
                 )
                 {
                     Column(
                         modifier = Modifier
-                            .fillMaxSize(),
+                            .fillMaxSize()
+                            .padding(vertical = 20.dp),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
@@ -227,6 +231,12 @@ fun ProfileScreen() {
 
             }
         }
+    }
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .padding(bottom = 50.dp),
+        verticalArrangement = Arrangement.Bottom) {
+        BottomTabBar(navController = navController)
     }
 }
 
