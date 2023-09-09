@@ -34,6 +34,7 @@ import com.example.metasecret.android.navigation.SetupNavGraph
 import data.BottomTabBarItemModel
 import scenes.common.AlertBubble
 import scenes.common.BottomTabBar
+import scenes.common.PlusButton
 
 @ExperimentalAnimationApi
 @Composable
@@ -117,6 +118,18 @@ fun AddSecretScreen(navController: NavHostController) {
 
         } else {
 
+        }
+    }
+
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .padding(bottom = 142.dp)
+        .padding(end = 24.dp),
+        horizontalAlignment = Alignment.End,
+        verticalArrangement = Arrangement.Bottom)
+    {
+        PlusButton(modifier = Modifier) {
+            println("TUT")
         }
     }
 
