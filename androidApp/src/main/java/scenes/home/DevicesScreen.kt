@@ -2,18 +2,23 @@ package scenes.home
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -23,13 +28,22 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.metasecret.android.R
+import data.DeviceModel
+import data.DeviceType
 import scenes.common.AlertBubble
 import scenes.common.BottomTabBar
+import scenes.common.DevicesCell
 import scenes.common.PlusButton
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun AddDeviceScreen(navController: NavHostController) {
+    var showDialog by remember { mutableStateOf(false) }
+
+    val devices = listOf(
+        DeviceModel(name = "Android Dima", deviceType = DeviceType.Phone, deviceId = "1234-5678-9012-3456", secretsCount = "1 секрет")
+    )
+
     Image(
         painter = painterResource(id = R.drawable.bg_main),
         contentDescription = "",
@@ -62,6 +76,17 @@ fun AddDeviceScreen(navController: NavHostController) {
         }
 
         AlertBubble() {}
+
+        Row(modifier = Modifier
+            .padding(top = 16.0.dp))
+        {
+            LazyColumn {
+                items(devices) { device ->
+                    DevicesCell(cellModel = device)
+                    Spacer(modifier = Modifier.height(14.dp))
+                }
+            }
+        }
     }
 
     Column(modifier = Modifier
