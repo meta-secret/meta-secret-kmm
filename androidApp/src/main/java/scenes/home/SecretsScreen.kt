@@ -4,6 +4,7 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -40,6 +41,7 @@ import scenes.common.PlusButton
 @Composable
 fun AddSecretScreen(navController: NavHostController) {
     var showDialog by remember { mutableStateOf(false) }
+    var currentSecret: String? = "Secret"
 
     var isEmpty = false
     val secrets = listOf(
@@ -131,12 +133,14 @@ fun AddSecretScreen(navController: NavHostController) {
                     items(secrets) { secret ->
                         SecretCell(cellModel = secret) {
                             showDialog = true
+                            currentSecret = secret.secret
                         }
                         Spacer(modifier = Modifier.height(14.dp))
                     }
                 }
-                if (showDialog) {
+                if (showDialog && currentSecret != null) {
                     ShowSecretScreen(
+                        title = currentSecret!!,
                         onClose = { showDialog = false }
                     )
                 }
@@ -161,5 +165,13 @@ fun AddSecretScreen(navController: NavHostController) {
         .padding(bottom = 50.dp),
         verticalArrangement = Arrangement.Bottom) {
         BottomTabBar(navController = navController)
+    }
+
+    if (showDialog) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Black.copy(alpha = 0.5f))
+        )
     }
 }

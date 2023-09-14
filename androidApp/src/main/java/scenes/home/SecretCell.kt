@@ -49,7 +49,9 @@ fun SecretCell(
             .background(Color.White.copy(alpha = 0.05f)),
     ) {
         Row(modifier = Modifier
-            .clickable {onClick}
+            .clickable {
+                onClick()
+            }
             .fillMaxSize()
             .padding(vertical = 12.dp)
             .padding(horizontal = 16.dp))
