@@ -176,10 +176,6 @@ fun SecretsScreen(navController: NavHostController) {
                                 onClose = { showDialog = false }
                             )
                         }
-
-                        if (showAddscreen) {
-
-                        }
                     }
                 }
             }
