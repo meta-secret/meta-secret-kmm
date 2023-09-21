@@ -9,7 +9,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.metasecret.android.screen.Screen
-import scenes.home.AddDeviceScreen
+import scenes.home.DeviceScreen
 import scenes.home.ProfileScreen
 import scenes.registration.SignInScreen
 import scenes.splashscreen.SplashScreen
@@ -40,7 +40,7 @@ fun SetupNavGraph(
             SecretsScreen(navController = navController)
         }
         composable(route = Screen.AddDevice.route) {
-            AddDeviceScreen(navController = navController)
+            DeviceScreen(navController = navController)
         }
         composable(route = Screen.Profile.route) {
             ProfileScreen(navController = navController)

@@ -46,14 +46,13 @@ import scenes.common.PlusButton
 
 @OptIn(ExperimentalAnimationApi::class, ExperimentalMaterialApi::class)
 @Composable
-fun AddDeviceScreen(navController: NavHostController) {
+fun DeviceScreen(navController: NavHostController) {
     val coroutineScope = rememberCoroutineScope()
     val modalSheetState = rememberModalBottomSheetState(
         initialValue = ModalBottomSheetValue.Hidden,
         confirmStateChange = { it != ModalBottomSheetValue.HalfExpanded },
         skipHalfExpanded = true
     )
-    var showAddDevice by remember { mutableStateOf(false) }
 
     val devices = listOf(
         DeviceModel(name = "Android Dima", deviceType = DeviceType.Phone, deviceId = "1234-5678-9012-3456", secretsCount = "1 секрет")
@@ -126,10 +125,11 @@ fun AddDeviceScreen(navController: NavHostController) {
             {
                 PlusButton(modifier = Modifier) {
                     coroutineScope.launch {
-                        if (modalSheetState.isVisible)
+                        if (modalSheetState.isVisible) {
                             modalSheetState.hide()
-                        else
+                        } else {
                             modalSheetState.show()
+                        }
                     }
                 }
             }
@@ -139,14 +139,6 @@ fun AddDeviceScreen(navController: NavHostController) {
                 .padding(bottom = 50.dp),
                 verticalArrangement = Arrangement.Bottom) {
                 BottomTabBar(navController = navController)
-            }
-
-            if (showAddDevice) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(Color.Black.copy(alpha = 0.5f))
-                )
             }
         }
     }
