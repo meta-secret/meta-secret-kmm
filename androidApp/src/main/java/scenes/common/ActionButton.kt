@@ -1,5 +1,7 @@
 package scenes.common
 
+import AppColors
+import CustomTypography
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -17,15 +19,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.example.metasecret.android.R
 
 @ExperimentalAnimationApi
 @Stable
 @Composable
 fun ActionButton(
     modifier: Modifier,
-    color: Color = Color.Blue,
+    color: Color = AppColors.actionBlue,
     paddingTop: Dp = 24.dp,
     paddingBottom: Dp = 26.dp,
     height: Dp = 63.dp,
@@ -52,7 +57,14 @@ fun ActionButton(
                 contentColor = Color.White
             )
         ) {
-            Text(text = title)
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                color = AppColors.whiteMain,
+                text = title,
+                style = CustomTypography.button,
+                textAlign = TextAlign.Center
+            )
         }
     }
 }

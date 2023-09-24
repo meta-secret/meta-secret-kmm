@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="skip">Пропустить</string>
+    <string name="next">Далее</string>
+    <string name="gotSecrets">Есть очень важные секреты?</string>
+    <string name="splitIt">Поделите их между своими устроствами</string>
+    <string name="secureSafe">Все пароли и секретная ифнормация храниться только на ваших устройствах и надежно защищены  по стандартам шифтрования RSA и AES</string>
+</resources>
