@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    //MARK: - COMMON
     <string name="skip">Пропустить</string>
     <string name="next">Далее</string>
+
+    //MARK: - ONBOARDING
     <string name="gotSecrets">Есть очень важные секреты?</string>
     <string name="splitIt">Поделите их между своими устроствами</string>
     <string name="secureSafe">Все пароли и секретная ифнормация храниться только на ваших устройствах и надежно защищены  по стандартам шифтрования RSA и AES</string>
+
+    //MARK: - SIGN IN
+    <string name="letsStart">Начать работу</string>
+    <string name="chooseName">Выберите уникальный никнейм - который вы будете использовать в дальнейшем на других устройствах или войдите по QR коду</string>
+    <string name="scanQR">Сканировать QR Code</string>
+    <string name="chooseNamePlaceHolder">Выберите уникальный никнейм</string>
+    <string name="moveNext">Вперед</string>
+    <string name="nameIsChosen">Это имя занято</string>
 </resources>

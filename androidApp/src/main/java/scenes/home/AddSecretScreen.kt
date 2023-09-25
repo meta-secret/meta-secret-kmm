@@ -59,10 +59,10 @@ fun AddSecretScreen(
                 textAlign = TextAlign.Center
             )
             Spacer(modifier = Modifier.height(20.dp))
-            TipTextField(modifier = Modifier)
+            TipTextField(modifier = Modifier, placeHolder = "", errorText = "")
 
             Spacer(modifier = Modifier.height(20.dp))
-            TipTextField(modifier = Modifier)
+            TipTextField(modifier = Modifier, placeHolder = "", errorText = "")
 
             Spacer(modifier = Modifier.height(20.dp))
 

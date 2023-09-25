@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    //MARK: - COMMON
     <string name="skip">Skip</string>
     <string name="next">Next</string>
+
+    //MARK: - ONBOARDING
     <string name="gotSecrets">Got important secrets?</string>
     <string name="splitIt">Split it between your devices</string>
     <string name="secureSafe">All passwords and secret information is stored only on your devices and securely protected with encryption standards RSA and AES</string>
+
+    //MARK: - SIGN IN
+    <string name="letsStart">Let\'s start</string>
+    <string name="chooseName">Choose a unique nickname you will use in the future to connect other devicesor just scan a QR code</string>
+    <string name="scanQR">Scan QR Code</string>
+    <string name="chooseNamePlaceHolder">Choose a unique nickname</string>
+    <string name="moveNext">Next</string>
+    <string name="nameIsChosen">This name is already chosen</string>
+
 </resources>

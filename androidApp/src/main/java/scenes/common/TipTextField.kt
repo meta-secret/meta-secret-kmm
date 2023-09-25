@@ -1,5 +1,7 @@
 package scenes.common
 
+import AppColors
+import CustomTypography
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -36,7 +38,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun TipTextField(modifier: Modifier) {
+fun TipTextField(modifier: Modifier, placeHolder: String, errorText: String) {
     var value by remember {
         mutableStateOf("")
     }
@@ -62,15 +64,13 @@ fun TipTextField(modifier: Modifier) {
             singleLine = true,
             shape = RoundedCornerShape(1.dp),
             label = { Text(
-                color = Color.White.copy(alpha = 0.5f),
-                fontSize = MaterialTheme.typography.caption.fontSize,
-                fontWeight = FontWeight.Normal,
+                color = AppColors.white50,
+                style = CustomTypography.caption,
                 textAlign = TextAlign.Left,
-                text = "Выберите уникальный никнейм") },
+                text = placeHolder) },
             placeholder = { Text(
-                color = Color.White.copy(alpha = 0.5f),
-                fontSize = MaterialTheme.typography.subtitle2.fontSize,
-                fontWeight = FontWeight.Normal,
+                color = AppColors.white50,
+                style = CustomTypography.body1,
                 textAlign = TextAlign.Left,
                 text = "") },
             isError = isNameAlreadyTaken,
@@ -85,9 +85,9 @@ fun TipTextField(modifier: Modifier) {
                 }
             ),
             colors = TextFieldDefaults.textFieldColors(
-                textColor = Color.White,
-                backgroundColor = Color.White.copy(alpha = 0.05f),
-                cursorColor = Color.White,
+                textColor = AppColors.whiteMain,
+                backgroundColor = AppColors.white5,
+                cursorColor = AppColors.whiteMain,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
                 disabledIndicatorColor = Color.Transparent,
@@ -98,8 +98,8 @@ fun TipTextField(modifier: Modifier) {
         if (isNameAlreadyTaken) {
             Text(
                 modifier = Modifier.padding(start = 16.dp),
-                text = "Это имя занято",
-                color = MaterialTheme.colors.error
+                text = errorText,
+                color = AppColors.redError
             )
         }
     }

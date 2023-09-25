@@ -12,6 +12,13 @@ val CustomTypography = Typography(
     defaultFontFamily = FontFamily(
         Font(R.font.manrope_regular)
     ),
+    body1 = TextStyle(
+        fontFamily = FontFamily(
+            Font(R.font.manrope_regular, FontWeight.Normal)
+        ),
+        fontSize = 16.sp,
+        letterSpacing = 1.15.sp
+    ),
     body2 = TextStyle(
         fontFamily = FontFamily(
             Font(R.font.manrope_regular, FontWeight.Normal)
@@ -19,18 +26,25 @@ val CustomTypography = Typography(
         fontSize = 15.sp,
         letterSpacing = 1.15.sp
     ),
-    h2 = TextStyle(
+    caption = TextStyle(
+        fontFamily = FontFamily(
+            Font(R.font.manrope_regular, FontWeight.Normal)
+        ),
+        fontSize = 13.sp,
+        letterSpacing = 1.15.sp
+    ),
+    h1 = TextStyle(
         fontFamily = FontFamily(
             Font(R.font.manrope_bold, FontWeight.Bold)
         ),
         fontSize = 28.sp,
         letterSpacing = 1.15.sp
     ),
-    button = TextStyle(
+    h2 = TextStyle(
         fontFamily = FontFamily(
-            Font(R.font.manrope_semibold, FontWeight.SemiBold)
+            Font(R.font.manrope_bold, FontWeight.Bold)
         ),
-        fontSize = 16.sp,
+        fontSize = 24.sp,
         letterSpacing = 1.15.sp
     ),
     h4 = TextStyle(
@@ -38,6 +52,13 @@ val CustomTypography = Typography(
             Font(R.font.manrope_bold, FontWeight.Bold)
         ),
         fontSize = 20.sp,
+        letterSpacing = 1.15.sp
+    ),
+    button = TextStyle(
+        fontFamily = FontFamily(
+            Font(R.font.manrope_semibold, FontWeight.SemiBold)
+        ),
+        fontSize = 16.sp,
         letterSpacing = 1.15.sp
     )
 )
