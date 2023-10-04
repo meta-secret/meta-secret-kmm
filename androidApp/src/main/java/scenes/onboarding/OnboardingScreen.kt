@@ -175,7 +175,7 @@ fun PagerScreen(onBoardingPage: OnBoardingPage) {
             .fillMaxWidth(),
             text = stringResource(id = onBoardingPage.title),
             color = AppColors.whiteMain,
-            style = CustomTypography.h1,
+            style = CustomTypography.h2,
             textAlign = TextAlign.Left
         )
 

@@ -1,5 +1,7 @@
 package scenes.home
 
+import AppColors
+import CustomTypography
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -29,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -68,7 +71,7 @@ fun FirstStep(onClick: () -> Unit){
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color.DarkGray, shape = RoundedCornerShape(12.dp))
+            .background(AppColors.blackPopUps, shape = RoundedCornerShape(12.dp))
             .height(590.0.dp)
             .clip(shape = RoundedCornerShape(12.dp))
     ) {
@@ -77,10 +80,9 @@ fun FirstStep(onClick: () -> Unit){
                 .padding(top = 30.dp)
                 .padding(horizontal = 16.dp)
                 .fillMaxWidth(),
-            text = "Добавить устройство",
-            color = Color.White,
-            fontSize = MaterialTheme.typography.h5.fontSize,
-            fontWeight = FontWeight.Medium,
+            text = stringResource(id = R.string.addDevice),
+            color = AppColors.whiteMain,
+            style = CustomTypography.h3,
             textAlign = TextAlign.Start
         )
 
@@ -89,10 +91,9 @@ fun FirstStep(onClick: () -> Unit){
             modifier = Modifier
                 .padding(horizontal = 16.dp)
                 .fillMaxWidth(),
-            text = "Для стабильной безопасности ваших паролей вам нужно иметь более 3ех устройств",
-            color = Color.White,
-            fontSize = MaterialTheme.typography.subtitle1.fontSize,
-            fontWeight = FontWeight.Normal,
+            text = stringResource(id = R.string.threeDevicesNeeded),
+            color = AppColors.white75,
+            style = CustomTypography.body2,
             textAlign = TextAlign.Start
         )
 
@@ -104,7 +105,7 @@ fun FirstStep(onClick: () -> Unit){
             Box(modifier = Modifier
                 .height(258.0.dp)
                 .fillMaxWidth()
-                .background(Color.Gray, shape = RoundedCornerShape(12.dp))
+                .background(AppColors.white5, shape = RoundedCornerShape(12.dp))
                 .clip(RoundedCornerShape(12.0.dp)),
                 contentAlignment = Alignment.Center) {
                 Column(modifier = Modifier
@@ -119,13 +120,14 @@ fun FirstStep(onClick: () -> Unit){
                         Box(modifier = Modifier
                             .fillMaxHeight()
                             .width(57.dp)
-                            .background(Color.Black, shape = RoundedCornerShape(8.dp))
+                            .background(AppColors.blackLabel, shape = RoundedCornerShape(8.dp))
                             .clip(RoundedCornerShape(8.0.dp)),
                             contentAlignment = Alignment.Center) {
                             Text(
                                 modifier = Modifier
+                                    .padding(top = 3.dp)
                                     .fillMaxSize(),
-                                text = "скоро",
+                                text = stringResource(id = R.string.soon),
                                 color = Color.White,
                                 fontSize = MaterialTheme.typography.subtitle2.fontSize,
                                 fontWeight = FontWeight.Medium,
@@ -168,10 +170,9 @@ fun FirstStep(onClick: () -> Unit){
                             Text(
                                 modifier = Modifier
                                     .fillMaxWidth(),
-                                text = "Не хватает устройств ?",
-                                color = Color.White,
-                                fontSize = MaterialTheme.typography.h5.fontSize,
-                                fontWeight = FontWeight.Medium,
+                                text = stringResource(id = R.string.notEnoughtDevices),
+                                color = AppColors.whiteMain,
+                                style = CustomTypography.h5,
                                 textAlign = TextAlign.Start
                             )
 
@@ -179,24 +180,21 @@ fun FirstStep(onClick: () -> Unit){
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(top = 12.dp),
-                                text = "MetaSecret Cloud Device - используйте наше облако как одно из устройств ",
-                                color = Color.White,
-                                fontSize = MaterialTheme.typography.subtitle1.fontSize,
-                                fontWeight = FontWeight.Normal,
+                                text = stringResource(id = R.string.metaSecretCloud),
+                                color = AppColors.white75,
+                                style = CustomTypography.body2,
                                 textAlign = TextAlign.Start
                             )
                         }
                     }
                 }
-
-
             }
         }
 
         Spacer(modifier = Modifier.height(24.dp))
         ActionButton(
             modifier = Modifier
-                .padding(horizontal = 8.0.dp), title = "+ Добавить устройство",
+                .padding(horizontal = 8.0.dp), title = stringResource(id = R.string.plusaddDevice),
             onClick = onClick
         )
         Spacer(modifier = Modifier.height(30.dp))
@@ -209,7 +207,7 @@ fun SecondStep(){
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color.DarkGray, shape = RoundedCornerShape(12.dp))
+            .background(AppColors.blackPopUps, shape = RoundedCornerShape(12.dp))
             .height(600.0.dp)
             .clip(shape = RoundedCornerShape(12.dp))
     ) {
@@ -218,10 +216,9 @@ fun SecondStep(){
                 .padding(top = 30.dp)
                 .padding(horizontal = 16.dp)
                 .fillMaxWidth(),
-            text = "Добавить устройство",
-            color = Color.White,
-            fontSize = MaterialTheme.typography.h5.fontSize,
-            fontWeight = FontWeight.Medium,
+            text = stringResource(id = R.string.addDevice),
+            color = AppColors.whiteMain,
+            style = CustomTypography.h3,
             textAlign = TextAlign.Start
         )
 
@@ -232,7 +229,7 @@ fun SecondStep(){
             .padding(horizontal = 16.dp)) {
             Box(modifier = Modifier
                 .fillMaxSize()
-                .background(Color.Gray, shape = RoundedCornerShape(12.dp))
+                .background(AppColors.white5, shape = RoundedCornerShape(12.dp))
                 .clip(RoundedCornerShape(12.0.dp)),
                 contentAlignment = Alignment.Center)
             {}
@@ -245,7 +242,7 @@ fun SecondStep(){
             .padding(horizontal = 16.dp)) {
             Box(modifier = Modifier
                 .fillMaxSize()
-                .background(Color.Gray),
+                .background(AppColors.white5),
                 contentAlignment = Alignment.Center)
             { }
         }
@@ -254,10 +251,9 @@ fun SecondStep(){
         Text(
             modifier = Modifier
                 .fillMaxWidth(),
-            text = "Или воспользуйтесь QR кодом",
-            color = Color.White,
-            fontSize = MaterialTheme.typography.subtitle1.fontSize,
-            fontWeight = FontWeight.Normal,
+            text = stringResource(id = R.string.useQR),
+            color = AppColors.white75,
+            style = CustomTypography.body2,
             textAlign = TextAlign.Center
         )
 

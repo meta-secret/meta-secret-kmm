@@ -1,5 +1,7 @@
 package scenes.home
 
+import AppColors
+import CustomTypography
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -30,7 +32,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -74,9 +78,10 @@ fun DeviceScreen(navController: NavHostController) {
             Image(
                 painter = painterResource(id = R.drawable.bg_main),
                 contentDescription = "",
+                contentScale = ContentScale.FillBounds,
                 modifier = Modifier
-                    .fillMaxSize()
-            )
+                    .background(Color.Red)
+                    .fillMaxSize())
             Column(
                 modifier = Modifier
                     .padding(horizontal = 16.dp)
@@ -94,10 +99,9 @@ fun DeviceScreen(navController: NavHostController) {
                     Text(
                         modifier = Modifier
                             .fillMaxWidth(),
-                        text = "Устройства",
-                        color = Color.White,
-                        fontSize = MaterialTheme.typography.h4.fontSize,
-                        fontWeight = FontWeight.Bold,
+                        text = stringResource(id = R.string.devices),
+                        color = AppColors.whiteMain,
+                        style = CustomTypography.h1,
                         textAlign = TextAlign.Start
                     )
                 }
@@ -118,7 +122,7 @@ fun DeviceScreen(navController: NavHostController) {
 
             Column(modifier = Modifier
                 .fillMaxSize()
-                .padding(bottom = 142.dp)
+                .padding(bottom = 114.dp)
                 .padding(end = 24.dp),
                 horizontalAlignment = Alignment.End,
                 verticalArrangement = Arrangement.Bottom)
@@ -136,7 +140,7 @@ fun DeviceScreen(navController: NavHostController) {
 
             Column(modifier = Modifier
                 .fillMaxSize()
-                .padding(bottom = 50.dp),
+                .padding(bottom = 22.dp),
                 verticalArrangement = Arrangement.Bottom) {
                 BottomTabBar(navController = navController)
             }

@@ -1,5 +1,7 @@
 package scenes.home
 
+import AppColors
+import CustomTypography
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -20,7 +22,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -35,7 +39,9 @@ fun ProfileScreen(navController: NavHostController) {
     Image(
         painter = painterResource(id = R.drawable.bg_main),
         contentDescription = "",
+        contentScale = ContentScale.FillBounds,
         modifier = Modifier
+            .background(Color.Red)
             .fillMaxSize())
 
     Column(
@@ -64,10 +70,9 @@ fun ProfileScreen(navController: NavHostController) {
                     Text(
                         modifier = Modifier
                             .fillMaxWidth(),
-                        text = "Профиль",
-                        color = Color.White,
-                        fontSize = MaterialTheme.typography.h4.fontSize,
-                        fontWeight = FontWeight.Bold,
+                        text = stringResource(id = R.string.profile),
+                        color = AppColors.whiteMain,
+                        style = CustomTypography.h1,
                         textAlign = TextAlign.Start
                     )
                 }
@@ -75,7 +80,7 @@ fun ProfileScreen(navController: NavHostController) {
                 //NickName
                 Row(
                     modifier = Modifier
-                        .height(48.dp)
+                        .height(52.dp)
                         .fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -85,10 +90,9 @@ fun ProfileScreen(navController: NavHostController) {
                         Text(
                             modifier = Modifier
                                 .fillMaxWidth(),
-                            text = "Nickname",
-                            color = Color.White.copy(alpha = 0.5f),
-                            fontSize = MaterialTheme.typography.subtitle2.fontSize,
-                            fontWeight = FontWeight.Light,
+                            text = stringResource(id = R.string.nickName),
+                            color = AppColors.white75,
+                            style = CustomTypography.body2,
                             textAlign = TextAlign.Start
                         )
 
@@ -96,9 +100,8 @@ fun ProfileScreen(navController: NavHostController) {
                             modifier = Modifier
                                 .fillMaxWidth(),
                             text = "Dimas",
-                            color = Color.White,
-                            fontSize = MaterialTheme.typography.subtitle1.fontSize,
-                            fontWeight = FontWeight.Bold,
+                            color = AppColors.whiteMain,
+                            style = CustomTypography.h3,
                             textAlign = TextAlign.Start
                         )
                     }
@@ -120,7 +123,7 @@ fun ProfileScreen(navController: NavHostController) {
 
                         Row(
                             modifier = Modifier
-                                .height(90.dp)
+                                .height(84.dp)
                                 .fillMaxSize(),
                             horizontalArrangement = Arrangement.Center,
                             verticalAlignment = Alignment.CenterVertically
@@ -129,44 +132,40 @@ fun ProfileScreen(navController: NavHostController) {
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ) {
                                 Text(
-                                    text = "Секреты",
-                                    color = Color.White.copy(alpha = 0.75f),
-                                    fontSize = MaterialTheme.typography.subtitle2.fontSize,
-                                    fontWeight = FontWeight.Light,
+                                    text = stringResource(id = R.string.secrets),
+                                    color = AppColors.white75,
+                                    style = CustomTypography.body2,
                                     textAlign = TextAlign.Center
                                 )
+                                //TODO: Move 12 to common module
                                 Text(
                                     text = "12",
-                                    color = Color.White,
-                                    fontSize = MaterialTheme.typography.subtitle1.fontSize,
-                                    fontWeight = FontWeight.Bold,
+                                    color = AppColors.whiteMain,
+                                    style = CustomTypography.h3,
                                     textAlign = TextAlign.Center
                                 )
                             }
 
                             Box(modifier = Modifier
-                                .fillMaxHeight()
-                                .padding(horizontal = 22.dp)
-                                .background(color = Color.Gray)
+                                .padding(horizontal = 22.dp, vertical = 20.dp)
+                                .height(44.dp)
+                                .background(color = AppColors.white10)
                                 .width(1.dp)
-                                .padding(vertical = 20.dp)
                             )
 
                             Column(
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ) {
                                 Text(
-                                    text = "Девайсы",
-                                    color = Color.White.copy(alpha = 0.75f),
-                                    fontSize = MaterialTheme.typography.subtitle2.fontSize,
-                                    fontWeight = FontWeight.Light,
+                                    text = stringResource(id = R.string.devices),
+                                    color = AppColors.white75,
+                                    style = CustomTypography.body2,
                                     textAlign = TextAlign.Center
                                 )
                                 Text(
                                     text = "3",
-                                    color = Color.White,
-                                    fontSize = MaterialTheme.typography.subtitle1.fontSize,
-                                    fontWeight = FontWeight.Bold,
+                                    color = AppColors.whiteMain,
+                                    style = CustomTypography.h3,
                                     textAlign = TextAlign.Center
                                 )
                             }
@@ -192,11 +191,11 @@ fun ProfileScreen(navController: NavHostController) {
             {
                 ActionButton(
                     modifier = Modifier,
-                    color = Color.Red,
+                    color = AppColors.redError,
                     paddingTop = 0.dp,
                     paddingBottom = 0.dp,
                     height = 48.dp,
-                    title = "Выйти")
+                    title = stringResource(id = R.string.logout))
                 {
                     // Need action handler
                 }
@@ -214,16 +213,14 @@ fun ProfileScreen(navController: NavHostController) {
                     ) {
                         Text(
                             text = "Version 1.1.00.22",
-                            color = Color.White.copy(alpha = 0.5f),
-                            fontSize = MaterialTheme.typography.subtitle1.fontSize,
-                            fontWeight = FontWeight.Normal,
+                            color = AppColors.white50,
+                            style = CustomTypography.body2,
                             textAlign = TextAlign.Center
                         )
                         Text(
                             text = " Powered by Slavic incorporated",
-                            color = Color.White.copy(alpha = 0.5f),
-                            fontSize = MaterialTheme.typography.subtitle1.fontSize,
-                            fontWeight = FontWeight.Normal,
+                            color = AppColors.white50,
+                            style = CustomTypography.body2,
                             textAlign = TextAlign.Center
                         )
                     }
@@ -234,7 +231,7 @@ fun ProfileScreen(navController: NavHostController) {
     }
     Column(modifier = Modifier
         .fillMaxSize()
-        .padding(bottom = 50.dp),
+        .padding(bottom = 22.dp),
         verticalArrangement = Arrangement.Bottom) {
         BottomTabBar(navController = navController)
     }
@@ -245,7 +242,7 @@ fun ProfileScreen(navController: NavHostController) {
 fun separatorH() {
     Box(
         modifier = Modifier
-            .background(color = Color.Gray)
+            .background(color = AppColors.white10)
             .height(1.dp)
             .fillMaxWidth()
     ) {}

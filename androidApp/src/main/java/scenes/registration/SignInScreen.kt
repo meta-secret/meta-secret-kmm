@@ -97,7 +97,7 @@ fun SignInScreen(
                     .fillMaxWidth(),
                 text = stringResource(id = R.string.letsStart),
                 color = AppColors.whiteMain,
-                style = CustomTypography.h2,
+                style = CustomTypography.h3,
                 textAlign = TextAlign.Left
             )
         }

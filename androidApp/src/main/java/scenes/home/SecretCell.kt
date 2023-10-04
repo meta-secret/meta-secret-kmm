@@ -1,5 +1,7 @@
 package scenes.home
 
+import AppColors
+import CustomTypography
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -46,15 +48,16 @@ fun SecretCell(
             .height(height)
             .fillMaxWidth()
             .clip(RoundedCornerShape(12.dp))
-            .background(Color.White.copy(alpha = 0.05f)),
+            .background(AppColors.white5),
     ) {
         Row(modifier = Modifier
             .clickable {
                 onClick()
             }
             .fillMaxSize()
-            .padding(vertical = 12.dp)
-            .padding(horizontal = 16.dp))
+            .padding(vertical = 20.dp)
+            .padding(horizontal = 16.dp),
+            verticalAlignment = Alignment.CenterVertically)
         {
             Column(modifier = Modifier
                 .weight(1f)
@@ -62,25 +65,26 @@ fun SecretCell(
             {
                 Text(
                     text = cellModel.secret,
-                    color = Color.White,
-                    fontSize = MaterialTheme.typography.h6.fontSize,
-                    fontWeight = FontWeight.Medium,
+                    color = AppColors.whiteMain,
+                    style = CustomTypography.h5,
                     textAlign = TextAlign.Start
                 )
 
-                Row() {
+                Row(
+                    modifier = Modifier.padding(top = 4.dp)
+                ) {
                     Image(
                         painter = painterResource(id = R.drawable.all_devices_ico),
                         contentDescription = "",
                         modifier = Modifier
                             .height(24.0.dp)
-                            .width(24.0.dp))
+                            .width(24.0.dp)
+                            .padding(end = 4.dp))
 
                     Text(
                         text = getDevicesCountText(cellModel.strenghtType),
-                        color = Color.White.copy(alpha = 0.75f),
-                        fontSize = MaterialTheme.typography.subtitle2.fontSize,
-                        fontWeight = FontWeight.Normal,
+                        color = AppColors.white75,
+                        style = CustomTypography.body2,
                         textAlign = TextAlign.Start
                     )
                 }
@@ -104,9 +108,8 @@ fun SecretCell(
 
                 Text(
                     text = getProtectionTypeText(cellModel.strenghtType),
-                    color = Color.White.copy(alpha = 0.75f),
-                    fontSize = MaterialTheme.typography.overline.fontSize,
-                    fontWeight = FontWeight.Normal,
+                    color = AppColors.white75,
+                    style = CustomTypography.body2,
                     textAlign = TextAlign.Start
                 )
             }

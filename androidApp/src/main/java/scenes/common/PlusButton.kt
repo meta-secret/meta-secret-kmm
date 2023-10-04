@@ -1,5 +1,6 @@
 package scenes.common
 
+import AppColors
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -49,12 +50,12 @@ fun PlusButton(
                 .border(
                     6.dp,
                     shape = RoundedCornerShape(80.dp),
-                    color = Color.White.copy(alpha = 0.25f)
+                    color = AppColors.white15
                 ),
             onClick = onClick,
             colors = ButtonDefaults.buttonColors(
-                backgroundColor = Color.Blue,
-                contentColor = Color.White
+                backgroundColor = AppColors.actionBlue,
+                contentColor = AppColors.whiteMain
             ),
             elevation = null
         ) {

@@ -3,6 +3,9 @@
     //MARK: - COMMON
     <string name="skip">Skip</string>
     <string name="next">Next</string>
+    <string name="needDevices">You need 2 more devices to reach a higher level of security</string>
+    <string name="plusadd">" + Add"</string>
+    <string name="enterValue">Enter value</string>
 
     //MARK: - ONBOARDING
     <string name="gotSecrets">Got important secrets?</string>
@@ -16,5 +19,44 @@
     <string name="chooseNamePlaceHolder">Choose a unique nickname</string>
     <string name="moveNext">Next</string>
     <string name="nameIsChosen">This name is already chosen</string>
+
+    <string name="secrets">Secrets</string>
+    <string name="devices">Devices</string>
+    <string name="help">Help</string>
+    <string name="profile">Profile</string>
+
+    //MARK: - SECRETS
+    <string name="noSecrets">No secrets</string>
+    <string name="youHaveNoSecrets">You have no any secrets yet. Add your first one.</string>
+    <string name="weak">weak</string>
+    <string name="strong">strong</string>
+    <string name="maximum">maximum</string>
+    <string name="countDevices">1 device</string>
+    <string name="countSecrets">6 secrets</string>
+    <string name="addSecret">Add secret</string>
+    <string name="secretName">Secret name</string>
+    <string name="secret">Secret</string>
+    <string name="secretNameNeeded">Secret name needed</string>
+    <string name="secretNeeded">Secret needed</string>
+    <string name="showSecret">Show secret</string>
+    <string name="show">Show</string>
+    <string name="copySecret">Copy secret</string>
+
+    //MARK: - DEVICES
+    <string name="addDevice">Add device</string>>
+    <string name="threeDevicesNeeded">For maximum security level for your secrets you need to connect 3 devices</string>
+    <string name="soon">soon</string>
+    <string name="notEnoughtDevices">Not enought devices?</string>
+    <string name="metaSecretCloud">MetaSecret Cloud Device - use our cloud as one of your devices</string>
+    <string name="downloadApp">1. Download app MetaSecret on your new device</string>
+    <string name="repeatNickName">2. Enter your unique Nick name on new device</string>
+    <string name="approveConnection">3. Approve your new device connection</string>
+    <string name="useQR">or scan QR code</string>
+    <string name="plusaddDevice">" + Add device"</string>
+
+    //MARK: - PROFILE
+    <string name="nickName">Nickname</string>>
+    <string name="logout">Logout</string>
+    <string name="version">Version</string>
 
 </resources>

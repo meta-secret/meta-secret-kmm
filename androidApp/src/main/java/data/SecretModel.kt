@@ -2,6 +2,7 @@ package data
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
+import androidx.compose.ui.res.stringResource
 import com.example.metasecret.android.R
 import java.util.UUID
 
@@ -33,17 +34,17 @@ fun getProtectionTypeImage(protectionType: ProtectionType): Int {
 @Composable
 fun getProtectionTypeText(protectionType: ProtectionType): String {
     return when (protectionType) {
-        ProtectionType.Weak -> "слабая"
-        ProtectionType.Strong -> "сильная"
-        ProtectionType.Max -> "максимум"
+        ProtectionType.Weak -> stringResource(id = R.string.weak)
+        ProtectionType.Strong -> stringResource(id = R.string.strong)
+        ProtectionType.Max -> stringResource(id = R.string.maximum)
     }
 }
 
 @Composable
 fun getDevicesCountText(protectionType: ProtectionType): String {
     return when (protectionType) {
-        ProtectionType.Weak -> "1 устройство"
-        ProtectionType.Strong -> "2 устрайства"
-        ProtectionType.Max -> "3 устройства"
+        ProtectionType.Weak -> stringResource(id = R.string.countDevices)
+        ProtectionType.Strong -> stringResource(id = R.string.countDevices)
+        ProtectionType.Max -> stringResource(id = R.string.countDevices)
     }
 }

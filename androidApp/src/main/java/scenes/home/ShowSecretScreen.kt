@@ -1,5 +1,7 @@
 package scenes.home
 
+import AppColors
+import CustomTypography
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -8,6 +10,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -29,6 +32,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -55,57 +59,66 @@ fun ShowSecretScreen(
         Column(
             modifier = Modifier
                 .padding(16.dp)
-                .background(Color.DarkGray, shape = RoundedCornerShape(12.dp))
+                .background(AppColors.blackPopUps, shape = RoundedCornerShape(12.dp))
                 .height(366.0.dp)
                 .clip(shape = RoundedCornerShape(12.dp))
         ) {
             Text(modifier = Modifier
                 .padding(top = 30.dp)
                 .fillMaxWidth(),
-                text = "Показать секрет",
-                color = Color.White,
-                fontSize = MaterialTheme.typography.h5.fontSize,
-                fontWeight = FontWeight.Medium,
+                text = stringResource(id = R.string.showSecret),
+                color = AppColors.whiteMain,
+                style = CustomTypography.h3,
                 textAlign = TextAlign.Center
             )
             Spacer(modifier = Modifier.height(24.dp))
-            Box(modifier = Modifier
-                .height(48.0.dp)
-                .background(Color.Black, shape = RoundedCornerShape(8.dp))
-                .padding(horizontal = 16.dp)
-                .clip(RoundedCornerShape(8.0.dp)),
-                contentAlignment = Alignment.Center) {
-                Text( modifier = Modifier
-                    .fillMaxWidth(),
-                    text = title,
-                    color = Color.White,
-                    fontSize = MaterialTheme.typography.h5.fontSize,
-                    fontWeight = FontWeight.Normal,
-                    textAlign = TextAlign.Center
-                )
-            }
-            Spacer(modifier = Modifier.height(14.dp))
-            Box(modifier = Modifier
-                .height(48.0.dp)
+            Row(modifier = Modifier
                 .fillMaxWidth()
-                .background(Color.Black, shape = RoundedCornerShape(8.dp))
-                .padding(horizontal = 16.dp)
-                .clip(RoundedCornerShape(8.0.dp)),
-                contentAlignment = Alignment.Center) {
-                var secret = ""
-                secret = if (showSecret) {
-                    title
-                } else {
-                    "*****"
+                .height(48.dp)
+                .padding(horizontal = 16.dp)) {
+                Box(modifier = Modifier
+                    .background(AppColors.blackBg, shape = RoundedCornerShape(8.dp))
+                    .fillMaxSize()
+                    .clip(RoundedCornerShape(8.0.dp)),
+                    contentAlignment = Alignment.Center) {
+                    Text( modifier = Modifier
+                        .fillMaxWidth(),
+                        text = title,
+                        color = AppColors.whiteMain,
+                        style = CustomTypography.body1,
+                        textAlign = TextAlign.Center
+                    )
                 }
-                Text(modifier = Modifier
-                    .fillMaxWidth(),
-                    text = secret,
-                    color = Color.White,
-                    fontSize = MaterialTheme.typography.h5.fontSize,
-                    fontWeight = FontWeight.Normal,
-                    textAlign = TextAlign.Center
-                )
+            }
+
+            Spacer(modifier = Modifier.height(14.dp))
+            Row(modifier = Modifier
+                .fillMaxWidth()
+                .height(48.dp)
+                .padding(horizontal = 16.dp)) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(AppColors.blackBg, shape = RoundedCornerShape(8.dp))
+                        .padding(horizontal = 16.dp)
+                        .clip(RoundedCornerShape(8.0.dp)),
+                    contentAlignment = Alignment.Center
+                ) {
+                    var secret = ""
+                    secret = if (showSecret) {
+                        title
+                    } else {
+                        "*****"
+                    }
+                    Text(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        text = secret,
+                        color = AppColors.whiteMain,
+                        style = CustomTypography.body1,
+                        textAlign = TextAlign.Center
+                    )
+                }
             }
             Spacer(modifier = Modifier.height(14.dp))
             Row(modifier = Modifier
@@ -118,19 +131,19 @@ fun ShowSecretScreen(
                     contentDescription = "",
                     modifier = Modifier
                         .height(24.0.dp)
-                        .width(24.0.dp))
+                        .width(24.0.dp)
+                        .padding(end = 4.dp))
 
                 Text(
                     text = getDevicesCountText(ProtectionType.Strong),
-                    color = Color.White.copy(alpha = 0.75f),
-                    fontSize = MaterialTheme.typography.subtitle2.fontSize,
-                    fontWeight = FontWeight.Normal,
+                    color = AppColors.white75,
+                    style = CustomTypography.body2,
                     textAlign = TextAlign.Start
                 )
             }
 
             ActionButton(modifier = Modifier
-                .padding(horizontal = 16.0.dp), title = "Показать") {
+                .padding(horizontal = 16.0.dp), title = stringResource(id = R.string.show)) {
                 showSecret = !showSecret
             }
             Spacer(modifier = Modifier.height(30.dp))

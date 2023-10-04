@@ -3,6 +3,9 @@
     //MARK: - COMMON
     <string name="skip">Пропустить</string>
     <string name="next">Далее</string>
+    <string name="needDevices">Не хватает 2-ух девайсов, чтобы ваши секреты были в безопастности</string>
+    <string name="plusadd"> + Добавить</string>
+    <string name="enterValue">Введите значение</string>
 
     //MARK: - ONBOARDING
     <string name="gotSecrets">Есть очень важные секреты?</string>
@@ -16,4 +19,44 @@
     <string name="chooseNamePlaceHolder">Выберите уникальный никнейм</string>
     <string name="moveNext">Вперед</string>
     <string name="nameIsChosen">Это имя занято</string>
+
+    //MARK: - MAIN
+    <string name="secrets">Секреты</string>
+    <string name="devices">Устройства</string>
+    <string name="help">Помощь</string>
+    <string name="profile">Профиль</string>
+
+    //MARK: - SECRETS
+    <string name="noSecrets">Нет секретов</string>
+    <string name="youHaveNoSecrets">У вас пока нет добавленых секретов. Добавьте первый секрет.</string>
+    <string name="weak">слабый</string>
+    <string name="strong">сильный</string>
+    <string name="maximum">максимальный</string>
+    <string name="countDevices">1 устройство</string>
+    <string name="countSecrets">6 секретов</string>
+    <string name="addSecret">Добавить секрет</string>
+    <string name="secretName">Название секрета</string>
+    <string name="secret">Секрет</string>
+    <string name="secretNameNeeded">Имя секрета обязательно</string>
+    <string name="secretNeeded">Секрет обязателен</string>
+    <string name="showSecret">Показать секрет</string>
+    <string name="show">Показать</string>
+    <string name="copySecret">Скопировать секрет</string>
+
+    //MARK: - DEVICES
+    <string name="addDevice">Добавить устройство</string>>
+    <string name="threeDevicesNeeded">Для максимальной бехопасности вам необходимо 3 девайса</string>
+    <string name="soon">скоро</string>
+    <string name="notEnoughtDevices">Недостаточно девайсов?</string>
+    <string name="metaSecretCloud">MetaSecret Cloud Device - use our cloud as one of your devices</string>
+    <string name="downloadApp">1. Download app MetaSecret on your new device</string>
+    <string name="repeatNickName">2. Enter your unique Nick name on new device</string>
+    <string name="approveConnection">3. Approve your new device connection</string>
+    <string name="useQR">или отсканируйте QR</string>
+    <string name="plusaddDevice">" + Добавить устройство"</string>
+
+    //MARK: - PROFILE
+    <string name="nickName">Никнейм</string>>
+    <string name="logout">Выйти</string>
+    <string name="version">Версия</string>
 </resources>

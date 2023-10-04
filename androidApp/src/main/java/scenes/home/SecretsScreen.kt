@@ -1,5 +1,7 @@
 package scenes.home
 
+import AppColors
+import CustomTypography
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Image
@@ -33,7 +35,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -61,8 +65,11 @@ fun SecretsScreen(navController: NavHostController) {
     var showAddscreen by remember { mutableStateOf(false) }
     var currentSecret: String? = "Secret"
 
-    var isEmpty = false
-    val secrets = listOf(
+    val secrets = listOf<SecretModel>(
+        SecretModel(secret = "Yandex", strenghtType = ProtectionType.Max ),
+        SecretModel(secret = "Госуслуги", strenghtType = ProtectionType.Strong ),
+        SecretModel(secret = "Yandex", strenghtType = ProtectionType.Weak ),
+        SecretModel(secret = "Госуслуги", strenghtType = ProtectionType.Strong ),
         SecretModel(secret = "Yandex", strenghtType = ProtectionType.Max ),
         SecretModel(secret = "Госуслуги", strenghtType = ProtectionType.Strong ),
         SecretModel(secret = "Mail", strenghtType = ProtectionType.Strong ),
@@ -86,12 +93,14 @@ fun SecretsScreen(navController: NavHostController) {
             Image(
                 painter = painterResource(id = R.drawable.bg_main),
                 contentDescription = "",
+                contentScale = ContentScale.FillBounds,
                 modifier = Modifier
-                    .fillMaxSize()
-            )
+                    .background(Color.Red)
+                    .fillMaxSize())
 
             Column(
                 modifier = Modifier
+                    .padding(top = 24.dp)
                     .padding(horizontal = 16.dp)
                     .fillMaxSize()
             )
@@ -99,7 +108,6 @@ fun SecretsScreen(navController: NavHostController) {
                 //Title
                 Row(
                     modifier = Modifier
-                        .padding(top = 24.dp)
                         .height(92.dp)
                         .fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically
@@ -107,16 +115,15 @@ fun SecretsScreen(navController: NavHostController) {
                     Text(
                         modifier = Modifier
                             .fillMaxWidth(),
-                        text = "Секреты",
-                        color = Color.White,
-                        fontSize = MaterialTheme.typography.h4.fontSize,
-                        fontWeight = FontWeight.Bold,
+                        text = stringResource(id = R.string.secrets),
+                        color = AppColors.whiteMain,
+                        style = CustomTypography.h1,
                         textAlign = TextAlign.Start
                     )
                 }
 
                 AlertBubble() {}
-                if (isEmpty) {
+                if (secrets.isEmpty()) {
                     Column(
                         modifier = Modifier
                             .fillMaxSize()
@@ -138,10 +145,9 @@ fun SecretsScreen(navController: NavHostController) {
                         Text(
                             modifier = Modifier
                                 .fillMaxWidth(),
-                            text = "Нет секретов",
-                            color = Color.White,
-                            fontSize = MaterialTheme.typography.h5.fontSize,
-                            fontWeight = FontWeight.Bold,
+                            text = stringResource(id = R.string.noSecrets) ,
+                            color = AppColors.whiteMain,
+                            style = CustomTypography.h3,
                             textAlign = TextAlign.Center
                         )
 
@@ -150,10 +156,9 @@ fun SecretsScreen(navController: NavHostController) {
                                 .padding(horizontal = 40.dp)
                                 .padding(top = 14.dp)
                                 .fillMaxWidth(),
-                            text = "У вас пока нет добавленых секретов. Добавьте первый секрет",
-                            color = Color.White.copy(alpha = 0.7f),
-                            fontSize = MaterialTheme.typography.subtitle2.fontSize,
-                            fontWeight = FontWeight.Normal,
+                            text = stringResource(id = R.string.youHaveNoSecrets),
+                            color = AppColors.white75,
+                            style = CustomTypography.body2,
                             textAlign = TextAlign.Center
                         )
                     }
@@ -182,7 +187,7 @@ fun SecretsScreen(navController: NavHostController) {
 
             Column(modifier = Modifier
                 .fillMaxSize()
-                .padding(bottom = 142.dp)
+                .padding(bottom = 114.dp)
                 .padding(end = 24.dp),
                 horizontalAlignment = Alignment.End,
                 verticalArrangement = Arrangement.Bottom)
@@ -200,7 +205,7 @@ fun SecretsScreen(navController: NavHostController) {
 
             Column(modifier = Modifier
                 .fillMaxSize()
-                .padding(bottom = 50.dp),
+                .padding(bottom = 22.dp),
                 verticalArrangement = Arrangement.Bottom) {
                 BottomTabBar(navController = navController)
             }

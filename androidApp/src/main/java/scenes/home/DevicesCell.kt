@@ -1,5 +1,7 @@
 package scenes.common
 
+import AppColors
+import CustomTypography
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -42,7 +44,7 @@ fun DevicesCell(
             .height(height)
             .fillMaxWidth()
             .clip(RoundedCornerShape(12.dp))
-            .background(Color.White.copy(alpha = 0.05f)),
+            .background(AppColors.white5),
     ) {
         Row(modifier = Modifier
             .fillMaxSize()
@@ -72,23 +74,20 @@ fun DevicesCell(
             {
                 Text(
                     text = cellModel.name,
-                    color = Color.White,
-                    fontSize = MaterialTheme.typography.h6.fontSize,
-                    fontWeight = FontWeight.Medium,
+                    color = AppColors.whiteMain,
+                    style = CustomTypography.button,
                     textAlign = TextAlign.Start
                 )
                 Text(
                     text = cellModel.deviceId,
-                    color = Color.White.copy(alpha = 0.3f),
+                    color = AppColors.white30,
                     fontSize = MaterialTheme.typography.subtitle2.fontSize,
-                    fontWeight = FontWeight.Normal,
-                    textAlign = TextAlign.Start
+                    style = CustomTypography.overline
                 )
                 Text(
                     text = cellModel.secretsCount,
-                    color = Color.White.copy(alpha = 0.75f),
-                    fontSize = MaterialTheme.typography.subtitle1.fontSize,
-                    fontWeight = FontWeight.Normal,
+                    color = AppColors.white75,
+                    style = CustomTypography.subtitle1,
                     textAlign = TextAlign.Start
                 )
             }

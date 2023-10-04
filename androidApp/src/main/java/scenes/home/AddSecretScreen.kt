@@ -1,5 +1,7 @@
 package scenes.home
 
+import AppColors
+import CustomTypography
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -8,6 +10,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -24,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -45,29 +49,43 @@ fun AddSecretScreen(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color.DarkGray, shape = RoundedCornerShape(12.dp))
+                .background(AppColors.blackPopUps, shape = RoundedCornerShape(12.dp))
                 .height(366.0.dp)
                 .clip(shape = RoundedCornerShape(12.dp))
         ) {
             Text(modifier = Modifier
                 .padding(top = 30.dp)
                 .fillMaxWidth(),
-                text = "Добавить секрет",
-                color = Color.White,
-                fontSize = MaterialTheme.typography.h5.fontSize,
-                fontWeight = FontWeight.Medium,
+                text = stringResource(id = R.string.addSecret),
+                color = AppColors.whiteMain,
+                style = CustomTypography.h3,
                 textAlign = TextAlign.Center
             )
             Spacer(modifier = Modifier.height(20.dp))
-            TipTextField(modifier = Modifier, placeHolder = "", errorText = "")
+            Row(modifier = Modifier
+                .height(48.dp)
+                .padding(horizontal = 16.dp)
+            ) {
+                TipTextField(modifier = Modifier.fillMaxWidth(),
+                            placeHolder = stringResource(id = R.string.secretName),
+                            errorText = stringResource(id = R.string.secretNameNeeded))
+            }
+
 
             Spacer(modifier = Modifier.height(20.dp))
-            TipTextField(modifier = Modifier, placeHolder = "", errorText = "")
+            Row(modifier = Modifier
+                .height(48.dp)
+                .padding(horizontal = 16.dp)
+            ) {
+                TipTextField(modifier = Modifier.fillMaxWidth(),
+                            placeHolder = stringResource(id = R.string.secret),
+                            errorText = stringResource(id = R.string.secretNeeded))
+            }
 
             Spacer(modifier = Modifier.height(20.dp))
 
             ActionButton(modifier = Modifier
-                .padding(horizontal = 16.0.dp), title = "Добавить секрет") {
+                .padding(horizontal = 16.0.dp), title = stringResource(id = R.string.addSecret)) {
                 coroutineScope.launch {
                     modalSheetState.hide()
                 }

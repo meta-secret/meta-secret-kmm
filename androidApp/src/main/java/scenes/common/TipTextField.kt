@@ -38,7 +38,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun TipTextField(modifier: Modifier, placeHolder: String, errorText: String) {
+fun TipTextField(modifier: Modifier, placeHolder: String, errorText: String, bgColor: Color = AppColors.white5) {
     var value by remember {
         mutableStateOf("")
     }
@@ -86,7 +86,7 @@ fun TipTextField(modifier: Modifier, placeHolder: String, errorText: String) {
             ),
             colors = TextFieldDefaults.textFieldColors(
                 textColor = AppColors.whiteMain,
-                backgroundColor = AppColors.white5,
+                backgroundColor = bgColor,
                 cursorColor = AppColors.whiteMain,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
