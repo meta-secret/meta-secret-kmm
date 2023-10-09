@@ -65,16 +65,7 @@ fun SecretsScreen(navController: NavHostController) {
     var showAddscreen by remember { mutableStateOf(false) }
     var currentSecret: String? = "Secret"
 
-    val secrets = listOf<SecretModel>(
-        SecretModel(secret = "Yandex", strenghtType = ProtectionType.Max ),
-        SecretModel(secret = "Госуслуги", strenghtType = ProtectionType.Strong ),
-        SecretModel(secret = "Yandex", strenghtType = ProtectionType.Weak ),
-        SecretModel(secret = "Госуслуги", strenghtType = ProtectionType.Strong ),
-        SecretModel(secret = "Yandex", strenghtType = ProtectionType.Max ),
-        SecretModel(secret = "Госуслуги", strenghtType = ProtectionType.Strong ),
-        SecretModel(secret = "Mail", strenghtType = ProtectionType.Strong ),
-        SecretModel(secret = "FaceBoock", strenghtType = ProtectionType.Weak )
-    )
+    val secrets = listOf<SecretModel>()
 
 
     ModalBottomSheetLayout(
@@ -122,7 +113,10 @@ fun SecretsScreen(navController: NavHostController) {
                     )
                 }
 
-                AlertBubble() {}
+                if (secrets.isNotEmpty()) {
+                    AlertBubble() {}
+                }
+
                 if (secrets.isEmpty()) {
                     Column(
                         modifier = Modifier

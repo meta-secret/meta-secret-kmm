@@ -78,10 +78,6 @@ struct MainSceneView: View {
             SecretsView()
         case .devices:
             DevicesView()
-        case .plus:
-            DevicesView()
-        case .help:
-            HelpView()
         case .profile:
             ProfileView()
         }
@@ -95,9 +91,7 @@ private extension MainSceneView {
             return Constants.Main.secrets
         case 1:
             return Constants.Main.devices
-        case 3:
-            return Constants.Main.help
-        case 4:
+        case 2:
             return Constants.Main.profile
         default:
             return ""

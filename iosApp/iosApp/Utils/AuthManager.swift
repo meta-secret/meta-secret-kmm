@@ -41,7 +41,6 @@ class AuthManager: AuthManagerProtocol {
     }
     
     func register(with name: String) {
-        let defaults = UserDefaults.standard
-        defaults.set(name, forKey: "Name")
+        authManagerApi.setAuthStatus(name: name)
     }
 }

@@ -33,10 +33,11 @@ struct EmptySecretsView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, Config.sideOffset)
             
+            Spacer().frame(height: Config.arrowHeight)
             //Image of the arrow
-            Image(AppImages.Secrets.slashedArrow)
-                .frame(height: Config.arrowHeight)
-                .padding(.leading, Config.arrowSideOffset)
+//            Image(AppImages.Secrets.slashedArrow)
+//                .frame(height: Config.arrowHeight)
+//                .padding(.leading, Config.arrowSideOffset)
         }
     }
 }

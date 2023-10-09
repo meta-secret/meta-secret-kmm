@@ -9,6 +9,7 @@ import javax.inject.Inject
 
 class AuthManager @Inject constructor() {
     fun checkValetAvailability(name: String): Boolean {
+        //TODO: Read from DB
         return true
     }
 

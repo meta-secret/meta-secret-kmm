@@ -16,6 +16,7 @@
 "scanQR" = "Scan QR Code";
 "chooseNamePlaceHolder" = "Choose a unique nickname";
 "moveNext" = "Next";
+"signInError" = "This nickname is already in use. Try another one.";
 
 //MARK: - MAIN
 "Secrets" = "Secrets";

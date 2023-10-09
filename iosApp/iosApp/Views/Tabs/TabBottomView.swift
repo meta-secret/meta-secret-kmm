@@ -20,7 +20,6 @@ struct TabBottomView: View {
     let tabbarItems: [TabItemData]
     
     var body: some View {
-
             ZStack {
                 HStack {
                     ForEach(tabbarItems.indices) { index in
@@ -47,8 +46,12 @@ struct TabBottomView: View {
                 }
                 .padding(.top, -Config.height/2)
                 
-                PlusButtonView(action: action)
-                    .padding(.top, -64.0)
+                HStack {
+                    Spacer()
+                    PlusButtonView(action: action)
+                        .padding(.top, -140.0)
+                    Spacer().frame(width: 24.0)
+                }
             }
             .animation(.linear, value: UUID())
     }
@@ -59,8 +62,6 @@ struct TabBottomView_Previews: PreviewProvider {
         let tabs: [TabItemData] = [
             TabItemData(image: AppImages.Main.secretsLogo, selectedImage: AppImages.Main.secretsLogo, title: Constants.Main.secrets),
             TabItemData(image: AppImages.Common.devicesIco, selectedImage: AppImages.Common.devicesIco, title: Constants.Main.secrets),
-            TabItemData(image: "", selectedImage: "", title: ""),
-            TabItemData(image: AppImages.Main.helpLogo, selectedImage: AppImages.Main.helpLogo, title: Constants.Main.secrets),
             TabItemData(image: AppImages.Main.profileLogo, selectedImage: AppImages.Main.profileLogo, title: Constants.Main.secrets)
         ]
         TabBottomView(selectedIndex: .constant(0), action: {}, tabbarItems: tabs)

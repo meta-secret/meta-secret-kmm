@@ -18,6 +18,7 @@
 "scanQR" = "Сканировать QR Code";
 "chooseNamePlaceHolder" = "Выберите уникальный никнейм";
 "moveNext" = "Вперед";
+"signInError" = "Данный никнейм уже занят. Попробуйте другой";
 
 //MARK: - MAIN
 "Secrets" = "Секреты";

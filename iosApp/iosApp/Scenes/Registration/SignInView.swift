@@ -20,7 +20,7 @@ struct SignInView: View {
     
     let viewModel: SignInViewModel
     
-    @State var signInError: String? = "Данный никнейм уже занят. Попробуйте другой"
+    @State var signInError: String? = NSLocalizedString("signInError", comment: "")
     @State var nickName: String?
     @State var isError = false
     @State var isNext = false

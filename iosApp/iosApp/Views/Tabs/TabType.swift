@@ -11,8 +11,6 @@ import Foundation
 enum TabType: Int, CaseIterable {
     case secrets = 0
     case devices
-    case plus
-    case help
     case profile
     
     var tabItem: TabItemData {
@@ -21,10 +19,6 @@ enum TabType: Int, CaseIterable {
             return TabItemData(image: AppImages.Main.secretsLogo, selectedImage: AppImages.Main.secretsLogo, title: Constants.Main.secrets)
         case .devices:
             return TabItemData(image: AppImages.Common.devicesIco, selectedImage: AppImages.Common.devicesIco, title: Constants.Main.devices)
-        case .plus:
-            return TabItemData(image: "", selectedImage: "", title: "")
-        case .help:
-            return TabItemData(image: AppImages.Main.helpLogo, selectedImage: AppImages.Main.helpLogo, title: Constants.Main.help)
         case .profile:
             return TabItemData(image: AppImages.Main.profileLogo, selectedImage: AppImages.Main.profileLogo, title: Constants.Main.profile)
         }
