@@ -18,7 +18,7 @@ struct OnboardingPageView: View, Hashable {
     var body: some View {
         VStack {
             if let image = pageType.imageName {
-                Spacer()
+                Image(image)
             }
             
             if let title = pageType.title {

@@ -9,13 +9,13 @@
 import Foundation
 
 class OnboardingContnetViewModel: ObservableObject {
+    @Service private var authManager: AuthManagerProtocol
     @Published var vaultName = ""
     
     let content: [OnboardingPageView] = [
         OnboardingPageView(pageType: .first),
         OnboardingPageView(pageType: .second),
-        OnboardingPageView(pageType: .third),
-        OnboardingPageView(pageType: .fourth)
+        OnboardingPageView(pageType: .third)
     ]
     
     var pageType: PageType
@@ -34,6 +34,10 @@ class OnboardingContnetViewModel: ObservableObject {
     init(pageType: PageType) {
         self.pageType = pageType
     }
+    
+    func saveOnBoardingState(isCompleted: Bool) {
+        return authManager.setOnboardingState(isCompleted: isCompleted)
+    }
 }
 
 extension OnboardingContnetViewModel {
@@ -41,7 +45,6 @@ extension OnboardingContnetViewModel {
         case first = 1
         case second
         case third
-        case fourth
         
         var title: String? {
             switch self {
@@ -51,8 +54,6 @@ extension OnboardingContnetViewModel {
                 return Constants.Onboarding.gotSecrets
             case .third:
                 return Constants.Onboarding.gotSecrets
-            case .fourth:
-                return Constants.Onboarding.gotSecrets
             }
         }
         
@@ -61,11 +62,9 @@ extension OnboardingContnetViewModel {
             case .first:
                 return Constants.Onboarding.splitIt
             case .second:
-                return nil
+                return Constants.Onboarding.splitIt
             case .third:
                 return Constants.Onboarding.splitIt
-            case .fourth:
-                return nil
             }
         }
         
@@ -77,21 +76,17 @@ extension OnboardingContnetViewModel {
                 return Constants.Onboarding.secureSafe
             case .third:
                 return Constants.Onboarding.secureSafe
-            case .fourth:
-                return Constants.Onboarding.secureSafe
             }
         }
         
         var imageName: String? {
             switch self {
             case .first:
-                return ""//AppImages.stepOneIcon
+                return AppImages.Secrets.executioner
             case .second:
-                return ""//AppImages.stepTwoIcon
+                return AppImages.Secrets.executioner
             case .third:
-                return ""//AppImages.stepThreeIcon
-            case .fourth:
-                return ""
+                return AppImages.Secrets.executioner
             }
         }
         

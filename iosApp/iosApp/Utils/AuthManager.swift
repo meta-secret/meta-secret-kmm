@@ -10,15 +10,31 @@ import Foundation
 import shared
 
 protocol AuthManagerProtocol {
-    func checkAuth() -> Bool
+    func checkAuth() -> AuthState
+    func checkOnboardingState() -> Bool
+    func setOnboardingState(isCompleted: Bool)
+    
     func checkValetAvailability(name: String) -> Bool
     func register(with name: String)
 }
 
 class AuthManager: AuthManagerProtocol {
-    func checkAuth() -> Bool {
-        return true //AuthManagerApi().getAuthStatus()
+    //TODO: Check AuthManagerApi address not to create multiple instance. and avoid race conditions
+    var authManagerApi = AuthManagerApi(factory: DriverFactory())
+    
+    func checkAuth() -> AuthState {
+        return authManagerApi.getAuthStatus()
     }
+    
+    func checkOnboardingState() -> Bool {
+        return authManagerApi.getOnboardingStatus()
+    }
+    
+    func setOnboardingState(isCompleted: Bool) {
+        return authManagerApi.setOnboardingCompletion(isCompleted: isCompleted)
+    }
+    
+    
     
     func checkValetAvailability(name: String) -> Bool {
         return name != "Dima" && !name.isEmpty

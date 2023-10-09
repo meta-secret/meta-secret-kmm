@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-//import shared
+import shared
 
 struct SplashView: View {
     private enum Config {
@@ -19,6 +19,7 @@ struct SplashView: View {
     @State var viewModel: SplashViewModel
     @State var navigateToOnboarding: Bool = false
     @State var navigateToMain: Bool = false
+    @State var navigateToSignIn: Bool = false
     @State var overviewShowen: Bool = false
     
     var body: some View {
@@ -42,8 +43,12 @@ struct SplashView: View {
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + Config.delay) {
                     withAnimation {
-                        if viewModel.checkAuth() {
-                            navigateToMain = true
+                        if viewModel.readOnboardingKey() {
+                            if viewModel.checkAuth() == .alreadyRegistered {
+                                navigateToMain = true
+                            } else {
+                                navigateToSignIn = true
+                            }
                         } else {
                             navigateToOnboarding = true
                         }
@@ -52,6 +57,10 @@ struct SplashView: View {
             }
             .navigationDestination(isPresented: $navigateToMain) {
                 MainSceneView()
+                    .navigationBarBackButtonHidden(true)
+            }
+            .navigationDestination(isPresented: $navigateToSignIn) {
+                SignInView(viewModel: SignInViewModel())
                     .navigationBarBackButtonHidden(true)
             }
             .navigationDestination(isPresented: $navigateToOnboarding) {

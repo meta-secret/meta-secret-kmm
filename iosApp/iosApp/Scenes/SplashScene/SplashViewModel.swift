@@ -7,11 +7,16 @@
 //
 
 import Foundation
+import shared
 
 final class SplashViewModel {
     @Service private var authManager: AuthManagerProtocol
     
-    func checkAuth() -> Bool {
+    func checkAuth() -> AuthState {
         return authManager.checkAuth()
+    }
+    
+    func readOnboardingKey() -> Bool {
+        return authManager.checkOnboardingState()
     }
 }

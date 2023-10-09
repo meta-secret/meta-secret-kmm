@@ -137,8 +137,8 @@ fun OnboardingScreen(
             HorizontalPager(
                 state = pagerState,
                 modifier = Modifier
-                    .fillMaxSize()
-                    .weight(1f)
+//                    .fillMaxSize()
+//                    .weight(0.5f)
             ) { position ->
                 PagerScreen(onBoardingPage = pages[position])
             }
