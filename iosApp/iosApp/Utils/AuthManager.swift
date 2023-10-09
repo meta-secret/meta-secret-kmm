@@ -17,7 +17,7 @@ protocol AuthManagerProtocol {
 
 class AuthManager: AuthManagerProtocol {
     func checkAuth() -> Bool {
-        return AuthManagerApi().getAuthStatus()
+        return true //AuthManagerApi().getAuthStatus()
     }
     
     func checkValetAvailability(name: String) -> Bool {

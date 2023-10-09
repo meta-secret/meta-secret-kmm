@@ -58,7 +58,9 @@ fun OnboardingScreen(
         OnBoardingPage.Third
     )
 
-    val pagerState = rememberPagerState()
+    val pagerState = rememberPagerState(pageCount = {
+        pages.count()
+    })
     val scope = rememberCoroutineScope()
 
     Image(
@@ -131,10 +133,12 @@ fun OnboardingScreen(
 
         Row(modifier = Modifier
             .padding(top = 24.dp)) {
+
             HorizontalPager(
-                pageCount = 3,
                 state = pagerState,
-                verticalAlignment = Alignment.CenterVertically
+                modifier = Modifier
+                    .fillMaxSize()
+                    .weight(1f)
             ) { position ->
                 PagerScreen(onBoardingPage = pages[position])
             }

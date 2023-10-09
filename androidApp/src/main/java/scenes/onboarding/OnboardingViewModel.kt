@@ -15,10 +15,9 @@ import javax.inject.Inject
 class OnboardingViewModel @Inject constructor(
     private val repository: DataStoreRepository,
     private val authManager: AuthManager
-    ) : ViewModel() {
-
+    ) : ViewModel()
+{
     fun saveOnBoardingState(completed: Boolean, context: Context) {
         authManager.setOnboardingState(isCompleted = completed, context)
     }
-
-    }
+}
