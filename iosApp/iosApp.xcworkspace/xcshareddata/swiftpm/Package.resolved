@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mattmaddux/FASwiftUI.git",
       "state" : {
-        "revision" : "95828fdcd194b6d295e4d2b1a61ea480c9609f0e",
-        "version" : "2.0.0"
+        "revision" : "f7e69239337e06ebb2c298d04ad86b7b2279e671",
+        "version" : "2.1.0"
       }
     }
   ],
