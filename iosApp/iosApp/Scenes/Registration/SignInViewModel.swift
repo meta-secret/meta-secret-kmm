@@ -33,11 +33,18 @@ class SignInViewModel {
     }
     
     func checkAndSaveName(name: String) -> Bool {
-        if authManager.checkValetAvailability(name: name) {
-            authManager.register(with: name)
+        let iOSNumber = UserDefaults.standard.value(forKey: "iOSNumber") as! Int
+        if iOSNumber == 1 {
             return true
         } else {
             return false
         }
+        
+//        if authManager.checkValetAvailability(name: name) {
+//            authManager.register(with: name)
+//            return true
+//        } else {
+//            return false
+//        }
     }
 }

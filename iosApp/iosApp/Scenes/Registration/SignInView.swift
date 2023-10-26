@@ -24,6 +24,7 @@ struct SignInView: View {
     @State var nickName: String?
     @State var isError = false
     @State var isNext = false
+    @State var showingAlert = false
     
     init(viewModel: SignInViewModel ) {
         self.viewModel = viewModel
@@ -89,10 +90,18 @@ struct SignInView: View {
                             if viewModel.checkAndSaveName(name: nickName ?? "") {
                                 isNext = true
                             } else {
-                                isError = true
+                                showingAlert = true
                             }
                         })
                         Spacer()
+                    }
+                }
+                .alert("This name already taken. Is it yours? Please confirm on another device.", isPresented: $showingAlert) {
+                    Button("Ok", role: .none) {
+                        showingAlert = false
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+                            isNext = true
+                        })
                     }
                 }
                 .padding(.horizontal, Config.sideOffset)

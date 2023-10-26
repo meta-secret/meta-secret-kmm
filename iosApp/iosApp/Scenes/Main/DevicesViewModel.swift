@@ -13,6 +13,8 @@ class DevicesViewModel: CommonViewModel {
         super.init()
         getItems()
     }
+    
+    var deviceAdd = ""
 }
 
 private extension DevicesViewModel {

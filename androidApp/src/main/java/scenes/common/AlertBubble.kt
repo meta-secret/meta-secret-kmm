@@ -39,6 +39,7 @@ import com.example.metasecret.android.R
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun AlertBubble(
+    counter: Int,
     height: Dp = 92.dp,
     onClick: () -> Unit
 ) {
@@ -82,7 +83,11 @@ fun AlertBubble(
                 .padding(top = 16.dp, bottom = 16.dp, end = 30.dp)
                 .fillMaxHeight())
             {
-                MultiStyleText(text1 = stringResource(id = R.string.needDevices),
+                var text = stringResource(id = R.string.needDevices)
+                if (counter == 1) {
+                    stringResource(id = R.string.needDevices2)
+                }
+                MultiStyleText(text1 = text,
                     color1 = AppColors.white75,
                     text2 = stringResource(id = R.string.plusadd),
                     color2 = AppColors.actionLinkBlue)

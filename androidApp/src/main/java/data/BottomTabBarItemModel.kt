@@ -1,10 +1,10 @@
 package data
 
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.painter.Painter
 
 data class BottomTabBarItemModel(
     val name: String,
-    val icon: ImageVector,
+    val icon: Painter,
     val isSelected: Boolean,
     val route: String
 ) {

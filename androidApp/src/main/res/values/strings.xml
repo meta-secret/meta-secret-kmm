@@ -4,6 +4,7 @@
     <string name="skip">Skip</string>
     <string name="next">Next</string>
     <string name="needDevices">You need 2 more devices to reach a higher level of security</string>
+    <string name="needDevices2">You need 1 more device to reach a higher level of security</string>
     <string name="plusadd">" + Add"</string>
     <string name="enterValue">Enter value</string>
 
@@ -31,7 +32,7 @@
     <string name="weak">weak</string>
     <string name="strong">strong</string>
     <string name="maximum">maximum</string>
-    <string name="countDevices">1 device</string>
+    <string name="countDevices">3 devices</string>
     <string name="countSecrets">6 secrets</string>
     <string name="addSecret">Add secret</string>
     <string name="secretName">Secret name</string>

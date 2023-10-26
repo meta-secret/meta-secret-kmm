@@ -16,11 +16,7 @@ struct SplashView: View {
         static let delay: CGFloat = 2.0
     }
     
-    @State var viewModel: SplashViewModel
-    @State var navigateToOnboarding: Bool = false
-    @State var navigateToMain: Bool = false
-    @State var navigateToSignIn: Bool = false
-    @State var overviewShowen: Bool = false
+    @StateObject var viewModel: SplashViewModel
     
     var body: some View {
         NavigationStack {
@@ -41,29 +37,46 @@ struct SplashView: View {
                 
             }
             .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + Config.delay) {
+                viewModel.checkBiometric { (success) in
                     withAnimation {
-                        if viewModel.readOnboardingKey() {
-                            if viewModel.checkAuth() == .alreadyRegistered {
-                                navigateToMain = true
-                            } else {
-                                navigateToSignIn = true
-                            }
+                        if let _ = viewModel.errorBiometric {
+                            viewModel.needAlert = true
                         } else {
-                            navigateToOnboarding = true
+                            if viewModel.readOnboardingKey() {
+                                if viewModel.checkAuth() == .alreadyRegistered {
+                                    viewModel.navigateToMain = true
+                                } else {
+                                    viewModel.navigateToSignIn = true
+                                }
+                            } else {
+                                viewModel.navigateToOnboarding = true
+                            }
                         }
                     }
                 }
             }
-            .navigationDestination(isPresented: $navigateToMain) {
+            .alert(isPresented: $viewModel.needAlert, content: {
+                Alert(
+                    title: Text(Constants.Errors.error),
+                    message: Text(viewModel.errorBiometric?.errorDescription ?? ""),
+                    primaryButton: .default(Text(Constants.Alert.ok), action: {
+                        if viewModel.errorBiometric == BiometricError.userCancel {
+                            viewModel.needAlert = false
+                            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                        }
+                    }),
+                    secondaryButton: .cancel(Text(Constants.Alert.cancel))
+                )
+            })
+            .navigationDestination(isPresented: $viewModel.navigateToMain) {
                 MainSceneView()
                     .navigationBarBackButtonHidden(true)
             }
-            .navigationDestination(isPresented: $navigateToSignIn) {
+            .navigationDestination(isPresented: $viewModel.navigateToSignIn) {
                 SignInView(viewModel: SignInViewModel())
                     .navigationBarBackButtonHidden(true)
             }
-            .navigationDestination(isPresented: $navigateToOnboarding) {
+            .navigationDestination(isPresented: $viewModel.navigateToOnboarding) {
                 OnboardingContainerView(viewModel: OnboardingContnetViewModel(pageType: .first))
                     .navigationBarBackButtonHidden(true)
             }

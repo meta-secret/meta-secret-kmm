@@ -37,7 +37,7 @@ struct SecretCellView: View {
                     .frame(height: 22)
                     HStack {
                         Image(AppImages.Common.devicesIco)
-                        Text(Constants.Secrets.devicesCount)
+                        Text(devicesText())
                             .font(FontStyle.normalMain.font)
                             .foregroundColor(AppColors.white75)
                     }
@@ -54,6 +54,15 @@ struct SecretCellView: View {
             }
             .padding(.horizontal, 16.0)
         }
+    }
+}
+
+func devicesText() -> String {
+    let devicesCount = UserDefaults.standard.value(forKey: "deviceCount") as! Int
+    if devicesCount == 3 {
+        return Constants.Secrets.devicesCount2
+    } else {
+        return Constants.Secrets.devicesCount
     }
 }
 

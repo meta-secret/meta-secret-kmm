@@ -1,9 +1,12 @@
 package scenes.common
 
 import AppColors
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
@@ -16,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -35,11 +39,17 @@ fun BottomTabBar(
 
     val screens = listOf(
         BottomTabBarItemModel(name = stringResource(id = R.string.secrets),
-                                icon = Icons.Default.Home,
+                                icon = painterResource(id = R.drawable.key_menu),
                                 isSelected = false,
                                 route = "add_secret"),
-        BottomTabBarItemModel(name = stringResource(id = R.string.devices), icon = Icons.Default.Phone, isSelected = false, route = "add_device"),
-        BottomTabBarItemModel(name = stringResource(id = R.string.profile), icon = Icons.Default.Person, isSelected = false, route = "profile"),
+        BottomTabBarItemModel(name = stringResource(id = R.string.devices),
+                                icon = painterResource(id = R.drawable.device_menu),
+                                isSelected = false,
+                                route = "add_device"),
+        BottomTabBarItemModel(name = stringResource(id = R.string.profile),
+                                icon = painterResource(id = R.drawable.profile_menu),
+                                isSelected = false,
+                                route = "profile"),
     )
 
     BottomNavigation(
@@ -52,10 +62,11 @@ fun BottomTabBar(
         screens.forEach { screen ->
             BottomNavigationItem(
                 icon = {
-                    Icon(
-                        imageVector = screen.icon,
-                        contentDescription = null
-                    )
+                    Image(painter = screen.icon,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(28.dp)
+                            .padding(bottom = 2.dp))
                 },
                 label = { Text(text = screen.name) },
                 selected = currentRoute == screen.route,

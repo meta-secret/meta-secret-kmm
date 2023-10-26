@@ -65,7 +65,12 @@ fun SecretsScreen(navController: NavHostController) {
     var showAddscreen by remember { mutableStateOf(false) }
     var currentSecret: String? = "Secret"
 
-    val secrets = listOf<SecretModel>()
+    val secrets = listOf<SecretModel>(
+        SecretModel(description = "1234567890",
+            strenghtType = ProtectionType.Max,
+            secret = "Bitcoin wallet"
+        )
+    )
 
 
     ModalBottomSheetLayout(
@@ -113,9 +118,9 @@ fun SecretsScreen(navController: NavHostController) {
                     )
                 }
 
-                if (secrets.isNotEmpty()) {
-                    AlertBubble() {}
-                }
+//                if (secrets.isNotEmpty()) {
+//                    AlertBubble(counter = 3) {}
+//                }
 
                 if (secrets.isEmpty()) {
                     Column(

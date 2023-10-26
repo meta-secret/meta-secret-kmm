@@ -23,5 +23,6 @@ private extension iOSApp {
         ServiceContainer.register(type: DeviceManagerProtocol.self, DeviceManager())
         ServiceContainer.register(type: AuthManagerProtocol.self, AuthManager())
         ServiceContainer.register(type: QRCodeManagerProtocol.self, QRCodeManager())
+        ServiceContainer.register(type: BiometricsManagerProtocol.self, BiometricsManager())
     }
 }

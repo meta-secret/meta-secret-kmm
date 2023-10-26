@@ -2,8 +2,12 @@
 "skip" = "Skip";
 "next" = "Next";
 "needDevices" = "You need 2 more devices to reach a higher level of security";
+"needDevices2" = "You need 1 more device to reach a higher level of security";
 "+add" = " + Add";
 "enterValue" = "Enter value";
+
+//MARK: - SPLASH
+"biometricalReason" = "Authentication required to access the secure data";
 
 //MARK: - ONBOARDING
 "gotSecrets" = "Got important secrets?";
@@ -30,8 +34,11 @@
 "weak" = "weak";
 "strong" = "strong";
 "maximum" = "maximum";
-"countDevices" = "1 device";
-"countSecrets" = "6 secrets";
+"countDevice" = "1 device";
+"countDevices" = "2 devices";
+"countDevices2" = "3 devices";
+"countSecretsZero" = "0 secrets";
+"countSecrets" = "1 secret";
 "addSecret" = "Add secret";
 "secretName" = "Secret name";
 "secret" = "Secret";
@@ -157,7 +164,7 @@
 "successSplited" = "Secret has been splited, encoded and distributed successfully!";
 
 //MARK: - ALERTS
-"okok" = "Ок";
+"ok" = "Ок";
 "cancel" = "Cancel";
 "biometricalReason" = "Authentication required to access the secure data";
 "needConfirmation" = "Need Confirmation";

@@ -4,6 +4,7 @@
     <string name="skip">Пропустить</string>
     <string name="next">Далее</string>
     <string name="needDevices">Не хватает 2-ух девайсов, чтобы ваши секреты были в безопастности</string>
+    <string name="needDevices2">You need 1 more device to reach a higher level of security</string>
     <string name="plusadd"> + Добавить</string>
     <string name="enterValue">Введите значение</string>
 

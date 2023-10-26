@@ -38,6 +38,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.metasecret.android.R
 import data.DeviceModel
@@ -50,7 +52,8 @@ import scenes.common.PlusButton
 
 @OptIn(ExperimentalAnimationApi::class, ExperimentalMaterialApi::class)
 @Composable
-fun DeviceScreen(navController: NavHostController) {
+fun DeviceScreen(navController: NavHostController,
+                 viewModel: DevicesScreenViewModel = hiltViewModel(),) {
     val coroutineScope = rememberCoroutineScope()
     val modalSheetState = rememberModalBottomSheetState(
         initialValue = ModalBottomSheetValue.Hidden,
@@ -58,9 +61,8 @@ fun DeviceScreen(navController: NavHostController) {
         skipHalfExpanded = true
     )
 
-    val devices = listOf(
-        DeviceModel(name = "Android Dima", deviceType = DeviceType.Phone, deviceId = "1234-5678-9012-3456", secretsCount = "1 секрет")
-    )
+    var counter = 3
+    val devices = viewModel.getDevices(counter = counter)
 
     ModalBottomSheetLayout(
         sheetState = modalSheetState,
@@ -106,7 +108,9 @@ fun DeviceScreen(navController: NavHostController) {
                     )
                 }
 
-                AlertBubble() {}
+                if (devices.count() < 3) {
+                    AlertBubble(counter = counter) {}
+                }
 
                 Row(modifier = Modifier
                     .padding(top = 16.0.dp))

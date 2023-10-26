@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,7 @@
 		E51DFCE62A57184F006EB59E /* PairDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51DFCE52A57184F006EB59E /* PairDeviceView.swift */; };
 		E51DFCE82A5718BF006EB59E /* PairDeviceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51DFCE72A5718BF006EB59E /* PairDeviceViewModel.swift */; };
 		E51DFCEA2A571908006EB59E /* PairPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51DFCE92A571908006EB59E /* PairPageView.swift */; };
+		E51E03572AE7108700956DA2 /* libmeta_secret_core_swift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E51E03562AE7108700956DA2 /* libmeta_secret_core_swift.a */; };
 		E52D73B029DE3A9800DD8434 /* icons.json in Resources */ = {isa = PBXBuildFile; fileRef = E52D73AF29DE3A9800DD8434 /* icons.json */; };
 		E54892042A38D08E0074364F /* TabItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54892032A38D08E0074364F /* TabItemData.swift */; };
 		E54892062A38D5C40074364F /* SecretsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54892052A38D5C40074364F /* SecretsView.swift */; };
@@ -81,6 +82,7 @@
 		E5C2F2C529C672D100C8F059 /* OnboardingContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C2F2C429C672D100C8F059 /* OnboardingContainerView.swift */; };
 		E5C9DFAD2A3A431000C60BBA /* EmptySecretsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C9DFAC2A3A431000C60BBA /* EmptySecretsView.swift */; };
 		E5C9DFAF2A3A518700C60BBA /* SecretsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C9DFAE2A3A518700C60BBA /* SecretsViewModel.swift */; };
+		E5D6E4C42AE7121C004F1D31 /* BiometricsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D6E4C32AE7121C004F1D31 /* BiometricsManager.swift */; };
 		E5EEEB062A326FFA00D40996 /* MainSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EEEB052A326FFA00D40996 /* MainSceneView.swift */; };
 		E5F2D57E2A35A80B0048FF75 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2D57D2A35A80B0048FF75 /* SignInViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -102,6 +104,7 @@
 		E51DFCE52A57184F006EB59E /* PairDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairDeviceView.swift; sourceTree = "<group>"; };
 		E51DFCE72A5718BF006EB59E /* PairDeviceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairDeviceViewModel.swift; sourceTree = "<group>"; };
 		E51DFCE92A571908006EB59E /* PairPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairPageView.swift; sourceTree = "<group>"; };
+		E51E03562AE7108700956DA2 /* libmeta_secret_core_swift.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmeta_secret_core_swift.a; sourceTree = "<group>"; };
 		E52D73AF29DE3A9800DD8434 /* icons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = icons.json; sourceTree = "<group>"; };
 		E54892032A38D08E0074364F /* TabItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemData.swift; sourceTree = "<group>"; };
 		E54892052A38D5C40074364F /* SecretsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretsView.swift; sourceTree = "<group>"; };
@@ -165,6 +168,7 @@
 		E5C2F2C429C672D100C8F059 /* OnboardingContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerView.swift; sourceTree = "<group>"; };
 		E5C9DFAC2A3A431000C60BBA /* EmptySecretsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySecretsView.swift; sourceTree = "<group>"; };
 		E5C9DFAE2A3A518700C60BBA /* SecretsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretsViewModel.swift; sourceTree = "<group>"; };
+		E5D6E4C32AE7121C004F1D31 /* BiometricsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricsManager.swift; sourceTree = "<group>"; };
 		E5EEEB052A326FFA00D40996 /* MainSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneView.swift; sourceTree = "<group>"; };
 		E5F2D57D2A35A80B0048FF75 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,6 +178,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E51E03572AE7108700956DA2 /* libmeta_secret_core_swift.a in Frameworks */,
 				59DAC57BF5492576FE13495F /* Pods_iosApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -235,6 +240,7 @@
 		E1C6508B369AA1E778A85B2F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E51E03562AE7108700956DA2 /* libmeta_secret_core_swift.a */,
 				5D555D1CDC36C86C3ED80F8B /* Pods_iosApp.framework */,
 			);
 			name = Frameworks;
@@ -367,6 +373,7 @@
 				E5A75A7D2A4B4EF200CEFA58 /* DeviceManager.swift */,
 				E50EE5892A59F8D700003F1E /* AuthManager.swift */,
 				E57903A52A603C7100C2CAF0 /* QRCodeManager.swift */,
+				E5D6E4C32AE7121C004F1D31 /* BiometricsManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -657,6 +664,7 @@
 				E56B66802A3B914B00574E04 /* SecretCellView.swift in Sources */,
 				E5A4BBEA29E309C200C3F718 /* ImagePickerView.swift in Sources */,
 				E5919D752A40BA9B00BFF879 /* CommonViewModel.swift in Sources */,
+				E5D6E4C42AE7121C004F1D31 /* BiometricsManager.swift in Sources */,
 				E5A75A832A4B64B100CEFA58 /* AddSecretViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -810,6 +818,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.metasecret.iosApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -839,6 +851,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.metasecret.iosApp;

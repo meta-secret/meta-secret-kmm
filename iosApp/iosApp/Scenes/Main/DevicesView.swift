@@ -16,6 +16,7 @@ struct DevicesView: View {
     }
     
     @State var viewModel: DevicesViewModel = DevicesViewModel()
+    @State private var showingAlert = false
     
     var body: some View {
         ZStack {
@@ -41,9 +42,47 @@ struct DevicesView: View {
                     .listRowBackground(Color.clear)
                     .listRowInsets(.init(top: 0, leading: 0, bottom: Config.bottomSpacer, trailing: 0))
                 }
-                .padding(.top, -Config.vSpacerHeight)
+                .padding(.top, (viewModel.devicesCount < Constants.Common.neededDeviceCount ? -30 : 0))
                 .scrollContentBackground(.hidden)
             }
+        }
+        .onAppear {
+            var counter = UserDefaults.standard.value(forKey: "deviceOpenCount") as! Int
+            let iOSNumber = UserDefaults.standard.value(forKey: "iOSNumber") as! Int
+            counter += 1
+            print("counter = \(counter)")
+            if counter == 2 && iOSNumber == 1 {
+                viewModel.deviceAdd = counter == 2 ? "iPhone 13 Pro" : "Galaxy A04"
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+                    UserDefaults.standard.setValue(2, forKey: "deviceCount")
+                    showingAlert = true
+                    UserDefaults.standard.setValue(counter, forKey: "deviceOpenCount")
+                })
+            } else if (counter == 2 && iOSNumber == 2) || counter == 3 {
+                viewModel.deviceAdd = "Galaxy A04"
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+                    UserDefaults.standard.setValue(3, forKey: "deviceCount")
+                    showingAlert = true
+                    UserDefaults.standard.setValue(counter, forKey: "deviceOpenCount")
+                })
+            } else {
+                UserDefaults.standard.setValue(counter, forKey: "deviceOpenCount")
+            }
+        }
+        .alert("Device \(viewModel.deviceAdd) trying to join to your local network.", isPresented: $showingAlert) {
+            Button("Accept", role: .none) {
+                var counter = UserDefaults.standard.value(forKey: "deviceOpenCount") as! Int
+                let iOSNumber = UserDefaults.standard.value(forKey: "iOSNumber") as! Int
+                
+                if (counter == 2 && iOSNumber == 2) || (counter == 3 && iOSNumber == 1) {
+                    UserDefaults.standard.setValue(3, forKey: "deviceCount")
+                } else {
+                    UserDefaults.standard.setValue(2, forKey: "deviceCount")
+                }
+                viewModel.getContent(of: .device)
+                showingAlert = false
+            }
+            Button("Discard", role: .cancel) { }
         }
     }
 }

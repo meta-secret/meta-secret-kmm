@@ -18,12 +18,19 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.AlertDialog
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -34,10 +41,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.metasecret.android.R
 import com.example.metasecret.android.screen.Screen
+import com.jetbrains.handson.kmm.shared.cache.AuthState
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import scenes.common.ActionButton
 import scenes.common.TipTextField
@@ -50,6 +60,7 @@ fun SignInScreen(
     viewModel: SignInScreenViewModel = hiltViewModel(),
     context: Context
 ) {
+    var showAlert by remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
 
     Image(
@@ -59,6 +70,33 @@ fun SignInScreen(
         modifier = Modifier
             .background(Color.Red)
             .fillMaxSize())
+
+    if (showAlert) {
+        AlertDialog(
+            onDismissRequest = {
+            },
+            title = {
+                Text(text = "Confirmation needed")
+            },
+            text = {
+                Text("This name is already taken. Is it yours? Please confirm on another device.")
+            },
+            confirmButton = {
+                Button(
+                    onClick = {
+                    }) {
+                    Text("Ok")
+                }
+            }
+        )
+        LaunchedEffect(key1 = Unit){
+            delay(10000)
+
+            showAlert = false
+            navController.popBackStack()
+            navController.navigate(Screen.AddSecret.route)
+        }
+    }
 
     // Top logo
     Box(modifier = Modifier
@@ -164,10 +202,11 @@ fun SignInScreen(
         // Button
         ActionButton(modifier = Modifier, title = stringResource(id = R.string.moveNext)) {
             scope.launch {
-                if (viewModel.checkAndSaveName(name = "", context = context)) {
-                    navController.popBackStack()
-                    navController.navigate(Screen.AddSecret.route)
-                }
+                showAlert = true
+//                if (viewModel.checkAndSaveName(name = "", context = context)) {
+//                    navController.popBackStack()
+//                    navController.navigate(Screen.AddSecret.route)
+//                }
             }
         }
 
