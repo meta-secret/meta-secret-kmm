@@ -8,15 +8,6 @@
         "revision" : "d8f10d992ef32a4187b78a6df320facf75d631d8",
         "version" : "2.3.1"
       }
-    },
-    {
-      "identity" : "faswiftui",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/mattmaddux/FASwiftUI.git",
-      "state" : {
-        "revision" : "f7e69239337e06ebb2c298d04ad86b7b2279e671",
-        "version" : "2.1.0"
-      }
     }
   ],
   "version" : 2
