@@ -1,17 +1,75 @@
-//MARK: - ONBOARDING
-"welcome" = "Welcome to Meta Secret";
-"whatIs" = "It's a personal, decentralized, self-hosted and passwordless manager of secrets and passwords";
-"back" = "Back";
+//MARK: - COMMON
+"skip" = "Skip";
 "next" = "Next";
+"needDevices" = "You need 2 more devices to reach a higher level of security";
+"needDevices2" = "You need 1 more device to reach a higher level of security";
+"+add" = " + Add";
+"enterValue" = "Enter value";
+
+//MARK: - SPLASH
+"biometricalReason" = "Authentication required to access the secure data";
+
+//MARK: - ONBOARDING
+"gotSecrets" = "Got important secrets?";
+"splitIt" = "Split it between your devices";
+"secureSafe" = "All passwords and secret information is stored only on your devices and securely protected with encryption standards RSA and AES";
+
+//MARK: - SIGN IN
+"letsStart" = "Let's start";
+"chooseName" = "Choose a unique nickname you will use in the future to connect other devicesor just scan a QR code";
+"scanQR" = "Scan QR Code";
+"chooseNamePlaceHolder" = "Choose a unique nickname";
+"moveNext" = "Next";
+"signInError" = "This nickname is already in use. Try another one.";
+
+//MARK: - MAIN
+"Secrets" = "Secrets";
+"Devices" = "Devices";
+"Help" = "Help";
+"Profile" = "Profile";
+
+//MARK: - SECRETS
+"noSecrets" = "No secrets";
+"youHaveNoSecrets" = "You have no any secrets yet. Add your first one.";
+"weak" = "weak";
+"strong" = "strong";
+"maximum" = "maximum";
+"countDevice" = "1 device";
+"countDevices" = "2 devices";
+"countDevices2" = "3 devices";
+"countSecretsZero" = "0 secrets";
+"countSecrets" = "1 secret";
+"addSecret" = "Add secret";
+"secretName" = "Secret name";
+"secret" = "Secret";
+"secretNameNeeded" = "Secret name needed";
+"secretNeeded" = "Secret needed";
+"showSecret" = "Show secret";
+"show" = "Show";
+"copySecret" = "Copy secret";
+
+//MARK: - DEVICES
+"addDevice" = "Add device";
+"threeDevicesNeeded" = "For maximum security level for your secrets you need to connect 3 devices";
+"soon" = "soon";
+"notEnoughtDevices" = "Not enought devices?";
+"metaSecretCloud" = "MetaSecret Cloud Device - use our cloud as one of your devices";
+"downloadApp" = "1. Download app MetaSecret on your new device";
+"repeatNickName" = "2. Enter your unique Nick name on new device";
+"approveConnection" = "3. Approve your new device connection";
+"useQR" = "or scan QR code";
+
+
+
+"back" = "Back";
 "finish" = "Finish";
-"chooseName" = "Choose a name";
 "vaultName" = "Your nickname";
 "startToUse" = "To start using this app and saving your secrets you need to choose the unique name (Nickname). Just type it in the field upper.";
 "singleCopy" = "Single copy";
 "singleCopyText" = "You've just created local data base. All your secrets and passwords will be stored ONLY on this device and no where else. But it's not safety. And one of the main purpose of Meta Secret is a data replication. We suggest to add additional devices to your own network, to be available to restore your data.";
 "addDevice" = "Add device";
 "addDeviceText" = "To add device into your own network you need just scan this QR code. Or you can left one Device. But don't forget: It's not SAFETY!";
-"addSecret" = "Add secret";
+
 "addSecretText" = "Let's add your first secret. After that, the app will encrypt it and split it on pices. Every device in your network will get a differente piece of splitted secret. To restore it, you will need to use at least 2 devices";
 "testDescription" = "Test Description";
 "testSecret" = "Test Secret";
@@ -81,7 +139,6 @@
 "pleaseApprove" = "Please, accept the join request, if this is your device.";
 
 //MARK: - AddSecret
-"addSecret" = "Add secret/password";
 "addDescription" = "Add description for secret";
 "description" = "Description";
 "addPassword" = "Add password";
@@ -100,14 +157,14 @@
 "alreadySavedMessage" = "You already has a secret with the same description.";
 "edit" = "Edit";
 "restore" = "RESTORE";
-"showSecret" = "SHOW SECRET";
+//"showSecret" = "SHOW SECRET";
 "editSecret" = "Edit Secret";
 "recoverEdit" = "Restore Secret";
 "success" = "Success";
 "successSplited" = "Secret has been splited, encoded and distributed successfully!";
 
 //MARK: - ALERTS
-"okok" = "Ок";
+"ok" = "Ок";
 "cancel" = "Cancel";
 "biometricalReason" = "Authentication required to access the secure data";
 "needConfirmation" = "Need Confirmation";

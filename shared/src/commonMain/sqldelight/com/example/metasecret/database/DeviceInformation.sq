@@ -1,0 +1,17 @@
+CREATE TABLE Device (
+    name TEXT NOT NULL,
+    deviceType INTEGER NOT NULL,
+    deviceId TEXT NOT NULL,
+    storedSecretsCount INTEGER DEFAULT NULL
+);
+
+insertDevice:
+INSERT INTO Device(name, deviceType, deviceId, storedSecretsCount)
+VALUES(?, ?, ?, ?);
+
+removeAllDevices:
+DELETE FROM Device;
+
+selectAllDevices:
+SELECT Device.*
+FROM Device;

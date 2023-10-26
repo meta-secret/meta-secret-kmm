@@ -9,20 +9,52 @@ import Foundation
 import UIKit
 
 struct AppImages {
-    static let mainBg = "mainBg"
-    static let stepOneIcon = "onboarding1"
-    static let stepTwoIcon = "onboarding2"
-    static let stepThreeIcon = "onboarding3"
-    static let qrScaner = "qrScaner"
-    static let stepFourIcon = "onboarding4"
-//    static let vault = UIImage(named: "AppImages") ?? UIImage()
-//    static let metaLogo = UIImage(named: "WelcomeLogo") ?? UIImage()
-//    static let distributedNetwork = UIImage(named: "DistributedNetwork") ?? UIImage()
-//    static let cloud = UIImage(named: "Cloud") ?? UIImage()
-//    static let backup = UIImage(named: "Backup") ?? UIImage()
-//    static let chain = UIImage(named: "Chain") ?? UIImage()
-//    static let doneCheckmark = UIImage(systemName: "checkmark.seal") ?? UIImage()
-//    static let chevroneRight = UIImage(systemName: "chevron.forward") ?? UIImage()
-//    static let warningSymbol = UIImage(systemName: "exclamationmark.triangle") ?? UIImage()
-//    static let chevroneLeft = UIImage(systemName: "chevron.left") ?? UIImage()
+    enum Common {
+        static let mainBg = "bg"
+        static let devicesIco = "devicesIco"
+        static let warningSign = "warningSign"
+        static let closeIco = "closeIco"
+        static let chevroneRightIco = "chevroneRightIco"
+        static let fakeQR = "fakeQR"
+    }
+    
+    enum Main {
+        static let bigPlusImage = "bigPlusImage"
+        static let helpLogo = "HelpLogo"
+        static let secretsLogo = "SecretsLogo"
+        static let profileLogo = "ProfileLogo"
+    }
+    
+    enum Secrets {
+        static let executioner = "executioner"
+        static let weekProtectionImage = "weekProtectionImage"
+        static let strongProtectionImage = "strongProtectionImage"
+        static let maxProtectionImage = "maxProtectionImage"
+        static let slashedArrow = "slashedArrow"
+    }
+    
+    enum SignIn {
+        static let signInLogo = "signInLogo"
+    }
+    
+    enum Splash {
+        static let splashLogo = "centerLogo"
+        static let splashGradient = "centerGradient"
+        static let metaTitle = "metaTitle"
+    }
+    
+    enum Devices {
+        static let iphoneIco = "iphoneIco"
+        static let noteBookIco = "noteBookIco"
+        static let padIco = "padIco"
+        static let phoneIco = "phoneIco"
+        static let cloudLogo = "cloudLogo"
+        static let cloudTitleLogo = "cloudTitleLogo"
+    }
 }
+    
+    
+    
+    
+    
+    

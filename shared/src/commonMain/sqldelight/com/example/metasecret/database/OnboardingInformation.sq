@@ -1,0 +1,16 @@
+import sqldelight.com.intellij.openapi.options.advanced.AdvancedSettingType.Bool;
+
+CREATE TABLE OnboardingInformation (
+    isCompleted INTEGER DEFAULT NULL
+);
+
+insertOnboardingInfo:
+INSERT INTO OnboardingInformation(isCompleted)
+VALUES(?);
+
+removeOnboardingInfo:
+DELETE FROM OnboardingInformation;
+
+selectOnboardingInfo:
+SELECT OnboardingInformation.*
+FROM OnboardingInformation;
