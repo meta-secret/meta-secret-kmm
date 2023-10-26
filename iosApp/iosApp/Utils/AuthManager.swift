@@ -12,7 +12,7 @@ import shared
 protocol AuthManagerProtocol {
     func checkAuth() -> AuthState
     func checkOnboardingState() -> Bool
-    func setOnboardingState(isCompleted: Bool)
+    func setOnboardingState()
     
     func checkValetAvailability(name: String) -> Bool
     func register(with name: String)
@@ -30,12 +30,10 @@ class AuthManager: AuthManagerProtocol {
         return authManagerApi.getOnboardingStatus()
     }
     
-    func setOnboardingState(isCompleted: Bool) {
-        return authManagerApi.setOnboardingCompletion(isCompleted: isCompleted)
+    func setOnboardingState() {
+        return authManagerApi.setOnboardingCompletion(isCompleted: true)
     }
-    
-    
-    
+
     func checkValetAvailability(name: String) -> Bool {
         return name != "Dima" && !name.isEmpty
     }

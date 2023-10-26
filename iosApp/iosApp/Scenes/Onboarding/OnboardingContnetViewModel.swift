@@ -35,8 +35,8 @@ class OnboardingContnetViewModel: ObservableObject {
         self.pageType = pageType
     }
     
-    func saveOnBoardingState(isCompleted: Bool) {
-        return authManager.setOnboardingState(isCompleted: isCompleted)
+    func saveOnBoardingState() {
+        return authManager.setOnboardingState()
     }
 }
 

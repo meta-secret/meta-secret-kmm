@@ -47,7 +47,7 @@ struct OnboardingContainerView: View {
                                 
                                 //Skip button
                                 Button(viewModel.skipText) {
-                                    viewModel.saveOnBoardingState(isCompleted: true)
+                                    viewModel.saveOnBoardingState()
                                     skipNext.toggle()
                                 }
                                 .foregroundColor(AppColors.actionLinkBlue)
@@ -92,7 +92,7 @@ struct OnboardingContainerView: View {
         if selectedPage < viewModel.totalSteps {
             selectedPage = selectedPage + 1
         } else {
-            viewModel.saveOnBoardingState(isCompleted: true)
+            viewModel.saveOnBoardingState()
             skipNext = true
         }
     }
