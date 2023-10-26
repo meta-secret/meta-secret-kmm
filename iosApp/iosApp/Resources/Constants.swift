@@ -12,58 +12,83 @@ struct Constants {
     //MARK: - COMMON
     struct Common {
         static let animationTime: CGFloat = 0.3
-//        static let waitingTime: CGFloat = 0.1
-//        static let virtual = "virtual"
-//        static let finishedStatus = "finished"
-//        static let ok = "ok"
-//        static let neededMembersCount = 3
-//        static let timerInterval: CGFloat = 1
 //        static let appStoreLink = "https://testflight.apple.com/join/AkzuH5A4/"
         static let appStoreLink = "https://apps.apple.com/ru/app/metasecret/id1644286751/"
+        static let secureSafe = NSLocalizedString("secureSafe", comment: "")
+        static let next = NSLocalizedString("next", comment: "")
+        static let skip = NSLocalizedString("skip", comment: "")
+        static let needDevices = NSLocalizedString("needDevices", comment: "")
+        static let needDevices2 = NSLocalizedString("needDevices2", comment: "")
+        static let addPLus = NSLocalizedString("+add", comment: "")
+        static let neededDeviceCount: Int = 3
+        static let enterValue = NSLocalizedString("enterValue", comment: "")
     }
     
-    //MARK: - SPLASHSCREEN
-    struct Splash {
-        static let metaSecret = "Meta Secret"
+    //MARK: - ALERTS
+    struct Alert {
+        static let emptyTitle = ""
+        static let ok = NSLocalizedString("ok", comment: "")
+        static let cancel = NSLocalizedString("cancel", comment: "")
+        static let biometricalReason = NSLocalizedString("biometricalReason", comment: "")
+        static let needConfirmation = NSLocalizedString("needConfirmation", comment: "")
+        static let confirmationText = NSLocalizedString("confirmationText", comment: "")
+        static let waitConfirmationText = NSLocalizedString("waitConfirmationText", comment: "")
     }
     
     //MARK: - ONBOARDING
     struct Onboarding {
-        static let welcome = NSLocalizedString("welcome", comment: "")
-        static let whatIs = NSLocalizedString("whatIs", comment: "")
-        static let back = NSLocalizedString("back", comment: "")
-        static let next = NSLocalizedString("next", comment: "")
-        static let finish = NSLocalizedString("finish", comment: "")
+        static let gotSecrets = NSLocalizedString("gotSecrets", comment: "")
+        static let splitIt = NSLocalizedString("splitIt", comment: "")
+        static let secureSafe = NSLocalizedString("secureSafe", comment: "")
+    }
+    
+    //MARK: - SIGN IN
+    struct LetsStart {
+        static let letsStart = NSLocalizedString("letsStart", comment: "")
         static let chooseName = NSLocalizedString("chooseName", comment: "")
-        static let vaultName = NSLocalizedString("vaultName", comment: "")
-        static let startToUse = NSLocalizedString("startToUse", comment: "")
-        static let singleCopy = NSLocalizedString("singleCopy", comment: "")
-        static let singleCopyText = NSLocalizedString("singleCopyText", comment: "")
-        static let addDevice = NSLocalizedString("addDevice", comment: "")
-        static let addDeviceText = NSLocalizedString("addDeviceText", comment: "")
+        static let scanQR = NSLocalizedString("scanQR", comment: "")
+        static let chooseNamePlaceHolder = NSLocalizedString("chooseNamePlaceHolder", comment: "")
+        static let moveNext = NSLocalizedString("moveNext", comment: "")
+    }
+    
+    struct Main {
+        static let secrets = NSLocalizedString("Secrets", comment: "")
+        static let devices = NSLocalizedString("Devices", comment: "")
+        static let help = NSLocalizedString("Help", comment: "")
+        static let profile = NSLocalizedString("Profile", comment: "")
+    }
+    
+    struct Secrets {
+        static let noSecrets = NSLocalizedString("noSecrets", comment: "")
+        static let youHaveNoSecrets = NSLocalizedString("youHaveNoSecrets", comment: "")
+        static let weak = NSLocalizedString("weak", comment: "")
+        static let strong = NSLocalizedString("strong", comment: "")
+        static let maximum = NSLocalizedString("maximum", comment: "")
+        static let deviceCount = NSLocalizedString("countDevice", comment: "")
+        static let devicesCount = NSLocalizedString("countDevices", comment: "")
+        static let devicesCount2 = NSLocalizedString("countDevices2", comment: "")
+        static let secretsCount = NSLocalizedString("countSecrets", comment: "")
+        static let countSecretsZero = NSLocalizedString("countSecretsZero", comment: "")
         static let addSecret = NSLocalizedString("addSecret", comment: "")
-        static let addSecretText = NSLocalizedString("addSecretText", comment: "")
-        static let testDescription = NSLocalizedString("testDescription", comment: "")
-        static let testSecret = NSLocalizedString("testSecret", comment: "")
-        static let step1 = NSLocalizedString("step1", comment: "")
-        static let step2 = NSLocalizedString("step2", comment: "")
-        static let step3 = NSLocalizedString("step3", comment: "")
-        static let step4 = NSLocalizedString("step4", comment: "")
-        
-//
-//        static let personalCloud = NSLocalizedString("personalCloud", comment: "")
-//        static let personalCloudDescription = NSLocalizedString("personalCloudDescription", comment: "")
-//
-//        static let distributedStorage = NSLocalizedString("distributedStorage", comment: "")
-//        static let distributedStorageDescription = NSLocalizedString("distributedStorageDescription", comment: "")
-//
-//        static let passwordLess = NSLocalizedString("passwordLess", comment: "")
-//        static let passwordLessDescription = NSLocalizedString("passwordLessDescription", comment: "")
-//
-//        static let backup = NSLocalizedString("backup", comment: "")
-//        static let backupDescription = NSLocalizedString("backupDescription", comment: "")
-//
-//        static let getStartedButtonTitle = NSLocalizedString("getStarted", comment: "")
+        static let secretName = NSLocalizedString("secretName", comment: "")
+        static let secret = NSLocalizedString("secret", comment: "")
+        static let secretNameNeeded = NSLocalizedString("secretNameNeeded", comment: "")
+        static let secretNeeded = NSLocalizedString("secretNeeded", comment: "")
+        static let showSecret = NSLocalizedString("showSecret", comment: "")
+        static let show = NSLocalizedString("show", comment: "")
+        static let copySecret = NSLocalizedString("copySecret", comment: "")
+    }
+    
+    struct Devices {
+        static let addDevice = NSLocalizedString("addDevice", comment: "")
+        static let threeDevicesNeeded = NSLocalizedString("threeDevicesNeeded", comment: "")
+        static let soon = NSLocalizedString("soon", comment: "")
+        static let notEnoughtDevices = NSLocalizedString("notEnoughtDevices", comment: "")
+        static let metaSecretCloud = NSLocalizedString("metaSecretCloud", comment: "")
+        static let downloadApp = NSLocalizedString("downloadApp", comment: "")
+        static let repeatNickName = NSLocalizedString("repeatNickName", comment: "")
+        static let approveConnection = NSLocalizedString("approveConnection", comment: "")
+        static let useQR = NSLocalizedString("useQR", comment: "")
     }
     
     //MARK: - LOGIN
@@ -114,7 +139,7 @@ struct Constants {
 //        static let notBackedUp = NSLocalizedString("notBackedUp", comment: "")
     }
     
-    struct Devices {
+//    struct Devices {
 //        static let member = NSLocalizedString("member", comment: "")
 //        static let declined = NSLocalizedString("declined", comment: "")
 //        static let pending = NSLocalizedString("pending", comment: "")
@@ -122,7 +147,7 @@ struct Constants {
 //        static func installInstruction(name: String) -> String {
 //            return String(format: NSLocalizedString("stepsToAdd", comment: ""), name)
 //        }
-    }
+//    }
     
     struct PairingDeveice {
 //        static let title = NSLocalizedString("deviceAdding", comment: "")
@@ -164,56 +189,45 @@ struct Constants {
 //        static let chooseDevices = NSLocalizedString("chooseDevices", comment: "")
     }
     
-    //MARK: - ALERTS
-    struct Alert {
-//        static let emptyTitle = ""
-//        static let ok = NSLocalizedString("ok", comment: "")
-//        static let cancel = NSLocalizedString("cancel", comment: "")
-//        static let biometricalReason = NSLocalizedString("biometricalReason", comment: "")
-//        static let needConfirmation = NSLocalizedString("needConfirmation", comment: "")
-//        static let confirmationText = NSLocalizedString("confirmationText", comment: "")
-//        static let waitConfirmationText = NSLocalizedString("waitConfirmationText", comment: "")
-    }
-    
     struct Errors {
-//        static let error = NSLocalizedString("error", comment: "")
-//        static let warning = NSLocalizedString("warning", comment: "")
-//        static let commonError = NSLocalizedString("commonError", comment: "")
-//        static let networkError = NSLocalizedString("networkError", comment: "")
-//        static let registerError = NSLocalizedString("registerError", comment: "")
-//        static let vaultError = NSLocalizedString("vaultError", comment: "")
-//        static let userSignatureError = NSLocalizedString("userSignatureError", comment: "")
-//        static let userNameMesasge = NSLocalizedString("wannaLogin", comment: "")
-//        static let enterName = NSLocalizedString("enterName", comment: "")
-//        static let swwError = NSLocalizedString("sww", comment: "")
-//        static let notEnoughtMembers = NSLocalizedString("atLeast3", comment: "")
-//        static let generateUserError = NSLocalizedString("generateUserError", comment: "")
-//        static let distributeError = NSLocalizedString("distributeError", comment: "")
-//        static let restoreError = NSLocalizedString("restoreError", comment: "")
-//        static let encodeError = NSLocalizedString("encodeError", comment: "")
-//        static let noMainUserError = NSLocalizedString("noMainUserError", comment: "")
-//        static let objectToJsonError = NSLocalizedString("objectToJsonError", comment: "")
-//        static let cantRestore = NSLocalizedString("cantRestore", comment: "")
-//        static let cantClaim = NSLocalizedString("cantClaim", comment: "")
-//        static let shareSearchError = NSLocalizedString("shareSearchError", comment: "")
-//        static let distributionDBError = NSLocalizedString("distributionDBError", comment: "")
-//        static let splitError = NSLocalizedString("splitError", comment: "")
-//        static let authError = NSLocalizedString("authError", comment: "")
-//        static let authErrorMessage = NSLocalizedString("authErrorMessage", comment: "")
-//        static let notConfirmed = NSLocalizedString("notConfirmed", comment: "")
-//        static let dbNotConsistence = NSLocalizedString("dbNotConsistence", comment: "")
-//        static let cameraError = NSLocalizedString("cameraError", comment: "")
+        static let error = NSLocalizedString("error", comment: "")
+        static let warning = NSLocalizedString("warning", comment: "")
+        static let commonError = NSLocalizedString("commonError", comment: "")
+        static let networkError = NSLocalizedString("networkError", comment: "")
+        static let registerError = NSLocalizedString("registerError", comment: "")
+        static let vaultError = NSLocalizedString("vaultError", comment: "")
+        static let userSignatureError = NSLocalizedString("userSignatureError", comment: "")
+        static let userNameMesasge = NSLocalizedString("wannaLogin", comment: "")
+        static let enterName = NSLocalizedString("enterName", comment: "")
+        static let swwError = NSLocalizedString("sww", comment: "")
+        static let notEnoughtMembers = NSLocalizedString("atLeast3", comment: "")
+        static let generateUserError = NSLocalizedString("generateUserError", comment: "")
+        static let distributeError = NSLocalizedString("distributeError", comment: "")
+        static let restoreError = NSLocalizedString("restoreError", comment: "")
+        static let encodeError = NSLocalizedString("encodeError", comment: "")
+        static let noMainUserError = NSLocalizedString("noMainUserError", comment: "")
+        static let objectToJsonError = NSLocalizedString("objectToJsonError", comment: "")
+        static let cantRestore = NSLocalizedString("cantRestore", comment: "")
+        static let cantClaim = NSLocalizedString("cantClaim", comment: "")
+        static let shareSearchError = NSLocalizedString("shareSearchError", comment: "")
+        static let distributionDBError = NSLocalizedString("distributionDBError", comment: "")
+        static let splitError = NSLocalizedString("splitError", comment: "")
+        static let authError = NSLocalizedString("authError", comment: "")
+        static let authErrorMessage = NSLocalizedString("authErrorMessage", comment: "")
+        static let notConfirmed = NSLocalizedString("notConfirmed", comment: "")
+        static let dbNotConsistence = NSLocalizedString("dbNotConsistence", comment: "")
+        static let cameraError = NSLocalizedString("cameraError", comment: "")
     }
     
     struct BiometricError {
-//        static let authenticationFailed = NSLocalizedString("authenticationFailed", comment: "")
-//        static let userCancel = NSLocalizedString("userCancel", comment: "")
-//        static let userFallback = NSLocalizedString("userFallback", comment: "")
-//        static let biometryNotAvailable = NSLocalizedString("biometryNotAvailable", comment: "")
-//        static let biometryNotEnrolled = NSLocalizedString("biometryNotEnrolled", comment: "")
-//        static let biometryLockout = NSLocalizedString("biometryLockout", comment: "")
-//        static let unknown = NSLocalizedString("unknown", comment: "")
-//        static let enterAppPass = NSLocalizedString("enterAppPass", comment: "")
+        static let authenticationFailed = NSLocalizedString("authenticationFailed", comment: "")
+        static let userCancel = NSLocalizedString("userCancel", comment: "")
+        static let userFallback = NSLocalizedString("userFallback", comment: "")
+        static let biometryNotAvailable = NSLocalizedString("biometryNotAvailable", comment: "")
+        static let biometryNotEnrolled = NSLocalizedString("biometryNotEnrolled", comment: "")
+        static let biometryLockout = NSLocalizedString("biometryLockout", comment: "")
+        static let unknown = NSLocalizedString("unknown", comment: "")
+        static let enterAppPass = NSLocalizedString("enterAppPass", comment: "")
     }
     
     //MARK: - TAGS

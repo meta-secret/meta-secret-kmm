@@ -10,47 +10,82 @@ import SwiftUI
 import shared
 
 struct SplashView: View {
-    @State var navigateToNextScreen: Bool = false
-    
     private enum Config {
-        static let mainBgOpacity = 0.1
+        static let imageBottomPadding: CGFloat = 63.0
+        static let titleTopPadding: CGFloat = 40.0
+        static let delay: CGFloat = 2.0
     }
-
+    
+    @StateObject var viewModel: SplashViewModel
+    
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
-                AppColors.mainYellow.ignoresSafeArea()
-                VStack {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: AppColors.mainBlack))
-                    Text(Constants.Splash.metaSecret)
-                        .foregroundColor(AppColors.mainBlack)
-                        .font(.custom(Avenir.heavy.rawValue, size: AvenirSize.h1.rawValue))
+                AppColors.blackBg.ignoresSafeArea()
+                Image(AppImages.Common.mainBg)
+                    .resizable()
+                    .ignoresSafeArea()
+                ZStack {
+                    Image(AppImages.Splash.splashGradient)
+                        .padding(.bottom, Config.imageBottomPadding)
+                    VStack {
+                        Image(AppImages.Splash.splashLogo)
+                        Image(AppImages.Splash.metaTitle)
+                            .padding(.top, Config.titleTopPadding)
+                    }
                 }
-                Image(AppImages.mainBg)
-                    .opacity(Config.mainBgOpacity)
+                
             }
             .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                viewModel.checkBiometric { (success) in
                     withAnimation {
-                        self.navigateToNextScreen = true
+                        if let _ = viewModel.errorBiometric {
+                            viewModel.needAlert = true
+                        } else {
+                            if viewModel.readOnboardingKey() {
+                                if viewModel.checkAuth() == .alreadyRegistered {
+                                    viewModel.navigateToMain = true
+                                } else {
+                                    viewModel.navigateToSignIn = true
+                                }
+                            } else {
+                                viewModel.navigateToOnboarding = true
+                            }
+                        }
                     }
                 }
             }
-            .background(
-                NavigationLink(
-                    destination: WelcomeView(viewModel: OnboardingContnetViewModel(pageType: .welcome))
-                    .navigationBarBackButtonHidden(true),
-                    isActive: $navigateToNextScreen,
-                    label: { EmptyView() }
+            .alert(isPresented: $viewModel.needAlert, content: {
+                Alert(
+                    title: Text(Constants.Errors.error),
+                    message: Text(viewModel.errorBiometric?.errorDescription ?? ""),
+                    primaryButton: .default(Text(Constants.Alert.ok), action: {
+                        if viewModel.errorBiometric == BiometricError.userCancel {
+                            viewModel.needAlert = false
+                            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                        }
+                    }),
+                    secondaryButton: .cancel(Text(Constants.Alert.cancel))
                 )
-            )
+            })
+            .navigationDestination(isPresented: $viewModel.navigateToMain) {
+                MainSceneView()
+                    .navigationBarBackButtonHidden(true)
+            }
+            .navigationDestination(isPresented: $viewModel.navigateToSignIn) {
+                SignInView(viewModel: SignInViewModel())
+                    .navigationBarBackButtonHidden(true)
+            }
+            .navigationDestination(isPresented: $viewModel.navigateToOnboarding) {
+                OnboardingContainerView(viewModel: OnboardingContnetViewModel(pageType: .first))
+                    .navigationBarBackButtonHidden(true)
+            }
         }
     }
 }
 
 struct SplashView_Previews: PreviewProvider {
     static var previews: some View {
-        SplashView()
+        SplashView(viewModel: SplashViewModel())
     }
 }

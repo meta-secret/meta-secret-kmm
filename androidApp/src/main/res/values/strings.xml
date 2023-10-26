@@ -1,23 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="splashTitle">Meta Secret</string>
+    //MARK: - COMMON
+    <string name="skip">Skip</string>
     <string name="next">Next</string>
-    <string name="welcome">Welcome to Meta Secret</string>
-    <string name="whatIs">It\'s a personal, decentralized, self-hosted and passwordless manager of secrets and passwords</string>
-    <string name="chooseName">Choose a name</string>
-    <string name="vaultName">Your nickname</string>
-    <string name="startToUse">To start using this app and saving your secrets you need to choose the unique name (Nickname). Just type it in the field upper.</string>
-    <string name="singleCopy">Single copy</string>
-    <string name="singleCopyText">You\'ve just created local data base. All your secrets and passwords will be stored ONLY on this device and no where else. But it\'s not safety. And one of the main purpose of Meta Secret is a data replication. We suggest to add additional devices to your own network, to be available to restore your data.</string>
-    <string name="addDevice">Add device</string>
-    <string name="addDeviceText">To add device into your own network you need just scan this QR code. Or you can left one Device. But don\'t forget: It\'s not SAFETY!</string>
+    <string name="needDevices">You need 2 more devices to reach a higher level of security</string>
+    <string name="needDevices2">You need 1 more device to reach a higher level of security</string>
+    <string name="plusadd">" + Add"</string>
+    <string name="enterValue">Enter value</string>
+
+    //MARK: - ONBOARDING
+    <string name="gotSecrets">Got important secrets?</string>
+    <string name="splitIt">Split it between your devices</string>
+    <string name="secureSafe">All passwords and secret information is stored only on your devices and securely protected with encryption standards RSA and AES</string>
+
+    //MARK: - SIGN IN
+    <string name="letsStart">Let\'s start</string>
+    <string name="chooseName">Choose a unique nickname you will use in the future to connect other devicesor just scan a QR code</string>
+    <string name="scanQR">Scan QR Code</string>
+    <string name="chooseNamePlaceHolder">Choose a unique nickname</string>
+    <string name="moveNext">Next</string>
+    <string name="nameIsChosen">This name is already chosen</string>
+
+    <string name="secrets">Secrets</string>
+    <string name="devices">Devices</string>
+    <string name="help">Help</string>
+    <string name="profile">Profile</string>
+
+    //MARK: - SECRETS
+    <string name="noSecrets">No secrets</string>
+    <string name="youHaveNoSecrets">You have no any secrets yet. Add your first one.</string>
+    <string name="weak">weak</string>
+    <string name="strong">strong</string>
+    <string name="maximum">maximum</string>
+    <string name="countDevices">3 devices</string>
+    <string name="countSecrets">6 secrets</string>
     <string name="addSecret">Add secret</string>
-    <string name="addSecretText">Let\'s add your first secret. After that, the app will encrypt it and split it on pices. Every device in your network will get a differente piece of splitted secret. To restore it, you will need to use at least 2 devices</string>
-    <string name="testDescription">Test Description</string>
-    <string name="testSecret">Test Secret</string>
-    <string name="step1">Step 1</string>
-    <string name="step2">Step 2</string>
-    <string name="step3">Step 3</string>
-    <string name="step4">Step 4</string>
-    <string name="qrTitle">Scan QR code on the first device</string>
+    <string name="secretName">Secret name</string>
+    <string name="secret">Secret</string>
+    <string name="secretNameNeeded">Secret name needed</string>
+    <string name="secretNeeded">Secret needed</string>
+    <string name="showSecret">Show secret</string>
+    <string name="show">Show</string>
+    <string name="copySecret">Copy secret</string>
+
+    //MARK: - DEVICES
+    <string name="addDevice">Add device</string>>
+    <string name="threeDevicesNeeded">For maximum security level for your secrets you need to connect 3 devices</string>
+    <string name="soon">soon</string>
+    <string name="notEnoughtDevices">Not enought devices?</string>
+    <string name="metaSecretCloud">MetaSecret Cloud Device - use our cloud as one of your devices</string>
+    <string name="downloadApp">1. Download app MetaSecret on your new device</string>
+    <string name="repeatNickName">2. Enter your unique Nick name on new device</string>
+    <string name="approveConnection">3. Approve your new device connection</string>
+    <string name="useQR">or scan QR code</string>
+    <string name="plusaddDevice">" + Add device"</string>
+
+    //MARK: - PROFILE
+    <string name="nickName">Nickname</string>>
+    <string name="logout">Logout</string>
+    <string name="version">Version</string>
+
 </resources>
