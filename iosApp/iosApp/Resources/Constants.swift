@@ -12,6 +12,7 @@ struct Constants {
     //MARK: - COMMON
     struct Common {
         static let animationTime: CGFloat = 0.3
+        static let timerInterval: CGFloat = 1
 //        static let appStoreLink = "https://testflight.apple.com/join/AkzuH5A4/"
         static let appStoreLink = "https://apps.apple.com/ru/app/metasecret/id1644286751/"
         static let secureSafe = NSLocalizedString("secureSafe", comment: "")
@@ -89,6 +90,10 @@ struct Constants {
         static let repeatNickName = NSLocalizedString("repeatNickName", comment: "")
         static let approveConnection = NSLocalizedString("approveConnection", comment: "")
         static let useQR = NSLocalizedString("useQR", comment: "")
+        
+        static let member = NSLocalizedString("member", comment: "")
+        static let declined = NSLocalizedString("declined", comment: "")
+        static let pending = NSLocalizedString("pending", comment: "")
     }
     
     //MARK: - LOGIN
@@ -100,7 +105,7 @@ struct Constants {
 //        static let scanQRButton = NSLocalizedString("scanQR", comment: "")
 //        static let alreadyExisted = NSLocalizedString("wannaJoin", comment: "")
 //        static let renameOk = NSLocalizedString("rename", comment: "")
-//        static let declined = NSLocalizedString("declinedRequest", comment: "")
+        static let declined = NSLocalizedString("declinedRequest", comment: "")
 //        static let awaitingTitle = NSLocalizedString("waitingForApproval", comment: "")
 //        static let awaitingMessage = NSLocalizedString("pleaseAcceptRequest", comment: "")
 //        static let chooseAnotherName = NSLocalizedString("pleaseAcceptRequest", comment: "")
@@ -176,7 +181,7 @@ struct Constants {
 //        static let selectDeviceButton = NSLocalizedString("selectDeviceButton", comment: "")
 //        static let selectDeviceButtonLocal = NSLocalizedString("selectDeviceButtonLocal", comment: "")
 //        static let notSplitedMessage = NSLocalizedString("notSplitedMessage", comment: "")
-//        static let alreadySavedMessage = NSLocalizedString("alreadySavedMessage", comment: "")
+        static let alreadySavedMessage = NSLocalizedString("alreadySavedMessage", comment: "")
 //        static let edit = NSLocalizedString("edit", comment: "")
 //        static let showSecret = NSLocalizedString("showSecret", comment: "")
 //        static let success = NSLocalizedString("success", comment: "")
@@ -217,6 +222,8 @@ struct Constants {
         static let notConfirmed = NSLocalizedString("notConfirmed", comment: "")
         static let dbNotConsistence = NSLocalizedString("dbNotConsistence", comment: "")
         static let cameraError = NSLocalizedString("cameraError", comment: "")
+        static let requiredField = NSLocalizedString("requiredField", comment: "")
+        static let signInError = NSLocalizedString("signInError", comment: "")
     }
     
     struct BiometricError {

@@ -205,6 +205,7 @@
 "objectToJsonError" = "Parse object to Json error";
 "cantRestore" = "Can't restore password";
 "cantClaim" = "Launch the app on another device to restore the password";
+"requiredField" = "This field is required";
 
 //MARK: - Biometric errors
 "authenticationFailed" = "There was a problem verifying your identity.";

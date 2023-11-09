@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct SignInView: View {
     private enum Config {
@@ -18,17 +19,7 @@ struct SignInView: View {
         static let imageTopOffset: CGFloat = 54.0
     }
     
-    let viewModel: SignInViewModel
-    
-    @State var signInError: String? = NSLocalizedString("signInError", comment: "")
-    @State var nickName: String?
-    @State var isError = false
-    @State var isNext = false
-    @State var showingAlert = false
-    
-    init(viewModel: SignInViewModel ) {
-        self.viewModel = viewModel
-    }
+    @StateObject var viewModel: SignInViewModel
     
     var body: some View {
         NavigationStack {
@@ -60,7 +51,7 @@ struct SignInView: View {
 
                     //ScanQR button
                     Button(action: {
-//                        isNext = true
+                        viewModel.isLoading.toggle()
                     }) {
                         Text(viewModel.scanQrText)
                             .frame(maxWidth: .infinity, alignment: .center)
@@ -74,38 +65,32 @@ struct SignInView: View {
                             )
                     }
                     .frame(height: Config.buttonHeight)
-                    .navigationDestination(isPresented: $isNext) {
-                        MainSceneView()
-                            .navigationBarBackButtonHidden(true)
+                    .navigationDestination(isPresented: $viewModel.isQrCodeScanner) {
+                        // Need implementation
                     }
 
                     VStack {
                         // Name text field
                         Spacer().frame(height: Config.spacerHeight)
-                        TipTextfieldView(textValue: $nickName, placeHolder: viewModel.placeholder, error: isError ? $signInError : .constant(nil))
+                        TipTextfieldView(textValue: $viewModel.nickName, placeHolder: viewModel.placeholder, error: viewModel.isError ? $viewModel.signInError : .constant(nil), isRequired: true)
 
                         // Next button
                         Spacer().frame(height: Config.spacerHeight)
                         ActionBlueButton(title: viewModel.nextButtonText, action: {
-                            if viewModel.checkAndSaveName(name: nickName ?? "") {
-                                isNext = true
+                            if viewModel.nickName == nil || viewModel.nickName!.isEmpty {
+                                viewModel.signInError = Constants.Errors.requiredField
+                                viewModel.isError = true
                             } else {
-                                showingAlert = true
+                                viewModel.checkAndSaveName(name: viewModel.nickName ?? "")
                             }
                         })
                         Spacer()
                     }
                 }
-                .alert("This name already taken. Is it yours? Please confirm on another device.", isPresented: $showingAlert) {
-                    Button("Ok", role: .none) {
-                        showingAlert = false
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-                            isNext = true
-                        })
-                    }
-                }
                 .padding(.horizontal, Config.sideOffset)
                 .keyboardAdaptive()
+                
+                LoaderWithDimmingView(isLoading: $viewModel.isLoading)
             }
         }
         .navigationBarTitle("")

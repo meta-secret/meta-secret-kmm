@@ -11,6 +11,7 @@ import Foundation
 class OnboardingContnetViewModel: ObservableObject {
     @Service private var authManager: AuthManagerProtocol
     @Published var vaultName = ""
+    @Published var skipNext: Bool = false
     
     let content: [OnboardingPageView] = [
         OnboardingPageView(pageType: .first),
