@@ -13,6 +13,7 @@ struct TipTextfieldView: View {
     @State var placeHolder: String
     @Binding var error: String?
     @State var active: Bool = false
+    @State var isRequired: Bool = true
     
     private enum Config {
         static let cornerRadius: CGFloat = 8.0
@@ -67,10 +68,10 @@ struct TipTextfieldView: View {
                     .stroke(AppColors.redError, lineWidth: error == nil ? 0 : Config.lineWidth)
                     .animation(.linear, value: UUID())
             )
-            if error != nil {
+            if error != nil || (isRequired && (textValue == nil || textValue?.isEmpty == true)) {
                 Spacer().frame(height: Config.errorOffset)
                 HStack {
-                    Text(error ?? "")
+                    Text(checkError())
                         .font(FontStyle.error.font)
                         .frame(minHeight: Config.height)
                         .multilineTextAlignment(.leading)
@@ -80,6 +81,14 @@ struct TipTextfieldView: View {
                     Spacer()
                 }
             }
+        }
+    }
+    
+    private func checkError() -> String {
+        if isRequired && (textValue == nil || textValue?.isEmpty == true) {
+            return Constants.Errors.requiredField
+        } else {
+            return error ?? ""
         }
     }
 }

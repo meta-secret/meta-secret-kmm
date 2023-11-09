@@ -9,9 +9,8 @@
 import SwiftUI
 
 struct OnboardingContainerView: View {
-    @State var viewModel: OnboardingContnetViewModel
+    @StateObject var viewModel: OnboardingContnetViewModel
     @State var selectedPage: Int = 1
-    @State var skipNext: Bool = false
     
     private enum Config {
         static let verticalSpacing: CGFloat = 28.0
@@ -48,12 +47,12 @@ struct OnboardingContainerView: View {
                                 //Skip button
                                 Button(viewModel.skipText) {
                                     viewModel.saveOnBoardingState()
-                                    skipNext.toggle()
+                                    viewModel.skipNext.toggle()
                                 }
                                 .foregroundColor(AppColors.actionLinkBlue)
                                 .multilineTextAlignment(.trailing)
                                 .font(FontStyle.normalMedium.font)
-                                .navigationDestination(isPresented: $skipNext) {
+                                .navigationDestination(isPresented: $viewModel.skipNext) {
                                     SignInView(viewModel: SignInViewModel())
                                         .navigationBarBackButtonHidden(true)
                                 }
@@ -93,7 +92,7 @@ struct OnboardingContainerView: View {
             selectedPage = selectedPage + 1
         } else {
             viewModel.saveOnBoardingState()
-            skipNext = true
+            viewModel.skipNext = true
         }
     }
 }
