@@ -27,7 +27,8 @@ private extension iOSApp {
         
         //V1
         let jsonSerealizable = JsonSerealizManager()
-        let rustProtocol = RustTransporterManager(jsonSerializeManager: jsonSerealizable)
+        let dbManager = DBManager()
+        let rustProtocol = RustTransporterManager(dbManager: dbManager, jsonSerializeManager: jsonSerealizable)
         let signable = SigningManager(rustManager: rustProtocol)
         let userService = UsersService()
 
@@ -38,5 +39,6 @@ private extension iOSApp {
         ServiceContainer.register(type: Signable.self, signable)
         ServiceContainer.register(type: UsersServiceProtocol.self, userService)
         ServiceContainer.register(type: VaultAPIProtocol.self, VaultAPIService(jsonManager: jsonSerealizable, userService: userService, rustManager: rustProtocol))
+        ServiceContainer.register(type: DBManagerProtocol.self, dbManager)
     }
 }

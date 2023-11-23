@@ -10,19 +10,16 @@ import Foundation
 import SwiftUI
 import Combine
 
-class SignInViewModel: ObservableObject {
+class SignInViewModel: CommonViewModel {
     @Service private var authManager: AuthManagerProtocol
     @Service private var signingManager: Signable
     @Service private var vaultService: VaultAPIProtocol
     @Service private var userService: UsersServiceProtocol
     @Service private var authService: AuthorizationProtocol
     
-    @Published var signInError: String?
     @Published var nickName: String?
-    @Published var isError = false
     @Published var isNext = false
     @Published var isQrCodeScanner = false
-    @Published var isLoading = false
     
     var titleText: String {
         return Constants.LetsStart.letsStart
@@ -54,7 +51,7 @@ class SignInViewModel: ObservableObject {
         isLoading = true // To show spinner
         
         guard let userSecurityBox = signingManager.generateKeys(for: name) else {
-            signInError = Constants.Errors.swwError
+            textError = Constants.Errors.swwError
             isError = true
             return
         }
@@ -64,17 +61,11 @@ class SignInViewModel: ObservableObject {
                                  publicKey: userSecurityBox.keyManager.dsa.publicKey,
                                  transportPublicKey: userSecurityBox.keyManager.transport.publicKey,
                                  device: Device())
-
+        
         //Check vault na,e
         vaultService.getVault(user)
             .sink { completion in
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let error):
-                    self.signInError = error.localizedDescription
-                    self.isError = true
-                }
+                self.errorHandling(completion, error: MetaSecretErrorType.vaultError)
             } receiveValue: { result in
                 if result.data?.vaultInfo == .Unknown {
                     self.userService.deviceStatus = .Pending
@@ -83,13 +74,14 @@ class SignInViewModel: ObservableObject {
                     self.isLoading = false
                 } else if result.data?.vaultInfo == .NotFound {
                     //No such name, let's register it
-                    self.register(user, userSecurityBox, isOwner: true).sink(receiveCompletion: { _ in
-                        self.isError = false
-                        self.isLoading = false
-                        self.isNext = true
-                    }, receiveValue: { result in
-                        print(result)
-                    }).store(in: &self.cancellables)
+                    self.register(user, userSecurityBox, isOwner: true)
+                        .sink(receiveCompletion: { completion in
+                            self.errorHandling(completion, error: MetaSecretErrorType.registerError)
+                        }, receiveValue: { result in
+                            self.isError = false
+                            self.isLoading = false
+                            self.isNext = true
+                        }).store(in: &self.cancellables)
                 } else {
                     self.userService.userSignature = nil
                     self.userService.securityBox = nil
@@ -102,41 +94,28 @@ class SignInViewModel: ObservableObject {
 
 private extension SignInViewModel {
     func register(_ user: UserSignature, _ userSecurityBox: UserSecurityBox, isOwner: Bool) -> Future<Void, Error> {
-        return Future { promise in
-            self.authService.register(user).flatMap { result -> Future<Void, Error> in
-                self.userService.userSignature = user
-                self.userService.securityBox = userSecurityBox
-                if result.data == .Registered {
-                    self.userService.deviceStatus = .Member
-                    self.tempTimer?.invalidate()
-                    self.tempTimer = nil
-//                    self.delegate?.closePopUp()
-//                    self.delegate?.routeNext()
-                    return Future { promise in
+        return Future<Void, Error> { promise in
+            self.authService.register(user)
+                .sink(receiveCompletion: { completion in
+                    self.errorHandling(completion, error: MetaSecretErrorType.registerError)
+                }, receiveValue: { result in
+                    self.userService.userSignature = user
+                    self.userService.securityBox = userSecurityBox
+                    if result.data == .Registered {
+                        self.userService.deviceStatus = .Member
+                        self.tempTimer?.invalidate()
+                        self.tempTimer = nil
                         promise(.success(()))
+                    } else {
+                        self.startTimer() // Need to subscribe on timer action
                     }
-                } else {
-                    self.startTimer()
-                    return Future { promise in
-                        promise(.success(()))
-                    }
-                }
-            }.sink { completion in
-                switch completion {
-                case .failure(let error):
-                    promise(.failure(error))
-                case .finished:
-                    break
-                }
-            } receiveValue: { result in
-                print(result)
-            }.store(in: &self.cancellables)
+                }).store(in: &self.cancellables)
         }
     }
-
+    
     func startTimer() {
         guard self.tempTimer == nil else { return }
-//        delegate?.showPendingPopup()
+        //        delegate?.showPendingPopup()
         tempTimer = Timer.scheduledTimer(timeInterval: Constants.Common.timerInterval, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: true)
     }
     
@@ -146,26 +125,21 @@ private extension SignInViewModel {
     
     func checkStatus() -> AnyPublisher<Void, Error> {
         if userService.deviceStatus == .Pending {
-            return Future { promise in
+            return Future<Void, Error> { promise in
                 self.vaultService.getVault(nil)
                     .sink { completion in
-                        switch completion {
-                        case .failure(let error):
-                            promise(.failure(error))
-                        case .finished:
-                            break
-                        }
+                        self.errorHandling(completion, error: .vaultError)
                     } receiveValue: { result in
                         if result.data?.vaultInfo == .Member {
                             self.userService.deviceStatus = .Member
                             self.tempTimer?.invalidate()
                             self.tempTimer = nil
-//                            self.delegate?.closePopUp()
-//                            self.delegate?.routeNext()
+                            //                            self.delegate?.closePopUp()
+                            //                            self.delegate?.routeNext()
                         } else if result.data?.vaultInfo == .Declined {
-//                            self.delegate?.closePopUp()
+                            //                            self.delegate?.closePopUp()
                             self.userService.resetAll()
-//                            self.delegate?.failed(with: MetaSecretErrorType.declinedUser)
+                            //                            self.delegate?.failed(with: MetaSecretErrorType.declinedUser)
                         } else {
                             self.startTimer()
                         }
@@ -177,5 +151,4 @@ private extension SignInViewModel {
             return Result.Publisher(()).eraseToAnyPublisher()
         }
     }
-
 }
