@@ -19,11 +19,7 @@ struct SecretsView: View {
         static let animationDuration: CGFloat = 0.3
     }
     
-    @State var viewModel: SecretsViewModel = SecretsViewModel()
-    @State var showSecret: Bool = false
-    @State private var currentItem: SecretModel? = nil
-    @State var isToReload: Bool = false
-    @State var showingAlert: Bool = false
+    @StateObject var viewModel: SecretsViewModel = SecretsViewModel()
     
     var body: some View {
         ZStack {
@@ -56,8 +52,8 @@ struct SecretsView: View {
                             ForEach(viewModel.items, id: \.id) { item in
                                 Button(action: {
                                     withAnimation(.linear(duration: Config.animationDuration)) {
-                                        currentItem = item as? SecretModel
-                                        showSecret = true
+                                        viewModel.currentItem = item as? SecretModel
+                                        viewModel.showSecret = true
                                     }
                                 }) {
                                     SecretCellView(item: item as! SecretModel)
@@ -72,45 +68,14 @@ struct SecretsView: View {
                         .scrollContentBackground(.hidden)
                     }
                     
-                    if showSecret {
-                        ShowSecretView(showPopUp: $showSecret, secretName: currentItem?.description ?? "", secret: currentItem?.secret ?? "")
+                    if viewModel.showSecret {
+                        ShowSecretView(showPopUp: $viewModel.showSecret, secretName: viewModel.currentItem?.description ?? "", secret: viewModel.currentItem?.secret ?? "")
                     }
                 }
             }
         }
-        .id(isToReload)
-        .onAppear {
-            var counter = UserDefaults.standard.value(forKey: "secretOpenCount") as! Int
-            let iOSNumber = UserDefaults.standard.value(forKey: "iOSNumber") as! Int
-            counter += 1
-            if (counter == 3 && iOSNumber == 1) || (counter == 2 && iOSNumber == 2) {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 15, execute: {
-                    print("RELOAD")
-                })
-                DispatchQueue.main.asyncAfter(deadline: .now() + 20, execute: {
-                    print("RELOAD!!")
-                    UserDefaults.standard.setValue(1, forKey: "secretCount")
-                    viewModel.getContent(of: .secrets)
-                    isToReload.toggle()
-                })
-            } else if (counter == 4 && iOSNumber == 1) || (counter == 3 && iOSNumber == 2) {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
-                    showingAlert = true
-                    if iOSNumber == 2 {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-                            showingAlert = false
-                        })
-                    }
-                })
-            }
-            UserDefaults.standard.setValue(counter, forKey: "secretOpenCount")
-        }
-        .alert("Device Galaxy A04 request to show password.", isPresented: $showingAlert) {
-            Button("Accept", role: .none) {
-                showingAlert = false
-            }
-            Button("Discard", role: .cancel) { }
-        }
+        .id(viewModel.isToReload)
+        LoaderWithDimmingView(isLoading: $viewModel.isLoading)
     }
 }
 

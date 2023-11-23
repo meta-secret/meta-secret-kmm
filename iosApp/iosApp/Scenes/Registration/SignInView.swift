@@ -65,6 +65,9 @@ struct SignInView: View {
                             )
                     }
                     .frame(height: Config.buttonHeight)
+                    .navigationDestination(isPresented: $viewModel.isNext) {
+                        MainSceneView().navigationBarBackButtonHidden(true)
+                    }
                     .navigationDestination(isPresented: $viewModel.isQrCodeScanner) {
                         // Need implementation
                     }
@@ -72,13 +75,13 @@ struct SignInView: View {
                     VStack {
                         // Name text field
                         Spacer().frame(height: Config.spacerHeight)
-                        TipTextfieldView(textValue: $viewModel.nickName, placeHolder: viewModel.placeholder, error: viewModel.isError ? $viewModel.signInError : .constant(nil), isRequired: true)
+                        TipTextfieldView(textValue: $viewModel.nickName, placeHolder: viewModel.placeholder, error: viewModel.isError ? $viewModel.textError : .constant(nil), isRequired: true)
 
                         // Next button
                         Spacer().frame(height: Config.spacerHeight)
                         ActionBlueButton(title: viewModel.nextButtonText, action: {
                             if viewModel.nickName == nil || viewModel.nickName!.isEmpty {
-                                viewModel.signInError = Constants.Errors.requiredField
+                                viewModel.textError = Constants.Errors.requiredField
                                 viewModel.isError = true
                             } else {
                                 viewModel.checkAndSaveName(name: viewModel.nickName ?? "")

@@ -23,15 +23,15 @@ class AuthorisationService: APIManager, AuthorizationProtocol {
             
             self.fetchData(Register(params))
                 .sink { completion in
-                switch completion {
-                case .failure(let error):
-                    promise(.failure(error))
-                case .finished:
-                    break
-                }
-            } receiveValue: { result in
-                promise(.success(result))
-            }.store(in: &self.cancellables)
+                    switch completion {
+                    case .failure(let error):
+                        promise(.failure(error))
+                    case .finished:
+                        break
+                    }
+                } receiveValue: { result in
+                    promise(.success(result))
+                }.store(in: &self.cancellables)
         }
     }
 }

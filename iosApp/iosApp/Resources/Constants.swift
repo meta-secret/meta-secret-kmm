@@ -23,6 +23,8 @@ struct Constants {
         static let addPLus = NSLocalizedString("+add", comment: "")
         static let neededDeviceCount: Int = 3
         static let enterValue = NSLocalizedString("enterValue", comment: "")
+        static let ok = "ok"
+        static let neededMembersCount = 3
     }
     
     //MARK: - ALERTS
