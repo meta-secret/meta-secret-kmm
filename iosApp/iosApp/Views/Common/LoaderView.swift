@@ -7,13 +7,16 @@
 //
 
 import SwiftUI
+import OSLog
 
 struct LoaderWithDimmingView: View {
     @Binding var isLoading: Bool
+    let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "ApplicationCode")
 
     var body: some View {
         ZStack {
             if isLoading {
+//                logger.info("LOADING...")
                 Color.black.opacity(0.5)
                     .ignoresSafeArea()
 
@@ -21,6 +24,7 @@ struct LoaderWithDimmingView: View {
                     .scaleEffect(2)
                     .progressViewStyle(CircularProgressViewStyle(tint: .white))
             } else {
+//                logger.info("LOADING COMPLETED")
                 EmptyView()
             }
         }

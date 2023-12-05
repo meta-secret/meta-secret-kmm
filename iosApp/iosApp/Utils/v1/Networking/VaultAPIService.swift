@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import OSLog
 
 protocol VaultAPIProtocol {
     func getVault(_ user: UserSignature?) -> Future<GetVaultResult, Error>
@@ -22,19 +23,23 @@ class VaultAPIService: APIManager, VaultAPIProtocol {
             guard let userSignature = user ?? self.userService.userSignature,
                   let params = self.jsonManager.jsonStringGeneration(from: userSignature)
             else {
+                Logger().error("Error: \(MetaSecretErrorType.userSignatureError)")
                 promise(.failure(MetaSecretErrorType.userSignatureError))
                 return
             }
             
+            Logger().info("Fetch data for Vault")
             self.fetchData(GetVault(params))
                 .sink { completion in
                     switch completion {
                     case .finished:
                         break
                     case .failure(_):
+                        Logger().error("Error: \(MetaSecretErrorType.networkError)")
                         promise(.failure(MetaSecretErrorType.networkError))
                     }
                 } receiveValue: { (result: GetVaultResult) in
+                    Logger().info("Got: \(result.data?.vault?.vaultName ?? "NaN")")
                     promise(.success(result))
                 }.store(in: &self.cancellables)
         }

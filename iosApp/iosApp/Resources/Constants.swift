@@ -12,7 +12,7 @@ struct Constants {
     //MARK: - COMMON
     struct Common {
         static let animationTime: CGFloat = 0.3
-        static let timerInterval: CGFloat = 1
+        static let timerInterval: CGFloat = 10
 //        static let appStoreLink = "https://testflight.apple.com/join/AkzuH5A4/"
         static let appStoreLink = "https://apps.apple.com/ru/app/metasecret/id1644286751/"
         static let secureSafe = NSLocalizedString("secureSafe", comment: "")

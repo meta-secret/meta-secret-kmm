@@ -9,6 +9,7 @@
 import Foundation
 import shared
 import Combine
+import OSLog
 
 final class SplashViewModel: ObservableObject {
     @Service private var authManager: AuthManagerProtocol

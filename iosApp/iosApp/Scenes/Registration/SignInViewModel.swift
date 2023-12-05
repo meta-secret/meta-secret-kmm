@@ -9,13 +9,14 @@
 import Foundation
 import SwiftUI
 import Combine
+import OSLog
 
 class SignInViewModel: CommonViewModel {
-    @Service private var authManager: AuthManagerProtocol
     @Service private var signingManager: Signable
     @Service private var vaultService: VaultAPIProtocol
     @Service private var userService: UsersServiceProtocol
     @Service private var authService: AuthorizationProtocol
+    @Service private var authManager: AuthManagerProtocol
     
     @Published var nickName: String?
     @Published var isNext = false
@@ -50,6 +51,7 @@ class SignInViewModel: CommonViewModel {
     func checkAndSaveName(name: String) {
         isLoading = true // To show spinner
         
+        Logger().info("Generate keys")
         guard let userSecurityBox = signingManager.generateKeys(for: name) else {
             textError = Constants.Errors.swwError
             isError = true
@@ -64,25 +66,32 @@ class SignInViewModel: CommonViewModel {
         
         //Check vault na,e
         vaultService.getVault(user)
+            .receive(on: DispatchQueue.main)
             .sink { completion in
                 self.errorHandling(completion, error: MetaSecretErrorType.vaultError)
             } receiveValue: { result in
                 if result.data?.vaultInfo == .Unknown {
+                    Logger().info("Vault pending. Waiting for approval")
                     self.userService.deviceStatus = .Pending
                     self.userService.userSignature = user
                     self.userService.securityBox = userSecurityBox
                     self.isLoading = false
                 } else if result.data?.vaultInfo == .NotFound {
-                    //No such name, let's register it
+                    Logger().info("No vault. Let's register it")
                     self.register(user, userSecurityBox, isOwner: true)
+                        .receive(on: DispatchQueue.main)
                         .sink(receiveCompletion: { completion in
                             self.errorHandling(completion, error: MetaSecretErrorType.registerError)
                         }, receiveValue: { result in
+                            Logger().info("Vault registered")
+                            self.authManager.register(with: user.vaultName)
+                            
                             self.isError = false
                             self.isLoading = false
                             self.isNext = true
                         }).store(in: &self.cancellables)
                 } else {
+                    Logger().info("Vault unknown status")
                     self.userService.userSignature = nil
                     self.userService.securityBox = nil
                     self.userService.deviceStatus = .Unknown
@@ -127,6 +136,7 @@ private extension SignInViewModel {
         if userService.deviceStatus == .Pending {
             return Future<Void, Error> { promise in
                 self.vaultService.getVault(nil)
+                    .receive(on: DispatchQueue.main)
                     .sink { completion in
                         self.errorHandling(completion, error: .vaultError)
                     } receiveValue: { result in

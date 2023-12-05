@@ -31,6 +31,8 @@ private extension iOSApp {
         let rustProtocol = RustTransporterManager(dbManager: dbManager, jsonSerializeManager: jsonSerealizable)
         let signable = SigningManager(rustManager: rustProtocol)
         let userService = UsersService()
+        let vaultProtocol =  VaultAPIService(jsonManager: jsonSerealizable, userService: userService, rustManager: rustProtocol)
+        let shareAPIProtocol = ShareAPIService(jsonManager: jsonSerealizable, userService: userService, rustManager: rustProtocol)
 
         ServiceContainer.register(type: AuthorizationProtocol.self, AuthorisationService(jsonManager: jsonSerealizable, userService: userService, rustManager: rustProtocol))
         
@@ -38,7 +40,10 @@ private extension iOSApp {
         ServiceContainer.register(type: RustProtocol.self, rustProtocol)
         ServiceContainer.register(type: Signable.self, signable)
         ServiceContainer.register(type: UsersServiceProtocol.self, userService)
-        ServiceContainer.register(type: VaultAPIProtocol.self, VaultAPIService(jsonManager: jsonSerealizable, userService: userService, rustManager: rustProtocol))
+        ServiceContainer.register(type: VaultAPIProtocol.self, vaultProtocol)
         ServiceContainer.register(type: DBManagerProtocol.self, dbManager)
+        ServiceContainer.register(type: ShareAPIProtocol.self, shareAPIProtocol)
+        
+        ServiceContainer.register(type: DistributionProtocol.self, DistributionManager(userService: userService, jsonManager: jsonSerealizable, dbManager: dbManager, rustManager: rustProtocol, vaultService: vaultProtocol, shareService: shareAPIProtocol))
     }
 }

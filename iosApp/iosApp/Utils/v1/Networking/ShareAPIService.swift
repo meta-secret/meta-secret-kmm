@@ -8,6 +8,7 @@
 
 import Foundation
 import Combine
+import OSLog
 
 protocol ShareAPIProtocol {
     func findShares(type: SecretDistributionType) -> Future<FindSharesResult, Error>
@@ -70,20 +71,23 @@ class ShareAPIService: APIManager, ShareAPIProtocol {
             }
             
             let model = FindSharesRequest(userRequestType: type, userSignature: userSignature)
-            
+            Logger().info("FindSharesRequest type \(type.rawValue)")
             guard let params = self.jsonManager.jsonStringGeneration(from: model) else {
                 return promise(.failure(MetaSecretErrorType.userSignatureError))
             }
             
+            Logger().info("Fetch data: Find shares")
             self.fetchData(FindShares(params))
                 .sink { completion in
                     switch completion {
                     case .finished:
                         break
                     case .failure(_):
+                        Logger().error("Error: MetaSecretErrorType.networkError")
                         promise(.failure(MetaSecretErrorType.networkError))
                     }
-                } receiveValue: { result in
+                } receiveValue: { (result: FindSharesResult) in
+                    Logger().info("Found \(Int(result.data?.shares.count ?? 0)) share(s) of type \(type.rawValue)")
                     promise(.success(result))
                 }.store(in: &self.cancellables)
         }
@@ -129,19 +133,23 @@ class ShareAPIService: APIManager, ShareAPIProtocol {
                 let userSignature = self.userService.userSignature,
                 let params = self.jsonManager.jsonStringGeneration(from: userSignature)
             else {
+                Logger().error("Error: \(MetaSecretErrorType.userSignatureError)")
                 promise(.failure(MetaSecretErrorType.userSignatureError))
                 return
             }
             
+            Logger().info("Fetch data: Find claims")
             self.fetchData(FindClaims(params))
                 .sink { completion in
                     switch completion {
                     case .finished:
                         break
                     case .failure(_):
+                        Logger().error("Error: \(MetaSecretErrorType.networkError)")
                         promise(.failure(MetaSecretErrorType.networkError))
                     }
                 } receiveValue: { (result: FindClaimsResult) in
+                    Logger().info("Got: \(result.msgType ?? "NaN")")
                     promise(.success(result))
                 }
                 .store(in: &self.cancellables)
