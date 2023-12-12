@@ -44,8 +44,7 @@ struct DevicesCellView: View {
                         Spacer()
                     }
                     HStack {
-                        let secretCount = UserDefaults.standard.value(forKey: "secretCount") as! Int
-                        Text(secretCount == 0 ? Constants.Secrets.countSecretsZero : Constants.Secrets.secretsCount)
+                        Text(item.secretsCount == 0 ? Constants.Secrets.countSecretsZero : Constants.Secrets.secretsCount)
                             .font(FontStyle.normal.font)
                             .foregroundColor(AppColors.white75)
                         Spacer()
@@ -69,7 +68,7 @@ struct DevicesCellView_Previews: PreviewProvider {
             Image(AppImages.Common.mainBg)
                 .resizable()
                 .ignoresSafeArea()
-            DevicesCellView(item: DeviceModel(name: "iPhone Dmitry", deviceType: .iphone, deviceId: "sdfds3423-sdfdsf324234-sdrfdf333-sdfsf33", secretsCount: "1"))
+            DevicesCellView(item: DeviceModel(name: "iPhone Dmitry", deviceType: .iphone, deviceId: "sdfds3423-sdfdsf324234-sdrfdf333-sdfsf33", secretsCount: 1))
         }
     }
 }

@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Combine
+import OSLog
 
 struct SignInView: View {
     private enum Config {
@@ -80,10 +81,13 @@ struct SignInView: View {
                         // Next button
                         Spacer().frame(height: Config.spacerHeight)
                         ActionBlueButton(title: viewModel.nextButtonText, action: {
+                            Logger().info("Sign in pressed")
                             if viewModel.nickName == nil || viewModel.nickName!.isEmpty {
                                 viewModel.textError = Constants.Errors.requiredField
                                 viewModel.isError = true
                             } else {
+                                Logger().info("Need to save new name \(viewModel.nickName ?? "")")
+                                
                                 viewModel.checkAndSaveName(name: viewModel.nickName ?? "")
                             }
                         })

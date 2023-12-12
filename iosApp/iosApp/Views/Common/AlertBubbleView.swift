@@ -62,8 +62,7 @@ struct AlertBubbleView: View {
 
 private extension AlertBubbleView {
     var message1: AttributedString {
-        let iOSNumber = UserDefaults.standard.value(forKey: "deviceCount") as! Int
-        var result = AttributedString(iOSNumber == 1 ? Constants.Common.needDevices : Constants.Common.needDevices2)
+        var result = AttributedString(Constants.Common.needDevices2)
         result.font = FontStyle.normalMain.font
         result.foregroundColor = AppColors.white75
         return result

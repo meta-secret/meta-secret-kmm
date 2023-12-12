@@ -13,9 +13,9 @@ class DeviceModel: CommonItemModel {
     private(set) var name: String
     private(set) var deviceType: DeviceType
     private(set) var deviceId: String
-    private(set) var secretsCount: String
+    private(set) var secretsCount: Int
     
-    init(name: String, deviceType: DeviceType, deviceId: String, secretsCount: String) {
+    init(name: String, deviceType: DeviceType, deviceId: String, secretsCount: Int) {
         self.type = .device
         self.name = name
         self.deviceType = deviceType

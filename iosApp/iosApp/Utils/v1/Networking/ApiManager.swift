@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import OSLog
 
 protocol APIManagerProtocol {
     func fetchData<T>(_ endpoint: any HTTPRequest) -> Future<T, Error> where T: Decodable
@@ -28,6 +29,7 @@ class APIManager: NSObject, APIManagerProtocol {
     func fetchData<T>(_ endpoint: any HTTPRequest) -> Future<T, Error> where T: Decodable {
         return Future { promise in
             guard let url = URL(string: APIManager.develop + endpoint.path) else {
+                Logger().error("Error: \(MetaSecretErrorType.networkError)")
                 promise(.failure(MetaSecretErrorType.networkError))
                 return
             }
@@ -40,27 +42,31 @@ class APIManager: NSObject, APIManagerProtocol {
                 if let jsonObject = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] {
                     request.httpBody = jsonData
                 } else {
+                    Logger().error("Error: \(MetaSecretErrorType.networkError)")
                     promise(.failure(MetaSecretErrorType.networkError))
                     return
                 }
             } else {
-                print("Invalid data for JSON.")
+                Logger().error("Error: Invalid data for JSON.")
                 promise(.failure(MetaSecretErrorType.networkError))
                 return
             }
 
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 if let error = error {
+                    Logger().error("Error: \(error.localizedDescription)")
                     promise(.failure(error))
                 } else if let data = data {
                     do {
                         let decoder = JSONDecoder()
                         let object = try decoder.decode(T.self, from: data)
+                        Logger().info("Object parsed")
                         promise(.success(object))
                     } catch {
                         promise(.failure(error))
                     }
                 } else {
+                    Logger().error("Error: \(MetaSecretErrorType.networkError)")
                     promise(.failure(NSError(domain: "NetworkLayer", code: 0, userInfo: nil)))
                 }
             }

@@ -8,6 +8,7 @@
 
 import Foundation
 import Combine
+import OSLog
 
 class CommonViewModel: ObservableObject {
     @Service private var contentManager: ContentManagerProtocol
@@ -24,6 +25,7 @@ class CommonViewModel: ObservableObject {
     
     func getContent(of type: ItemType) {
         items = contentManager.getContentItems(by: type)
+        Logger().info("There is \(self.items.count) item(s) of type: \(type.name())")
     }
     
     func errorHandling(_ completion: Subscribers.Completion<Error>, error: MetaSecretErrorType) {
@@ -32,6 +34,7 @@ class CommonViewModel: ObservableObject {
             break
         case .failure(_):
             DispatchQueue.main.async {
+                Logger().error("Error: \(error.message())")
                 self.textError = error.message()
                 self.isError = true
             }

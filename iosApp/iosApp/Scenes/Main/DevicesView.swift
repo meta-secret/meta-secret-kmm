@@ -46,39 +46,8 @@ struct DevicesView: View {
                 .scrollContentBackground(.hidden)
             }
         }
-        .onAppear {
-            var counter = UserDefaults.standard.value(forKey: "deviceOpenCount") as! Int
-            let iOSNumber = UserDefaults.standard.value(forKey: "iOSNumber") as! Int
-            counter += 1
-            print("counter = \(counter)")
-            if counter == 2 && iOSNumber == 1 {
-                viewModel.deviceAdd = counter == 2 ? "iPhone 13 Pro" : "Galaxy A04"
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
-                    UserDefaults.standard.setValue(2, forKey: "deviceCount")
-                    showingAlert = true
-                    UserDefaults.standard.setValue(counter, forKey: "deviceOpenCount")
-                })
-            } else if (counter == 2 && iOSNumber == 2) || counter == 3 {
-                viewModel.deviceAdd = "Galaxy A04"
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
-                    UserDefaults.standard.setValue(3, forKey: "deviceCount")
-                    showingAlert = true
-                    UserDefaults.standard.setValue(counter, forKey: "deviceOpenCount")
-                })
-            } else {
-                UserDefaults.standard.setValue(counter, forKey: "deviceOpenCount")
-            }
-        }
         .alert("Device \(viewModel.deviceAdd) trying to join to your local network.", isPresented: $showingAlert) {
             Button("Accept", role: .none) {
-                var counter = UserDefaults.standard.value(forKey: "deviceOpenCount") as! Int
-                let iOSNumber = UserDefaults.standard.value(forKey: "iOSNumber") as! Int
-                
-                if (counter == 2 && iOSNumber == 2) || (counter == 3 && iOSNumber == 1) {
-                    UserDefaults.standard.setValue(3, forKey: "deviceCount")
-                } else {
-                    UserDefaults.standard.setValue(2, forKey: "deviceCount")
-                }
                 viewModel.getContent(of: .device)
                 showingAlert = false
             }

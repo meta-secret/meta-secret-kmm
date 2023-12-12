@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import shared
+import OSLog
 
 protocol ContentManagerProtocol {
     func getContentItems(by type: ItemType) -> [any CommonItemModel]
@@ -16,13 +17,23 @@ protocol ContentManagerProtocol {
 }
 
 class ContentManager: ContentManagerProtocol {
+    @Service private var userService: UsersServiceProtocol
+    
     func getContentItems(by type: ItemType) -> [any CommonItemModel] {
     #warning("Need to implement Device Manager and Secrets Manager")
         var secrets = [SecretModel]()
         
         switch type {
         case .device:
-            return []
+            Logger().info("Get devices source")
+            guard let mainVault = userService.mainVault else { return [] }
+            Logger().info("Main vault \(mainVault.vaultName) & signatures count \(Int(mainVault.signatures?.count ?? 0))")
+            let mainVaultSource = DeviceModel(name: mainVault.vaultName,
+                                              deviceType: .iphone,
+                                              deviceId: "",
+                                              secretsCount: 0)
+            
+            return [mainVaultSource]
         case .secrets:
             return []
         }

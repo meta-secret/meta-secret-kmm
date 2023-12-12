@@ -11,4 +11,13 @@ import Foundation
 enum ItemType {
     case device
     case secrets
+    
+    func name() -> String {
+        switch self {
+        case .device:
+            return "device"
+        case .secrets:
+            return "secrets"
+        }
+    }
 }

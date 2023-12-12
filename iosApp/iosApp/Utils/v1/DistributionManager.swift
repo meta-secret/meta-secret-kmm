@@ -9,6 +9,7 @@
 import Foundation
 import Combine
 import RealmSwift
+import OSLog
 
 protocol DistributionProtocol {
     func startMonitoringSharesAndClaimRequests()
@@ -154,17 +155,26 @@ final class DistributionManager: NSObject, DistributionProtocol  {
     func getVault() -> Future<Void, Error> {
         return Future { promise in
             self.vaultService.getVault(nil)
-                .receive(on: DispatchQueue.main)
                 .sink { completion in
                     switch completion {
                     case .finished:
                         break
                     case .failure(_):
+                        Logger().error("Error: \(MetaSecretErrorType.networkError)")
                         promise(.failure(MetaSecretErrorType.networkError))
                     }
                 } receiveValue: { (result: GetVaultResult) in
+                    Logger().info("Got \(result.data?.vault?.vaultName ?? "Nan")")
                     self.commonResultHandler(result: result)
-                    promise(.success(()))
+                        .sink { completion in
+                            switch completion {
+                            case .finished:
+                                promise(.success(()))
+                            case .failure(_):
+                                Logger().error("Error: \(MetaSecretErrorType.networkError)")
+                                promise(.failure(MetaSecretErrorType.networkError))
+                            }
+                        } receiveValue: {}.store(in: &self.cancellables)
                 }.store(in: &self.cancellables)
         }
     }
@@ -177,6 +187,7 @@ final class DistributionManager: NSObject, DistributionProtocol  {
                     case .finished:
                         promise(.success(()))
                     case .failure(_):
+                        Logger().error("Error: \(MetaSecretErrorType.shareSearchError)")
                         promise(.failure(MetaSecretErrorType.shareSearchError))
                     }
                 } receiveValue: { (result: FindSharesResult) in
@@ -186,6 +197,7 @@ final class DistributionManager: NSObject, DistributionProtocol  {
                             case .finished:
                                 promise(.success(()))
                             case .failure(_):
+                                Logger().error("Error: \(MetaSecretErrorType.commonError)")
                                 promise(.failure(MetaSecretErrorType.commonError))
                             }
                         } receiveValue: {}
@@ -348,15 +360,18 @@ private extension DistributionManager {
                 return
             }
             
+            Logger().info("Check Shares Result: Distribute to DB")
             self.distribtuteToDB(result.data?.shares)
                 .sink { completion in
                     switch completion {
                     case .finished:
                         promise(.success(()))
                     case .failure(let error):
+                        Logger().error("Error: \(error.localizedDescription)")
                         promise(.failure(error))
                     }
                 } receiveValue: {
+                    Logger().info("*** NOTIFY *** Distribute to DB is ok. distributionService. type: CallBackType.Shares")
                     self.nc.post(name: NSNotification.Name(rawValue: "distributionService"), object: nil, userInfo: ["type": CallBackType.Shares])
                 }.store(in: &self.cancellables)
         }
@@ -372,7 +387,9 @@ private extension DistributionManager {
     }
     
     @objc func fireSharesAndClaimRequestsTimer() {
+        Logger().info("+++ Timer fired! +++ Find claims")
         findClaims()
+        Logger().info("+++ Timer fired! +++ Find shares (.Split)")
         let _ = findShares(type: .Split)
     }
     
@@ -455,6 +472,7 @@ private extension DistributionManager {
         Future<Void, Error> { promise in
             
             guard result.msgType == Constants.Common.ok else {
+                Logger().error("Error: \(MetaSecretErrorType.shareSearchError)")
                 promise(.failure(MetaSecretErrorType.shareSearchError))
                 return
             }
@@ -466,8 +484,10 @@ private extension DistributionManager {
             
             let type = data.shares.isEmpty ? data.userRequestType : data.shares.first?.distributionType
             
+            Logger().info("Checking Shares type:")
             switch type {
             case .Recover:
+                Logger().info("Recover: stop monitoring claim response")
                 self.stopMonitoringClaimResponses()
                 if self.userService.mainVault?.signatures?.count == 3, data.shares.isEmpty {
                     promise(.success(()))
@@ -479,21 +499,25 @@ private extension DistributionManager {
                         case .finished:
                             promise(.success(()))
                         case .failure(let error):
+                            Logger().error("Error: \(error.localizedDescription)")
                             promise(.failure(error))
                         }
                     } receiveValue: {}.store(in: &self.cancellables)
 
             case .Split:
+                Logger().info("Split")
                 if data.shares.isEmpty {
                     promise(.success(()))
                     return
                 }
+                Logger().info("Check Shares Result")
                 self.checkSharesResult(result)
                     .sink { completion in
                         switch completion {
                         case .finished:
                             promise(.success(()))
                         case .failure(let error):
+                            Logger().error("Error: \(error.localizedDescription)")
                             promise(.failure(error))
                         }
                     } receiveValue: {}.store(in: &self.cancellables)
@@ -577,6 +601,7 @@ private extension DistributionManager {
                 case .finished:
                     break
                 case .failure(let error):
+                    Logger().error("Error: \(error.localizedDescription)")
                     print("Error: \(error)")
                 }
             }, receiveValue: { result in
@@ -586,6 +611,7 @@ private extension DistributionManager {
                         case .finished:
                             break
                         case .failure(let error):
+                            Logger().error("Error: \(error.localizedDescription)")
                             print("Error: \(error)")
                         }
                     }, receiveValue: {})
@@ -650,6 +676,7 @@ private extension DistributionManager {
     
     //MARK: - VAULTS ACTIONS
     @objc func fireVaultsTimer() {
+        Logger().info("+++ Timer fired! +++ Get vault")
         let _ = getVault()
     }
     
@@ -661,10 +688,11 @@ private extension DistributionManager {
     func handleDistributionResult(_ result: DistributeResult) -> Future<Void, Error> {
         Future<Void, Error> { promise in
             guard result.msgType == Constants.Common.ok else {
+                Logger().error("Error: \(MetaSecretErrorType.distribute)")
                 promise(.failure(MetaSecretErrorType.distribute))
                 return
             }
-            
+            Logger().info("Success")
             promise(.success(()))
         }
     }
@@ -713,46 +741,57 @@ private extension DistributionManager {
 private extension DistributionManager {
     func commonResultHandler<T>(result: T) -> Future<Void, Error> {
             Future<Void, Error> { promise in
+                Logger().info("Handle result")
+                
                 switch result {
                 case let distributeResult as DistributeResult:
+                    Logger().info("Handle Distribute Result")
                     self.handleDistributionResult(distributeResult)
                         .sink(receiveCompletion: { completion in
                             switch completion {
                             case .finished:
                                 promise(.success(()))
                             case .failure(let error):
+                                Logger().error("Error: \(error.localizedDescription)")
                                 promise(.failure(error))
                             }
                         }, receiveValue: {})
                         .store(in: &self.cancellables)
 
                 case let getVaultResult as GetVaultResult:
+                    Logger().info("Handle GetVault Result")
                     self.userService.mainVault = getVaultResult.data?.vault
+                    Logger().info("*** NOTIFY *** distributionService. type: CallBackType.Devices")
                     self.nc.post(name: NSNotification.Name(rawValue: "distributionService"), object: nil, userInfo: ["type": CallBackType.Devices])
                     promise(.success(()))
 
                 case let findSharesResult as FindSharesResult:
+                    Logger().info("Handle FindShares Result")
                     self.commonShareChecking(findSharesResult)
                         .sink(receiveCompletion: { completion in
                             switch completion {
                             case .finished:
                                 promise(.success(()))
                             case .failure(let error):
+                                Logger().error("Error: \(error.localizedDescription)")
                                 promise(.failure(error))
                             }
                         }, receiveValue: {})
                         .store(in: &self.cancellables)
 
                 case let findClaimsResult as FindClaimsResult:
+                    Logger().info("Handle FindClaims Result")
                     if findClaimsResult.msgType == Constants.Common.ok, !(findClaimsResult.data?.isEmpty ?? true) {
                         self.askConfirmation(claims: findClaimsResult.data)
                     }
                     promise(.success(()))
 
                 case is [DistributeResult], is ClaimResult:
+                    Logger().info("Handle Claim Result")
                     promise(.success(()))
 
                 default:
+                    Logger().info("Handle Result")
                     promise(.success(()))
                 }
             }
