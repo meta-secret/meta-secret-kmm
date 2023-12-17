@@ -762,7 +762,9 @@ private extension DistributionManager {
                     Logger().info("Handle GetVault Result")
                     self.userService.mainVault = getVaultResult.data?.vault
                     Logger().info("*** NOTIFY *** distributionService. type: CallBackType.Devices")
-                    self.nc.post(name: NSNotification.Name(rawValue: "distributionService"), object: nil, userInfo: ["type": CallBackType.Devices])
+                    DispatchQueue.main.async {
+                        self.nc.post(name: NSNotification.Name(rawValue: "distributionService"), object: nil, userInfo: ["type": CallBackType.Devices])
+                    }
                     promise(.success(()))
 
                 case let findSharesResult as FindSharesResult:

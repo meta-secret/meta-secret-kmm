@@ -31,6 +31,7 @@
 		E51DFCE82A5718BF006EB59E /* PairDeviceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51DFCE72A5718BF006EB59E /* PairDeviceViewModel.swift */; };
 		E51DFCEA2A571908006EB59E /* PairPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51DFCE92A571908006EB59E /* PairPageView.swift */; };
 		E52D73B029DE3A9800DD8434 /* icons.json in Resources */ = {isa = PBXBuildFile; fileRef = E52D73AF29DE3A9800DD8434 /* icons.json */; };
+		E53273972B2B942100AD4711 /* MainSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53273962B2B942000AD4711 /* MainSceneViewModel.swift */; };
 		E54892042A38D08E0074364F /* TabItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54892032A38D08E0074364F /* TabItemData.swift */; };
 		E54892062A38D5C40074364F /* SecretsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54892052A38D5C40074364F /* SecretsView.swift */; };
 		E54892082A38D5D10074364F /* DevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54892072A38D5D10074364F /* DevicesView.swift */; };
@@ -152,6 +153,7 @@
 		E51DFCE72A5718BF006EB59E /* PairDeviceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairDeviceViewModel.swift; sourceTree = "<group>"; };
 		E51DFCE92A571908006EB59E /* PairPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairPageView.swift; sourceTree = "<group>"; };
 		E52D73AF29DE3A9800DD8434 /* icons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = icons.json; sourceTree = "<group>"; };
+		E53273962B2B942000AD4711 /* MainSceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneViewModel.swift; sourceTree = "<group>"; };
 		E54892032A38D08E0074364F /* TabItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemData.swift; sourceTree = "<group>"; };
 		E54892052A38D5C40074364F /* SecretsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretsView.swift; sourceTree = "<group>"; };
 		E54892072A38D5D10074364F /* DevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesView.swift; sourceTree = "<group>"; };
@@ -632,6 +634,7 @@
 			isa = PBXGroup;
 			children = (
 				E5EEEB052A326FFA00D40996 /* MainSceneView.swift */,
+				E53273962B2B942000AD4711 /* MainSceneViewModel.swift */,
 				E54892052A38D5C40074364F /* SecretsView.swift */,
 				E5C9DFAE2A3A518700C60BBA /* SecretsViewModel.swift */,
 				E54892072A38D5D10074364F /* DevicesView.swift */,
@@ -809,6 +812,7 @@
 				E5919D792A40BCFF00BFF879 /* ItemType.swift in Sources */,
 				E5EEEB062A326FFA00D40996 /* MainSceneView.swift in Sources */,
 				E563499E2AF97DC200B7F593 /* SecurityManager.swift in Sources */,
+				E53273972B2B942100AD4711 /* MainSceneViewModel.swift in Sources */,
 				E50EE58A2A59F8D700003F1E /* AuthManager.swift in Sources */,
 				E5045D0D2A31C6C6002ED25D /* PageControllView.swift in Sources */,
 				E54892102A38DF1E0074364F /* TabBottomView.swift in Sources */,

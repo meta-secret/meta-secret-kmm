@@ -43,9 +43,11 @@ private extension SecretsViewModel {
         .sink { completion in
             self.errorHandling(completion, error: .networkError)
         } receiveValue: { result in
+            DispatchQueue.main.async {
                 self.isLoading = false
-                self.startMonitoringVaultsToConnect()
-                self.startMonitoringSharesAndClaimRequests()
+            }
+            self.startMonitoringVaultsToConnect()
+            self.startMonitoringSharesAndClaimRequests()
         }.store(in: &cancellables)
     }
     

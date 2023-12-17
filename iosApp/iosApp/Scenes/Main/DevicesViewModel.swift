@@ -27,7 +27,9 @@ class DevicesViewModel: CommonViewModel {
 
 private extension DevicesViewModel {
     func getItems() {
-        isLoading = true
+        DispatchQueue.main.async {
+            self.isLoading = true
+        }
         getLocalVaultMembers()
     }
     
@@ -48,12 +50,16 @@ private extension DevicesViewModel {
                         self.errorHandling(completion, error: .networkError)
                     }
                 } receiveValue: { result in
-                    self.isLoading = false
+                    DispatchQueue.main.async {
+                        self.isLoading = false
+                    }
                     Logger().info("Get content: Check again")
                     let _ = self.checkVaultResult()
                 }.store(in: &cancellables)
         } else {
-            isLoading = false
+            DispatchQueue.main.async {
+                self.isLoading = false
+            }
         }
     }
     
