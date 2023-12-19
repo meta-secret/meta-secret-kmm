@@ -15,6 +15,7 @@ class CommonViewModel: ObservableObject {
     
     @Published var isLoading = false
     @Published var isError = false
+    @Published var isToReload: Bool = false
     @Published var textError: String?
     
     private(set) var items: [any CommonItemModel] = [any CommonItemModel]()

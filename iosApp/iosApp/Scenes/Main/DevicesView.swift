@@ -46,6 +46,7 @@ struct DevicesView: View {
                 .scrollContentBackground(.hidden)
             }
         }
+        .id(viewModel.isToReload)
         .alert("Device \(viewModel.deviceAdd) trying to join to your local network.", isPresented: $showingAlert) {
             Button("Accept", role: .none) {
                 viewModel.getContent(of: .device)

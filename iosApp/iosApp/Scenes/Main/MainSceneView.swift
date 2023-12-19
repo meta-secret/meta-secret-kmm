@@ -7,8 +7,12 @@
 //
 
 import SwiftUI
+import Combine
 
 struct MainSceneView: View {
+    
+    private var secretsView = SecretsView()
+    private var devicesView = DevicesView()
     
     private let notify = NotificationCenter.default.publisher(for: NSNotification.Name("distributionService"))
     @StateObject var viewModel: MainSceneViewModel = MainSceneViewModel()
@@ -30,7 +34,7 @@ struct MainSceneView: View {
                 //TabBar
                 CustomTabView(action: {
                     viewModel.showActionSheet = true
-                }, tabs: TabType.allCases.map({ $0.tabItem }), selectedIndex: $viewModel.selectedTab) { index in
+                }, tabs: TabType.allCases.map({ $0.tabItem }), selectedIndex: $viewModel.selectedIndex) { index in
                     let type = TabType(rawValue: index) ?? .secrets
                     getTabView(type: type)
                 }
@@ -40,7 +44,7 @@ struct MainSceneView: View {
         }
         .onReceive(notify) { (notification) in
             guard let userNotification = notification.userInfo?["type"] as? CallBackType else { return }
-            switchCallback(userNotification)
+            viewModel.switchCallback(userNotification) // TODO: Error alert
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
@@ -61,9 +65,10 @@ struct MainSceneView: View {
         .navigationBarHidden(false)
         .sheet(isPresented: $viewModel.showActionSheet, onDismiss: {
             viewModel.showActionSheet = false
-//            viewModel.selectedIndex = selectedIndex
+            viewModel.selectedTab = MainSceneViewModel.SelectedTab(rawValue: viewModel.selectedIndex) ?? .Secrets
+            viewModel.selectedIndex = viewModel.selectedTab.rawValue
         }) {
-            if viewModel.selectedIndex == .Devices {
+            if viewModel.selectedTab == .Devices {
                 AddDeviceView()
                     .presentationDetents([.height(Config.addDeviceHeight)])
             } else {
@@ -77,9 +82,9 @@ struct MainSceneView: View {
     func getTabView(type: TabType) -> some View {
         switch type {
         case .secrets:
-            SecretsView()
+            secretsView
         case .devices:
-            DevicesView()
+            devicesView
         case .profile:
             ProfileView()
         }
@@ -88,7 +93,7 @@ struct MainSceneView: View {
 
 private extension MainSceneView {
     func getNavTitle() -> String {
-        switch viewModel.selectedIndex {
+        switch viewModel.selectedTab {
         case .Secrets:
             return Constants.Main.secrets
         case .Devices:
@@ -99,70 +104,6 @@ private extension MainSceneView {
             return ""
         }
     }
-    
-    //MARK: - CALL BACK FROM DISTRIBUTION SERVICE
-    func switchCallback(_ notification: CallBackType) {
-        switch notification {
-        case .Shares:
-            if viewModel.selectedIndex == .Secrets {
-//                firstly {
-                
-                self.$viewModel.getAllLocalSecrets
-                        .sink { completion in
-                            
-                        } receiveValue: { _ in
-                            if self.$viewModel.isToReDistribute {
-                                self.viewModel.isToReDistribute = false
-                                self.reDistribue()
-                            } else {
-                                self.reloadData()
-                            }
-                        }
-
-//                }.catch { e in
-//                    let text = (e as? MetaSecretErrorType)?.message() ?? e.localizedDescription
-//                    self.alertManager.showCommonError(text)
-//                    self.viewModel.isToReDistribute = false
-//                }.finally {
-//                    if self.viewModel.isToReDistribute {
-//                        self.viewModel.isToReDistribute = false
-//                        self.reDistribue()
-//                    } else {
-//                        self.reloadData()
-//                    }
-//                }
-            }
-        case .Devices:
-            newBubble.isHidden = userService.mainVault?.pendingJoins?.count == 0
-            
-            if viewModel.selectedSegment == .Devices {
-                firstly {
-                    viewModel.getLocalVaultMembers()
-                }.catch { e in
-                    let text = (e as? MetaSecretErrorType)?.message() ?? e.localizedDescription
-                    self.alertManager.showCommonError(text)
-                    self.viewModel.isToReDistribute = false
-                }.finally {
-                    if self.viewModel.isToReDistribute {
-                        self.viewModel.isToReDistribute = false
-                        self.reDistribue()
-                    } else {
-                        self.reloadData()
-                    }
-                }
-            }
-        case .Claims(let decriptedSecret, let descriptionName):
-            if userService.needDBRedistribution, let decriptedSecret, let descriptionName {
-                viewModel.dbRedistribution(decriptedSecret, descriptionName: descriptionName)
-            } else {
-                break
-            }
-        case .Failure:
-            viewModel.isToReDistribute = false
-            break
-        }
-    }
-    
 }
 
 struct MainSceneView_Previews: PreviewProvider {

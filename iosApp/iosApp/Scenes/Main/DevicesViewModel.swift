@@ -23,6 +23,40 @@ class DevicesViewModel: CommonViewModel {
     }
     
     var deviceAdd = ""
+    
+    //MARK: - V1
+    func getLocalVaultMembers() -> Future<Void, Error> {
+        Logger().info("Get content: Devices")
+        return Future<Void, Error> { promise in
+            self.getContent(of: .device)
+            if self.items.isEmpty {
+                Logger().info("Get content: Devices are EMPTY")
+                self.distributionManager.getVault()
+                    .receive(on: DispatchQueue.main)
+                    .sink { completion in
+                        switch completion {
+                        case .finished:
+                            promise(.success(()))
+                        case .failure(_):
+                            Logger().error("Error: \(MetaSecretErrorType.networkError)")
+                            self.errorHandling(completion, error: .networkError)
+                            promise(.failure(MetaSecretErrorType.networkError))
+                        }
+                    } receiveValue: { result in
+                        DispatchQueue.main.async {
+                            self.isLoading = false
+                        }
+                        Logger().info("Get content: Check again")
+                        let _ = self.checkVaultResult()
+                    }.store(in: &self.cancellables)
+            } else {
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                }
+                promise(.success(()))
+            }
+        }
+    }
 }
 
 private extension DevicesViewModel {
@@ -34,35 +68,6 @@ private extension DevicesViewModel {
     }
     
     //MARK: - V1
-    func getLocalVaultMembers() {
-        Logger().info("Get content: Devices")
-        getContent(of: .device)
-        if items.isEmpty {
-            Logger().info("Get content: Devices are EMPTY")
-            distributionManager.getVault()
-                .receive(on: DispatchQueue.main)
-                .sink { completion in
-                    switch completion {
-                    case .finished:
-                        break
-                    case .failure(_):
-                        Logger().error("Error: \(MetaSecretErrorType.networkError)")
-                        self.errorHandling(completion, error: .networkError)
-                    }
-                } receiveValue: { result in
-                    DispatchQueue.main.async {
-                        self.isLoading = false
-                    }
-                    Logger().info("Get content: Check again")
-                    let _ = self.checkVaultResult()
-                }.store(in: &cancellables)
-        } else {
-            DispatchQueue.main.async {
-                self.isLoading = false
-            }
-        }
-    }
-    
     private func checkVaultResult() -> Future<Void, Error> {
         return Future { promise in
             guard let mainVault = self.userService.mainVault else { 
