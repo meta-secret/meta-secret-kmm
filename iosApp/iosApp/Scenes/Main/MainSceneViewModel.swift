@@ -16,6 +16,8 @@ class MainSceneViewModel: CommonViewModel {
     @Service private var userService: UsersServiceProtocol
     @Service private var rustManager: RustProtocol
     @Service private var dbManager: DBManagerProtocol
+    @Service private var vaultApiService: VaultAPIProtocol
+    @Service private var biometricManager: BiometricsManagerProtocol
     
     //MARK: - PROPERTIES
     @Published var selectedIndex: Int = 0
@@ -29,6 +31,8 @@ class MainSceneViewModel: CommonViewModel {
     
     private var currentSecretIndex: Int = 0
     private var cancellables = Set<AnyCancellable>()
+    
+    private var pendings: [VaultDoc]? = nil
     
     //MARK: - LIFE CYCLE
     override init() {
@@ -117,9 +121,84 @@ class MainSceneViewModel: CommonViewModel {
         }
     }
     
+    //MARK: - PUBLIC METHODS (Pairing)
+    func acceptUser(candidate: UserSignature) -> Future<Void, Error> {
+        return Future<Void, Error> { promise in
+            self.vaultApiService.accept(candidate)
+                .sink { completion in
+                    switch completion {
+                    case .finished:
+                        break
+                    case .failure(let error):
+                        promise(.failure(error))
+                    }
+                } receiveValue: { result in
+                    self.checkResult(result: result)
+                        .sink { completion in
+                            switch completion {
+                            case .finished:
+                                promise(.success(()))
+                            case .failure(let error):
+                                promise(.failure(error))
+                            }
+                        } receiveValue: {}.store(in: &self.cancellables)
+
+                }.store(in: &self.cancellables)
+        }
+    }
+    
+    func declineUser(candidate: UserSignature) -> Future<Void, Error> {
+        return Future<Void, Error> { promise in
+            self.vaultApiService.decline(candidate)
+                .sink { completion in
+                    switch completion {
+                    case .finished:
+                        break
+                    case .failure(let error):
+                        promise(.failure(error))
+                    }
+                } receiveValue: { result in
+                    self.checkResult(result: result)
+                        .sink { completion in
+                            switch completion {
+                            case .finished:
+                                promise(.success(()))
+                            case .failure(let error):
+                                promise(.failure(error))
+                            }
+                        } receiveValue: {}.store(in: &self.cancellables)
+                }.store(in: &self.cancellables)
+        }
+    }
+    
+    private func checkResult(result: AcceptResult) -> Future<Void, Error> {
+        return Future<Void, Error> { promise in
+            guard result.msgType == Constants.Common.ok else {
+                promise(.failure(MetaSecretErrorType.networkError))
+                return
+            }
+            promise(.success(()))
+        }
+    }
+    
+    func selectedDevice(content: CellSetupDate) -> UserSignature? {
+        let declines = userService.mainVault?.declinedJoins ?? []
+        let pendings = userService.mainVault?.pendingJoins ?? []
+        let signatures = userService.mainVault?.signatures ?? []
+        let flattenArray = declines + pendings + signatures
+        let selectedItem = flattenArray.first(where: {$0.device.deviceId == content.id })
+        return selectedItem
+    }
+    
+    func needDBRedistribution() -> Bool {
+        return dbManager.getAllSecrets().first(where: {$0.shares.count == 1}) != nil
+    }
+    
     func reDistribue() -> Future<Void, Error> {
         return distributionManager.reDistribute()
     }
+    
+    
 }
 
 private extension MainSceneViewModel {
@@ -261,7 +340,7 @@ private extension MainSceneViewModel {
         }
     }
     
-    private func dbRedistributionAsk() -> Future<Void, Error> {
+    func dbRedistributionAsk() -> Future<Void, Error> {
         return Future<Void, Error> { promise in
             let allSecrets = self.dbManager.getAllSecrets()
             if self.currentSecretIndex < allSecrets.count {
@@ -281,6 +360,74 @@ private extension MainSceneViewModel {
                 self.userService.needDBRedistribution = false
                 self.currentSecretIndex = 0
             }
+        }
+    }
+    
+    func evaluation(success: Bool, error: BiometricError?) -> Future<Void, Error> {
+        return Future<Void, Error> { promise in
+            guard success else {
+                promise(.failure(MetaSecretErrorType.alreadySavedMessage))
+                return
+            }
+            self.dbRedistributionAsk()
+                .sink { completion in
+                    switch completion {
+                    case .finished:
+                        promise(.success(()))
+                    case .failure(let error):
+                        promise(.failure(error))
+                    }
+                } receiveValue: {}.store(in: &self.cancellables)
+        }
+    }
+    
+    func checEvaluation(_ canEvaluate: Bool) -> Future<Void, Error> {
+        return Future<Void, Error> { promise in
+            self.isLoading = true
+            guard canEvaluate else {
+                self.dbRedistributionAsk()
+                    .sink { completion in
+                        switch completion {
+                        case .finished:
+                            break
+                        case .failure(let error):
+                            promise(.failure(error))
+                        }
+                    } receiveValue: {}.store(in: &self.cancellables)
+                promise(.success(()))
+                return
+            }
+            
+            self.biometricManager.evaluate()
+                .sink { completion in
+                    switch completion {
+                    case .finished:
+                        promise(.success(()))
+                    case .failure(let error):
+                        promise(.failure(error))
+                    }
+                } receiveValue: { success, error in
+                    self.evaluation(success: success, error: error)
+                        .sink { completion in
+                            promise(.success(()))
+                        } receiveValue: {}.store(in: &self.cancellables)
+                }.store(in: &self.cancellables)
+        }
+    }
+    
+    func checkBiometricAllow() -> Future<Void, Error> {
+        return Future<Void, Error> { promise in
+            let canEvaluate = self.biometricManager.canEvaluate()
+            self.checEvaluation(canEvaluate)
+                .sink { completion in
+                    switch completion {
+                    case .finished:
+                        promise(.success(()))
+                    case .failure(let error):
+                        promise(.failure(error))
+                    }
+                } receiveValue: {}.store(in: &self.cancellables)
+
         }
     }
     

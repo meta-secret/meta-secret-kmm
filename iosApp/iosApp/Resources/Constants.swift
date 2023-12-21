@@ -164,13 +164,13 @@ struct Constants {
     }
     
     struct AddSecret {
-//        static let title = NSLocalizedString("addSecret", comment: "")
+        static let title = NSLocalizedString("addSecret", comment: "")
 //        static let titleEdit = NSLocalizedString("editSecret", comment: "")
-//        static let recoverEdit = NSLocalizedString("recoverEdit", comment: "")
-//        static let addDescriptionTitle = NSLocalizedString("addDescription", comment: "")
-//        static let description = NSLocalizedString("description", comment: "")
-//        static let addPassword = NSLocalizedString("addPassword", comment: "")
-//        static let password = NSLocalizedString("password", comment: "")
+        static let recoverEdit = NSLocalizedString("recoverEdit", comment: "")
+        static let addDescriptionTitle = NSLocalizedString("addDescription", comment: "")
+        static let description = NSLocalizedString("description", comment: "")
+        static let addPassword = NSLocalizedString("addPassword", comment: "")
+        static let password = NSLocalizedString("password", comment: "")
 //        static let decriptionPlaceHolder = NSLocalizedString("password", comment: "")
 //        static let splitInstruction = NSLocalizedString("splitInstruction", comment: "")
 //        static let splitInstructionLocal = NSLocalizedString("splitInstructionLocal", comment: "")

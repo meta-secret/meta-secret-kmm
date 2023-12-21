@@ -110,6 +110,8 @@
 		E5B349AB29C8E7E500EC9DE1 /* OnboardingContnetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B349AA29C8E7E400EC9DE1 /* OnboardingContnetViewModel.swift */; };
 		E5B349AD29C908B100EC9DE1 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B349AC29C908B100EC9DE1 /* View+Extension.swift */; };
 		E5C223C929DDDB1600EDDAFC /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C223C829DDDB1600EDDAFC /* KeyboardHandler.swift */; };
+		E5C253562B349292004EFB1D /* CellSetupDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C253552B349292004EFB1D /* CellSetupDate.swift */; };
+		E5C253582B34AA77004EFB1D /* SceneSendDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C253572B34AA77004EFB1D /* SceneSendDataModel.swift */; };
 		E5C2F2B829C652AF00C8F059 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C2F2B729C652AF00C8F059 /* Constants.swift */; };
 		E5C2F2BA29C656E500C8F059 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C2F2B929C656E500C8F059 /* Fonts.swift */; };
 		E5C2F2BC29C65AB300C8F059 /* AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C2F2BB29C65AB300C8F059 /* AppImages.swift */; };
@@ -235,6 +237,8 @@
 		E5B349AA29C8E7E400EC9DE1 /* OnboardingContnetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContnetViewModel.swift; sourceTree = "<group>"; };
 		E5B349AC29C908B100EC9DE1 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		E5C223C829DDDB1600EDDAFC /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
+		E5C253552B349292004EFB1D /* CellSetupDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSetupDate.swift; sourceTree = "<group>"; };
+		E5C253572B34AA77004EFB1D /* SceneSendDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneSendDataModel.swift; sourceTree = "<group>"; };
 		E5C2F2B729C652AF00C8F059 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E5C2F2B929C656E500C8F059 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		E5C2F2BB29C65AB300C8F059 /* AppImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppImages.swift; sourceTree = "<group>"; };
@@ -385,6 +389,7 @@
 		E563499C2AF97DB400B7F593 /* v1 */ = {
 			isa = PBXGroup;
 			children = (
+				E5C253542B34927A004EFB1D /* InternalModels */,
 				E50ACF2A2B0D49E80060132C /* Realm */,
 				E563499D2AF97DC200B7F593 /* SecurityManager.swift */,
 				E563499F2AF97E5800B7F593 /* Base64EncodedText.swift */,
@@ -611,6 +616,15 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		E5C253542B34927A004EFB1D /* InternalModels */ = {
+			isa = PBXGroup;
+			children = (
+				E5C253552B349292004EFB1D /* CellSetupDate.swift */,
+				E5C253572B34AA77004EFB1D /* SceneSendDataModel.swift */,
+			);
+			path = InternalModels;
+			sourceTree = "<group>";
+		};
 		E5C2F2C329C66EDA00C8F059 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -792,6 +806,7 @@
 				E5919D822A40CB6D00BFF879 /* ServiceType.swift in Sources */,
 				E5C2F2BA29C656E500C8F059 /* Fonts.swift in Sources */,
 				E5C223C929DDDB1600EDDAFC /* KeyboardHandler.swift in Sources */,
+				E5C253562B349292004EFB1D /* CellSetupDate.swift in Sources */,
 				E50ACF232B0D48630060132C /* FindShares.swift in Sources */,
 				E5F2D57E2A35A80B0048FF75 /* SignInViewModel.swift in Sources */,
 				E5919D842A40CBB200BFF879 /* ServiceContainer.swift in Sources */,
@@ -871,6 +886,7 @@
 				E56349B92AF9889900B7F593 /* KeyChainManager.swift in Sources */,
 				E5919D752A40BA9B00BFF879 /* CommonViewModel.swift in Sources */,
 				E56349C82AF98BC400B7F593 /* ApiManager.swift in Sources */,
+				E5C253582B34AA77004EFB1D /* SceneSendDataModel.swift in Sources */,
 				E5D6E4C42AE7121C004F1D31 /* BiometricsManager.swift in Sources */,
 				E5A75A832A4B64B100CEFA58 /* AddSecretViewModel.swift in Sources */,
 				E50ACF302B0D4AF20060132C /* DBManager.swift in Sources */,

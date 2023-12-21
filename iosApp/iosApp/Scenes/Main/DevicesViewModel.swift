@@ -70,7 +70,7 @@ private extension DevicesViewModel {
     //MARK: - V1
     private func checkVaultResult() -> Future<Void, Error> {
         return Future { promise in
-            guard let mainVault = self.userService.mainVault else { 
+            guard let _ = self.userService.mainVault else {
                 Logger().info("Error: \(MetaSecretErrorType.vaultError)")
                 return promise( .failure(MetaSecretErrorType.vaultError))
             }

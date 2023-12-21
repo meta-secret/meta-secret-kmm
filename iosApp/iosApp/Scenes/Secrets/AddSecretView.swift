@@ -103,3 +103,9 @@ struct AddSecretView_Previews: PreviewProvider {
         AddSecretView()
     }
 }
+
+enum ModeType {
+    case readOnly
+    case edit
+    case distribute
+}
