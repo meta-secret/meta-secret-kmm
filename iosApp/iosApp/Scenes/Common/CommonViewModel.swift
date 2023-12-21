@@ -15,6 +15,7 @@ class CommonViewModel: ObservableObject {
     
     @Published var isLoading = false
     @Published var isError = false
+    @Published var isToReload: Bool = false
     @Published var textError: String?
     
     private(set) var items: [any CommonItemModel] = [any CommonItemModel]()
@@ -22,6 +23,7 @@ class CommonViewModel: ObservableObject {
     var devicesCount: Int {
         contentManager.getContentItems(by: .device).count
     }
+    
     
     func getContent(of type: ItemType) {
         items = contentManager.getContentItems(by: type)
@@ -31,12 +33,18 @@ class CommonViewModel: ObservableObject {
     func errorHandling(_ completion: Subscribers.Completion<Error>, error: MetaSecretErrorType) {
         switch completion {
         case .finished:
+            DispatchQueue.main.async {
+                self.isLoading = false
+            }
             break
         case .failure(_):
             DispatchQueue.main.async {
                 Logger().error("Error: \(error.message())")
-                self.textError = error.message()
-                self.isError = true
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                    self.textError = error.message()
+                    self.isError = true
+                }
             }
         }
     }

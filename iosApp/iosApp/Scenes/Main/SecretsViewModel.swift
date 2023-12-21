@@ -16,7 +16,6 @@ class SecretsViewModel: CommonViewModel {
     
     @Published var showSecret: Bool = false
     @Published var currentItem: SecretModel? = nil
-    @Published var isToReload: Bool = false
     @Published var showingAlert: Bool = false
     
     private var cancellables = Set<AnyCancellable>()
@@ -26,6 +25,16 @@ class SecretsViewModel: CommonViewModel {
         super.init()
         Logger().info("Load data for secrets")
         loadData()
+    }
+    
+    //MARK: - PUBLIC METHODS
+    func getAllLocalSecrets() -> AnyPublisher<Void, Error> {
+        Logger().info("Get All local secrets")
+        return Future<Void, Error> { promise in
+            self.getContent(of: .secrets)
+            promise(.success(()))
+        }
+        .eraseToAnyPublisher()
     }
 }
 
@@ -43,19 +52,12 @@ private extension SecretsViewModel {
         .sink { completion in
             self.errorHandling(completion, error: .networkError)
         } receiveValue: { result in
+            DispatchQueue.main.async {
                 self.isLoading = false
-                self.startMonitoringVaultsToConnect()
-                self.startMonitoringSharesAndClaimRequests()
+            }
+            self.startMonitoringVaultsToConnect()
+            self.startMonitoringSharesAndClaimRequests()
         }.store(in: &cancellables)
-    }
-    
-    private func getAllLocalSecrets() -> AnyPublisher<Void, Error> {
-        Logger().info("Get All local secrets")
-        return Future<Void, Error> { promise in
-            self.getContent(of: .secrets)
-            promise(.success(()))
-        }
-        .eraseToAnyPublisher()
     }
     
     // MARK: - Distribution manager methods

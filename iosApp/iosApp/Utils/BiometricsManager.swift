@@ -31,7 +31,7 @@ final class BiometricsManager: NSObject, BiometricsManagerProtocol {
     
     func canEvaluate() -> Bool {
         guard context.canEvaluatePolicy(policy, error: &error) else {
-            let type = biometricType(for: context.biometryType)
+            let _ = biometricType(for: context.biometryType)
             guard error == nil else {
                 return false
             }

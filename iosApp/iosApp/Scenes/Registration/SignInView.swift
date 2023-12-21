@@ -102,6 +102,34 @@ struct SignInView: View {
         }
         .navigationBarTitle("")
         .navigationBarHidden(true)
+        .alert(isPresented: $viewModel.showPendingPopup, content: {
+            //TODO: Need text adjustment (font, size, etc)
+            Alert(title:Text(Constants.LoginScreen.awaitingTitle), message: Text(Constants.LoginScreen.awaitingMessage))
+        })
+        .alert(isPresented: $viewModel.showAwaitingAlert, content: {
+            //TODO: Need text adjustment (font, size, etc)
+            Alert(title: Text(Constants.Errors.warning),
+                  message: Text(Constants.LoginScreen.chooseAnotherName),
+                  primaryButton: .default(Text(Constants.LoginScreen.renameOk), action: {
+                self.viewModel.resetStatus()
+            }),
+                  secondaryButton: .cancel(Text(Constants.Alert.cancel), action: {
+                self.viewModel.setStatus(.Unknown)
+                self.viewModel.closePopUp()
+            }))
+        })
+        .alert(isPresented: $viewModel.showAlreadyExisted, content: {
+            //TODO: Need text adjustment (font, size, etc)
+            Alert(title: Text(Constants.Alert.emptyTitle),
+                  message: Text(Constants.LoginScreen.alreadyExisted),
+                  primaryButton: .default(Text(Constants.Alert.ok), action: {
+                self.viewModel.closePopUp()
+                self.viewModel.registration()
+            }),
+                  secondaryButton: .cancel(Text(Constants.Alert.cancel), action: {
+                self.viewModel.resetStatus()
+            }))
+        })
     }
 }
 

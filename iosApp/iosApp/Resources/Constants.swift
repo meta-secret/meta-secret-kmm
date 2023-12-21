@@ -105,12 +105,12 @@ struct Constants {
 //        static let userNameLabel = NSLocalizedString("yourName", comment: "")
 //        static let letsGoButton = NSLocalizedString("letsgo", comment: "")
 //        static let scanQRButton = NSLocalizedString("scanQR", comment: "")
-//        static let alreadyExisted = NSLocalizedString("wannaJoin", comment: "")
-//        static let renameOk = NSLocalizedString("rename", comment: "")
+        static let alreadyExisted = NSLocalizedString("wannaJoin", comment: "")
+        static let renameOk = NSLocalizedString("rename", comment: "")
         static let declined = NSLocalizedString("declinedRequest", comment: "")
-//        static let awaitingTitle = NSLocalizedString("waitingForApproval", comment: "")
-//        static let awaitingMessage = NSLocalizedString("pleaseAcceptRequest", comment: "")
-//        static let chooseAnotherName = NSLocalizedString("pleaseAcceptRequest", comment: "")
+        static let awaitingTitle = NSLocalizedString("waitingForApproval", comment: "")
+        static let awaitingMessage = NSLocalizedString("pleaseAcceptRequest", comment: "")
+        static let chooseAnotherName = NSLocalizedString("pleaseAcceptRequest", comment: "")
 //        static let qrScanner = NSLocalizedString("qrScanner", comment: "")
     }
     
@@ -164,13 +164,13 @@ struct Constants {
     }
     
     struct AddSecret {
-//        static let title = NSLocalizedString("addSecret", comment: "")
+        static let title = NSLocalizedString("addSecret", comment: "")
 //        static let titleEdit = NSLocalizedString("editSecret", comment: "")
-//        static let recoverEdit = NSLocalizedString("recoverEdit", comment: "")
-//        static let addDescriptionTitle = NSLocalizedString("addDescription", comment: "")
-//        static let description = NSLocalizedString("description", comment: "")
-//        static let addPassword = NSLocalizedString("addPassword", comment: "")
-//        static let password = NSLocalizedString("password", comment: "")
+        static let recoverEdit = NSLocalizedString("recoverEdit", comment: "")
+        static let addDescriptionTitle = NSLocalizedString("addDescription", comment: "")
+        static let description = NSLocalizedString("description", comment: "")
+        static let addPassword = NSLocalizedString("addPassword", comment: "")
+        static let password = NSLocalizedString("password", comment: "")
 //        static let decriptionPlaceHolder = NSLocalizedString("password", comment: "")
 //        static let splitInstruction = NSLocalizedString("splitInstruction", comment: "")
 //        static let splitInstructionLocal = NSLocalizedString("splitInstructionLocal", comment: "")

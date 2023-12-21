@@ -7,19 +7,21 @@
 //
 
 import SwiftUI
+import Combine
 
 struct MainSceneView: View {
+    
+    private var secretsView = SecretsView()
+    private var devicesView = DevicesView()
+    
+    private let notify = NotificationCenter.default.publisher(for: NSNotification.Name("distributionService"))
+    @StateObject var viewModel: MainSceneViewModel = MainSceneViewModel()
     
     private enum Config {
         static let sideOffset: CGFloat = 16.0
         static let addSecretHeight: CGFloat = 320.0
         static let addDeviceHeight: CGFloat = 510.0
     }
-    
-    @State private var selectedIndex: Int = 0
-    @State private var showActionSheet: Bool = false
-    @State private var showPopup: Bool = false
-    @State private var isToReload: Bool = false
     
     var body: some View {
         NavigationView {
@@ -31,14 +33,18 @@ struct MainSceneView: View {
                 
                 //TabBar
                 CustomTabView(action: {
-                    showActionSheet = true
-                }, tabs: TabType.allCases.map({ $0.tabItem }), selectedIndex: $selectedIndex) { index in
+                    viewModel.showActionSheet = true
+                }, tabs: TabType.allCases.map({ $0.tabItem }), selectedIndex: $viewModel.selectedIndex) { index in
                     let type = TabType(rawValue: index) ?? .secrets
                     getTabView(type: type)
                 }
                 
             }
             .ignoresSafeArea()
+        }
+        .onReceive(notify) { (notification) in
+            guard let userNotification = notification.userInfo?["type"] as? CallBackType else { return }
+            viewModel.switchCallback(userNotification) // TODO: Error alert
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
@@ -57,11 +63,12 @@ struct MainSceneView: View {
             }
         }
         .navigationBarHidden(false)
-        .sheet(isPresented: $showActionSheet, onDismiss: {
-            showActionSheet = false
-            selectedIndex = selectedIndex
+        .sheet(isPresented: $viewModel.showActionSheet, onDismiss: {
+            viewModel.showActionSheet = false
+            viewModel.selectedTab = MainSceneViewModel.SelectedTab(rawValue: viewModel.selectedIndex) ?? .Secrets
+            viewModel.selectedIndex = viewModel.selectedTab.rawValue
         }) {
-            if selectedIndex == 1 {
+            if viewModel.selectedTab == .Devices {
                 AddDeviceView()
                     .presentationDetents([.height(Config.addDeviceHeight)])
             } else {
@@ -75,9 +82,9 @@ struct MainSceneView: View {
     func getTabView(type: TabType) -> some View {
         switch type {
         case .secrets:
-            SecretsView()
+            secretsView
         case .devices:
-            DevicesView()
+            devicesView
         case .profile:
             ProfileView()
         }
@@ -86,12 +93,12 @@ struct MainSceneView: View {
 
 private extension MainSceneView {
     func getNavTitle() -> String {
-        switch selectedIndex {
-        case 0:
+        switch viewModel.selectedTab {
+        case .Secrets:
             return Constants.Main.secrets
-        case 1:
+        case .Devices:
             return Constants.Main.devices
-        case 2:
+        case .Profile:
             return Constants.Main.profile
         default:
             return ""

@@ -21,6 +21,10 @@ class SignInViewModel: CommonViewModel {
     @Published var nickName: String?
     @Published var isNext = false
     @Published var isQrCodeScanner = false
+    @Published var showPendingPopup = false
+    @Published var showAwaitingAlert = false
+    @Published var showAlreadyExisted = false
+    @Published var routeNext = false
     
     var titleText: String {
         return Constants.LetsStart.letsStart
@@ -45,11 +49,46 @@ class SignInViewModel: CommonViewModel {
     private var tempTimer: Timer? = nil
     private var cancellables = Set<AnyCancellable>()
     
-    //MARK: - REGISTRATION
+    override init() {
+        super.init()
+        Logger().info("Load data for secrets")
+        loadData()
+    }
     
-    ///Firs of all we need to check chosen name. Is it available or not
+    //MARK: - DATA LOADING
+    func loadData() {
+        Logger().info("Check Registration status")
+        self.isLoading = true
+        
+        self.checkStatus()
+            .sink { completion in
+                self.errorHandling(completion, error: .registerError)
+            } receiveValue: {}.store(in: &self.cancellables)
+    }
+    
+    //MARK: - REGISTRATION
+    func registration() {
+        DispatchQueue.main.async {
+            self.isLoading = true
+        }
+        Logger().info("Register existed user vault")
+        guard let securityBox = userService.securityBox,
+              let user = userService.userSignature else {
+            DispatchQueue.main.async {
+                self.isLoading = false
+            }
+            //TODO: Need any notification
+            return
+        }
+        
+        let _ = register(user, securityBox, isOwner: false)
+    }
+    
+    ///Firs of all we need to check chosen name. Is it available or not (v1 preRegistrationChecking)
     func checkAndSaveName(name: String) {
-        isLoading = true // To show spinner
+        DispatchQueue.main.async {
+            self.isLoading = true
+        }
         
         Logger().info("Generate keys")
         guard let userSecurityBox = signingManager.generateKeys(for: name) else {
@@ -64,7 +103,7 @@ class SignInViewModel: CommonViewModel {
                                  transportPublicKey: userSecurityBox.keyManager.transport.publicKey,
                                  device: Device())
         
-        //Check vault na,e
+        //Check vault name
         vaultService.getVault(user)
             .receive(on: DispatchQueue.main)
             .sink { completion in
@@ -75,7 +114,10 @@ class SignInViewModel: CommonViewModel {
                     self.userService.deviceStatus = .Pending
                     self.userService.userSignature = user
                     self.userService.securityBox = userSecurityBox
-                    self.isLoading = false
+                    DispatchQueue.main.async {
+                        self.showAlreadyExisted = true
+                        self.isLoading = false
+                    }
                 } else if result.data?.vaultInfo == .NotFound {
                     Logger().info("No vault. Let's register it")
                     self.register(user, userSecurityBox, isOwner: true)
@@ -86,18 +128,42 @@ class SignInViewModel: CommonViewModel {
                             Logger().info("Vault registered")
                             self.authManager.register(with: user.vaultName)
                             
-                            self.isError = false
-                            self.isLoading = false
-                            self.isNext = true
+                            DispatchQueue.main.async {
+                                self.isError = false
+                                self.isLoading = false
+                                self.isNext = true
+                            }
                         }).store(in: &self.cancellables)
                 } else {
                     Logger().info("Vault unknown status")
                     self.userService.userSignature = nil
                     self.userService.securityBox = nil
                     self.userService.deviceStatus = .Unknown
-                    self.isLoading = false
+                    DispatchQueue.main.async {
+                        self.isLoading = false
+                    }
                 }
             }.store(in: &cancellables)
+    }
+    
+    //MARK: - User service setting status
+    func setStatus(_ status: VaultInfoStatus) {
+        Logger().info("Set vault status: \(status.rawValue)")
+        self.userService.deviceStatus = status
+        self.closePopUp()
+    }
+    
+    func resetStatus() {
+        Logger().info("Reset vault")
+        self.userService.resetAll()
+        self.nickName = nil
+        self.closePopUp()
+    }
+    
+    func closePopUp() {
+        showPendingPopup = false
+        showAwaitingAlert = false
+        showAlreadyExisted = false
     }
 }
 
@@ -108,7 +174,7 @@ private extension SignInViewModel {
                 .sink(receiveCompletion: { completion in
                     self.errorHandling(completion, error: MetaSecretErrorType.registerError)
                 }, receiveValue: { result in
-                    self.userService.userSignature = user
+                     self.userService.userSignature = user
                     self.userService.securityBox = userSecurityBox
                     if result.data == .Registered {
                         self.userService.deviceStatus = .Member
@@ -116,7 +182,7 @@ private extension SignInViewModel {
                         self.tempTimer = nil
                         promise(.success(()))
                     } else {
-                        self.startTimer() // Need to subscribe on timer action
+                        self.startTimer()
                     }
                 }).store(in: &self.cancellables)
         }
@@ -124,12 +190,15 @@ private extension SignInViewModel {
     
     func startTimer() {
         guard self.tempTimer == nil else { return }
-        //        delegate?.showPendingPopup()
+        DispatchQueue.main.async {
+            self.isLoading = false
+            self.showPendingPopup = true
+        }
         tempTimer = Timer.scheduledTimer(timeInterval: Constants.Common.timerInterval, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: true)
     }
     
     @objc func fireTimer() {
-        checkStatus()
+        _ = checkStatus()
     }
     
     func checkStatus() -> AnyPublisher<Void, Error> {
@@ -144,16 +213,18 @@ private extension SignInViewModel {
                             self.userService.deviceStatus = .Member
                             self.tempTimer?.invalidate()
                             self.tempTimer = nil
-                            //                            self.delegate?.closePopUp()
-                            //                            self.delegate?.routeNext()
+                            self.closePopUp()
+                            self.routeNext = true
                         } else if result.data?.vaultInfo == .Declined {
-                            //                            self.delegate?.closePopUp()
+                            self.closePopUp()
                             self.userService.resetAll()
-                            //                            self.delegate?.failed(with: MetaSecretErrorType.declinedUser)
+                            promise(.failure(MetaSecretErrorType.declinedUser))
                         } else {
                             self.startTimer()
                         }
-                        self.isLoading = false
+                        DispatchQueue.main.async {
+                            self.isLoading = false
+                        }
                         promise(.success(()))
                     }.store(in: &self.cancellables)
             }.eraseToAnyPublisher()
