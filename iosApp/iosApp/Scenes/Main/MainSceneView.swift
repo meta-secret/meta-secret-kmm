@@ -66,7 +66,6 @@ struct MainSceneView: View {
         .sheet(isPresented: $viewModel.showActionSheet, onDismiss: {
             viewModel.showActionSheet = false
             viewModel.selectedTab = MainSceneViewModel.SelectedTab(rawValue: viewModel.selectedIndex) ?? .Secrets
-            viewModel.selectedIndex = viewModel.selectedTab.rawValue
         }) {
             if viewModel.selectedTab == .Devices {
                 AddDeviceView()
@@ -93,12 +92,12 @@ struct MainSceneView: View {
 
 private extension MainSceneView {
     func getNavTitle() -> String {
-        switch viewModel.selectedTab {
-        case .Secrets:
+        switch viewModel.selectedIndex {
+        case MainSceneViewModel.SelectedTab.Secrets.rawValue:
             return Constants.Main.secrets
-        case .Devices:
+        case MainSceneViewModel.SelectedTab.Devices.rawValue:
             return Constants.Main.devices
-        case .Profile:
+        case MainSceneViewModel.SelectedTab.Profile.rawValue:
             return Constants.Main.profile
         default:
             return ""
