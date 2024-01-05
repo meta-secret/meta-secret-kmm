@@ -1,8 +1,7 @@
 //MARK: - COMMON
 "skip" = "Skip";
 "next" = "Next";
-"needDevices" = "You need 2 more devices to reach a higher level of security";
-"needDevices2" = "You need 1 more device to reach a higher level of security";
+"needDevices" = "You need %@ more devices to reach a higher level of security   ";
 "+add" = " + Add";
 "enterValue" = "Enter value";
 
@@ -34,11 +33,8 @@
 "weak" = "weak";
 "strong" = "strong";
 "maximum" = "maximum";
-"countDevice" = "1 device";
-"countDevices" = "2 devices";
-"countDevices2" = "3 devices";
-"countSecretsZero" = "0 secrets";
-"countSecrets" = "1 secret";
+"deviceCount" = "%@ device(s)";
+"secretsCount" = "%@ secret(s)";
 "addSecret" = "Add secret";
 "secretName" = "Secret name";
 "secret" = "Secret";

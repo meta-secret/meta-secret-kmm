@@ -65,6 +65,15 @@ private extension DevicesViewModel {
             self.isLoading = true
         }
         getLocalVaultMembers()
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    self.showErrorAlert(error.localizedDescription)
+                case .finished:
+                    break
+                }
+            } receiveValue: {}.store(in: &self.cancellables)
+
     }
     
     //MARK: - V1

@@ -22,15 +22,16 @@ class MainSceneViewModel: CommonViewModel {
     //MARK: - PROPERTIES
     @Published var selectedIndex: Int = 0
     @Published var showActionSheet: Bool = false
-    @Published var showPopup: Bool = false
     @Published var isToReDistribute = false
+    @Published var showDBInconsistencyAlert = false
+    
     @Published var selectedTab: MainSceneViewModel.SelectedTab = .Secrets
     
     var secretsView: SecretsView? = nil
     var devicesView: DevicesView? = nil
     
     private var currentSecretIndex: Int = 0
-    private var cancellables = Set<AnyCancellable>()
+    var cancellables = Set<AnyCancellable>()
     
     private var pendings: [VaultDoc]? = nil
     
@@ -38,7 +39,15 @@ class MainSceneViewModel: CommonViewModel {
     override init() {
         super.init()
         Logger().info("Load data for secrets")
-//        loadData()
+        loadData()
+        _ = reloadData()
+//
+    }
+    
+    func onAppear() {
+        if userService.needDBRedistribution {
+            showDBInconsistencyAlert = true
+        }
     }
     
     //MARK: - CALL BACK FROM DISTRIBUTION SERVICE
@@ -52,6 +61,7 @@ class MainSceneViewModel: CommonViewModel {
                             switch completion {
                             case .failure(let error):
                                 self.isToReDistribute = false
+                                self.showErrorAlert(error.localizedDescription)
                                 promise(.failure(error))
                             case .finished:
                                 promise(.success(()))
@@ -67,6 +77,7 @@ class MainSceneViewModel: CommonViewModel {
                                         case .finished:
                                             promise(.success(()))
                                         case .failure(let error):
+                                            self.showErrorAlert(error.localizedDescription)
                                             promise(.failure(error))
                                         }
                                     } receiveValue: {}.store(in: &self.cancellables)
@@ -81,7 +92,16 @@ class MainSceneViewModel: CommonViewModel {
                             case .finished:
                                 if self.isToReDistribute {
                                     self.isToReDistribute = false
-                                    _ = self.reDistribue()
+                                    self.reDistribue()
+                                        .sink { completion in
+                                            switch completion {
+                                            case .finished:
+                                                _ = self.reloadData()
+                                            case .failure(let error):
+                                                self.showErrorAlert(error.localizedDescription)
+                                            }
+                                        } receiveValue: {}.store(in: &self.cancellables)
+
                                 } else {
                                     self.reloadData()
                                         .sink { completion in
@@ -89,12 +109,14 @@ class MainSceneViewModel: CommonViewModel {
                                             case .finished:
                                                 promise(.success(()))
                                             case .failure(let error):
+                                                self.showErrorAlert(error.localizedDescription)
                                                 promise(.failure(error))
                                             }
                                         } receiveValue: {}.store(in: &self.cancellables)
                                 }
-                            case .failure(_):
+                            case .failure(let error):
                                 self.isToReDistribute = false
+                                self.showErrorAlert(error.localizedDescription)
                                 promise(.failure(MetaSecretErrorType.distribute))
                             }
                         } receiveValue: {}.store(in: &self.cancellables)
@@ -107,6 +129,7 @@ class MainSceneViewModel: CommonViewModel {
                             case .finished:
                                 promise(.success(()))
                             case .failure(let error):
+                                self.showErrorAlert(error.localizedDescription)
                                 promise(.failure(error))
                             }
                         } receiveValue: {}.store(in: &self.cancellables)
@@ -197,11 +220,70 @@ class MainSceneViewModel: CommonViewModel {
     func reDistribue() -> Future<Void, Error> {
         return distributionManager.reDistribute()
     }
-    
-    
+
+    func checkBiometricAllow() -> Future<Void, Error> {
+        return Future<Void, Error> { promise in
+            let canEvaluate = self.biometricManager.canEvaluate()
+            self.checEvaluation(canEvaluate)
+                .sink { completion in
+                    switch completion {
+                    case .finished:
+                        promise(.success(()))
+                    case .failure(let error):
+                        promise(.failure(error))
+                    }
+                } receiveValue: {}.store(in: &self.cancellables)
+        }
+    }
 }
 
 private extension MainSceneViewModel {
+    //MARK: - DATA LOADING
+    func loadData() {
+        isLoading = true
+        
+        guard let secretsView else { return }
+        
+        Publishers.Zip3(
+            secretsView.viewModel.getAllLocalSecrets(),
+            checkShares(),
+            getVault()
+        )
+        .receive(on: DispatchQueue.main)
+        .sink { completion in
+            self.errorHandling(completion, error: .networkError)
+        } receiveValue: { result in
+            DispatchQueue.main.async {
+                self.isLoading = false
+            }
+            self.startMonitoringVaultsToConnect()
+            self.startMonitoringSharesAndClaimRequests()
+        }.store(in: &cancellables)
+    }
+    
+    // MARK: - Distribution manager methods
+    func checkShares() -> Future<Void, Error> {
+        Logger().info("Start checking for new shares (.Split)")
+        return distributionManager.findShares(type: .Split)
+    }
+    
+    func getVault() -> Future<Void, Error> {
+        Logger().info("Start checking for vault")
+        return distributionManager.getVault()
+    }
+    
+    func startMonitoringVaultsToConnect() {
+        Logger().info("Start monitoring for new vaults to connect")
+        distributionManager.startMonitoringVaults()
+    }
+    
+    func startMonitoringSharesAndClaimRequests() {
+        Logger().info("Start monitoring for new shares and claim requests")
+        distributionManager.startMonitoringSharesAndClaimRequests()
+    }
+    
+    
+    
     //MARK: - TAB SELECTING
     func selectTab() -> Future<Void, Error> {
         return Future<Void, Error> { promise in
@@ -415,22 +497,6 @@ private extension MainSceneViewModel {
         }
     }
     
-    func checkBiometricAllow() -> Future<Void, Error> {
-        return Future<Void, Error> { promise in
-            let canEvaluate = self.biometricManager.canEvaluate()
-            self.checEvaluation(canEvaluate)
-                .sink { completion in
-                    switch completion {
-                    case .finished:
-                        promise(.success(()))
-                    case .failure(let error):
-                        promise(.failure(error))
-                    }
-                } receiveValue: {}.store(in: &self.cancellables)
-
-        }
-    }
-    
     //MARK: - ROUTING
     @objc func remainigLabelTapped() {
 //        let model = BottomInfoSheetModel(title: Constants.MainScreen.titleFirstTimeHint,
@@ -439,6 +505,75 @@ private extension MainSceneViewModel {
 //        })
 //        let controller = factory.popUpHint(with: model)
 //        popUp(controller)
+    }
+}
+
+private extension MainSceneViewModel {
+    func acceptTapped(_ content: CellSetupDate) {
+        var isThereError = false
+        let selectedItem = selectedDevice(content: content)
+        
+        userService.needDBRedistribution = needDBRedistribution()
+        guard let signature = selectedItem else { return }
+        
+        isLoading = true
+        acceptUser(candidate: signature)
+            .sink { completion in
+                self.isLoading = false
+                switch completion {
+                case .failure(let error):
+                    let text = (error as? MetaSecretErrorType)?.message() ?? error.localizedDescription
+                    self.showErrorAlert(text)
+                    isThereError = true
+                case .finished:
+                    if self.userService.needDBRedistribution {
+                        self.showDBInconsistencyAlert = true
+                    } else if !isThereError {
+                        self.isToReDistribute = true
+                        self.getVault()
+                            .sink { completion in
+                                switch completion {
+                                case .finished:
+                                    break
+                                case .failure(let error):
+                                    self.showErrorAlert(error.localizedDescription)
+                                }
+                            } receiveValue: {}.store(in: &self.cancellables)
+                        _ = self.reloadData()
+                    }
+                }
+            } receiveValue: {}.store(in: &self.cancellables)
+        
+    }
+    
+    func declineTapped(_ content: CellSetupDate) {
+        var isThereError = false
+        let selectedItem = selectedDevice(content: content)
+        guard let signature = selectedItem else { return }
+        
+        isLoading = true
+        declineUser(candidate: signature).sink { completion in
+            self.isLoading = false
+            switch completion {
+            case .failure(let error):
+                let text = (error as? MetaSecretErrorType)?.message() ?? error.localizedDescription
+                self.showErrorAlert(text)
+                isThereError = true
+            case .finished:
+                if !isThereError {
+                    self.getVault()
+                        .sink { completion in
+                            switch completion {
+                            case .finished:
+                                break
+                            case .failure(let error):
+                                self.showErrorAlert(error.localizedDescription)
+                            }
+                        } receiveValue: {}.store(in: &self.cancellables)
+                    _ = self.reloadData()
+                }
+            }
+        } receiveValue: {}.store(in: &self.cancellables)
     }
 }
 

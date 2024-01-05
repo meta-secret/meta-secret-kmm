@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Combine
+import OSLog
 
 struct MainSceneView: View {
     
@@ -42,9 +43,12 @@ struct MainSceneView: View {
             }
             .ignoresSafeArea()
         }
+        .onAppear() {
+            viewModel.onAppear()
+        }
         .onReceive(notify) { (notification) in
             guard let userNotification = notification.userInfo?["type"] as? CallBackType else { return }
-            viewModel.switchCallback(userNotification) // TODO: Error alert
+            _ = viewModel.switchCallback(userNotification)
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
@@ -74,6 +78,13 @@ struct MainSceneView: View {
                 AddSecretView()
                     .presentationDetents([.height(Config.addSecretHeight)])
             }
+        }
+        .alert(isPresented: $viewModel.showPopup) {
+            Alert(
+                title: Text(viewModel.popUpTitle),
+                message: Text(viewModel.popUpMessage),
+                dismissButton: .default(Text(Constants.Alert.ok), action: viewModel.okHandler
+            ))
         }
     }
     

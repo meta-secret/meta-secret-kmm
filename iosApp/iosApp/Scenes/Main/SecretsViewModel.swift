@@ -20,13 +20,6 @@ class SecretsViewModel: CommonViewModel {
     
     private var cancellables = Set<AnyCancellable>()
     
-    //MARK: - LIFE CYCLE
-    override init() {
-        super.init()
-        Logger().info("Load data for secrets")
-        loadData()
-    }
-    
     //MARK: - PUBLIC METHODS
     func getAllLocalSecrets() -> AnyPublisher<Void, Error> {
         Logger().info("Get All local secrets")
@@ -39,48 +32,6 @@ class SecretsViewModel: CommonViewModel {
 }
 
 private extension SecretsViewModel {
-    //MARK: - DATA LOADING
-    func loadData() {
-        isLoading = true
-        
-        Publishers.Zip3(
-            getAllLocalSecrets(),
-            checkShares(),
-            getVault()
-        )
-        .receive(on: DispatchQueue.main)
-        .sink { completion in
-            self.errorHandling(completion, error: .networkError)
-        } receiveValue: { result in
-            DispatchQueue.main.async {
-                self.isLoading = false
-            }
-            self.startMonitoringVaultsToConnect()
-            self.startMonitoringSharesAndClaimRequests()
-        }.store(in: &cancellables)
-    }
-    
-    // MARK: - Distribution manager methods
-    func checkShares() -> Future<Void, Error> {
-        Logger().info("Start checking for new shares (.Split)")
-        return distributionManager.findShares(type: .Split)
-    }
-    
-    func getVault() -> Future<Void, Error> {
-        Logger().info("Start checking for vault")
-        return distributionManager.getVault()
-    }
-    
-    func startMonitoringVaultsToConnect() {
-        Logger().info("Start monitoring for new vaults to connect")
-        distributionManager.startMonitoringVaults()
-    }
-    
-    func startMonitoringSharesAndClaimRequests() {
-        Logger().info("Start monitoring for new shares and claim requests")
-        distributionManager.startMonitoringSharesAndClaimRequests()
-    }
-    
     // MARK: - VERSION TWO
     func getItems() {
         getContent(of: .secrets)

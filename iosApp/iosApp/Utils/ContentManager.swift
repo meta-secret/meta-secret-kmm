@@ -21,19 +21,22 @@ class ContentManager: ContentManagerProtocol {
     
     func getContentItems(by type: ItemType) -> [any CommonItemModel] {
     #warning("Need to implement Device Manager and Secrets Manager")
-        var secrets = [SecretModel]()
-        
         switch type {
         case .device:
+            var devices = [DeviceModel]()
             Logger().info("Get devices source")
-            guard let mainVault = userService.mainVault else { return [] }
-            Logger().info("Main vault \(mainVault.vaultName) & signatures count \(Int(mainVault.signatures?.count ?? 0))")
-            let mainVaultSource = DeviceModel(name: mainVault.vaultName,
-                                              deviceType: .iphone,
-                                              deviceId: "",
-                                              secretsCount: 0)
+            guard let mainVault = userService.mainVault, let signatures = mainVault.signatures else { return [] }
+            Logger().info("Main vault \(mainVault.vaultName) & signatures count \(Int(signatures.count))")
             
-            return [mainVaultSource]
+            for signature in signatures {
+                let item = DeviceModel(name: mainVault.vaultName,
+                                       deviceType: .iphone,
+                                       deviceId: signature.device.deviceId ?? "N/A",
+                                       secretsCount: -1)
+                devices.append(item)
+            }
+            
+            return devices
         case .secrets:
             return []
         }

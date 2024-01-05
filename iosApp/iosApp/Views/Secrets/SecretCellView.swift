@@ -59,11 +59,7 @@ struct SecretCellView: View {
 
 func devicesText() -> String {
     let devicesCount = UserDefaults.standard.value(forKey: "deviceCount") as! Int
-    if devicesCount == 3 {
-        return Constants.Secrets.devicesCount2
-    } else {
-        return Constants.Secrets.devicesCount
-    }
+    return Constants.Secrets.deviceCount(Constants.Common.neededDeviceCount - devicesCount)
 }
 
 struct SecretCellView_Previews: PreviewProvider {

@@ -17,6 +17,12 @@ class CommonViewModel: ObservableObject {
     @Published var isError = false
     @Published var isToReload: Bool = false
     @Published var textError: String?
+    @Published var showPopup: Bool = false
+    
+    var popUpTitle = ""
+    var popUpMessage = ""
+    var okHandler: () -> () = {}
+    var cancelHandler: () -> () = {}
     
     private(set) var items: [any CommonItemModel] = [any CommonItemModel]()
     
@@ -47,6 +53,15 @@ class CommonViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    func showErrorAlert(_ error: String) {
+        self.popUpTitle = Constants.Errors.error
+        self.popUpMessage = error
+        self.okHandler = {
+            self.showPopup = false
+        }
+        self.showPopup = true
     }
 }
 

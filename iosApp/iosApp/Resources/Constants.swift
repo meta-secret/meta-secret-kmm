@@ -18,8 +18,6 @@ struct Constants {
         static let secureSafe = NSLocalizedString("secureSafe", comment: "")
         static let next = NSLocalizedString("next", comment: "")
         static let skip = NSLocalizedString("skip", comment: "")
-        static let needDevices = NSLocalizedString("needDevices", comment: "")
-        static let needDevices2 = NSLocalizedString("needDevices2", comment: "")
         static let addPLus = NSLocalizedString("+add", comment: "")
         static let neededDeviceCount: Int = 3
         static let enterValue = NSLocalizedString("enterValue", comment: "")
@@ -67,11 +65,14 @@ struct Constants {
         static let weak = NSLocalizedString("weak", comment: "")
         static let strong = NSLocalizedString("strong", comment: "")
         static let maximum = NSLocalizedString("maximum", comment: "")
-        static let deviceCount = NSLocalizedString("countDevice", comment: "")
-        static let devicesCount = NSLocalizedString("countDevices", comment: "")
-        static let devicesCount2 = NSLocalizedString("countDevices2", comment: "")
-        static let secretsCount = NSLocalizedString("countSecrets", comment: "")
-        static let countSecretsZero = NSLocalizedString("countSecretsZero", comment: "")
+        static func deviceCount(_ devices: Int) -> String {
+            let deviceCount = NSLocalizedString("deviceCount", comment: "")
+            return String(format: deviceCount, "\(devices)")
+        }
+        static func secretsCount(_ secrets: Int) -> String {
+            let secretsCount = NSLocalizedString("secretsCount", comment: "")
+            return String(format: secretsCount, "\(secrets)")
+        }
         static let addSecret = NSLocalizedString("addSecret", comment: "")
         static let secretName = NSLocalizedString("secretName", comment: "")
         static let secret = NSLocalizedString("secret", comment: "")
@@ -132,13 +133,13 @@ struct Constants {
 //            let wantedString = String(format: localizedString, name)
 //            return wantedString
 //        }
-//        static func addDevices(memberCounts: Int) -> String {
-//            let neededDevicesCount = 3 - memberCounts
-//            let localizedString = NSLocalizedString("pleaseInstall", comment: "")
-//            let wantedString = String(format: localizedString, "\(neededDevicesCount)")
-//
-//            return wantedString
-//        }
+        static func addDevices(memberCounts: Int) -> String {
+            let neededDevicesCount = 3 - memberCounts
+            let localizedString = NSLocalizedString("needDevices", comment: "")
+            let wantedString = String(format: localizedString, "\(neededDevicesCount)")
+
+            return wantedString
+        }
 //        static let yourNick = NSLocalizedString("yourNick", comment: "")
 //        static let yourDevices = NSLocalizedString("yourDevices", comment: "")
 //        static let yourSecrets = NSLocalizedString("yourSecrets", comment: "")

@@ -41,7 +41,7 @@ struct AlertBubbleView: View {
                     .frame(width: Config.spacer)
                 //Middle part
                 VStack {
-                    Text(message1 + spacing + message2)
+                    Text(message1 + message2)
                     Spacer()
                 }
                 Spacer()
@@ -62,19 +62,12 @@ struct AlertBubbleView: View {
 
 private extension AlertBubbleView {
     var message1: AttributedString {
-        var result = AttributedString(Constants.Common.needDevices2)
+        var result = AttributedString(Constants.MainScreen.addDevices(memberCounts: 1))
         result.font = FontStyle.normalMain.font
         result.foregroundColor = AppColors.white75
         return result
     }
     
-    var spacing: AttributedString {
-        var result = AttributedString(" ")
-        result.font = FontStyle.normalMain.font
-        result.foregroundColor = AppColors.white75
-        return result
-    }
-
     var message2: AttributedString {
         var result = AttributedString(Constants.Common.addPLus)
         result.font = FontStyle.normalMain.font

@@ -44,7 +44,7 @@ struct DevicesCellView: View {
                         Spacer()
                     }
                     HStack {
-                        Text(item.secretsCount == 0 ? Constants.Secrets.countSecretsZero : Constants.Secrets.secretsCount)
+                        Text(Constants.Secrets.secretsCount(item.secretsCount))
                             .font(FontStyle.normal.font)
                             .foregroundColor(AppColors.white75)
                         Spacer()

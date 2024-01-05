@@ -104,7 +104,7 @@ struct ShowSecretView: View {
                     VStack {
                         HStack {
                             Image(AppImages.Common.devicesIco)
-                            Text(Constants.Secrets.devicesCount)
+                            Text(Constants.Secrets.deviceCount(-1))
                                 .font(FontStyle.normal.font)
                                 .foregroundColor(AppColors.white75)
                         }
