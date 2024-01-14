@@ -8,6 +8,7 @@
 
 import Foundation
 import shared
+import OSLog
 
 protocol AuthManagerProtocol {
     func checkAuth() -> AuthState
@@ -18,15 +19,19 @@ protocol AuthManagerProtocol {
     func register(with name: String)
 }
 
-class AuthManager: AuthManagerProtocol {
+class AuthManager: AuthManagerProtocol, LoggerManager {
+    let logger: Logger = Logger()
+    
     //TODO: Check AuthManagerApi address not to create multiple instance. and avoid race conditions
     var authManagerApi = AuthManagerApi(factory: DriverFactory())
     
     func checkAuth() -> AuthState {
+        log()
         return authManagerApi.getAuthStatus()
     }
     
     func checkOnboardingState() -> Bool {
+        Logger().info("AuthManagerProtocol -- checkOnboardingState")
         return authManagerApi.getOnboardingStatus()
     }
     

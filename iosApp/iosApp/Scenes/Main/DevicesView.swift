@@ -54,6 +54,9 @@ struct DevicesView: View {
             }
             Button("Discard", role: .cancel) { }
         }
+        .onAppear() {
+            viewModel.onAppear()
+        }
     }
 }
 

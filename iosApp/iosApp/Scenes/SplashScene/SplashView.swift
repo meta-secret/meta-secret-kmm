@@ -34,39 +34,25 @@ struct SplashView: View {
                             .padding(.top, Config.titleTopPadding)
                     }
                 }
-                
             }
             .onAppear {
-                viewModel.checkBiometric { (success) in
-                    withAnimation {
-                        if let _ = viewModel.errorBiometric {
-                            viewModel.needAlert = true
-                        } else {
-                            if viewModel.readOnboardingKey() {
-                                if viewModel.checkAuth() == .alreadyRegistered {
-                                    viewModel.navigateToMain = true
-                                } else {
-                                    viewModel.navigateToSignIn = true
-                                }
-                            } else {
-                                viewModel.navigateToOnboarding = true
-                            }
-                        }
-                    }
-                }
+                viewModel.log("onAppear")
+                viewModel.onAppear()
             }
             .alert(isPresented: $viewModel.needAlert, content: {
-                Alert(
-                    title: Text(Constants.Errors.error),
-                    message: Text(viewModel.errorBiometric?.errorDescription ?? ""),
-                    primaryButton: .default(Text(Constants.Alert.ok), action: {
-                        if viewModel.errorBiometric == BiometricError.userCancel {
-                            viewModel.needAlert = false
-                            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
-                        }
-                    }),
-                    secondaryButton: .cancel(Text(Constants.Alert.cancel))
-                )
+                withAnimation {
+                    Alert(
+                        title: Text(Constants.Errors.error),
+                        message: Text(viewModel.errorBiometric?.errorDescription ?? ""),
+                        primaryButton: .default(Text(Constants.Alert.ok), action: {
+                            if viewModel.errorBiometric == BiometricError.userCancel {
+                                viewModel.needAlert = false
+                                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                            }
+                        }),
+                        secondaryButton: .cancel(Text(Constants.Alert.cancel))
+                    )
+                }
             })
             .navigationDestination(isPresented: $viewModel.navigateToMain) {
                 MainSceneView()

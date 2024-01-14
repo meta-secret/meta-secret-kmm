@@ -9,6 +9,7 @@
 import Foundation
 import LocalAuthentication
 import Combine
+import OSLog
 
 protocol BiometricsManagerProtocol {
     func canEvaluate() -> Bool
@@ -19,10 +20,11 @@ final class BiometricsManager: NSObject, BiometricsManagerProtocol {
     private let context = LAContext()
     private let policy: LAPolicy
     private let localizedReason: String
-    
+    private let logger = Logger()
     private var error: NSError?
     
     override init() {
+        logger.info("BiometricsManager -- init")
         self.policy = .deviceOwnerAuthentication
         self.localizedReason = Constants.Alert.biometricalReason
         context.localizedFallbackTitle = Constants.BiometricError.enterAppPass
@@ -30,17 +32,21 @@ final class BiometricsManager: NSObject, BiometricsManagerProtocol {
     }
     
     func canEvaluate() -> Bool {
+        logger.info("BiometricsManager -- canEvaluate()")
         guard context.canEvaluatePolicy(policy, error: &error) else {
             let _ = biometricType(for: context.biometryType)
             guard error == nil else {
+                logger.info("BiometricsManager -- canEvaluate error")
                 return false
             }
+            logger.info("BiometricsManager -- canEvaluate OK")
             return true
         }
         return true
     }
     
     func evaluate() -> AnyPublisher<(Bool, BiometricError?), Never> {
+        logger.info("BiometricsManager -- evaluate")
         return Future<(Bool, BiometricError?), Never> { [weak self] promise in
             guard let self else {
                 promise(.success((false, nil)))

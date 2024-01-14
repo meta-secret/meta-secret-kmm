@@ -41,10 +41,9 @@ class MainSceneViewModel: CommonViewModel {
         Logger().info("Load data for secrets")
         loadData()
         _ = reloadData()
-//
     }
     
-    func onAppear() {
+    override func onAppear() {
         if userService.needDBRedistribution {
             showDBInconsistencyAlert = true
         }
@@ -438,7 +437,9 @@ private extension MainSceneViewModel {
                     } receiveValue: {}.store(in: &self.cancellables)
                 
             } else {
-                self.isLoading = false
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                }
                 self.userService.needDBRedistribution = false
                 self.currentSecretIndex = 0
             }
@@ -465,7 +466,9 @@ private extension MainSceneViewModel {
     
     func checEvaluation(_ canEvaluate: Bool) -> Future<Void, Error> {
         return Future<Void, Error> { promise in
-            self.isLoading = true
+            DispatchQueue.main.async {
+                self.isLoading = true
+            }
             guard canEvaluate else {
                 self.dbRedistributionAsk()
                     .sink { completion in
@@ -519,7 +522,9 @@ private extension MainSceneViewModel {
         isLoading = true
         acceptUser(candidate: signature)
             .sink { completion in
-                self.isLoading = false
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                }
                 switch completion {
                 case .failure(let error):
                     let text = (error as? MetaSecretErrorType)?.message() ?? error.localizedDescription
@@ -553,7 +558,9 @@ private extension MainSceneViewModel {
         
         isLoading = true
         declineUser(candidate: signature).sink { completion in
-            self.isLoading = false
+            DispatchQueue.main.async {
+                self.isLoading = false
+            }
             switch completion {
             case .failure(let error):
                 let text = (error as? MetaSecretErrorType)?.message() ?? error.localizedDescription

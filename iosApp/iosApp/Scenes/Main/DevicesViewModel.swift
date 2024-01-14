@@ -22,6 +22,10 @@ class DevicesViewModel: CommonViewModel {
         getItems()
     }
     
+    override func onAppear() {
+        getItems()
+    }
+    
     var deviceAdd = ""
     
     //MARK: - V1
@@ -50,6 +54,7 @@ class DevicesViewModel: CommonViewModel {
                         let _ = self.checkVaultResult()
                     }.store(in: &self.cancellables)
             } else {
+                Logger().info("Get content: Devices are NOT EMPTY")
                 DispatchQueue.main.async {
                     self.isLoading = false
                 }

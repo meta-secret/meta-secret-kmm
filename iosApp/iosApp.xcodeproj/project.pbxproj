@@ -124,6 +124,8 @@
 		E5E164EE2AEB089200BDDCDA /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E164ED2AEB089200BDDCDA /* LoaderView.swift */; };
 		E5EEEB062A326FFA00D40996 /* MainSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EEEB052A326FFA00D40996 /* MainSceneView.swift */; };
 		E5F2D57E2A35A80B0048FF75 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2D57D2A35A80B0048FF75 /* SignInViewModel.swift */; };
+		E5F48D6D2B4869AE0059AE53 /* LoggerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F48D6C2B4869AE0059AE53 /* LoggerManager.swift */; };
+		E5F48D6F2B48804B0059AE53 /* ResultHander.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F48D6E2B48804B0059AE53 /* ResultHander.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -251,6 +253,8 @@
 		E5E164ED2AEB089200BDDCDA /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		E5EEEB052A326FFA00D40996 /* MainSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneView.swift; sourceTree = "<group>"; };
 		E5F2D57D2A35A80B0048FF75 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		E5F48D6C2B4869AE0059AE53 /* LoggerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerManager.swift; sourceTree = "<group>"; };
+		E5F48D6E2B48804B0059AE53 /* ResultHander.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultHander.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -549,6 +553,8 @@
 				E57903A52A603C7100C2CAF0 /* QRCodeManager.swift */,
 				E5D6E4C32AE7121C004F1D31 /* BiometricsManager.swift */,
 				E50ACF2F2B0D4AF20060132C /* DBManager.swift */,
+				E5F48D6C2B4869AE0059AE53 /* LoggerManager.swift */,
+				E5F48D6E2B48804B0059AE53 /* ResultHander.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -812,6 +818,7 @@
 				E5919D842A40CBB200BFF879 /* ServiceContainer.swift in Sources */,
 				E5C2F2BC29C65AB300C8F059 /* AppImages.swift in Sources */,
 				E563499A2AF97D6900B7F593 /* SignInManager.swift in Sources */,
+				E5F48D6F2B48804B0059AE53 /* ResultHander.swift in Sources */,
 				E51DFCEA2A571908006EB59E /* PairPageView.swift in Sources */,
 				E5C2F2C529C672D100C8F059 /* OnboardingContainerView.swift in Sources */,
 				E56384C02A4380CE0009391B /* CloseButtonView.swift in Sources */,
@@ -860,6 +867,7 @@
 				E50ACF252B0D49120060132C /* ShareAPIService.swift in Sources */,
 				E5C9DFAD2A3A431000C60BBA /* EmptySecretsView.swift in Sources */,
 				E50EE58C2A59FBF500003F1E /* SplashViewModel.swift in Sources */,
+				E5F48D6D2B4869AE0059AE53 /* LoggerManager.swift in Sources */,
 				E56349A42AF97EC400B7F593 /* MetaSecretCoreWrapper.swift in Sources */,
 				E56349A82AF97F2E00B7F593 /* EncodeShare.swift in Sources */,
 				E56349C22AF98A0400B7F593 /* HTTPRequest.swift in Sources */,

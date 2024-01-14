@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Combine
-import OSLog
 
 protocol VaultAPIProtocol {
     func getVault(_ user: UserSignature?) -> Future<GetVaultResult, Error>
@@ -15,7 +14,7 @@ protocol VaultAPIProtocol {
     func decline(_ candidate: UserSignature) -> Future<AcceptResult, Error>
 }
 
-class VaultAPIService: APIManager, VaultAPIProtocol {
+class VaultAPIService: APIManager, VaultAPIProtocol, LoggerManager {
     var cancellables = Set<AnyCancellable>()
     
     func getVault(_ user: UserSignature? = nil) -> Future<GetVaultResult, Error> {
@@ -23,12 +22,12 @@ class VaultAPIService: APIManager, VaultAPIProtocol {
             guard let userSignature = user ?? self.userService.userSignature,
                   let params = self.jsonManager.jsonStringGeneration(from: userSignature)
             else {
-                Logger().error("Error: \(MetaSecretErrorType.userSignatureError)")
+                log("Error: \(MetaSecretErrorType.userSignatureError)", isError: true)
                 promise(.failure(MetaSecretErrorType.userSignatureError))
                 return
             }
             
-            Logger().info("Fetch data for Vault")
+            log("Fetch data for Vault")
             self.fetchData(GetVault(params))
                 .sink { completion in
                     switch completion {

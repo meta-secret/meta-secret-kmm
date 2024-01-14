@@ -18,12 +18,6 @@ struct MainSceneView: View {
     private let notify = NotificationCenter.default.publisher(for: NSNotification.Name("distributionService"))
     @StateObject var viewModel: MainSceneViewModel = MainSceneViewModel()
     
-    private enum Config {
-        static let sideOffset: CGFloat = 16.0
-        static let addSecretHeight: CGFloat = 320.0
-        static let addDeviceHeight: CGFloat = 510.0
-    }
-    
     var body: some View {
         NavigationView {
             ZStack {
@@ -114,6 +108,12 @@ private extension MainSceneView {
             return ""
         }
     }
+}
+
+private enum Config {
+    static let sideOffset: CGFloat = 16.0
+    static let addSecretHeight: CGFloat = 320.0
+    static let addDeviceHeight: CGFloat = 510.0
 }
 
 struct MainSceneView_Previews: PreviewProvider {
