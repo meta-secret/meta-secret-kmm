@@ -17,10 +17,10 @@
     "{LIST_OF_TARGETS_TO_BUILD}"
   ],
   "libraries": {
-    "meta_secret_core_swift::@6890427a1f51a3e7e1df": {
-      "artifactName": "meta_secret_core_swift",
+    "meta-secret-kmm::@6890427a1f51a3e7e1df": {
+      "artifactName": "meta-secret-kmm",
       "abi": "arm64-v8a",
-      "output": "/Users/dmitrykuklin/Documents/Projects/meta-secret-kmm/androidApp/build/intermediates/cxx/Debug/2z606r54/obj/arm64-v8a/libmeta_secret_core_swift.so",
+      "output": "/Users/dmitrykuklin/Documents/Projects/meta-secret-kmm/androidApp/build/intermediates/cxx/Debug/2z606r54/obj/arm64-v8a/libmeta-secret-kmm.so",
       "runtimeFiles": []
     }
   }

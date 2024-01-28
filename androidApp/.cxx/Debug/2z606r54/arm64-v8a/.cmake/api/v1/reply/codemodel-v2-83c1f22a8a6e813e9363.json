@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "meta_secret_core_swift",
+					"name" : "meta-secret-kmm",
 					"targetIndexes" : 
 					[
 						0
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "meta_secret_core_swift::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-meta_secret_core_swift-Debug-59dacb497f5651b12928.json",
-					"name" : "meta_secret_core_swift",
+					"id" : "meta-secret-kmm::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-meta-secret-kmm-Debug-bd4f7be79c70ea1afa45.json",
+					"name" : "meta-secret-kmm",
 					"projectIndex" : 0
 				}
 			]

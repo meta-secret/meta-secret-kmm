@@ -6,7 +6,7 @@
 # It is included in the main 'build.ninja'.
 
 # =============================================================================
-# Project: meta_secret_core_swift
+# Project: meta-secret-kmm
 # Configurations: Debug
 # =============================================================================
 # =============================================================================
@@ -14,7 +14,7 @@
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__meta_secret_core_swift_Debug
+rule CXX_COMPILER__meta-secret-kmm_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = /Users/dmitrykuklin/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=aarch64-none-linux-android26 --sysroot=/Users/dmitrykuklin/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/sysroot $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -24,7 +24,7 @@ rule CXX_COMPILER__meta_secret_core_swift_Debug
 #############################################
 # Rule for linking CXX shared library.
 
-rule CXX_SHARED_LIBRARY_LINKER__meta_secret_core_swift_Debug
+rule CXX_SHARED_LIBRARY_LINKER__meta-secret-kmm_Debug
   command = $PRE_LINK && /Users/dmitrykuklin/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=aarch64-none-linux-android26 --sysroot=/Users/dmitrykuklin/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -fPIC $LANGUAGE_COMPILE_FLAGS $ARCH_FLAGS $LINK_FLAGS -shared $SONAME_FLAG$SONAME -o $TARGET_FILE $in $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
   description = Linking CXX shared library $TARGET_FILE
   restat = $RESTAT

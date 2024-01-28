@@ -935,7 +935,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "meta_secret_core_swift"
+			"value" : "meta-secret-kmm"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1231,10 +1231,10 @@
 			[
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "The CMake toolchain file"
 				}
 			],
-			"type" : "UNINITIALIZED",
+			"type" : "FILEPATH",
 			"value" : "/Users/dmitrykuklin/Library/Android/sdk/ndk/25.1.8937393/build/cmake/android.toolchain.cmake"
 		},
 		{
@@ -1291,42 +1291,6 @@
 		},
 		{
 			"name" : "meta-secret-kmm_SOURCE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "/Users/dmitrykuklin/Documents/Projects/meta-secret-kmm/androidApp/src/main/cpp"
-		},
-		{
-			"name" : "meta_secret_core_swift_BINARY_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "/Users/dmitrykuklin/Documents/Projects/meta-secret-kmm/androidApp/.cxx/Debug/2z606r54/arm64-v8a"
-		},
-		{
-			"name" : "meta_secret_core_swift_IS_TOP_LEVEL",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "ON"
-		},
-		{
-			"name" : "meta_secret_core_swift_SOURCE_DIR",
 			"properties" : 
 			[
 				{
