@@ -1,0 +1,3 @@
+/Users/dmitrykuklin/Documents/Projects/meta-secret-kmm/androidApp/.cxx/Debug/2z606r54/x86/CMakeFiles/meta_secret_core_swift.dir
+/Users/dmitrykuklin/Documents/Projects/meta-secret-kmm/androidApp/.cxx/Debug/2z606r54/x86/CMakeFiles/edit_cache.dir
+/Users/dmitrykuklin/Documents/Projects/meta-secret-kmm/androidApp/.cxx/Debug/2z606r54/x86/CMakeFiles/rebuild_cache.dir

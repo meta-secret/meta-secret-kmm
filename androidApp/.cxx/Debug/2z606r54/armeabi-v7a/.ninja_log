@@ -1,0 +1,11 @@
+# ninja log v5
+0	12	0	clean	f13385ce6d84916f
+0	106	1706473032953514043	build.ninja	8615091a2ef70ec
+0	557	1705782204832828536	CMakeFiles/meta-secret-kmm.dir/RustLibraryWrapper.cpp.o	a0f05da682a6506a
+1	254	1706471901294794030	CMakeFiles/meta-secret-kmm.dir/native-lib.cpp.o	922fd33ff552e80b
+254	329	1706471901358956981	/Users/dmitrykuklin/Documents/Projects/meta-secret-kmm/androidApp/build/intermediates/cxx/Debug/2z606r54/obj/armeabi-v7a/libmeta-secret-kmm.so	9cf59b04f15aec79
+0	239	1706473033238352357	CMakeFiles/meta_secret_core_swift.dir/native-lib.cpp.o	8b62a4aa786fd1bb
+239	328	1706473033327831236	/Users/dmitrykuklin/Documents/Projects/meta-secret-kmm/androidApp/build/intermediates/cxx/Debug/2z606r54/obj/armeabi-v7a/libmeta_secret_core_swift.so	2b9b206b8ebbecb0
+0	10	0	clean	f13385ce6d84916f
+0	198	1706473200404040969	CMakeFiles/meta_secret_core_swift.dir/native-lib.cpp.o	8b62a4aa786fd1bb
+199	241	1706473200445379885	/Users/dmitrykuklin/Documents/Projects/meta-secret-kmm/androidApp/build/intermediates/cxx/Debug/2z606r54/obj/armeabi-v7a/libmeta_secret_core_swift.so	2b9b206b8ebbecb0

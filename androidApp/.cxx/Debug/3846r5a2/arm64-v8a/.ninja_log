@@ -1,0 +1,9 @@
+# ninja log v5
+0	203	1706473985505595360	CMakeFiles/meta-secret-kmm.dir/native-lib.cpp.o	89f87e6dde97c5d2
+203	232	1706473985536209630	/Users/dmitrykuklin/Documents/Projects/meta-secret-kmm/androidApp/build/intermediates/cxx/Debug/3846r5a2/obj/arm64-v8a/libmeta-secret-kmm.so	fdd5b6c958d20b0a
+0	499	1706474172493485075	CMakeFiles/meta-secret-kmm.dir/native-lib.cpp.o	89f87e6dde97c5d2
+499	674	1706474172656771066	/Users/dmitrykuklin/Documents/Projects/meta-secret-kmm/androidApp/build/intermediates/cxx/Debug/3846r5a2/obj/arm64-v8a/libmeta-secret-kmm.so	fdd5b6c958d20b0a
+1	605	1706474575466508758	CMakeFiles/meta-secret-kmm.dir/native-lib.cpp.o	89f87e6dde97c5d2
+605	749	1706474575615636629	/Users/dmitrykuklin/Documents/Projects/meta-secret-kmm/androidApp/build/intermediates/cxx/Debug/3846r5a2/obj/arm64-v8a/libmeta-secret-kmm.so	fdd5b6c958d20b0a
+1	602	1706475037359523631	CMakeFiles/meta-secret-kmm.dir/native-lib.cpp.o	89f87e6dde97c5d2
+602	731	1706475037476141810	/Users/dmitrykuklin/Documents/Projects/meta-secret-kmm/androidApp/build/intermediates/cxx/Debug/3846r5a2/obj/arm64-v8a/libmeta-secret-kmm.so	fdd5b6c958d20b0a

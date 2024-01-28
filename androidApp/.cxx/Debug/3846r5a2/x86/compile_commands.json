@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/Users/dmitrykuklin/Documents/Projects/meta-secret-kmm/androidApp/.cxx/Debug/3846r5a2/x86",
+  "command": "/Users/dmitrykuklin/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=i686-none-linux-android26 --sysroot=/Users/dmitrykuklin/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Dmeta_secret_kmm_EXPORTS -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -fno-limit-debug-info  -fPIC -o CMakeFiles/meta-secret-kmm.dir/native-lib.cpp.o -c /Users/dmitrykuklin/Documents/Projects/meta-secret-kmm/androidApp/src/main/jni/native-lib.cpp",
+  "file": "/Users/dmitrykuklin/Documents/Projects/meta-secret-kmm/androidApp/src/main/jni/native-lib.cpp"
+}
+]

@@ -1,0 +1,8 @@
+//
+// Created by Dmitry Kuklin on 29.01.2024.
+//
+
+#ifndef METASECRET_META_SECRET_CORE_H
+#define METASECRET_META_SECRET_CORE_H
+
+#endif //METASECRET_META_SECRET_CORE_H

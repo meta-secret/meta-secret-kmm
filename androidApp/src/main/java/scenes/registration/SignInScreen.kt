@@ -202,7 +202,8 @@ fun SignInScreen(
         // Button
         ActionButton(modifier = Modifier, title = stringResource(id = R.string.moveNext)) {
             scope.launch {
-                showAlert = true
+                viewModel.check()
+//                showAlert = true
 //                if (viewModel.checkAndSaveName(name = "", context = context)) {
 //                    navController.popBackStack()
 //                    navController.navigate(Screen.AddSecret.route)

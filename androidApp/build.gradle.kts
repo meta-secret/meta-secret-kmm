@@ -6,6 +6,12 @@ plugins {
     id("dagger.hilt.android.plugin")
 }
 
+kotlin {
+    android {
+        sourceSets["main"].jniLibs.srcDirs("src/main/jniLibs")
+    }
+}
+
 android {
     namespace = "com.example.metasecret.android"
     compileSdk = 34
@@ -15,6 +21,11 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+        externalNativeBuild {
+            cmake {
+                cppFlags += "-std=c++17"
+            }
+        }
     }
     buildFeatures {
         compose = true
@@ -39,6 +50,13 @@ android {
     }
     kotlinOptions {
         jvmTarget = "17"
+    }
+
+    externalNativeBuild {
+        cmake {
+            path = file("src/main/jni/CMakeLists.txt")
+            version = "3.22.1"
+        }
     }
 }
 

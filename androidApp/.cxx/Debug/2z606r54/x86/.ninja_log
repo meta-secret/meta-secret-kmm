@@ -1,0 +1,10 @@
+# ninja log v5
+1	28	1706473033353424422	build.ninja	581b8daab01bd9ad
+0	4	0	clean	f13385ce6d84916f
+0	203	1706471901590599273	CMakeFiles/meta-secret-kmm.dir/native-lib.cpp.o	628c2731efc6b331
+203	272	1706471901646437025	/Users/dmitrykuklin/Documents/Projects/meta-secret-kmm/androidApp/build/intermediates/cxx/Debug/2z606r54/obj/x86/libmeta-secret-kmm.so	46580925983b74f4
+0	240	1706473033610349536	CMakeFiles/meta_secret_core_swift.dir/native-lib.cpp.o	36dd44f5630e3d1e
+241	294	1706473033663496211	/Users/dmitrykuklin/Documents/Projects/meta-secret-kmm/androidApp/build/intermediates/cxx/Debug/2z606r54/obj/x86/libmeta_secret_core_swift.so	6898140f4d70c9cf
+1	7	0	clean	f13385ce6d84916f
+1	197	1706473200658918072	CMakeFiles/meta_secret_core_swift.dir/native-lib.cpp.o	36dd44f5630e3d1e
+197	242	1706473200704062329	/Users/dmitrykuklin/Documents/Projects/meta-secret-kmm/androidApp/build/intermediates/cxx/Debug/2z606r54/obj/x86/libmeta_secret_core_swift.so	6898140f4d70c9cf

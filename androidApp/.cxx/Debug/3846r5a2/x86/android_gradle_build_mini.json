@@ -1,0 +1,27 @@
+{
+  "buildFiles": [
+    "/Users/dmitrykuklin/Documents/Projects/meta-secret-kmm/androidApp/src/main/jni/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/dmitrykuklin/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/dmitrykuklin/Documents/Projects/meta-secret-kmm/androidApp/.cxx/Debug/3846r5a2/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/dmitrykuklin/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/dmitrykuklin/Documents/Projects/meta-secret-kmm/androidApp/.cxx/Debug/3846r5a2/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "meta-secret-kmm::@6890427a1f51a3e7e1df": {
+      "artifactName": "meta-secret-kmm",
+      "abi": "x86",
+      "output": "/Users/dmitrykuklin/Documents/Projects/meta-secret-kmm/androidApp/build/intermediates/cxx/Debug/3846r5a2/obj/x86/libmeta-secret-kmm.so",
+      "runtimeFiles": []
+    }
+  }
+}
