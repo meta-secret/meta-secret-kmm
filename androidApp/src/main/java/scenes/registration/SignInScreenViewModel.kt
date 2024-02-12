@@ -2,9 +2,9 @@ package scenes.registration
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
+import com.example.metasecret.android.RustWrapper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import utils.AuthManager
-import utils.rustLib.RustLibraryWrapper
 import javax.inject.Inject
 
 @HiltViewModel
@@ -23,12 +23,8 @@ class SignInScreenViewModel @Inject constructor(
     }
 
     fun check() {
-        val myLibraryWrapper = RustLibraryWrapper()
-        val vaultName = "Dima123"
-        val vaultNameBytes: ByteArray = vaultName.toByteArray(Charsets.UTF_8)
-        val jsonLen: Int = vaultNameBytes.size
-//        val string = myLibraryWrapper.stringFromJNI()
-        val userObj: String? = myLibraryWrapper.generateSignedUser(vaultNameBytes, jsonLen)
-        println("Результат: $userObj")
+        val rustWrapper = RustWrapper()
+        val result = rustWrapper.greet("Hello MotherFucker")
+        println("End")
     }
 }
